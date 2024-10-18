@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('affiliates', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string9('address');
+            $table->string('address');
             $table->string('phone_number');
             $table->text('link');
             $table->timestamps();
