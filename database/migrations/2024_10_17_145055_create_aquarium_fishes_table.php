@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('aquarium_fishes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('fish_id');
-            $table->foreignId('aquarium_id');
+            $table->unsignedBigInteger('fish_id');
+            $table->foreign('fish_id')->references('id')->on('fishes');
+            $table->unsignedBigInteger('aquarium_id');
+            $table->foreign('aquarium_id')->references('id')->on('aquarium');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 

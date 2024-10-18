@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->foreignId('diseases_id');
-            $table->foreignId('fish_id');
+            $table->unsignedBigInteger('disease_id');
+            $table->foreign('disease_id')->references('id')->on('diseases');
+            $table->unsignedBigInteger('fish_id');
+            $table->foreign('fish_id')->references('id')->on('fishes');
         });
     }
 

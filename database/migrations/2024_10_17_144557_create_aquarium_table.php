@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('aquariums', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->float('volume_size');
             $table->float('length');
@@ -34,6 +36,7 @@ return new class extends Migration
             $table->float('amonia');
             $table->float('nitrite');
             $table->float('nitrate');
+            $table->timestamps();
         });
     }
 

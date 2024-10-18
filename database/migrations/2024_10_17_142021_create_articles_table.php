@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body');
-            $table->foreignId('user_id'); 
-            $table->string('created_by');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users'); 
             $table->foreignId('comment_id');
+            $table->timestamps();
         });
     }
 

@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('replies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('comment_id');
-            $table->foreignId('user_id');
+            $table->unsignedBigInteger('comment__id');
+            $table->foreign('comment_id')->references('id')->on('comments');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->text('body');
+            $table->timestamps();
         });
     }
 

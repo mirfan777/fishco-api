@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string9('address');
             $table->string('phone_number');
             $table->text('link');
+            $table->timestamps();
         });
     }
 

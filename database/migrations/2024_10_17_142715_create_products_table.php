@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('affialiate_id');
+            $table->unsignedBigInteger('affliate_id');
+            $table->foreign('affliate_id')->references('id')->on('affiliate');
             $table->string('name');
             $table->string('category');
             $table->text('description');
             $table->integer('price');
             $table->text('link');
+            $table->timestamps();
         });
     }
 
