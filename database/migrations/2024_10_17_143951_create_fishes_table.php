@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ikans', function (Blueprint $table) {
+        Schema::create('fishes', function (Blueprint $table) {
             $table->id();
-            $table->string('fish_name');
+            $table->string('name');
             $table->string('kingdom');
             $table->string('phylum');
             $table->string('class');

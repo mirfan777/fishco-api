@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('aquaria', function (Blueprint $table) {
+        Schema::create('aquariums', function (Blueprint $table) {
             $table->id();
-            $table->string('aquarium_name');
+            $table->string('name');
             $table->float('volume_size');
             $table->float('length');
             $table->float('width');

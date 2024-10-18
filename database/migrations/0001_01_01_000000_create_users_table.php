@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->foreignId('role_id');
             $table->rememberToken();
+            $table->int('role_id');
             $table->text('address');
             $table->string('phone_number');
         });

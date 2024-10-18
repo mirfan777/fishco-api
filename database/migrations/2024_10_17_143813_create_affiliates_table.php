@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('affiliates', function (Blueprint $table) {
             $table->id();
-            $table->string('shop_name');
-            $table->string9('shop_address');
+            $table->string('name');
+            $table->string9('address');
             $table->string('phone_number');
             $table->text('link');
         });
