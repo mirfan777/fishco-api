@@ -41,11 +41,6 @@ class User extends Authenticatable
     //     ];
     // }
 
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -56,8 +51,8 @@ class User extends Authenticatable
         return $this->hasMany(Replies::class);
     }
 
-    public function artikel()
+    public function article()
     {
-        return $this->hasMany(Artikel::class);
+        return $this->hasMany(Article::class);
     }
 }

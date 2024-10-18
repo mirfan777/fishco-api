@@ -8,9 +8,9 @@ class Aquarium extends Model
 {
     protected $guarded = ['id'];
 
-    public function penghuni_ikan()
+    public function aquariumfishes()
     {
-        return $this->hasMany(Penghuni_ikan::class);
+        return $this->hasMany(AquariumFish::class);
     }
 
     

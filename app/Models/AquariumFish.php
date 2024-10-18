@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Penghuni_ikan extends Model
+class AquariumFish extends Model
 {
     protected $guarded = ['id'];
 
-    public function ikan()
+    public function fish()
     {
-        return $this->belongsTo(Ikan::class);
+        return $this->belongsTo(Fish::class);
     }
 
     public function aquarium()
