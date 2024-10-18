@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('pengobatans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pengoobat');
-            $table->string('deskripsi_pengoobat');
-            $table->foreignId('id_penyakit');
-            $table->foreignId('id_ikan');
+            $table->string('medicine_name');
+            $table->string('medicine_description');
+            $table->foreignId('penyakit_id');
+            $table->foreignId('ikan_id');
         });
     }
 

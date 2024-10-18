@@ -13,27 +13,27 @@ return new class extends Migration
     {
         Schema::create('aquaria', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_aquarium');
-            $table->float('ukuran_volume');
-            $table->float('panjang');
-            $table->float('lebar');
-            $table->float('tinggi');
+            $table->string('aquarium_name');
+            $table->float('volume_size');
+            $table->float('length');
+            $table->float('width');
+            $table->float('height');
             $table->string('material');
-            $table->string('tipe');
-            $table->string('tipe_filter');
-            $table->string('kapasitas_filter');
-            $table->string('media_filter');
-            $table->float('suhu_min');
-            $table->float('suhu_max');
-            $table->float('ph_min');
-            $table->float('ph_max');
-            $table->float('kekeruhan');
-            $table->float('salinitas');
-            $table->float('oksigen_terlarut');
+            $table->string('type');
+            $table->string('filter_type');
+            $table->string('filter_capacity');
+            $table->string('filter_media');
+            $table->float('min_temperature');
+            $table->float('max_temperature');
+            $table->float('min_ph');
+            $table->float('max_ph');
+            $table->float('turbidity');
+            $table->float('salinity');
+            $table->float('disolved_oxygen');
             $table->float('hardness');
             $table->float('amonia');
-            $table->float('nitrit');
-            $table->float('nitrat');
+            $table->float('nitrite');
+            $table->float('nitrate');
         });
     }
 

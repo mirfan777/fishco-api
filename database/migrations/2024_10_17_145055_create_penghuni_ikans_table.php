@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('ikan_id');
             $table->foreignId('aquarium_id');
-            $table->integer('jumlah');
+            $table->integer('total');
         });
     }
 

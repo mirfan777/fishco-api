@@ -13,21 +13,21 @@ return new class extends Migration
     {
         Schema::create('ikans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_ikan');
+            $table->string('fish_name');
             $table->string('kingdom');
-            $table->string('filum');
-            $table->string('kelas');
-            $table->string('ordo');
-            $table->string('famili');
+            $table->string('phylum');
+            $table->string('class');
+            $table->string('order');
+            $table->string('family');
             $table->string('genus');
-            $table->string('spesies');
-            $table->string('warna');
-            $table->string('jenis_makananan');
-            $table->string('makananan');
-            $table->float('suhu_min');
-            $table->float('suhu_max');
-            $table->float('ph_min');
-            $table->float('ph_max');
+            $table->string('species');
+            $table->string('colour');
+            $table->string('food_type');
+            $table->string('food');
+            $table->float('min_temperature');
+            $table->float('max_temperature');
+            $table->float('min_ph');
+            $table->float('max_ph');
             $table->string('habitat');
         });
     }

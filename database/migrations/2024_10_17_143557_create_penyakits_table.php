@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('penyakits', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_penyakit');
-            $table->text('deskripsi');
-            $table->string('gejala_penyakit');
-            $table->string('gambar_penyakit');
+            $table->string('disease_name');
+            $table->text('description');
+            $table->string('disease_symptoms');
+            $table->string('disease_picture');
         });
     }
 

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('affiliates', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_toko');
-            $table->string9('alamat_toko');
-            $table->string('no_hp');
+            $table->string('shop_name');
+            $table->string9('shop_address');
+            $table->string('phone_number');
             $table->text('link');
         });
     }
