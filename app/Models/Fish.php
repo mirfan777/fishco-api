@@ -8,6 +8,8 @@ class Fish extends Model
 {
     protected $guarded = ['id'];
 
+    protected $table = 'fishes';
+
     public function medicines(){
             
             return $this->hasMany(Medicine::class);

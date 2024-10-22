@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Affiliate extends Model
 {
+    protected $table = 'affiliates';
+    
     protected $guarded = ['id'];
 
-    public function products()
+    public function product()
     {
-        return $this->hasOne(Products::class);
+        return $this->hasMany(Products::class);
     }
 }

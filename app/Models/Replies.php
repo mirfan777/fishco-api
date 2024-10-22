@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Replies extends Model
 {
+    protected $table = 'replies';
+    
     protected $guarded = ['id'];
 
     public function comment()

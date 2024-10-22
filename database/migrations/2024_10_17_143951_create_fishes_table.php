@@ -29,6 +29,7 @@ return new class extends Migration
             $table->float('min_ph');
             $table->float('max_ph');
             $table->string('habitat');
+            $table->timestamps();
         });
     }
 

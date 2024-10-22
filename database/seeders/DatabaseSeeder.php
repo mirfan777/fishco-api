@@ -81,6 +81,7 @@ class DatabaseSeeder extends Seeder
             $comments[] = [
                 'user_id' => rand(1, $recordCount),
                 'body' => 'This is a comment ' . $i,
+                'article_id' => rand(1, $recordCount),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];
@@ -118,7 +119,7 @@ class DatabaseSeeder extends Seeder
         $products = [];
         for ($i = 1; $i <= $recordCount; $i++) {
             $products[] = [
-                'affliate_id' => rand(1, $recordCount),
+                'affiliate_id' => rand(1, $recordCount),
                 'name' => 'Product ' . $i,
                 'category' => 'Category ' . rand(1, 5),
                 'description' => 'Description for product ' . $i,

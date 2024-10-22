@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('disease_id')->references('id')->on('diseases');
             $table->unsignedBigInteger('fish_id');
             $table->foreign('fish_id')->references('id')->on('fishes');
+            $table->timestamps();
         });
     }
 
