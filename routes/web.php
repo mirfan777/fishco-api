@@ -14,4 +14,8 @@ Route::get('/fishe', function () {
     return view('pages.fish.test');
 });
 
+Route::get('/landing', function () {
+    return view('pages.landing.index');
+});
+
 require __DIR__.'/auth.php';
