@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () { return view('pages.dashboard.index'); });
+Route::get('/', function () { return view('pages.landing.index'); });
 Route::get('/dashboard', function () { return view('pages.dashboard.index'); });
 
 // Fish routes
