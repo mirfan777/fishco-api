@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/auth/login', function () { return view('pages.auth.login'); });
+
 Route::get('/', function () { return view('pages.landing.index'); });
 Route::get('/dashboard', function () { return view('pages.dashboard.index'); });
 
