@@ -22,6 +22,7 @@ module.exports = {
         current: 'currentColor',
         transparent: 'transparent',
         white: '#FFFFFF',
+
         black: {
           ...colors.black,
           DEFAULT: '#1C2434',
@@ -67,6 +68,8 @@ module.exports = {
         success: '#219653',
         danger: '#D34053',
         warning: '#FFA70B',
+        sidebar: '#082F49',
+        lighterblue: '#0C476E',
       },
       fontSize: {
         'title-xxl': ['44px', '55px'],
