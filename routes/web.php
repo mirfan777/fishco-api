@@ -14,8 +14,8 @@ Route::get('/fish', function () { return view('pages.fish.fish.index'); });
 Route::get('/fish/detail', function ($id) { return view('pages.fish.fish.detail'); });
 
 // Medicine routes
-Route::get('/medicine', function () { return view('pages.medicine.medicine.index'); });
-Route::get('/medicine/detail', function ($id) { return view('pages.medicine.medicine.detail');});
+Route::get('/medicine', function () { return view('pages.fish.medicine.index'); });
+Route::get('/medicine/detail', function ($id) { return view('pages.fish.medicine.detail');});
 
 // Product routes
 Route::get('/product/affiliate', function () { return view('pages.product.affiliate.index'); });

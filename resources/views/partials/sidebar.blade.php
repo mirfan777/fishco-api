@@ -127,7 +127,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="index.html"
+                    href="/fish"
                     :class="page === 'Fish' && '!text-white'"
                     >Fish
                   </a>
@@ -138,7 +138,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="index.html"
+                    href="/fish/disease"
                     :class="page === 'Disease' && '!text-white'"
                     >Disease
                   </a>
@@ -149,7 +149,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="index.html"
+                    href="/medicine"
                     :class="page === 'Disease' && '!text-white'"
                     >Medicine
                   </a>
@@ -222,7 +222,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="index.html"
+                    href="/product"
                     :class="page === 'Product' && '!text-white'"
                     >Product
                   </a>
@@ -232,7 +232,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="index.html"
+                    href="/product/affiliate"
                     :class="page === 'Product' && '!text-white'"
                     >Affiliate
                   </a>
@@ -245,10 +245,10 @@
           <!-- Menu Item User -->
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-lighterblue dark:hover:bg-meta-4"
-              href="#"
-              @click.prevent="selected = (selected === 'User' ? '':'User')"
-              :class="{ 'bg-lighterbl dark:bg-meta-4': (selected === 'User') || (page === 'User' || page === 'analytics' || page === 'stocks') }"
+              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-lighterblue dark:hover:bg-meta-4"
+              href="/user"
+              @click="selected = (selected === 'User' ? '':'User')"
+              :class="{ 'bg-lighterblue dark:bg-meta-4': (selected === 'User') && (page === 'user') }"
             >
             <svg
                 class="fill-current"
@@ -269,41 +269,7 @@
               </svg>
 
               User
-
-              <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
-                :class="{ 'rotate-180': (selected === 'User') }"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
-                  fill=""
-                />
-              </svg>
             </a>
-
-            <!-- Dropdown Menu User -->
-            <div
-              class="translate transform overflow-hidden"
-              :class="(selected === 'User') ? 'block' :'hidden'"
-            >
-              <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
-                <li>
-                  <a
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="index.html"
-                    :class="page === 'Modals' && '!text-white'"
-                    >Modals
-                  </a>
-                </li>
-              </ul>
-            </div>
           </li>
           <!-- Menu Item User -->
 
@@ -311,7 +277,7 @@
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-lighterblue dark:hover:bg-meta-4"
-              href="tables.html"
+              href="/report"
               @click="selected = (selected === 'Report' ? '':'Report')"
               :class="{ 'bg-lighterblue dark:bg-meta-4': (selected === 'Report') && (page === 'report') }"
             >
