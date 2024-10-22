@@ -82,7 +82,7 @@
       <ul class="flex items-center gap-2 2xsm:gap-4">
         <li>
           <!-- Dark Mode Toggler -->
-          <label
+          <!-- <label
             :class="darkMode ? 'bg-primary' : 'bg-stroke'"
             class="relative m-0 block h-7.5 w-14 rounded-full"
           >
@@ -129,7 +129,7 @@
                 </svg>
               </span>
             </span>
-          </label>
+          </label> -->
           <!-- Dark Mode Toggler -->
         </li>
 
