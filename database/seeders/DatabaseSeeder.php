@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'User ' . $i,
                 'email' => 'user' . $i . '@example.com',
                 'password' => bcrypt('password'),
-                'role_id' => rand(1, 5),
+                'role_id' => rand(1, 2),
                 'address' => 'Address ' . $i,
                 'phone_number' => '123456789' . $i,
                 'email_verified_at' => Carbon::now(),
@@ -131,6 +131,63 @@ class DatabaseSeeder extends Seeder
         }
         DB::table('products')->insert($products);
 
-        // Seed the rest of the tables similarly...
+        // Seed Fish table
+        $fish = [];
+        for ($i = 1; $i <= $recordCount; $i++) {
+            $fish[] = [
+                'name' => 'Fish ' . $i,
+                'kingdom' => 'Kingdom ' . $i,
+                'phylum' => 'Phyllum ' . $i,
+                'class' => 'Class ' . $i,
+                'order' => 'Order ' . $i,
+                'family' => 'Family ' . $i,
+                'genus' => 'Genus ' . $i,
+                'species' => 'Species ' . $i,
+                'colour' => 'Colour ' . $i,
+                'food_type' => 'Food Type ' . $i,
+                'food' => 'Food ' . $i,
+                'min_temperature' => rand(1, 10),
+                'max_temperature' => rand(11, 20),
+                'min_ph' => rand(1, 5),
+                'max_ph' => rand(6, 10),
+                'habitat' => 'Habitat ' . $i,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ];
+        }
+        DB::table('fishes')->insert($fish);
+
+
+
+        // Seed Disease table
+        $disease = [];
+        for ($i = 1; $i <= $recordCount; $i++) {
+            $disease[] = [
+                'name' => 'Disease ' . $i,
+                'description' => 'Description ' . $i,
+                'symptoms' => 'Symptoms ' . $i,
+                'picture' => 'disease' . $i . '.jpg',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ];
+        }
+        DB::table('diseases')->insert($disease);
+
+
+        // Seed Medicine table
+
+        $medicine = [];
+        for ($i = 1; $i <= $recordCount; $i++) {
+            $medicine[] = [
+                'name' => 'Medicine ' . $i,
+                'description' => 'Description ' . $i,
+                'disease_id' => rand(1, $recordCount),
+                'fish_id' => rand(1, $recordCount),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ];
+        }
+        DB::table('medicines')->insert($medicine);
+
     }
 }

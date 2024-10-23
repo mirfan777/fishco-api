@@ -1,7 +1,17 @@
 <?php
 
+use App\Http\Resources\AffiliateResource;
+use App\Http\Resources\ArticleResource;
+use App\Http\Resources\CommentResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Resources\DiseaseResource;
+use App\Http\Resources\FishResource;
+use App\Http\Resources\MedicineResource;
+use App\Http\Resources\ProductResource;
+use App\Http\Resources\RepliesResource;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Models\Fish;
 use App\Models\Article;
@@ -18,16 +28,49 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 
 //User
+Route::get('/getAllUser', function () {
+    return UserResource::collection(User::all());
+});
+
+Route::get('/getUser/{id}', function($id){
+    return new UserResource(User::find($id));
+});
+
+Route::post('/addUser', function(Request $request){
+
+    $response = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => bcrypt($request->password),
+        'address' => $request->address,
+        'phone_number' => $request->phone_number
+    ]);
+
+    return $response;
+
+});
+
+Route::put('/updateUser/{id}', function(Request $request, $id){
+    $response = User::where('id', $id)->update($request->all());
+
+    return $response;
+});
+
+Route::delete('/deleteUser/{id}', function($id){
+    $response = User::where('id', $id)->delete();
+
+    return $response;
+});
 
 
 //Fish
 
 Route::get('/getAllFish', function () {
-    return Fish::all();
+    return FishResource::collection(Fish::all());
 });
 
 Route::get('/getFish/{id}', function($id){
-    return Fish::find($id);
+    return new FishResource(Fish::find($id));
 });
 
 Route::post('/addFish', function(Request $request){
@@ -71,11 +114,11 @@ Route::delete('/deleteFish/{id}', function($id){
 //Medicine
 
 Route::get('/getAllMedicine', function () {
-    return Medicine::all();
+    return MedicineResource::collection(Medicine::all());
 });
 
 Route::get('/getMedicine/{id}', function($id){
-    return Medicine::find($id);
+    return new MedicineResource(Medicine::find($id));
 });
 
 Route::post('/addMedicine', function(Request $request){
@@ -107,11 +150,11 @@ Route::delete('/deleteMedicine/{id}', function($id){
 //Disease
 
 Route::get('/getAllDisease', function () {
-    return Disease::all();
+    return DiseaseResource::collection(Disease::all());
 });
 
 Route::get('/getDisease/{id}', function($id){
-    return Disease::find($id);
+    return new DiseaseResource(Disease::find($id));
 });
 
 Route::post('/addDisease', function(Request $request){
@@ -143,11 +186,11 @@ Route::delete('/deleteDisease/{id}', function($id){
 //Article
 
 Route::get('/getAllArticle', function () {
-    return Article::all();
+    return ArticleResource::collection(Article::all());
 });
 
 Route::get('/getArticle/{id}', function($id){
-    return Article::find($id);
+    return new ArticleResource(Article::find($id));
 });
 
 Route::post('/addArticle', function(Request $request){
@@ -180,11 +223,11 @@ Route::delete('/deleteArticle/{id}', function($id){
 //Comment
 
 Route::get('/getAllComment', function () {
-    return Comment::all();
+    return CommentResource::collection(Comment::all());
 });
 
 Route::get('/getComment/{id}', function($id){
-    return Comment::find($id);
+    return new CommentResource(Comment::find($id));
 });
 
 Route::post('/addComment', function(Request $request){
@@ -215,11 +258,11 @@ Route::delete('/deleteComment/{id}', function($id){
 //Reply
 
 Route::get('/getAllReply', function () {
-    return Replies::all();
+    return RepliesResource::collection(Replies::all());
 });
 
 Route::get('/getReply/{id}', function($id){
-    return Replies::find($id);
+    return new RepliesResource(Replies::find($id));
 });
 
 Route::post('/addReply', function(Request $request){
@@ -251,11 +294,11 @@ Route::delete('/deleteReply/{id}', function($id){
 //Product
 
 Route::get('/getAllProduct', function () {
-    return Products::all();
+    return ProductResource::collection(Products::all());
 });
 
 Route::get('/getProduct/{id}', function($id){
-    return Products::find($id);
+    return new ProductResource(Products::find($id));
 });
 
 Route::post('/addProduct', function(Request $request){
@@ -289,11 +332,11 @@ Route::delete('/deleteProduct/{id}', function($id){
 //Affiliate
 
 Route::get('/getAllAffiliate', function () {
-    return Affiliate::all();
+    return AffiliateResource::collection(Affiliate::all());
 });
 
 Route::get('/getAffiliate/{id}', function($id){
-    return Affiliate::find($id);
+    return new AffiliateResource(Affiliate::find($id));
 });
 
 Route::post('/addAffiliate', function(Request $request){

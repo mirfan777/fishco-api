@@ -22,7 +22,7 @@ public function authorize(): bool
     public function rules(): array
     {
         return [
-            'body' => ['required', 'string']
+            'body' => 'required|string'
         ];
     }
 }
