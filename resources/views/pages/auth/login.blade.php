@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
-  </head>
+    <title>Login | Fishco Admin Login Page</title>
+    @vite(['resources/css/style.css', 'resources/css/satoshi.css', 'resources/js/app.js'])
+</head>
 
   <body
     x-data="{ page: 'signin', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
@@ -15,7 +16,7 @@
     :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
   >
     <!-- ===== Preloader Start ===== -->
-    <include src="./partials/preloader.html"></include>
+    @include('partials.preloader')
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
@@ -34,17 +35,17 @@
               class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
               <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Sign In
+                Admin Login Page
               </h2>
 
-              <nav>
+              <!-- <nav>
                 <ol class="flex items-center gap-2">
                   <li>
                     <a class="font-medium" href="index.html">Dashboard /</a>
                   </li>
                   <li class="font-medium text-primary">Sign In</li>
                 </ol>
-              </nav>
+              </nav> -->
             </div>
             <!-- Breadcrumb End -->
 
@@ -55,41 +56,31 @@
               <div class="flex flex-wrap items-center">
                 <div class="hidden w-full xl:block xl:w-1/2">
                   <div class="px-26 py-17.5 text-center">
-                    <a class="mb-5.5 inline-block" href="index.html">
-                      <img
-                        class="hidden dark:block"
-                        src="./images/logo/logo.svg"
-                        alt="Logo"
-                      />
-                      <img
-                        class="dark:hidden"
-                        src="./images/logo/logo-dark.svg"
-                        alt="Logo"
-                      />
+                    <a class="mb-5.5 inline-block" href="/">
+                      <img src="{{ asset('images/logo/logo-fishco-bigger.svg') }}" alt="Logo" />
                     </a>
 
-                    <p class="font-medium 2xl:px-20">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                      suspendisse.
+                    <p class="font-medium text-2xl 4xl:px-20">
+                     Scan, Ketahui, Sembuhkan – Semua di Fishco
                     </p>
 
-                    <span class="mt-15 inline-block">
+                    <!-- <span class="mt-15 inline-block">
                       <img
                         src="./images/illustration/illustration-03.svg"
                         alt="illustration"
                       />
-                    </span>
+                    </span> -->
                   </div>
                 </div>
                 <div
                   class="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2"
                 >
                   <div class="w-full p-4 sm:p-12.5 xl:p-17.5">
-                    <span class="mb-1.5 block font-medium">Start for free</span>
+                    <!-- <span class="mb-1.5 block font-medium">Start for free</span> -->
                     <h2
                       class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2"
                     >
-                      Sign In to TailAdmin
+                      Login to FishcoAdmin
                     </h2>
 
                     <form>
@@ -128,7 +119,7 @@
                       <div class="mb-6">
                         <label
                           class="mb-2.5 block font-medium text-black dark:text-white"
-                          >Re-type Password</label
+                          >Password</label
                         >
                         <div class="relative">
                           <input
@@ -169,7 +160,7 @@
                         />
                       </div>
 
-                      <button
+                      <!-- <button
                         class="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 font-medium hover:bg-opacity-70 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-70"
                       >
                         <span>
@@ -206,14 +197,7 @@
                           </svg>
                         </span>
                         Sign in with Google
-                      </button>
-
-                      <div class="mt-6 text-center">
-                        <p class="font-medium">
-                          Don’t have any account?
-                          <a href="signup.html" class="text-primary">Sign Up</a>
-                        </p>
-                      </div>
+                      </button> -->
                     </form>
                   </div>
                 </div>

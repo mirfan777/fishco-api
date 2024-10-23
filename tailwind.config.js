@@ -15,6 +15,7 @@ module.exports = {
       '2xsm': '375px',
       xsm: '425px',
       '3xl': '2000px',
+      '4xl': '4000px',
       ...defaultTheme.screens,
     },
     extend: {
@@ -80,6 +81,7 @@ module.exports = {
         'title-md2': ['26px', '30px'],
         'title-sm': ['20px', '26px'],
         'title-xsm': ['18px', '24px'],
+        'text-4xl': ['25px', '33px'],
       },
       spacing: {
         4.5: '1.125rem',

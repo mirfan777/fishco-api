@@ -134,7 +134,7 @@
         </li>
 
         <!-- Notification Menu Area -->
-        <li
+        <!-- <li
           class="relative"
           x-data="{ dropdownOpen: false, notifying: true }"
           @click.outside="dropdownOpen = false"
@@ -166,10 +166,10 @@
                 fill=""
               />
             </svg>
-          </a>
+          </a> -->
 
           <!-- Dropdown Start -->
-          <div
+          <!-- <div
             x-show="dropdownOpen"
             class="absolute -right-27 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark sm:right-0 sm:w-80"
           >
@@ -242,13 +242,13 @@
                 </a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- Dropdown End -->
-        </li>
+        <!-- </li> -->
         <!-- Notification Menu Area -->
 
         <!-- Chat Notification Area -->
-        <li
+        <!-- <li
           class="relative"
           x-data="{ dropdownOpen: false, notifying: true }"
           @click.outside="dropdownOpen = false"
@@ -292,10 +292,10 @@
                 fill=""
               />
             </svg>
-          </a>
+          </a> -->
 
           <!-- Dropdown Start -->
-          <div
+          <!-- <div
             x-show="dropdownOpen"
             class="absolute -right-16 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark sm:right-0 sm:w-80"
           >
@@ -310,7 +310,7 @@
                   href="messages.html"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
-                    <img src="./images/user/user-02.png" alt="User" />
+                    <img src="{{ asset('images/user/user-02.png') }}" alt="User" />
                   </div>
 
                   <div>
@@ -328,7 +328,7 @@
                   href="messages.html"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
-                    <img src="./images/user/user-01.png" alt="User" />
+                    <img src="{{ asset('images/user/user-08.png') }}" alt="User" />
                   </div>
 
                   <div>
@@ -346,7 +346,7 @@
                   href="messages.html"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
-                    <img src="./images/user/user-03.png" alt="User" />
+                    <img src="{{ asset('images/user/user-03.png') }}" alt="User" />
                   </div>
 
                   <div>
@@ -364,7 +364,7 @@
                   href="messages.html"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
-                    <img src="./images/user/user-04.png" alt="User" />
+                    <img src="{{ asset('images/user/user-04.png') }}" alt="User" />
                   </div>
 
                   <div>
@@ -382,7 +382,7 @@
                   href="messages.html"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
-                    <img src="./images/user/user-02.png" alt="User" />
+                    <img src="{{ asset('images/user/user-02.png') }}" alt="User" />
                   </div>
 
                   <div>
@@ -395,9 +395,9 @@
                 </a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- Dropdown End -->
-        </li>
+        <!-- </li> -->
         <!-- Chat Notification Area -->
       </ul>
 
@@ -416,11 +416,11 @@
             <span class="block text-sm font-medium text-black dark:text-white"
               >Thomas Anree</span
             >
-            <span class="block text-xs font-medium">UX Designer</span>
+            <span class="block text-xs font-medium">Fishco Admin</span>
           </span>
 
           <span class="h-12 w-12 rounded-full">
-            <img src="./images/user/user-01.png" alt="User" />
+            <img src="{{ asset('images/user/user-01.png') }}" alt="User" />
           </span>
 
           <svg
@@ -474,7 +474,7 @@
                 My Profile
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a
                 href="messages.html"
                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
@@ -519,7 +519,7 @@
                 </svg>
                 Account Settings
               </a>
-            </li>
+            </li> -->
           </ul>
           <button
             class="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"

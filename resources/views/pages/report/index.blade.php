@@ -49,7 +49,7 @@
               <nav>
                 <ol class="flex items-center gap-2">
                   <li>
-                    <a class="font-medium" href="index.html">Dashboard /</a>
+                    <a class="font-medium" href="/dashboard">Dashboard /</a>
                   </li>
                   <li class="font-medium text-primary">Form Layout</li>
                 </ol>
