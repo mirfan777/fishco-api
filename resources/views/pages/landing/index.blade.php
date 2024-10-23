@@ -75,7 +75,7 @@
                     class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4 w-14 h-14">
                     <i class="fa fa-eye text-white text-2xl"></i>
                 </div>
-                <h5 class="text-xl font-semibold mb-2">High Resolution</h5>
+                <h5 class="text-xl font-semibold mb-2">Scanner</h5>
                 <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
                     diam sed stet lorem.</p>
             </div>
@@ -86,7 +86,7 @@
                     class="flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-4 w-14 h-14">
                     <i class="fa fa-layer-group text-white text-2xl"></i>
                 </div>
-                <h5 class="text-xl font-semibold mb-2">Retina Ready</h5>
+                <h5 class="text-xl font-semibold mb-2">Fishbot</h5>
                 <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
                     diam sed stet lorem.</p>
             </div>
@@ -97,7 +97,7 @@
                     class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4 w-14 h-14">
                     <i class="fa fa-edit text-white text-2xl"></i>
                 </div>
-                <h5 class="text-xl font-semibold mb-2">Editable Data</h5>
+                <h5 class="text-xl font-semibold mb-2">Ensiklopedia</h5>
                 <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
                     diam sed stet lorem.</p>
             </div>
@@ -108,7 +108,7 @@
                     class="flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-4 w-14 h-14">
                     <i class="fa fa-shield-alt text-white text-2xl"></i>
                 </div>
-                <h5 class="text-xl font-semibold mb-2">Fully Secured</h5>
+                <h5 class="text-xl font-semibold mb-2">Set Ekosistem</h5>
                 <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
                     diam sed stet lorem.</p>
             </div>
@@ -119,7 +119,7 @@
                     class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4 w-14 h-14">
                     <i class="fa fa-cloud text-white text-2xl"></i>
                 </div>
-                <h5 class="text-xl font-semibold mb-2">Cloud Storage</h5>
+                <h5 class="text-xl font-semibold mb-2">Artikel</h5>
                 <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
                     diam sed stet lorem.</p>
             </div>
@@ -130,7 +130,7 @@
                     class="flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-4 w-14 h-14">
                     <i class="fa fa-mobile-alt text-white text-2xl"></i>
                 </div>
-                <h5 class="text-xl font-semibold mb-2">Fully Responsive</h5>
+                <h5 class="text-xl font-semibold mb-2">Responsive</h5>
                 <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
                     diam sed stet lorem.</p>
             </div>
@@ -247,18 +247,20 @@
             <img src="/img/profile7.jpg" alt="Profile 7" class="w-16 h-16 rounded-full object-cover">
         </div>
     </section>
-        <!-- Testimoni Section End -->
+    <!-- Testimoni Section End -->
 
     <!-- Contact Start -->
     <div class="container mx-auto py-10" id="contact">
         <div class="text-center">
-            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">Kontak Kami</h5>
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">Kontak
+                Kami</h5>
             <h1 class="text-4xl font-bold mb-5">Get In Touch!</h1>
         </div>
         <div class="flex justify-center">
             <div class="w-full lg:w-2/3">
                 <p class="text-center mb-4 text-gray-600">
-                Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit clita duo justo eirmod magna dolore erat amet.
+                    Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem
+                    et sit, sed stet no labore lorem sit clita duo justo eirmod magna dolore erat amet.
                 </p>
                 <form>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -271,7 +273,7 @@
                                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                         </div>
                         <div class="col-span-2">
-                            <input type="text" id="subject" placeholder="Subject    "
+                            <input type="text" id="subject" placeholder="Subject"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                         </div>
                         <div class="col-span-2">
@@ -291,7 +293,23 @@
     </div>
     <!-- Contact End -->
 
-
+    <!-- Download Section Start -->
+    <div class="bg-[#F4FAFF] py-10">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl font-semibold mb-5">Download Aplikasi Fishco untuk iOS & Android</h2>
+            <div class="flex justify-center space-x-4">
+                <!-- App Store Button -->
+                <a href="{{'images/landing/appstore.png'}}" target="_blank">
+                    <img src="{{'images/landing/appstore.png'}}" alt="Download on the App Store" class="h-14">
+                </a>
+                <!-- Google Play Button -->
+                <a href="{{'images/landing/playstore.png'}}" target="_blank">
+                    <img src="{{'images/landing/playstore.png'}}" alt="Get it on Google Play" class="h-14">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Download Section End -->
 
     <!-- Mobile Navbar (Hidden by Default) -->
     <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white z-20 md:hidden">
