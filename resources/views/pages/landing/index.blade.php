@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-white relative">
-    <!-- Main Section -->
+    <!-- Main Section Start -->
     <section class="relative h-screen bg-[#F4FAFF] p-6 pt-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center w-[90%] lg:w-[70%] mx-auto">
             <div class="w-full flex justify-between items-center col-span-full md:col-start-1 md:col-end-3 z-10">
@@ -26,7 +26,7 @@
                         </svg>
                     </button>
                 </div>
-                <!-- Navbar Links -->
+                <!-- Navbar -->
                 <div id="navbar" class="hidden md:flex space-x-8 lg:space-x-12">
                     <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Tentang
                         Kami</a>
@@ -37,10 +37,10 @@
                         Kami</a>
                 </div>
             </div>
-
             <div class="space-y-6 lg:space-y-8 md:col-start-1 md:row-span-2 z-10">
                 <h1 class="text-4xl lg:text-6xl font-bold text-gray-800 leading-tight">Solusi Cerdas Bagi para Pecinta
-                    <span class="text-blue-600">Ikan Hias</span></h1>
+                    <span class="text-blue-600">Ikan Hias</span>
+                </h1>
                 <p class="text-lg lg:text-3xl text-gray-600 leading-relaxed">Nikmati kemudahan mendeteksi penyakit,
                     mengatur
                     ekosistem akuarium, dan mendapatkan tips perawatan terbaik.</p>
@@ -58,149 +58,184 @@
             </div>
         </div>
     </section>
+    <!-- Main Section End -->
 
-    <!-- Tentang Kami -->
-    <section class="bg-white-100 py-16 px-4 sm:px-6 lg:px-8 w-[90%] lg:w-[70%] mx-auto">
-        <div class="container mx-auto">
-            <!-- Statistic Section -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center">
-                <!-- Download -->
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-blue-600">+200M</h2>
-                    <p class="text-gray-600 mt-2 text-sm md:text-base">Unduhan</p>
+    <!-- Features Start -->
+    <div id="feature" class="container mx-auto py-10">
+        <div class="text-center">
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">App
+                Features</h5>
+            <h1 class="mb-8 text-4xl font-bold">Awesome Features</h1>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Feature 1 -->
+            <div
+                class="feature-item bg-gray-100 rounded-lg p-6 transition-transform transform hover:-translate-y-3 hover:shadow-lg">
+                <div
+                    class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4 w-14 h-14">
+                    <i class="fa fa-eye text-white text-2xl"></i>
                 </div>
-                <!-- Transaction -->
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-blue-600">+480M</h2>
-                    <p class="text-gray-600 mt-2 text-sm md:text-base">Transaksi</p>
-                </div>
-                <!-- Ratings -->
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-blue-600">+180M</h2>
-                    <p class="text-gray-600 mt-2 text-sm md:text-base">Penilaian</p>
-                </div>
+                <h5 class="text-xl font-semibold mb-2">High Resolution</h5>
+                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                    diam sed stet lorem.</p>
             </div>
-
-            <!-- Kisah Kami Section -->
-            <div class="text-center mt-12">
-                <h2 class="text-xl md:text-2xl lg:text-4xl font-bold text-gray-800 leading-tight">Kisah Kami</h2>
-                <p class="text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed mt-4">
-                    Kami adalah tim yang penuh semangat, berjuang menghadapi berbagai tantangan dalam mengembangkan
-                    Fishco, aplikasi scanner penyakit ikan hias.
-                </p>
-            </div>
-
-            <!-- How Fishco is Built Section -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
-                <!-- Placeholder Image -->
-                <div class="bg-gray-200 h-64"></div>
-                <!-- Text Content -->
-                <div>
-                    <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 leading-tight">Proses
-                        Terbentuknya Fishco</h2>
-                    <p class="text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed mt-4">
-                        Fishco dikembangkan oleh tim Cuko Pempek Enjoyer yang bertujuan untuk membantu pemilik ikan hias
-                        memahami kesehatan ikan mereka dengan lebih baik.
-                    </p>
-                    <p class="text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed mt-4">
-                        Sejak 21 Agustus 2024, kami berkomitmen mengembangkan ide ini menjadi aplikasi yang terus kami
-                        kembangkan.
-                    </p>
+            <!-- Feature 2 -->
+            <div
+                class="feature-item bg-gray-100 rounded-lg p-6 transition-transform transform hover:-translate-y-3 hover:shadow-lg">
+                <div
+                    class="flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-4 w-14 h-14">
+                    <i class="fa fa-layer-group text-white text-2xl"></i>
                 </div>
+                <h5 class="text-xl font-semibold mb-2">Retina Ready</h5>
+                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                    diam sed stet lorem.</p>
+            </div>
+            <!-- Feature 3 -->
+            <div
+                class="feature-item bg-gray-100 rounded-lg p-6 transition-transform transform hover:-translate-y-3 hover:shadow-lg">
+                <div
+                    class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4 w-14 h-14">
+                    <i class="fa fa-edit text-white text-2xl"></i>
+                </div>
+                <h5 class="text-xl font-semibold mb-2">Editable Data</h5>
+                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                    diam sed stet lorem.</p>
+            </div>
+            <!-- Feature 4 -->
+            <div
+                class="feature-item bg-gray-100 rounded-lg p-6 transition-transform transform hover:-translate-y-3 hover:shadow-lg">
+                <div
+                    class="flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-4 w-14 h-14">
+                    <i class="fa fa-shield-alt text-white text-2xl"></i>
+                </div>
+                <h5 class="text-xl font-semibold mb-2">Fully Secured</h5>
+                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                    diam sed stet lorem.</p>
+            </div>
+            <!-- Feature 5 -->
+            <div
+                class="feature-item bg-gray-100 rounded-lg p-6 transition-transform transform hover:-translate-y-3 hover:shadow-lg">
+                <div
+                    class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4 w-14 h-14">
+                    <i class="fa fa-cloud text-white text-2xl"></i>
+                </div>
+                <h5 class="text-xl font-semibold mb-2">Cloud Storage</h5>
+                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                    diam sed stet lorem.</p>
+            </div>
+            <!-- Feature 6 -->
+            <div
+                class="feature-item bg-gray-100 rounded-lg p-6 transition-transform transform hover:-translate-y-3 hover:shadow-lg">
+                <div
+                    class="flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-4 w-14 h-14">
+                    <i class="fa fa-mobile-alt text-white text-2xl"></i>
+                </div>
+                <h5 class="text-xl font-semibold mb-2">Fully Responsive</h5>
+                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                    diam sed stet lorem.</p>
             </div>
         </div>
-    </section>
+    </div>
+    <!-- Features End -->
 
-    <!-- Fitur Andalan Section -->
-    <section class="relative bg-[#F4FAFF] py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div class="w-[90%] lg:w-[70%] mx-auto">
-            <!-- Title -->
-            <div class="text-center mb-12">
-                <h2 class="text-xl md:text-2xl lg:text-4xl font-bold text-gray-800 leading-tight">Fitur Andalan</h2>
-            </div>
-
-            <!-- Grid Layout for Content -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-
-                <!-- Image Column 1, Row 1 -->
-                <div class="flex justify-center">
-                    <img src="{{'images/landing/fitur_andalan1.png'}}" alt="Phone with Fish"
-                        class="w-30 md:w-[8rem] lg:w-[16rem] object-cover">
+    <!-- Screenshot Start -->
+    <div class="container mx-auto py-10">
+        <div class="py-10 px-5 lg:px-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center">
+                <!-- Text Section -->
+                <div class="wow fadeInUp" data-wow-delay="0.1s">
+                    <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">
+                        Screenshot</h5>
+                    <h1 class="text-4xl font-bold mb-4">User Friendly interface And Very Easy To Use Fishco App</h1>
+                    <p class="mb-4 text-gray-600">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos
+                        labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit clita duo justo eirmod
+                        magna dolore erat amet</p>
+                    <ul class="space-y-3 mb-4">
+                        <li class="flex items-center"><i class="fa fa-check text-blue-500 mr-3"></i>Diam dolor diam
+                            ipsum et tempor sit</li>
+                        <li class="flex items-center"><i class="fa fa-check text-blue-500 mr-3"></i>Aliqu diam amet diam
+                            et eos labore</li>
+                        <li class="flex items-center"><i class="fa fa-check text-blue-500 mr-3"></i>Clita erat ipsum et
+                            lorem et sit</li>
+                    </ul>
                 </div>
-
-                <!-- Text Column 2, Row 1 -->
-                <div class="space-y-4">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 leading-tight">Scanner Penyakit Ikan</h3>
-                    <p class="text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed mt-4">Dengan sekali klik, scanner ini dapat
-                        mendeteksi penyakit yang dimiliki oleh ikan
-                        hias peliharaanmu secara akurat dan cepat!</p>
-                </div>
-
-                <!-- Text Column 1, Row 2 -->
-                <div class="space-y-4">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 leading-tight">Fishbot</h3>
-                    <p class="text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed mt-4">Tidak puas dengan hasil scan? Fishbot
-                        siap menjawab pertanyaanmu dan memberi solusi
-                        terbaik kapan saja, 24/7!</p>
-                </div>
-
-                <!-- Image Column 2, Row 2 -->
-                <div class="flex justify-center">
-                    <img src="{{'images/landing/fitur_andalan2.png'}}" alt="Fishbot"
-                        class="w-30 md:w-[8rem] lg:w-[16rem] object-cover">
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Showcase Section -->
-    <section class="relative bg-gradient-to-r from-blue-400 to-blue-600 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <!-- Wavy Background -->
-        <div class="absolute inset-0">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#3B82F6" fill-opacity="1" d="M0,96L1440,256L1440,320L0,320Z"></path>
-            </svg>
-        </div>
-
-        <!-- Content -->
-        <div class="relative z-10">
-            <!-- Title -->
-            <div class="text-center mb-12">
-                <h2 class="text-xl md:text-2xl lg:text-4xl font-bold text-white leading-tight">Showcase</h2>
-                <p class="text-sm md:text-base lg:text-lg text-white leading-relaxed mt-4">ini Showcase</p>
-            </div>
-
-            <!-- Video Container -->
-            <div class="relative flex justify-center">
-                <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl">
-                    <!-- Embedded Video -->
-                    <div class="aspect-w-16 aspect-h-9">
-                        <iframe class="rounded-lg w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                            title="Video Showcase" allowfullscreen></iframe>
+                <!-- Image Section -->
+                <div class="flex justify-center lg:justify-end wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="relative w-64 h-96 p-4 bg-white rounded-lg shadow-lg">
+                        <div class="absolute inset-0 bg-center bg-no-repeat bg-contain z-10"
+                            style="background-image: url('/path/to/screenshot-frame.png');"></div>
+                        <div class="relative z-20 w-56 h-88">
+                            <img class="w-full h-full object-cover" src="/path/to/screenshot-1.png" alt="Screenshot">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <!-- Screenshot End -->
 
-    <!-- Testimoni Section -->
+    <!-- Process Start -->
+    <div class="container mx-auto py-10">
+        <div class="text-center pb-4">
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">How It
+                Works</h5>
+            <h1 class="text-4xl font-bold mb-5">3 Langkah Mudah</h1>
+        </div>
+        <div class="grid lg:grid-cols-3 gap-8 justify-center">
+            <div class="text-center pt-4">
+                <div
+                    class="relative bg-gray-50 rounded-lg pt-10 pb-6 px-6 shadow-md transition transform hover:scale-105 hover:shadow-lg duration-300">
+                    <div
+                        class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full w-24 h-24 flex items-center justify-center shadow-lg transition hover:scale-110 duration-300">
+                        <i class="fa fa-cog fa-3x text-white"></i>
+                    </div>
+                    <h5 class="mt-8 mb-3 text-lg font-semibold">Install Aplikasi</h5>
+                    <p class="text-gray-600">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat
+                        ipsum et lorem et sit sed stet</p>
+                </div>
+            </div>
+            <div class="text-center pt-4">
+                <div
+                    class="relative bg-gray-50 rounded-lg pt-10 pb-6 px-6 shadow-md transition transform hover:scale-105 hover:shadow-lg duration-300">
+                    <div
+                        class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full w-24 h-24 flex items-center justify-center shadow-lg transition hover:scale-110 duration-300">
+                        <i class="fa fa-address-card fa-3x text-white"></i>
+                    </div>
+                    <h5 class="mt-8 mb-3 text-lg font-semibold">Siapkan Profil Kamu</h5>
+                    <p class="text-gray-600">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat
+                        ipsum et lorem et sit sed stet</p>
+                </div>
+            </div>
+            <div class="text-center pt-4">
+                <div
+                    class="relative bg-gray-50 rounded-lg pt-10 pb-6 px-6 shadow-md transition transform hover:scale-105 hover:shadow-lg duration-300">
+                    <div
+                        class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full w-24 h-24 flex items-center justify-center shadow-lg transition hover:scale-110 duration-300">
+                        <i class="fa fa-check fa-3x text-white"></i>
+                    </div>
+                    <h5 class="mt-8 mb-3 text-lg font-semibold">Nikmati Fiturnya</h5>
+                    <p class="text-gray-600">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat
+                        ipsum et lorem et sit sed stet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Process End -->
+
+    <!-- Testimoni Section Start -->
     <section class="bg-[#F4FAFF] py-16 px-4 sm:px-6 lg:px-8 text-center">
         <!-- Title -->
         <h2 class="text-xl md:text-2xl lg:text-4xl font-bold text-gray-800 leading-tight">Testimoni</h2>
-
         <!-- Testimonial Text -->
         <blockquote class="text-sm italic md:text-base lg:text-lg text-gray-600 leading-relaxed mt-4">
             “Aplikasi yang luar biasa! Ikan cupang saya sakit dan Fishco langsung mendeteksi penyakitnya dengan akurat.
             Berkat
             saran dari aplikasinya, sekarang ikan saya sehat kembali!”
         </blockquote>
-
         <!-- Name and Role -->
         <p class="text-xl font-semibold text-gray-800">
             Zayn Orlando - <span class="text-purple-600">Pendiri YouTube</span>
         </p>
-
         <!-- Profile Images -->
         <div class="flex justify-center space-x-4 mt-8">
             <img src="/img/profile1.jpg" alt="Profile 1" class="w-16 h-16 rounded-full object-cover">
@@ -212,83 +247,51 @@
             <img src="/img/profile7.jpg" alt="Profile 7" class="w-16 h-16 rounded-full object-cover">
         </div>
     </section>
+        <!-- Testimoni Section End -->
 
-
-    <!-- FAQ Section -->
-    <section class="relative bg-white-50 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden w-[90%] lg:w-[70%] mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <!-- Left Side (Title and Image) -->
-            <div>
-                <h2 class="text-xl md:text-2xl lg:text-4xl font-bold text-gray-800 leading-tight">FAQ</h2>
-                <p class="text-gray-600 mb-8">Pertanyaan yang sering diajukan mengenai aplikasi FishCo.</p>
-                <img src="/img/faq-illustration.png" alt="FAQ Illustration" class="w-full h-auto">
-            </div>
-
-            <!-- Right Side (FAQ List) -->
-            <div>
-                <div class="faq-item">
-                    <button
-                        class="faq-question flex justify-between items-center text-left text-lg font-semibold text-gray-800 w-full py-4 px-6 bg-white hover:bg-[#7DC9FC] transition-colors mb-2">
-                        Apa itu FishCo?
-                        <span class="faq-icon transform transition-transform duration-300">+</span>
-                    </button>
-                    <div class="faq-answer hidden px-6 pb-4">
-                        Fishco adalah sebuah aplikasi cerdas untuk merawat ikan hias dengan fitur scanner penyakit,
-                        chatbot AI, dan
-                        set ekosistem.
+    <!-- Contact Start -->
+    <div class="container mx-auto py-10" id="contact">
+        <div class="text-center">
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">Kontak Kami</h5>
+            <h1 class="text-4xl font-bold mb-5">Get In Touch!</h1>
+        </div>
+        <div class="flex justify-center">
+            <div class="w-full lg:w-2/3">
+                <p class="text-center mb-4 text-gray-600">
+                Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit clita duo justo eirmod magna dolore erat amet.
+                </p>
+                <form>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="relative">
+                            <input type="text" id="name" placeholder="Namu Kamu"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                        </div>
+                        <div class="relative">
+                            <input type="email" id="email" placeholder="Email Kamu"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                        </div>
+                        <div class="col-span-2">
+                            <input type="text" id="subject" placeholder="Subject    "
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                        </div>
+                        <div class="col-span-2">
+                            <textarea id="message" rows="6" placeholder="Pesan"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                        </div>
+                        <div class="col-span-2 text-center">
+                            <button type="submit"
+                                class="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-full hover:from-purple-500 hover:to-pink-500 transition duration-300">
+                                Kirim Pesan
+                            </button>
+                        </div>
                     </div>
-                </div>
-
-                <div class="faq-item">
-                    <button
-                        class="faq-question flex justify-between items-center text-left text-lg font-semibold text-gray-800 w-full py-4 px-6 bg-white hover:bg-[#7DC9FC] transition-colors mb-2">
-                        Bagaimana cara kerja scanner penyakit ikan?
-                        <span class="faq-icon transform transition-transform duration-300">+</span>
-                    </button>
-                    <div class="faq-answer hidden px-6 pb-4">
-                        Scanner bekerja dengan menganalisis gambar ikan yang diunggah dan mendeteksi tanda-tanda
-                        penyakit secara
-                        otomatis.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button
-                        class="faq-question flex justify-between items-center text-left text-lg font-semibold text-gray-800 w-full py-4 px-6 bg-white hover:bg-[#7DC9FC] transition-colors mb-2">
-                        Apakah semua jenis ikan bisa didiagnosis oleh FishCo?
-                        <span class="faq-icon transform transition-transform duration-300">+</span>
-                    </button>
-                    <div class="faq-answer hidden px-6 pb-4">
-                        Saat ini, FishCo mendukung diagnosis untuk berbagai jenis ikan hias populer, namun terus
-                        diperbarui untuk
-                        mencakup lebih banyak spesies.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button
-                        class="faq-question flex justify-between items-center text-left text-lg font-semibold text-gray-800 w-full py-4 px-6 bg-white hover:bg-[#7DC9FC] transition-colors mb-2">
-                        Apakah FishCo bisa digunakan oleh pemula?
-                        <span class="faq-icon transform transition-transform duration-300">+</span>
-                    </button>
-                    <div class="faq-answer hidden px-6 pb-4">
-                        Ya, FishCo sangat ramah pengguna dan mudah digunakan, bahkan untuk pemula sekalipun.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button
-                        class="faq-question flex justify-between items-center text-left text-lg font-semibold text-gray-800 w-full py-4 px-6 bg-white hover:bg-[#7DC9FC] transition-colors mb-2">
-                        Apakah FishCo gratis?
-                        <span class="faq-icon transform transition-transform duration-300">+</span>
-                    </button>
-                    <div class="faq-answer hidden px-6 pb-4">
-                        FishCo menawarkan versi gratis dengan fitur dasar dan paket berlangganan untuk fitur premium.
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+    <!-- Contact End -->
+
+
 
     <!-- Mobile Navbar (Hidden by Default) -->
     <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white z-20 md:hidden">
