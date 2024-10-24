@@ -17,6 +17,7 @@
           $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
     :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
   >
+  @include('pages.fish.fish.modals.create')
     <!-- ===== Preloader Start ===== -->
     @include('partials.preloader')
     <!-- ===== Preloader End ===== -->
@@ -37,339 +38,170 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-            <!-- Breadcrumb Start -->
-            <div
-              class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
-            >
-              <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Form Layout
-              </h2>
-
-              <nav>
-                <ol class="flex items-center gap-2">
-                  <li>
-                    <a class="font-medium" href="/dashboard">Dashboard /</a>
-                  </li>
-                  <li class="font-medium text-primary">Form Layout</li>
-                </ol>
-              </nav>
-            </div>
-            <!-- Breadcrumb End -->
-
-            <!-- ====== Form Layout Section Start -->
-            <div class="grid grid-cols-1 gap-9 sm:grid-cols-2">
-              <div class="flex flex-col gap-9">
-                <!-- Contact Form -->
-                <div
-                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                >
-                  <div
-                    class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
-                  >
-                    <h3 class="font-medium text-black dark:text-white">
-                      Contact Form
-                    </h3>
-                  </div>
-                  <form action="#">
-                    <div class="p-6.5">
-                      <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
-                        <div class="w-full xl:w-1/2">
-                          <label
-                            class="mb-3 block text-sm font-medium text-black dark:text-white"
-                          >
-                            First name
-                          </label>
-                          <input
-                            type="text"
-                            placeholder="Enter your first name"
-                            class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                          />
+          <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+            <div class="mx-auto w-full px-4 lg:px-12">
+                <!-- Start coding here -->
+                <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6">
+                    Disease Table
+                </h2>
+                <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+                    <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+                        <div class="w-full md:w-1/2">
+                            <form class="flex items-center">
+                                <label for="simple-search" class="sr-only">Search</label>
+                                <div class="relative w-full">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" required="">
+                                </div>
+                            </form>
                         </div>
+                        <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                          <!-- TAMBAH DATA -->
+                          <button data-modal-target="create-fish" data-modal-toggle="create-fish" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                            Tambah data
+                          </button>
 
-                        <div class="w-full xl:w-1/2">
-                          <label
-                            class="mb-3 block text-sm font-medium text-black dark:text-white"
-                          >
-                            Last name
-                          </label>
-                          <input
-                            type="text"
-                            placeholder="Enter your last name"
-                            class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                          />
-                        </div>
-                      </div>
-
-                      <div class="mb-4.5">
-                        <label
-                          class="mb-3 block text-sm font-medium text-black dark:text-white"
-                        >
-                          Email <span class="text-meta-1">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="Enter your email address"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                      </div>
-
-                      <div class="mb-4.5">
-                        <label
-                          class="mb-3 block text-sm font-medium text-black dark:text-white"
-                        >
-                          Subject
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Select subject"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                      </div>
-
-                      <div class="mb-4.5">
-                        <label
-                          class="mb-3 block text-sm font-medium text-black dark:text-white"
-                        >
-                          Subject
-                        </label>
-                        <div
-                          x-data="{ isOptionSelected: false }"
-                          class="relative z-20 bg-transparent dark:bg-form-input"
-                        >
-                          <select
-                            class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                            :class="isOptionSelected && 'text-black dark:text-white'"
-                            @change="isOptionSelected = true"
-                          >
-                            <option value="" class="text-body">
-                              Type your subject
-                            </option>
-                            <option value="" class="text-body">USA</option>
-                            <option value="" class="text-body">UK</option>
-                            <option value="" class="text-body">Canada</option>
-                          </select>
-                          <span
-                            class="absolute right-4 top-1/2 z-30 -translate-y-1/2"
-                          >
-                            <svg
-                              class="fill-current"
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <g opacity="0.8">
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                                  fill=""
-                                ></path>
-                              </g>
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-
-                      <div class="mb-6">
-                        <label
-                          class="mb-3 block text-sm font-medium text-black dark:text-white"
-                        >
-                          Message
-                        </label>
-                        <textarea
-                          rows="6"
-                          placeholder="Type your message"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        ></textarea>
-                      </div>
-
-                      <button
-                        class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
-                      >
-                        Send Message
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              <div class="flex flex-col gap-9">
-                <!-- Sign In Form -->
-                <div
-                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                >
-                  <div
-                    class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
-                  >
-                    <h3 class="font-medium text-black dark:text-white">
-                      Sign In Form
-                    </h3>
-                  </div>
-                  <form action="#">
-                    <div class="p-6.5">
-                      <div class="mb-4.5">
-                        <label
-                          class="mb-3 block text-sm font-medium text-black dark:text-white"
-                        >
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="Enter your email address"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                      </div>
-
-                      <div>
-                        <label
-                          class="mb-3 block text-sm font-medium text-black dark:text-white"
-                        >
-                          Password
-                        </label>
-                        <input
-                          type="password"
-                          placeholder="Enter password"
-                          autocomplete="new-password"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                      </div>
-
-                      <div
-                        class="mb-5.5 mt-5 flex items-center justify-between"
-                      >
-                        <label for="formCheckbox" class="flex cursor-pointer">
-                          <div class="relative pt-0.5">
-                            <input
-                              type="checkbox"
-                              id="formCheckbox"
-                              class="taskCheckbox sr-only"
-                            />
-                            <div
-                              class="box mr-3 flex h-5 w-5 items-center justify-center rounded border border-stroke dark:border-form-strokedark dark:bg-form-input"
-                            >
-                              <span class="text-white opacity-0">
-                                <svg
-                                  class="fill-current"
-                                  width="10"
-                                  height="7"
-                                  viewBox="0 0 10 7"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M9.70685 0.292804C9.89455 0.480344 10 0.734667 10 0.999847C10 1.26503 9.89455 1.51935 9.70685 1.70689L4.70059 6.7072C4.51283 6.89468 4.2582 7 3.9927 7C3.72721 7 3.47258 6.89468 3.28482 6.7072L0.281063 3.70701C0.0986771 3.5184 -0.00224342 3.26578 3.785e-05 3.00357C0.00231912 2.74136 0.10762 2.49053 0.29326 2.30511C0.4789 2.11969 0.730026 2.01451 0.992551 2.01224C1.25508 2.00996 1.50799 2.11076 1.69683 2.29293L3.9927 4.58607L8.29108 0.292804C8.47884 0.105322 8.73347 0 8.99896 0C9.26446 0 9.51908 0.105322 9.70685 0.292804Z"
-                                    fill=""
-                                  />
-                                </svg>
-                              </span>
+                          
+                            <div class="flex items-center space-x-3 w-full md:w-auto">
+                                <button id="filterDropdownButton" data-dropdown-toggle="filterDropdown" class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
+                                  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-4 w-4 mr-2 text-gray-400" viewbox="0 0 20 20" fill="currentColor">
+                                      <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
+                                  </svg>
+                                  Filter
+                                  <svg class="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                      <path clip-rule="evenodd" fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                                  </svg>
+                                </button>
+                                <div id="filterDropdown" class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">Choose brand</h6>
+                                    <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
+                                        <li class="flex items-center">
+                                            <input id="apple" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <label for="apple" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Apple (56)</label>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input id="fitbit" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <label for="fitbit" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Microsoft (16)</label>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input id="razor" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <label for="razor" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Razor (49)</label>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input id="nikon" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <label for="nikon" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Nikon (12)</label>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input id="benq" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <label for="benq" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">BenQ (74)</label>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                          </div>
-                          <p>Remember me</p>
-                        </label>
-
-                        <a href="#" class="text-sm text-primary hover:underline"
-                          >Forget password?</a
-                        >
-                      </div>
-
-                      <button
-                        class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
-                      >
-                        Sign In
-                      </button>
+                        </div>
                     </div>
-                  </form>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-left">
+                                    <th scope="col" class="px-4 py-3">Fish name</th>
+                                    <th scope="col" class="px-4 py-3">Species</th>
+                                    <th scope="col" class="px-4 py-3">Habitat</th>
+                                    <th scope="col" class="px-4 py-3">Food Type</th>
+                                    <th scope="col" class="px-4 py-3">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left"> 
+                                        <!-- Data Dummy -->
+                                        <tr>
+                                            <td class="px-4 py-3">Cupang</td>
+                                            <td class="px-4 py-3">Betta Splendens</td>
+                                            <td class="px-4 py-3">Rawa - Rawa</td>
+                                            <td class="px-4 py-3">Pelet</td>
+                                            <td class="px-4 py-3">
+                                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
+                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="px-4 py-3">Mujair</td>
+                                            <td class="px-4 py-3">Oreochromis</td>
+                                            <td class="px-4 py-3">Fresh Water</td>
+                                            <td class="px-4 py-3">Pelet</td>
+                                            <td class="px-4 py-3">
+                                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
+                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="px-4 py-3">Cipung</td>
+                                            <td class="px-4 py-3">Cipungian Richiatis</td>
+                                            <td class="px-4 py-3">Rumah Raffi Ahmad</td>
+                                            <td class="px-4 py-3">Caviar 3 kali sehari</td>
+                                            <td class="px-4 py-3">
+                                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
+                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                            </td>
+                                        </tr>
+                            
+                                        <!-- Data Dummy -->
+                            </div>
+                    <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
+                        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                            Showing
+                            <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
+                            of
+                            <span class="font-semibold text-gray-900 dark:text-white">1000</span>
+                        </span>
+                        <ul class="inline-flex items-stretch -space-x-px">
+                            <li>
+                                <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <span class="sr-only">Previous</span>
+                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+                            </li>
+                            <li>
+                                <a href="#" aria-current="page" class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">100</a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <span class="sr-only">Next</span>
+                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-
-                <!-- Sign Up Form -->
-                <div
-                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                >
-                  <div
-                    class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
-                  >
-                    <h3 class="font-medium text-black dark:text-white">
-                      Sign Up Form
-                    </h3>
-                  </div>
-                  <form action="#">
-                    <div class="p-6.5">
-                      <div class="mb-4.5">
-                        <label
-                          class="mb-3 block text-sm font-medium text-black dark:text-white"
-                        >
-                          Name
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Enter your full name"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                      </div>
-
-                      <div class="mb-4.5">
-                        <label
-                          class="mb-3 block text-sm font-medium text-black dark:text-white"
-                        >
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="Enter your email address"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                      </div>
-
-                      <div class="mb-4.5">
-                        <label
-                          class="mb-3 block text-sm font-medium text-black dark:text-white"
-                        >
-                          Password
-                        </label>
-                        <input
-                          type="password"
-                          placeholder="Enter password"
-                          autocomplete="password"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                      </div>
-
-                      <div class="mb-5.5">
-                        <label
-                          class="mb-3 block text-sm font-medium text-black dark:text-white"
-                        >
-                          Re-type Password
-                        </label>
-                        <input
-                          type="password"
-                          placeholder="Re-enter password"
-                          autocomplete="re-enter-password"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                      </div>
-
-                      <button
-                        class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
-                      >
-                        Sign Up
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
             </div>
-            <!-- ====== Form Layout Section End -->
-          </div>
+            </section>
+            
         </main>
         <!-- ===== Main Content End ===== -->
       </div>
       <!-- ===== Content Area End ===== -->
     </div>
     <!-- ===== Page Wrapper End ===== -->
+
   </body>
 </html>
