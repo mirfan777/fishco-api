@@ -757,7 +757,7 @@
         function updateTestimonial(index) {
             const testimonial = testimonials[index];
             testimonialText.textContent = testimonial.text;
-            testimonialName.innerHTML = <span class="font-bold" style="color: #0362A1">${testimonial.name}</span> - <span class="font-normal" style="color: #0362A1">${testimonial.role}</span>;
+            testimonialName.innerHTML = `<span class="font-bold" style="color: #0362A1">${testimonial.name}</span> - <span class="font-normal" style="color: #0362A1">${testimonial.role}</span>`;
 
             // Hapus kelas aktif dari semua gambar profil
             profileImages.forEach(img => {
