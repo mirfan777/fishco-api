@@ -37,6 +37,7 @@
                 <!-- Navbar -->
                 <div id="navbar" class="hidden md:flex space-x-8 lg:space-x-12">
                     <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Home</a>
+                    <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Tentang Kami</a>
                     <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Fitur</a>
                     <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Review</a>
                     <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Kontak
@@ -65,6 +66,41 @@
         </div>
     </section>
     <!-- Main Section End -->
+
+    <!-- About Us Start -->
+    <div id="about" class="container mx-auto w-[90%] lg:w-[70%] py-10">
+        <div class="text-center">
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">Tentang
+                Kami</h5>
+            <h1 class="mb-8 text-4xl font-bold">Kisah Kami</h1>
+            <p class="text-gray-600 w-[80%] mx-auto">Kami melihat diri kami sebagai tim amatir yang penuh semangat, dan
+                terus berjuang menghadapi berbagai tantangan dalam pembuatan aplikasi scanner penyakit ikan hias yang
+                kami beri nama Fishco.</p> <br><br>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0 mt-4">
+            <!-- Image Section -->
+            <div class="flex items-center justify-center">
+                <img src="{{'images/landing/cuko-pempek-enjoyer.png'}}" alt="Cuko Pempek Enjoyer"
+                    class="rounded-lg shadow-lg max-w-[70%]" />
+            </div>
+
+            <!-- Story Section -->
+            <div class="flex flex-col justify-center">
+                <h2 class="text-3xl font-bold mb-3">Bagaimana Fishco Dibuat</h2>
+                <p class="text-gray-600 mb-3">
+                    Fishco adalah aplikasi yang dibuat oleh tim Cuko Pempek Enjoyer yang beranggotakan Maulana Irfan,
+                    Farhan Hakim, Zolla Perdana Putra Harahap, dan Adrian Fardan Andi. Aplikasi ini dibuat karena kami
+                    bertujuan untuk membantu para pemilik ikan hias untuk lebih memahami ikan yang dimiliki.
+                </p>
+                <p class="text-gray-600">
+                    Pada 21 Agustus 2024, kami tergerak untuk mengembangkan ide ini lebih lanjut dan menjadikan ini
+                    sebagai aplikasi yang kita kembangkan.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- About Us End -->
 
     <!-- Features Start -->
     <div id="feature" class="container mx-auto w-[90%] lg:w-[70%] py-10">
@@ -389,6 +425,7 @@
                     <h5 class="text-lg font-semibold text-gray-800 mb-3">NAVIGATION</h5>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-600 hover:text-blue-500">Home</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-500">Tentang Kami</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-500">Fitur</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-500">Review</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-500">Kontak Kami</a></li>
