@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tables | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+    @vite(['resources/css/style.css' , 'resources/css/satoshi.css' , 'resources/js/app.js'])
   </head>
 
   <body
@@ -15,13 +16,13 @@
     :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
   >
     <!-- ===== Preloader Start ===== -->
-    <include src="./partials/preloader.html"></include>
+    @include('partials.preloader')
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
-      <include src="./partials/sidebar.html"></include>
+      @include('partials.sidebar')
       <!-- ===== Sidebar End ===== -->
 
       <!-- ===== Content Area Start ===== -->
@@ -29,7 +30,7 @@
         class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
       >
         <!-- ===== Header Start ===== -->
-        <include src="./partials/header.html" />
+        @include('partials.header')
         <!-- ===== Header End ===== -->
 
         <!-- ===== Main Content Start ===== -->
@@ -57,16 +58,19 @@
             <!-- ====== Table Section Start -->
             <div class="flex flex-col gap-10">
               <!-- ====== Table One Start -->
-              <include src="./partials/table-01.html" />
+              @include('partials/table-01')
               <!-- ====== Table One End -->
 
               <!-- ====== Table Two Start -->
-              <include src="./partials/table-02.html" />
+              @include('partials/table-02')
               <!-- ====== Table Two End -->
 
               <!-- ====== Table Three Start -->
-              <include src="./partials/table-03.html" />
+              @include('partials/table-03')
               <!-- ====== Table Three End -->
+
+              
+            
             </div>
             <!-- ====== Table Section End -->
           </div>
