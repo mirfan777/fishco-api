@@ -72,7 +72,7 @@
           <input
             type="text"
             placeholder="Type to search..."
-            class="w-full bg-transparent pl-9 pr-4 focus:outline-none xl:w-125"
+            class="w-full bg-transparent pl-9 pr-4 focus:outline-none xl:w-125 border-none box-shadow-none outline-none"
           />
         </div>
       </form>
