@@ -57,26 +57,28 @@
     <!-- Main Section Start -->
     <section id="home" class="relative h-screen bg-[#FAFAFA] p-6 pt-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center w-[90%] lg:w-[70%] mx-auto">
-            <div class="space-y-6 lg:space-y-8 md:col-start-1 md:row-span-2 z-10">
-                <h1 data-aos="slide-down" class="text-4xl lg:text-6xl font-bold text-gray-800 leading-tight">Solusi
-                    Cerdas Bagi para Pecinta
+            <div class="space-y-6 lg:space-y-8 z-10">
+                <h1 data-aos="slide-down"
+                    class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
+                    Solusi Cerdas Bagi para Pecinta
                     <span class="text-blue-600">Ikan Hias</span>
                 </h1>
-                <p data-aos="slide-down" class="text-lg lg:text-3xl text-gray-600 leading-relaxed">Nikmati kemudahan
-                    mendeteksi penyakit,
-                    mengatur
-                    ekosistem akuarium, dan mendapatkan tips perawatan terbaik.</p>
+                <p data-aos="slide-down" class="text-lg md:text-xl lg:text-3xl text-gray-600 leading-relaxed">
+                    Nikmati kemudahan mendeteksi penyakit, mengatur ekosistem akuarium, dan mendapatkan tips perawatan
+                    terbaik.
+                </p>
                 <div class="flex space-x-4">
                     <a data-aos="slide-right" href="#"><img src="{{'images/landing/appstore.png'}}" alt="App Store"
-                            class="h-10 md:h-12 lg:h-13"></a>
+                            class="h-10 md:h-12 lg:h-14"></a>
                     <a data-aos="slide-left" href="#"><img src="{{'images/landing/playstore.png'}}" alt="Google Play"
-                            class="h-10 md:h-12 lg:h-13"></a>
+                            class="h-10 md:h-12 lg:h-14"></a>
                 </div>
             </div>
 
-            <div data-aos="slide-up" class="relative md:col-start-2 md:row-span-2 flex justify-center md:justify-end">
+            <!-- Gambar Responsive -->
+            <div data-aos="slide-up" class="relative flex justify-center md:justify-end">
                 <img src="{{'images/landing/scanner-header.png'}}" alt="Phone with Fish"
-                    class="w-full md:w-[80%] lg:w-full object-cover">
+                    class="w-full md:w-[80%] lg:w-full object-contain max-h-[500px]">
             </div>
         </div>
     </section>
@@ -87,23 +89,25 @@
         <div class="text-center">
             <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">Tentang
                 Kami</h5>
-            <h1 class="mb-8 text-4xl font-bold">Kisah Kami</h1>
-            <p class="text-gray-600 w-[80%] mx-auto">Kami melihat diri kami sebagai tim amatir yang penuh semangat, dan
-                terus berjuang menghadapi berbagai tantangan dalam pembuatan aplikasi scanner penyakit ikan hias yang
-                kami beri nama Fishco.</p>
+            <h1 class="mb-8 text-3xl md:text-4xl font-bold">Kisah Kami</h1>
+            <p class="text-gray-600 w-[100%] md:w-[80%] mx-auto">
+                Kami melihat diri kami sebagai tim amatir yang penuh semangat, dan terus berjuang menghadapi berbagai
+                tantangan
+                dalam pembuatan aplikasi scanner penyakit ikan hias yang kami beri nama Fishco.
+            </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-0 mt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <!-- Image Section -->
             <div class="flex items-center justify-center">
                 <img src="{{'images/landing/cuko-pempek-enjoyer.png'}}" alt="Cuko Pempek Enjoyer"
-                    class="rounded-lg shadow-lg max-w-[70%]" />
+                    class="rounded-lg shadow-lg w-[80%] md:w-[70%] lg:w-[60%] object-contain" />
             </div>
 
             <!-- Story Section -->
-            <div class="flex flex-col justify-center">
-                <h2 class="text-3xl font-bold mb-3">Bagaimana Fishco Dibuat</h2>
-                <p class="text-gray-600 mb-3">
+            <div class="flex flex-col justify-center space-y-4">
+                <h2 class="text-2xl md:text-3xl font-bold">Bagaimana Fishco Dibuat</h2>
+                <p class="text-gray-600">
                     Fishco adalah aplikasi yang dibuat oleh tim Cuko Pempek Enjoyer yang beranggotakan Maulana Irfan,
                     Farhan Hakim, Zolla Perdana Putra Harahap, dan Adrian Fardan Andi. Aplikasi ini dibuat karena kami
                     bertujuan untuk membantu para pemilik ikan hias untuk lebih memahami ikan yang dimiliki.
@@ -374,11 +378,11 @@
     <!-- Contact Start -->
     <section id="kontak" class="container mx-auto w-[90%] lg:w-[70%] py-10" id="contact">
         <div data-aos="fade-up" data-aos-delay="100" class="text-center">
-            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">
-                Kontak
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">Kontak
                 Kami</h5>
-            <h1 class="text-4xl font-bold mb-5">Get In Touch!</h1>
+            <h1 class="text-3xl sm:text-4xl font-bold mb-5">Get In Touch!</h1>
         </div>
+
         <div data-aos="fade-up" data-aos-delay="200" class="flex justify-center">
             <div class="w-full">
                 <p class="text-center mb-4 text-gray-600">
@@ -386,24 +390,34 @@
                     untuk menghubungi kami jika kamu memerlukan informasi lebih lanjut atau ada hal yang ingin
                     didiskusikan. Kami akan dengan senang hati merespon setiap pertanyaan dan saran dari pengguna.
                 </p>
+
                 <form>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Name Input -->
                         <div class="relative">
-                            <input type="text" id="name" placeholder="Namu Kamu"
+                            <input type="text" id="name" placeholder="Nama Kamu"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                         </div>
+
+                        <!-- Email Input -->
                         <div class="relative">
                             <input type="email" id="email" placeholder="Email Kamu"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                         </div>
+
+                        <!-- Subject Input -->
                         <div class="col-span-2">
                             <input type="text" id="subject" placeholder="Subject"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                         </div>
+
+                        <!-- Message Textarea -->
                         <div class="col-span-2">
                             <textarea id="message" rows="6" placeholder="Pesan"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
                         </div>
+
+                        <!-- Submit Button -->
                         <div class="col-span-2 text-center">
                             <button type="submit"
                                 class="bg-gradient-to-r from-[#38ABF8] to-[#0278C7] text-white py-3 px-6 rounded-full hover:from-[#075385] hover:to-[#0278C7] transition duration-300">
@@ -468,8 +482,7 @@
                     <ul class="space-y-2">
                         <li><a href="mailto:fishco@gmail.com"
                                 class="text-gray-600 hover:text-blue-500">fishco@gmail.com</a></li>
-                        <li><a href="tel:+6212345678" class="text-gray-600 hover:text-blue-500">+62 12345678</a>
-                        </li>
+                        <li><a href="tel:+6212345678" class="text-gray-600 hover:text-blue-500">+62 12345678</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-500">Facebook</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-500">Linkedin</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-500">Twitter</a></li>
@@ -478,15 +491,19 @@
                 </div>
             </div>
 
-            <div class="mt-10 border-t pt-5 flex flex-col md:flex-row items-center justify-center">
+            <!-- Footer Bottom Section -->
+            <div class="mt-10 border-t pt-5 flex flex-col md:flex-row items-center justify-between">
+                <!-- Logo -->
                 <div class="flex items-center space-x-2 mb-4 md:mb-0">
                     <img src="{{'images/landing/logo.png'}}" alt="Fishco Logo" class="h-12 md:h-14">
                 </div>
 
-                <div class="flex-grow text-center">
+                <!-- Copyright -->
+                <div class="text-center md:flex-grow">
                     <p class="text-gray-500">&copy; 2024 Fishco. All Rights Reserved.</p>
                 </div>
 
+                <!-- Social Media Icons -->
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-500 hover:text-gray-800"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="text-gray-500 hover:text-gray-800"><i class="fab fa-linkedin-in"></i></a>
@@ -494,7 +511,6 @@
                     <a href="#" class="text-gray-500 hover:text-gray-800"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-
         </div>
     </footer>
     <!-- Footer End -->
