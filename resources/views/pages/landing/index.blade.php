@@ -12,54 +12,69 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <!-- CDN ICON -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- <link href="{{'lib/animate/animate.min.css'}}" rel="stylesheet">
-    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet"> -->
+    <!-- Animate -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body class="bg-white relative">
-    <!-- Main Section Start -->
-    <section class="relative h-screen bg-[#FAFAFA] p-6 pt-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center w-[90%] lg:w-[70%] mx-auto">
-            <div class="w-full flex justify-between items-center col-span-full md:col-start-1 md:col-end-3 z-10">
-                <div class="flex items-center space-x-2">
-                    <img src="{{'images/landing/logo.png'}}" alt="Fishco Logo" class="h-16 md:h-20">
-                </div>
-                <!-- Hamburger Menu Button for Mobile -->
-                <div class="md:hidden">
-                    <button id="menu-button" class="text-gray-600 focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
-                <!-- Navbar -->
-                <div id="navbar" class="hidden md:flex space-x-8 lg:space-x-12">
-                    <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Home</a>
-                    <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Tentang Kami</a>
-                    <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Fitur</a>
-                    <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Review</a>
-                    <a href="#" class="text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Kontak
-                        Kami</a>
-                </div>
+    <!-- Navbar -->
+    <div id="navbar-wrapper" class="sticky top-0 z-50 w-full bg-[#FAFAFA] transition-all duration-300 ease-in-out">
+        <div id="navbar"
+            class="w-[90%] lg:w-[70%] mx-auto flex justify-between items-center p-4 transition-all duration-300 ease-in-out">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <img src="{{'images/landing/logo.png'}}" alt="Fishco Logo" class="h-12 md:h-16">
             </div>
+
+            <!-- Navbar Links -->
+            <div class="hidden md:flex space-x-8 lg:space-x-12">
+                <a href="#home"
+                    class="nav-link text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Home</a>
+                <a href="#tentang"
+                    class="nav-link text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Tentang Kami</a>
+                <a href="#fitur"
+                    class="nav-link text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Fitur</a>
+                <a href="#review"
+                    class="nav-link text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Review</a>
+                <a href="#kontak"
+                    class="nav-link text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Kontak Kami</a>
+            </div>
+
+            <!-- Hamburger Menu Button for Mobile -->
+            <div class="md:hidden">
+                <button id="menu-button" class="text-gray-600 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Main Section Start -->
+    <section id="home" class="relative h-screen bg-[#FAFAFA] p-6 pt-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center w-[90%] lg:w-[70%] mx-auto">
             <div class="space-y-6 lg:space-y-8 md:col-start-1 md:row-span-2 z-10">
-                <h1 class="text-4xl lg:text-6xl font-bold text-gray-800 leading-tight">Solusi Cerdas Bagi para Pecinta
+                <h1 data-aos="slide-down" class="text-4xl lg:text-6xl font-bold text-gray-800 leading-tight">Solusi
+                    Cerdas Bagi para Pecinta
                     <span class="text-blue-600">Ikan Hias</span>
                 </h1>
-                <p class="text-lg lg:text-3xl text-gray-600 leading-relaxed">Nikmati kemudahan mendeteksi penyakit,
+                <p data-aos="slide-down" class="text-lg lg:text-3xl text-gray-600 leading-relaxed">Nikmati kemudahan
+                    mendeteksi penyakit,
                     mengatur
                     ekosistem akuarium, dan mendapatkan tips perawatan terbaik.</p>
                 <div class="flex space-x-4">
-                    <a href="#"><img src="{{'images/landing/appstore.png'}}" alt="App Store"
+                    <a data-aos="slide-right" href="#"><img src="{{'images/landing/appstore.png'}}" alt="App Store"
                             class="h-10 md:h-12 lg:h-13"></a>
-                    <a href="#"><img src="{{'images/landing/playstore.png'}}" alt="Google Play"
+                    <a data-aos="slide-left" href="#"><img src="{{'images/landing/playstore.png'}}" alt="Google Play"
                             class="h-10 md:h-12 lg:h-13"></a>
                 </div>
             </div>
 
-            <div class="relative md:col-start-2 md:row-span-2 flex justify-center md:justify-end">
+            <div data-aos="slide-up" class="relative md:col-start-2 md:row-span-2 flex justify-center md:justify-end">
                 <img src="{{'images/landing/scanner-header.png'}}" alt="Phone with Fish"
                     class="w-full md:w-[80%] lg:w-full object-cover">
             </div>
@@ -68,14 +83,14 @@
     <!-- Main Section End -->
 
     <!-- About Us Start -->
-    <div id="about" class="container mx-auto w-[90%] lg:w-[70%] py-10">
+    <section data-aos="fade-up" id="tentang" class="container mx-auto w-[90%] lg:w-[70%] py-10">
         <div class="text-center">
             <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">Tentang
                 Kami</h5>
             <h1 class="mb-8 text-4xl font-bold">Kisah Kami</h1>
             <p class="text-gray-600 w-[80%] mx-auto">Kami melihat diri kami sebagai tim amatir yang penuh semangat, dan
                 terus berjuang menghadapi berbagai tantangan dalam pembuatan aplikasi scanner penyakit ikan hias yang
-                kami beri nama Fishco.</p> <br><br>
+                kami beri nama Fishco.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-0 mt-4">
@@ -99,11 +114,11 @@
                 </p>
             </div>
         </div>
-    </div>
+    </section>
     <!-- About Us End -->
 
     <!-- Features Start -->
-    <div id="feature" class="container mx-auto w-[90%] lg:w-[70%] py-10">
+    <section data-aos="fade-up" data-aos-delay="100" id="fitur" class="container mx-auto w-[90%] lg:w-[70%] py-10">
         <div class="text-center">
             <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">App
                 Features</h5>
@@ -111,9 +126,9 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Feature 1 -->
-            <div
+            <div 
                 class="feature-item bg-gray-100 rounded-lg p-6 transition-transform transform hover:-translate-y-3 hover:shadow-lg">
-                <div
+                <div 
                     class="flex items-center justify-center bg-gradient-to-r from-[#38ABF8] to-[#0278C7] rounded-full mb-4 w-14 h-14">
                     <i class="fa fa-qrcode text-white text-2xl"></i>
                 </div>
@@ -177,12 +192,12 @@
                     diam sed stet lorem.</p>
             </div>
         </div>
-    </div>
+    </section>
     <!-- Features End -->
 
     <!-- Screenshot Section Start -->
-    <div class="container mx-auto w-[90%] lg:w-[70%] py-10">
-        <div class="py-10 px-5 lg:px-10">
+    <section class="container mx-auto w-[90%] lg:w-[70%] py-10">
+        <div data-aos="slide-up" data-aos-delay="100" class="py-10 px-5 lg:px-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center">
                 <!-- Text Section -->
                 <div class="wow fadeInUp" data-wow-delay="0.1s">
@@ -203,7 +218,7 @@
                 </div>
 
                 <!-- Image Section -->
-                <div class="flex justify-center lg:justify-end wow fadeInUp relative" data-wow-delay="0.3s">
+                <div data-aos="slide-up" data-aos-delay="300" class="flex justify-center lg:justify-end wow fadeInUp relative" data-wow-delay="0.3s">
                     <!-- Image Container with Frame -->
                     <div class="relative w-[280px] h-[550px] p-4 bg-transparent rounded-lg overflow-hidden">
                         <!-- Frame (adjust the size to avoid cropping) -->
@@ -252,11 +267,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- Screenshot Section End -->
 
     <!-- Process Start -->
-    <div class="container mx-auto w-[90%] lg:w-[70%] py-10">
+    <section data-aos="fade-up" class="container mx-auto w-[90%] lg:w-[70%] py-10">
         <div class="text-center pb-4">
             <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">How It
                 Works</h5>
@@ -300,11 +315,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- Process End -->
 
     <!-- Testimoni Section Start -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 text-center relative">
+    <section data-aos="fade-up" id="review" class="py-16 px-4 sm:px-6 lg:px-8 text-center relative">
         <div class="text-center pb-4">
             <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">
                 Testimoni</h5>
@@ -354,14 +369,14 @@
     <!-- Testimoni Section End -->
 
     <!-- Contact Start -->
-    <div class="container mx-auto w-[90%] lg:w-[70%] py-10" id="contact">
-        <div class="text-center">
+    <section id="kontak" class="container mx-auto w-[90%] lg:w-[70%] py-10" id="contact">
+        <div data-aos="fade-up" data-aos-delay="100" class="text-center">
             <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">
                 Kontak
                 Kami</h5>
             <h1 class="text-4xl font-bold mb-5">Get In Touch!</h1>
         </div>
-        <div class="flex justify-center">
+        <div data-aos="fade-up" data-aos-delay="200" class="flex justify-center">
             <div class="w-full">
                 <p class="text-center mb-4 text-gray-600">
                     Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et
@@ -388,7 +403,7 @@
                         </div>
                         <div class="col-span-2 text-center">
                             <button type="submit"
-                                class="bg-gradient-to-r from-[#38ABF8] to-[#0278C7] text-white py-3 px-6 rounded-full hover:from-purple-500 hover:to-pink-500 transition duration-300">
+                                class="bg-gradient-to-r from-[#38ABF8] to-[#0278C7] text-white py-3 px-6 rounded-full hover:from-[#075385] hover:to-[#0278C7] transition duration-300">
                                 Kirim Pesan
                             </button>
                         </div>
@@ -396,39 +411,40 @@
                 </form>
             </div>
         </div>
-    </div>
+    </section>
     <!-- Contact End -->
 
     <!-- Download Section Start -->
-    <div class="bg-[#F4FAFF] py-10">
+    <section class="bg-[#F4FAFF] py-10">
         <div class="container mx-auto text-center">
-            <h2 class="text-2xl font-semibold mb-5">Download Aplikasi Fishco untuk iOS & Android</h2>
+            <h2 data-aos="fade-up" data-aos-delay="100" class="text-2xl font-semibold mb-5">Download Aplikasi Fishco untuk iOS & Android</h2>
             <div class="flex justify-center space-x-4">
                 <!-- App Store Button -->
-                <a href="{{'images/landing/appstore.png'}}" target="_blank">
+                <a data-aos="slide-right" data-aos-delay="200" href="{{'images/landing/appstore.png'}}" target="_blank">
                     <img src="{{'images/landing/appstore.png'}}" alt="Download on the App Store" class="h-14">
                 </a>
                 <!-- Google Play Button -->
-                <a href="{{'images/landing/playstore.png'}}" target="_blank">
+                <a data-aos="slide-left" data-aos-delay="200" href="{{'images/landing/playstore.png'}}" target="_blank">
                     <img src="{{'images/landing/playstore.png'}}" alt="Get it on Google Play" class="h-14">
                 </a>
             </div>
         </div>
-    </div>
+    </section>
     <!-- Download Section End -->
 
-    <footer class="bg-white py-10">
+    <!-- Footer Start -->
+    <footer data-aos="fade-up" class="bg-white py-10">
         <div class="container mx-auto w-[90%] lg:w-[70%] py-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
                 <!-- Navigation Section -->
                 <div>
                     <h5 class="text-lg font-semibold text-gray-800 mb-3">NAVIGATION</h5>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-600 hover:text-blue-500">Home</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-blue-500">Tentang Kami</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-blue-500">Fitur</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-blue-500">Review</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-blue-500">Kontak Kami</a></li>
+                        <li><a href="#home" class="nav-link text-gray-600 hover:text-blue-500">Home</a></li>
+                        <li><a href="#tentang" class="nav-link text-gray-600 hover:text-blue-500">Tentang Kami</a></li>
+                        <li><a href="#fitur" class="nav-link text-gray-600 hover:text-blue-500">Fitur</a></li>
+                        <li><a href="#review" class="nav-link text-gray-600 hover:text-blue-500">Review</a></li>
+                        <li><a href="#kontak" class="nav-link text-gray-600 hover:text-blue-500">Kontak Kami</a></li>
                     </ul>
                 </div>
 
@@ -476,7 +492,7 @@
 
         </div>
     </footer>
-
+    <!-- Footer End -->
 
     <!-- Mobile Navbar (Hidden by Default) -->
     <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white z-20 md:hidden">
@@ -491,9 +507,110 @@
     <!-- scrtipt owl carousel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-
+    <!-- Animate -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
     <script>
+        //Animate
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 1000,
+                easing: 'ease-in-out',
+                once: true,
+                offset: 200, // Offset ketika elemen mulai muncul
+                startEvent: 'DOMContentLoaded', // Memastikan AOS berjalan setelah DOM siap
+            });
+
+            const aosElements = document.querySelectorAll('[data-aos]');
+            aosElements.forEach(element => {
+                element.addEventListener('aos:in', () => {
+                    element.classList.remove('opacity-0', 'translate-y-5'); // Hapus kelas ketika masuk
+                });
+            });
+        });
+
+
+        //Navbar
+        // Detect Scroll to Change Navbar Background
+        window.addEventListener("scroll", function () {
+            const navbarWrapper = document.getElementById("navbar-wrapper");
+            const navbar = document.getElementById("navbar");
+            const sections = document.querySelectorAll('section');
+            // const navLinks = document.querySelectorAll('.nav-link');
+
+            // Scroll background change
+            if (window.scrollY > 50) {
+                navbarWrapper.classList.remove("bg-[#FAFAFA]");
+                navbarWrapper.classList.add("bg-[#FAFAFA]/50", "backdrop-blur-lg");
+                navbar.classList.remove("p-4");
+                navbar.classList.add("p-2", "rounded-lg");
+            } else {
+                navbarWrapper.classList.remove("bg-[#FAFAFA]/50", "backdrop-blur-lg");
+                navbarWrapper.classList.add("bg-[#FAFAFA]");
+                navbar.classList.remove("p-2");
+                navbar.classList.add("p-4", "rounded-lg");
+            }
+
+            // Highlight the active link based on scroll position
+            let currentSection = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 50 && scrollY < sectionTop + section.offsetHeight) { // Adjust for better alignment
+                    currentSection = section.getAttribute("id");
+                }
+            });
+            // navLinks.forEach(link => {
+            //     link.classList.remove("text-blue-500", "border-b-2", "border-blue-500"); // Remove active class
+            //     if (link.getAttribute("href").substring(1) === currentSection) {
+            //         link.classList.add("text-blue-500", "border-b-2", "border-blue-500"); // Add active class
+            //     }
+            // });
+        });
+
+        // Smooth scroll with offset to prevent content hiding behind navbar
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                const navbarHeight = document.getElementById('navbar-wrapper').offsetHeight;
+
+                window.scrollTo({
+                    top: targetElement.offsetTop - navbarHeight - 30, // Add extra margin
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+
+        // Observe which section is currently in the viewport and update active link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px 0px -50px 0px", // Triggering when 50px of the section is still in view
+            threshold: 0.2 // Trigger when 20% of the section is in view
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('text-blue-500', 'border-blue-500');
+                        if (link.getAttribute('href').substring(1) === sectionId) {
+                            link.classList.add('text-blue-500', 'border-blue-500');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+
         // Toggle Mobile Navbar Visibility
         document.getElementById('menu-button').addEventListener('click', function () {
             const mobileMenu = document.getElementById('mobile-menu');
