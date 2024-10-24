@@ -126,15 +126,15 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Feature 1 -->
-            <div 
+            <div
                 class="feature-item bg-gray-100 rounded-lg p-6 transition-transform transform hover:-translate-y-3 hover:shadow-lg">
-                <div 
+                <div
                     class="flex items-center justify-center bg-gradient-to-r from-[#38ABF8] to-[#0278C7] rounded-full mb-4 w-14 h-14">
                     <i class="fa fa-qrcode text-white text-2xl"></i>
                 </div>
                 <h5 class="text-xl font-semibold mb-2">Scanner</h5>
-                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
-                    diam sed stet lorem.</p>
+                <p class="text-gray-600">Mendeteksi penyakit luar pada ikan hias, mengidentifikasi jenis ikan, dan
+                    menyediakan informasi ensiklopedia. Jika sakit, langsung diberi link pembelian obat.</p>
             </div>
             <!-- Feature 2 -->
             <div
@@ -144,8 +144,8 @@
                     <i class="fa fa-robot text-white text-2xl"></i>
                 </div>
                 <h5 class="text-xl font-semibold mb-2">Fishbot</h5>
-                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
-                    diam sed stet lorem.</p>
+                <p class="text-gray-600">Chatbot berbasis AI yang dirancang untuk membantu pengguna melakukan konsultasi
+                    seputar ikan hias, terutama yang berkaitan dengan penyakit dalam.</p>
             </div>
             <!-- Feature 3 -->
             <div
@@ -155,8 +155,8 @@
                     <i class="fa fa-book text-white text-2xl"></i>
                 </div>
                 <h5 class="text-xl font-semibold mb-2">Ensiklopedia</h5>
-                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
-                    diam sed stet lorem.</p>
+                <p class="text-gray-600">Sumber informasi lengkap tentang berbagai jenis ikan hias, mencakup deskripsi,
+                    habitat, dan perawatan yang diperlukan untuk setiap jenis ikan hias.</p>
             </div>
             <!-- Feature 4 -->
             <div
@@ -166,8 +166,9 @@
                     <i class="fa fa-fish text-white text-2xl"></i>
                 </div>
                 <h5 class="text-xl font-semibold mb-2">Set Ekosistem</h5>
-                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
-                    diam sed stet lorem.</p>
+                <p class="text-gray-600">Merancang dan menyesuaikan ekosistem akuarium seperti mengetahui jenis ikan apa
+                    yang bisa hidup bersama dalam satu akuarium, kualitas air yang dibutuhkan untuk memastikan akuarium
+                    tetap sehat.</p>
             </div>
             <!-- Feature 5 -->
             <div
@@ -177,19 +178,19 @@
                     <i class="fa fa-file-alt text-white text-2xl"></i>
                 </div>
                 <h5 class="text-xl font-semibold mb-2">Artikel</h5>
-                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
-                    diam sed stet lorem.</p>
+                <p class="text-gray-600">Menyajikan berbagai tulisan dan panduan seputar perikanan hias, mulai dari tips
+                    merawat ikan hingga tren terbaru di dunia akuarium.</p>
             </div>
             <!-- Feature 6 -->
             <div
                 class="feature-item bg-gray-100 rounded-lg p-6 transition-transform transform hover:-translate-y-3 hover:shadow-lg">
                 <div
                     class="flex items-center justify-center bg-gradient-to-r from-[#0278C7] to-[#075385] rounded-full mb-4 w-14 h-14">
-                    <i class="fa fa-pills text-white text-2xl"></i>
+                    <i class="fa fa-shield-alt text-white text-2xl"></i>
                 </div>
-                <h5 class="text-xl font-semibold mb-2">Obat</h5>
-                <p class="text-gray-600">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
-                    diam sed stet lorem.</p>
+                <h5 class="text-xl font-semibold mb-2">Keamanan Data Pengguna</h5>
+                <p class="text-gray-600">Semua data pengguna terlindungi dengan enkripsi dan protokol keamanan tinggi,
+                    sehingga pengguna dapat merasa aman saat menggunakan aplikasi.</p>
             </div>
         </div>
     </section>
@@ -203,22 +204,24 @@
                 <div class="wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">
                         Screenshot</h5>
-                    <h1 class="text-4xl font-bold mb-4">User Friendly Interface And Very Easy To Use Fishco App</h1>
-                    <p class="mb-4 text-gray-600">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos
-                        labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit clita duo justo eirmod
-                        magna dolore erat amet.</p>
+                    <h1 class="text-4xl font-bold mb-4">Tampilan Antarmuka yang Ramah Pengguna dan Mudah Digunakan</h1>
+                    <p class="mb-4 text-gray-600">Aplikasi Fishco dirancang dengan antarmuka yang sederhana dan
+                        intuitif, sehingga memudahkan pengguna dalam mengakses semua fitur dengan cepat dan efisien.
+                        Setiap elemen dalam aplikasi disusun secara logis untuk memberikan pengalaman terbaik bagi
+                        pengguna, dari pemula hingga profesional.</p>
                     <ul class="space-y-3 mb-4">
-                        <li class="flex items-center"><i class="fa fa-check text-blue-500 mr-3"></i>Diam dolor diam
-                            ipsum et tempor sit</li>
-                        <li class="flex items-center"><i class="fa fa-check text-blue-500 mr-3"></i>Aliqu diam amet diam
-                            et eos labore</li>
-                        <li class="flex items-center"><i class="fa fa-check text-blue-500 mr-3"></i>Clita erat ipsum et
-                            lorem et sit</li>
+                        <li class="flex items-center"><i class="fa fa-check text-blue-500 mr-3"></i>Tampilan yang bersih
+                            dan modern</li>
+                        <li class="flex items-center"><i class="fa fa-check text-blue-500 mr-3"></i>Navigasi yang mudah
+                            dipahami</li>
+                        <li class="flex items-center"><i class="fa fa-check text-blue-500 mr-3"></i>Akses cepat ke semua
+                            fitur penting</li>
                     </ul>
                 </div>
 
                 <!-- Image Section -->
-                <div data-aos="slide-up" data-aos-delay="300" class="flex justify-center lg:justify-end wow fadeInUp relative" data-wow-delay="0.3s">
+                <div data-aos="slide-up" data-aos-delay="300"
+                    class="flex justify-center lg:justify-end wow fadeInUp relative" data-wow-delay="0.3s">
                     <!-- Image Container with Frame -->
                     <div class="relative w-[280px] h-[550px] p-4 bg-transparent rounded-lg overflow-hidden">
                         <!-- Frame (adjust the size to avoid cropping) -->
@@ -273,8 +276,8 @@
     <!-- Process Start -->
     <section data-aos="fade-up" class="container mx-auto w-[90%] lg:w-[70%] py-10">
         <div class="text-center pb-4">
-            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">How It
-                Works</h5>
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">Cara
+                Kerja Fishco</h5>
             <h1 class="text-4xl font-bold mb-5">3 Langkah Mudah</h1>
         </div>
         <div class="grid lg:grid-cols-3 gap-8 justify-center">
@@ -286,8 +289,8 @@
                         <i class="fa fa-cog fa-3x text-white"></i>
                     </div>
                     <h5 class="mt-8 mb-3 text-lg font-semibold">Install Aplikasi</h5>
-                    <p class="text-gray-600">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat
-                        ipsum et lorem et sit sed stet</p>
+                    <p class="text-gray-600">Unduh dan pasang aplikasi Fishco dari platform pilihanmu untuk memulai
+                        petualanganmu dalam merawat ikan hias.</p>
                 </div>
             </div>
             <div class="text-center pt-4">
@@ -298,8 +301,8 @@
                         <i class="fa fa-address-card fa-3x text-white"></i>
                     </div>
                     <h5 class="mt-8 mb-3 text-lg font-semibold">Siapkan Profil Kamu</h5>
-                    <p class="text-gray-600">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat
-                        ipsum et lorem et sit sed stet</p>
+                    <p class="text-gray-600">Buat profil dengan cepat dan mudah untuk menyesuaikan pengalamanmu di
+                        Fishco, termasuk mengelola ikan hias dan konsultasi.</p>
                 </div>
             </div>
             <div class="text-center pt-4">
@@ -310,8 +313,8 @@
                         <i class="fa fa-check fa-3x text-white"></i>
                     </div>
                     <h5 class="mt-8 mb-3 text-lg font-semibold">Nikmati Fiturnya</h5>
-                    <p class="text-gray-600">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat
-                        ipsum et lorem et sit sed stet</p>
+                    <p class="text-gray-600">Akses berbagai fitur, mulai dari scanner hingga Fishbot, dan temukan solusi
+                        cepat untuk kesehatan ikan serta panduan merawat ekosistem akuarium.</p>
                 </div>
             </div>
         </div>
@@ -379,9 +382,9 @@
         <div data-aos="fade-up" data-aos-delay="200" class="flex justify-center">
             <div class="w-full">
                 <p class="text-center mb-4 text-gray-600">
-                    Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et
-                    lorem
-                    et sit, sed stet no labore lorem sit clita duo justo eirmod magna dolore erat amet.
+                    Kami siap membantu menjawab pertanyaan atau memberikan dukungan seputar aplikasi Fishco. Jangan ragu
+                    untuk menghubungi kami jika kamu memerlukan informasi lebih lanjut atau ada hal yang ingin
+                    didiskusikan. Kami akan dengan senang hati merespon setiap pertanyaan dan saran dari pengguna.
                 </p>
                 <form>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -417,7 +420,8 @@
     <!-- Download Section Start -->
     <section class="bg-[#F4FAFF] py-10">
         <div class="container mx-auto text-center">
-            <h2 data-aos="fade-up" data-aos-delay="100" class="text-2xl font-semibold mb-5">Download Aplikasi Fishco untuk iOS & Android</h2>
+            <h2 data-aos="fade-up" data-aos-delay="100" class="text-2xl font-semibold mb-5">Download Aplikasi Fishco
+                untuk iOS & Android</h2>
             <div class="flex justify-center space-x-4">
                 <!-- App Store Button -->
                 <a data-aos="slide-right" data-aos-delay="200" href="{{'images/landing/appstore.png'}}" target="_blank">
@@ -438,7 +442,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
                 <!-- Navigation Section -->
                 <div>
-                    <h5 class="text-lg font-semibold text-gray-800 mb-3">NAVIGATION</h5>
+                    <h5 class="text-lg font-semibold text-gray-800 mb-3">Navigasi</h5>
                     <ul class="space-y-2">
                         <li><a href="#home" class="nav-link text-gray-600 hover:text-blue-500">Home</a></li>
                         <li><a href="#tentang" class="nav-link text-gray-600 hover:text-blue-500">Tentang Kami</a></li>
@@ -450,16 +454,17 @@
 
                 <!-- What We Do Section -->
                 <div>
-                    <h5 class="text-lg font-semibold text-gray-800 mb-3">WHAT WE DO</h5>
+                    <h5 class="text-lg font-semibold text-gray-800 mb-3">Apa yang Kami Lakukan</h5>
                     <p class="text-gray-600">
-                        Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et
-                        lorem et sit.
+                        Fishco berfokus untuk menyediakan solusi inovatif dalam merawat dan memelihara ikan hias. Kami
+                        menggabungkan teknologi terkini dengan antarmuka yang ramah pengguna, memberikan pengalaman yang
+                        mudah dan menyenangkan bagi para pecinta ikan hias.
                     </p>
                 </div>
 
                 <!-- Talk to Us Section -->
                 <div class="text-right"> <!-- Text aligned to the right -->
-                    <h5 class="text-lg font-semibold text-gray-800 mb-3">TALK TO US</h5>
+                    <h5 class="text-lg font-semibold text-gray-800 mb-3">Hubungi Kami</h5>
                     <ul class="space-y-2">
                         <li><a href="mailto:fishco@gmail.com"
                                 class="text-gray-600 hover:text-blue-500">fishco@gmail.com</a></li>
@@ -475,7 +480,7 @@
 
             <div class="mt-10 border-t pt-5 flex flex-col md:flex-row items-center justify-center">
                 <div class="flex items-center space-x-2 mb-4 md:mb-0">
-                    <img src="{{'images/landing/logo.png'}}" alt="Fishco Logo" class="h-16 md:h-20">
+                    <img src="{{'images/landing/logo.png'}}" alt="Fishco Logo" class="h-12 md:h-14">
                 </div>
 
                 <div class="flex-grow text-center">
@@ -752,7 +757,7 @@
         function updateTestimonial(index) {
             const testimonial = testimonials[index];
             testimonialText.textContent = testimonial.text;
-            testimonialName.innerHTML = `<span class="font-bold" style="color: #0362A1">${testimonial.name}</span> - <span class="font-normal" style="color: #0362A1">${testimonial.role}</span>`;
+            testimonialName.innerHTML = <span class="font-bold" style="color: #0362A1">${testimonial.name}</span> - <span class="font-normal" style="color: #0362A1">${testimonial.role}</span>;
 
             // Hapus kelas aktif dari semua gambar profil
             profileImages.forEach(img => {
