@@ -114,9 +114,50 @@
                                             <th scope="col" class="px-4 py-3">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="diseaseTableBody" class="text-left"> 
-                                    
-                                    </tbody>
+                                       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-left">
+                            <th scope="col" class="px-4 py-3">Fish name</th>
+                            <th scope="col" class="px-4 py-3">Species</th>
+                            <th scope="col" class="px-4 py-3">Habitat</th>
+                            <th scope="col" class="px-4 py-3">Food Type</th>
+                            <th scope="col" class="px-4 py-3">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-left"> 
+                                <!-- Data Dummy -->
+                                <tr>
+                                    <td class="px-4 py-3">Cupang</td>
+                                    <td class="px-4 py-3">Betta Splendens</td>
+                                    <td class="px-4 py-3">Rawa - Rawa</td>
+                                    <td class="px-4 py-3">Pelet</td>
+                                    <td class="px-4 py-3">
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="px-4 py-3">Mujair</td>
+                                    <td class="px-4 py-3">Oreochromis</td>
+                                    <td class="px-4 py-3">Fresh Water</td>
+                                    <td class="px-4 py-3">Pelet</td>
+                                    <td class="px-4 py-3">
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="px-4 py-3">Cipung</td>
+                                    <td class="px-4 py-3">Cipungian Richiatis</td>
+                                    <td class="px-4 py-3">Rumah Raffi Ahmad</td>
+                                    <td class="px-4 py-3">Caviar 3 kali sehari</td>
+                                    <td class="px-4 py-3">
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                    </td>
+                                </tr>
+                            </tbody>
                             </div>
                     <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
                         <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
@@ -171,40 +212,4 @@
     <!-- ===== Page Wrapper End ===== -->
 
   </body>
-  <script>
-    // Fungsi untuk mengambil data dari API dan menampilkannya di tabel
-    function loadDiseaseData() {
-        fetch('/api/getAllDisease')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data); // Tambahkan ini untuk melihat apakah data diterima dengan benar
-
-            // Perbarui akses ke data
-            const diseaseData = data.data; // Sesuaikan ke `data.data` karena respons API memiliki properti `data`
-
-            const diseaseTableBody = document.getElementById('diseaseTableBody');
-            diseaseTableBody.innerHTML = ''; // Hapus konten sebelumnya
-
-            diseaseData.forEach(dis => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="px-4 py-3">${dis.name}</td>
-                    <td class="px-4 py-3">${dis.description}</td>
-                    <td class="px-4 py-3">${dis.symptoms}</td>
-                    <td class="px-4 py-3">${dis.picture}</td>
-                    <td class="px-4 py-3">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
-                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
-                    </td>
-                `;
-                diseaseTableBody.appendChild(row);
-            });
-        })
-        .catch(error => console.error('Error:', error));
-
-    }
-
-    // Memanggil fungsi loadFishData untuk pertama kali
-    loadDiseaseData();
-</script>
 </html>
