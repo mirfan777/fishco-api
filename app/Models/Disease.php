@@ -10,8 +10,13 @@ class Disease extends Model
     
     protected $guarded = ['id']; 
 
-    public function disease()
+    public function medicine()
     {
         return $this->hasMany(Medicine::class);
+    }
+
+    public function fish()
+    {
+        return $this->hasOne(FishImage::class);
     }
 }

@@ -11,7 +11,7 @@ class AquariumFishRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class AquariumFishRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'fish_id' => 'required|integer',
+            'aquarium_id' => 'required|integer',
+            'user_id' => 'required|integer'
         ];
     }
 }
