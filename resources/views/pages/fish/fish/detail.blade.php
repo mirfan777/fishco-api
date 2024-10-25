@@ -7,39 +7,19 @@
     <title>
       Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template
     </title>
-    @vite(['resources/css/style.css' , 'resources/css/satoshi.css' , 'resources/js/app.js'])
+    @vite(['resources/css/style.css' , 'resources/js/app.js'])
   </head>
 
   <body
-    x-data="{ page: 'formElements', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
-    x-init="
-          darkMode = JSON.parse(localStorage.getItem('darkMode'));
-          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+   
   >
     @include('pages.fish.fish.modals.upload-image')
     @include('pages.fish.fish.modals.edit')
     @include('pages.fish.fish.modals.delete')
-    <!-- ===== Preloader Start ===== -->
-    @include('partials.preloader')
-    <!-- ===== Preloader End ===== -->
 
-    <!-- ===== Page Wrapper Start ===== -->
-    <div class="flex h-screen overflow-hidden">
-      <!-- ===== Sidebar Start ===== -->
-      @include('partials.sidebar')
-      <!-- ===== Sidebar End ===== -->
-
-      <!-- ===== Content Area Start ===== -->
-      <div
-        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
-      >
-        <!-- ===== Header Start ===== -->
-        @include('partials.header')
-        <!-- ===== Header End ===== -->
-
+    @include('layout.main')
         <!-- ===== Main Content Start ===== -->
-        <main>
+        <main class="sm:ml-64 min-h-screen bg-gray-50">
           <div class="flex flex-col lg:flex-row gap-2 mb-5 lg:p-20 p-2">
             <div class="lg:w-60 lg:h-60 w-full h-full mx-10">
               <img class="rounded-lg w-full h-full lg:w-60 lg:h-60" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="alt">
@@ -184,11 +164,6 @@
           </div>
 
         </main>
-        <!-- ===== Main Content End ===== -->
-      </div>
-      <!-- ===== Content Area End ===== -->
-    </div>
-    <!-- ===== Page Wrapper End ===== -->
 
   </body>
 </html>

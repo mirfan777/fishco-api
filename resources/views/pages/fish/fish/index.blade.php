@@ -5,41 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template
+      FISH
     </title>
-    @vite(['resources/css/style.css' , 'resources/css/satoshi.css' , 'resources/js/app.js'])
+    @vite(['resources/css/style.css' , 'resources/js/app.js'])
   </head>
 
-  <body
-    x-data="{ page: 'formLayout', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
-    x-init="
-          darkMode = JSON.parse(localStorage.getItem('darkMode'));
-          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
-  >
-  @include('pages.fish.fish.modals.create')
-    <!-- ===== Preloader Start ===== -->
-    @include('partials.preloader')
-    <!-- ===== Preloader End ===== -->
+  <body>
+        {{-- modals --}}
+        @include('pages.fish.fish.modals.create')
 
-    <!-- ===== Page Wrapper Start ===== -->
-    <div class="flex h-screen overflow-hidden">
-      <!-- ===== Sidebar Start ===== -->
-      @include('partials.sidebar')
-      <!-- ===== Sidebar End ===== -->
-
-      <!-- ===== Content Area Start ===== -->
-      <div
-        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
-      >
-        <!-- ===== Header Start ===== -->
-        @include('partials.header')
-        <!-- ===== Header End ===== -->
-
-        <!-- ===== Main Content Start ===== -->
-        <main>
-          <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
-            <div class="mx-auto w-full px-4 lg:px-12">
+        @include('layout.main')
+        <main class="sm:ml-64 min-h-screen bg-gray-50">
+          <section class="dark:bg-gray-900 p-3 sm:p-5">
+            <div class="mx-auto w-full h-full px-4 lg:px-12">
                 <!-- Start coding here -->
                 <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6">
                     Disease Table
@@ -104,54 +82,7 @@
                             </div>
                         </div>
                     </div>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-left">
-                                    <th scope="col" class="px-4 py-3">Fish name</th>
-                                    <th scope="col" class="px-4 py-3">Species</th>
-                                    <th scope="col" class="px-4 py-3">Habitat</th>
-                                    <th scope="col" class="px-4 py-3">Food Type</th>
-                                    <th scope="col" class="px-4 py-3">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-left"> 
-                                        <!-- Data Dummy -->
-                                        <tr>
-                                            <td class="px-4 py-3">Cupang</td>
-                                            <td class="px-4 py-3">Betta Splendens</td>
-                                            <td class="px-4 py-3">Rawa - Rawa</td>
-                                            <td class="px-4 py-3">Pelet</td>
-                                            <td class="px-4 py-3">
-                                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
-                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="px-4 py-3">Mujair</td>
-                                            <td class="px-4 py-3">Oreochromis</td>
-                                            <td class="px-4 py-3">Fresh Water</td>
-                                            <td class="px-4 py-3">Pelet</td>
-                                            <td class="px-4 py-3">
-                                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
-                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="px-4 py-3">Cipung</td>
-                                            <td class="px-4 py-3">Cipungian Richiatis</td>
-                                            <td class="px-4 py-3">Rumah Raffi Ahmad</td>
-                                            <td class="px-4 py-3">Caviar 3 kali sehari</td>
-                                            <td class="px-4 py-3">
-                                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
-                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
-                                            </td>
-                                        </tr>
-                            
-                                        <!-- Data Dummy -->
-                            </div>
-                    <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
                         <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                             Showing
                             <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
@@ -191,17 +122,57 @@
                                 </a>
                             </li>
                         </ul>
-                    </nav>
-                </div>
-            </div>
-            </section>
-            
-        </main>
-        <!-- ===== Main Content End ===== -->
-      </div>
-      <!-- ===== Content Area End ===== -->
-    </div>
-    <!-- ===== Page Wrapper End ===== -->
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-left">
+                            <th scope="col" class="px-4 py-3">Fish name</th>
+                            <th scope="col" class="px-4 py-3">Species</th>
+                            <th scope="col" class="px-4 py-3">Habitat</th>
+                            <th scope="col" class="px-4 py-3">Food Type</th>
+                            <th scope="col" class="px-4 py-3">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-left"> 
+                                <!-- Data Dummy -->
+                                <tr>
+                                    <td class="px-4 py-3">Cupang</td>
+                                    <td class="px-4 py-3">Betta Splendens</td>
+                                    <td class="px-4 py-3">Rawa - Rawa</td>
+                                    <td class="px-4 py-3">Pelet</td>
+                                    <td class="px-4 py-3">
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                    </td>
+                                </tr>
 
+                                <tr>
+                                    <td class="px-4 py-3">Mujair</td>
+                                    <td class="px-4 py-3">Oreochromis</td>
+                                    <td class="px-4 py-3">Fresh Water</td>
+                                    <td class="px-4 py-3">Pelet</td>
+                                    <td class="px-4 py-3">
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="px-4 py-3">Cipung</td>
+                                    <td class="px-4 py-3">Cipungian Richiatis</td>
+                                    <td class="px-4 py-3">Rumah Raffi Ahmad</td>
+                                    <td class="px-4 py-3">Caviar 3 kali sehari</td>
+                                    <td class="px-4 py-3">
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Detail</button>
+                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
   </body>
+  
 </html>
