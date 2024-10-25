@@ -19,22 +19,7 @@
   >
   @include('pages.fish.medicine.modals.create')
     <!-- ===== Preloader Start ===== -->
-    @include('partials.preloader')
-    <!-- ===== Preloader End ===== -->
-
-    <!-- ===== Page Wrapper Start ===== -->
-    <div class="flex h-screen overflow-hidden">
-      <!-- ===== Sidebar Start ===== -->
-      @include('partials.sidebar')
-      <!-- ===== Sidebar End ===== -->
-
-      <!-- ===== Content Area Start ===== -->
-      <div
-        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
-      >
-        <!-- ===== Header Start ===== -->
-        @include('partials.header')
-        <!-- ===== Header End ===== -->
+        @include('layout.main')
 
         <!-- ===== Main Content Start ===== -->
         <main>
@@ -187,11 +172,6 @@
             </section>
             
         </main>
-        <!-- ===== Main Content End ===== -->
-      </div>
-      <!-- ===== Content Area End ===== -->
-    </div>
-    <!-- ===== Page Wrapper End ===== -->
 
   </body>
 </html>

@@ -19,9 +19,9 @@
 
     @include('layout.main')
         <!-- ===== Main Content Start ===== -->
-        <main class="sm:ml-64 min-h-screen bg-gray-50">
+        <main class="sm:ml-64 min-h-screen mt-20 bg-gray-50">
           <div class="flex flex-col lg:flex-row gap-2 mb-5 lg:p-20 p-2">
-            <div class="lg:w-60 lg:h-60 w-full h-full mx-10">
+            <div class="lg:w-60 lg:h-60 w-full h-full md:mx-10">
               <img class="rounded-lg w-full h-full lg:w-60 lg:h-60" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="alt">
             </div>
             <div class=" flex flex-col justify-center ">
@@ -98,14 +98,14 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure saepe facilis consequuntur similique, repellendus deleniti pariatur beatae corporis omnis est totam non aliquid tempora culpa doloribus quibusdam voluptas natus provident..</p>
               </div>
 
-              <div class="flex gap-5 mt-5">
-                <button data-modal-target="edit-fish" data-modal-toggle="edit-fish" class="w-fit block text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800" type="button">
-                  Edit data
-                </button>
-                <button data-modal-target="upload-image" data-modal-toggle="upload-image" class="w-fit block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+              <div class="flex md:flex-row flex-col w-full gap-5 mt-5">
+                <button data-modal-target="upload-image" data-modal-toggle="upload-image" class="md:w-fit block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                   Tambah data foto
                 </button>
-                <button data-modal-target="delete-fish" data-modal-toggle="delete-fish" class="block text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
+                <button data-modal-target="edit-fish" data-modal-toggle="edit-fish" class="md:w-fit block text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800" type="button">
+                  Edit data
+                </button>
+                <button data-modal-target="delete-fish" data-modal-toggle="delete-fish" class="md:w-fit block text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
                   Hapus data
                 </button>
               </div>
