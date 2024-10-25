@@ -12,6 +12,8 @@ use App\Http\Resources\MedicineResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\RepliesResource;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\FishImageResource;
+
 use App\Models\User;
 use App\Models\Fish;
 use App\Models\Article;
@@ -21,6 +23,7 @@ use App\Models\Affiliate;
 use App\Models\Disease;
 use App\Models\Medicine;
 use App\Models\Products;
+use App\Models\FishImage;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
@@ -360,6 +363,42 @@ Route::put('/updateAffiliate/{id}', function(Request $request, $id){
 
 Route::delete('/deleteAffiliate/{id}', function($id){
     $response = Affiliate::where('id', $id)->delete();
+
+    return $response;
+});
+
+
+//Fish Image
+
+Route::get('/getAllFishImage', function () {
+    return FishImageResource::collection(FishImage::all());
+});
+
+Route::get('/getFishImage/{id}', function($id){
+    return new FishImageResource(FishImage::find($id));
+});
+
+Route::post('/addFishImage', function(Request $request){
+
+    $response = FishImage::create([
+        'fish_id' => $request->fish_id,
+        'image' => $request->image,
+        'status' => $request->status,
+        'disease_id' => $request->disease_id
+    ]);
+
+    return $response;
+
+});
+
+Route::put('/updateFishImage/{id}', function(Request $request, $id){
+    $response = FishImage::where('id', $id)->update($request->all());
+
+    return $response;
+});
+
+Route::delete('/deleteFishImage/{id}', function($id){
+    $response = FishImage::where('id', $id)->delete();
 
     return $response;
 });

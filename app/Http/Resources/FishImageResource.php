@@ -18,6 +18,8 @@ class FishImageResource extends JsonResource
             'id' => $this->id,
             'fish_id' => $this->fish_id,
             'image' => $this->image,
+            'status' => $this->status,
+            'disease_id' => $this->disease_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];
