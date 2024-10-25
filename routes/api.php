@@ -1,4 +1,10 @@
 <?php
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\VerifyEmailController;
 
 use App\Http\Resources\AffiliateResource;
 use App\Http\Resources\ArticleResource;
@@ -28,7 +34,6 @@ use App\Models\FishImage;
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
-
 
 //User
 Route::get('/getAllUser', function () {
@@ -68,11 +73,16 @@ Route::delete('/deleteUser/{id}', function($id){
 
 //Fish
 
-Route::get('/getAllFish', function () {
-    return FishResource::collection(Fish::all());
+Route::get('/getAllFish', function (Request $request) {
+    $query = $request->query('search', ''); // Make sure the parameter name matches
+    $fishes = Fish::where('name', 'like', "%$query%")
+                  ->orWhere('species', 'like', "%$query%")
+                  ->paginate(5); // Adjust items per page as needed
+
+    return FishResource::collection($fishes);
 });
 
-Route::get('/getFish/{id}', function($id){
+Route::get('/getFish/{id}', function($id) {
     return new FishResource(Fish::find($id));
 });
 
@@ -402,3 +412,32 @@ Route::delete('/deleteFishImage/{id}', function($id){
 
     return $response;
 });
+
+
+Route::post('/register', [RegisteredUserController::class, 'store'])
+    ->middleware('guest')
+    ->name('register');
+
+Route::middleware('web')->post('/login', [AuthenticatedSessionController::class, 'store'])
+    ->middleware('guest')
+    ->name('login');
+
+Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+    ->middleware('guest')
+    ->name('password.email');
+
+Route::post('/reset-password', [NewPasswordController::class, 'store'])
+    ->middleware('guest')
+    ->name('password.store');
+
+Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)
+    ->middleware(['auth', 'signed', 'throttle:6,1'])
+    ->name('verification.verify');
+
+Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+    ->middleware(['auth', 'throttle:6,1'])
+    ->name('verification.send');
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout');
