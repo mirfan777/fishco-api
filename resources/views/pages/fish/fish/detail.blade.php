@@ -21,11 +21,11 @@
         <!-- ===== Main Content Start ===== -->
         <main class="sm:ml-64 min-h-screen mt-20 bg-gray-50">
           <div class="flex flex-col lg:flex-row gap-2 mb-5 lg:p-20 p-2">
-            <div class="lg:w-60 lg:h-60 w-full h-full md:mx-10">
-              <img class="rounded-lg w-full h-full lg:w-60 lg:h-60" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="alt">
+            <div class="lg:w-60 lg:h-60 w-80 h-80 md:mx-10">
+              <img class="rounded-lg w-80 h-80 lg:w-60 lg:h-60" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="alt">
             </div>
             <div class=" flex flex-col justify-center ">
-              <h1 class="text-title text-4xl">Title</h1>
+              <h1 class="text-title text-4xl">Fish Name</h1>
               <div class="flex flex-col gap-5 md:flex-row md:gap-56">
                 <!-- Taxonomy Section -->
                 <div class="flex flex-col gap-2 ">
