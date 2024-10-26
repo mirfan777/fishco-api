@@ -65,7 +65,7 @@
             currentSearch = query;
             
             $.ajax({
-                url: `/api/getAllFish?page=${page}&search=${query}`,
+                url: `/api/fish?page=${page}&search=${query}`,
                 method: 'GET',
                 success: function(response) {
                     const fishTable = $('#fishTable');
@@ -80,7 +80,7 @@
                                     <td class="px-4 py-3">${fish.habitat}</td>
                                     <td class="px-4 py-3">${fish.food_type}</td>
                                     <td class="px-4 py-3">
-                                        <a href="/fish/detail/${fish.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
+                                        <a href="/fish/detail/?id=${fish.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
                                         <button class="bg-red-500 text-white font-bold py-1 px-2 rounded">Hapus</button>
                                     </td>
                                 </tr>

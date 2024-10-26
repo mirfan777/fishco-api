@@ -20,8 +20,8 @@ class Fish extends Model
             return $this->hasMany(AquariumFish::class); //kebalik sama penghuni fish maybe(?) harusnya belongsTo
     }
 
-    public function fishimages(){
+    public function images(){
             
-            return $this->hasOne(FishImage::class);
+            return $this->hasMany(FishImage::class);
     }
 }

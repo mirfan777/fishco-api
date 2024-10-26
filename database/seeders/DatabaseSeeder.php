@@ -152,7 +152,9 @@ class DatabaseSeeder extends Seeder
                 'max_ph' => rand(6, 10),
                 'habitat' => 'Habitat ' . $i,
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
+                'updated_at' => Carbon::now(),
+                'thumbnail' => 'fish' . $i . '.jpg',
+                'overview' => 'Overview ' . $i,
             ];
         }
         DB::table('fishes')->insert($fish);
@@ -175,7 +177,6 @@ class DatabaseSeeder extends Seeder
 
 
         // Seed Medicine table
-
         $medicine = [];
         for ($i = 1; $i <= $recordCount; $i++) {
             $medicine[] = [
@@ -188,6 +189,21 @@ class DatabaseSeeder extends Seeder
             ];
         }
         DB::table('medicines')->insert($medicine);
+
+        $fishImages = [];
+        for ($i = 1; $i <= $recordCount; $i++) {
+            $fishImages[] = [
+                'fish_id' => rand(1, $recordCount),
+                'status' => rand(0, 1),  // Randomly set status to 0 or 1
+                'disease_id' => rand(1, $recordCount),
+                'image' => 'fish_image_' . $i . '.jpg',  // Placeholder image name
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        }
+        DB::table('fish_images')->insert($fishImages);
+
+    
 
     }
 }

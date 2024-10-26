@@ -32,7 +32,10 @@ class FishResource extends JsonResource
             'min_ph' => $this->min_ph,
             'max_ph' => $this->max_ph,
             'habitat' => $this->habitat,
-            'created_at' => $this->created_at->format('d-m-Y')
+            'overview' => $this->overview,
+            'thumbnail' => $this->thumbnail,
+            'created_at' => $this->created_at->format('d-m-Y'),
+            'images' => FishImageResource::collection($this->images)
         ];
     }
 }

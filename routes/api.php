@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
+use App\Http\Controllers\FishController;
+
 use App\Http\Resources\AffiliateResource;
 use App\Http\Resources\ArticleResource;
 use App\Http\Resources\CommentResource;
@@ -72,56 +74,11 @@ Route::delete('/deleteUser/{id}', function($id){
 
 
 //Fish
-
-Route::get('/getAllFish', function (Request $request) {
-    $query = $request->query('search', ''); // Make sure the parameter name matches
-    $fishes = Fish::where('name', 'like', "%$query%")
-                  ->orWhere('species', 'like', "%$query%")
-                  ->paginate(5); // Adjust items per page as needed
-
-    return FishResource::collection($fishes);
-});
-
-Route::get('/getFish/{id}', function($id) {
-    return new FishResource(Fish::find($id));
-});
-
-Route::post('/addFish', function(Request $request){
-
-    $response = Fish::create([
-        'name' => $request->name,
-        'kingdom' => $request->kingdom,
-        'phylum' => $request->phylum,
-        'class' => $request->class,
-        'order' => $request->order,
-        'family' => $request->family,
-        'genus' => $request->genus,
-        'species' => $request->species,
-        'colour' => $request->colour,
-        'food_type' => $request->food_type,
-        'food' => $request->food,
-        'min_temperature' => $request->min_temperature,
-        'max_temperature' => $request->max_temperature,
-        'min_ph' => $request->min_ph,
-        'max_ph' => $request->max_ph,
-        'habitat' => $request->habitat
-    ]);
-
-    return $response;
-
-});
-
-Route::put('/updateFish/{id}', function(Request $request, $id){
-    $response = Fish::where('id', $id)->update($request->all());
-
-    return $response;
-});
-
-Route::delete('/deleteFish/{id}', function($id){
-    $response = Fish::where('id', $id)->delete();
-
-    return $response;
-});
+Route::get('/fish', [FishController::class, 'getAllFish']);
+Route::get('/fish/{id}', [FishController::class, 'getFishById']);
+Route::post('/fish', [FishController::class, 'createFish']);
+Route::put('/fish/{id}', [FishController::class, 'updateFish']);
+Route::delete('/fish/{id}', [FishController::class, 'deleteFish']);
 
 
 //Medicine
