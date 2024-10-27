@@ -6,10 +6,12 @@
     <title>Fish</title>
     @vite(['resources/css/style.css', 'resources/js/app.js'])
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     @include('pages.fish.fish.modals.create')
     @include('layout.main')
+    
     <main class="sm:ml-64 min-h-screen bg-gray-50">
         <section class="dark:bg-gray-900 p-3 sm:p-5">
             <div class="mx-auto w-full h-full px-4 lg:px-12">

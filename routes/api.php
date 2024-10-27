@@ -60,11 +60,22 @@ Route::post('/addUser', function(Request $request){
 
 });
 
-Route::put('/updateUser/{id}', function(Request $request, $id){
-    $response = User::where('id', $id)->update($request->all());
+function updateFish(Request $request, $id)
+{
+    // Validate the request data
+    $request->validate([
+        'name' => 'required|string|max:255', // Adjust validation rules as needed
+    ]);
 
-    return $response;
-});
+    // Log the incoming request data
+    Log::info('Request data:', $request->all());
+
+    // Attempt to update the fish name
+    $response = Fish::where('id', $id)->update(['name' => $request->name]);
+
+    // Return success response
+    return response()->json(['status' => 'success', 'updated_rows' => $response]);
+}
 
 Route::delete('/deleteUser/{id}', function($id){
     $response = User::where('id', $id)->delete();
@@ -76,9 +87,9 @@ Route::delete('/deleteUser/{id}', function($id){
 //Fish
 Route::get('/fish', [FishController::class, 'getAllFish']);
 Route::get('/fish/{id}', [FishController::class, 'getFishById']);
-Route::post('/fish', [FishController::class, 'createFish']);
-Route::put('/fish/{id}', [FishController::class, 'updateFish']);
-Route::delete('/fish/{id}', [FishController::class, 'deleteFish']);
+Route::post('/fish/create', [FishController::class, 'createFish']);
+Route::put('/fish/update/{id}', [FishController::class, 'updateFish']);
+Route::delete('/fish/delete/{id}', [FishController::class, 'deleteFish']);
 
 
 //Medicine

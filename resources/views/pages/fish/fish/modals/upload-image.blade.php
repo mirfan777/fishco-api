@@ -20,28 +20,28 @@
                 <form class="w-full">
                     <!-- id ikan disable -->
                     <div class="mb-3">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name * ini nanti disable pas mau nambah otomatis pake detail data yang dipake</label>
-                        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter fish name" required />
+                        <label for="upload-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name * ini nanti disable pas mau nambah otomatis pake detail data yang dipake</label>
+                        <input type="text" id="upload-id" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter fish name" required />
                     </div>
                 
                     <!-- status -->
                     <div class="mb-3">
                         <div class="flex">
                             <div class="flex items-center me-4">
-                                <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sehat</label>
+                                <input id="upload-status-0" type="radio" value="" name="status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="upload-status-0" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sehat</label>
                             </div>
                             <div class="flex items-center me-4">
-                                <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="inline-2-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sakit</label>
+                                <input id="upload-status-1" type="radio" value="" name="status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="upload-status-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sakit</label>
                             </div>
                         </div>
                     </div>
 
                     {{-- jenis penyakit --}}
                     <div class="mb-3">
-                        <label for="disease" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Penyakit * pas milih sakit input ini muncul</label>
-                        <input type="text" id="disease" name="disease" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter fish name" required />
+                        <label for="upload-disease" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Penyakit * pas milih sakit input ini muncul</label>
+                        <input type="text" id="upload-disease" name="disease" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter fish name" required />
                     </div>
                     
                     {{-- upload  --}}
@@ -65,4 +65,21 @@
     </div>
 </div>
 
-  
+<script>
+    $(document).ready(function() {
+        // Sembunyikan input 'jenis penyakit' saat pertama kali
+        $('#upload-disease').closest('.mb-3').hide();
+
+        // Event untuk radio button status
+        $('input[name="status"]').on('change', function() {
+            // Cek jika radio button dengan id 'upload-status-1' (Sakit) yang dipilih
+            if ($('#upload-status-1').is(':checked')) {
+                // Tampilkan input 'jenis penyakit'
+                $('#upload-disease').closest('.mb-3').show();
+            } else {
+                // Sembunyikan input 'jenis penyakit' jika pilihan 'Sehat' dipilih
+                $('#upload-disease').closest('.mb-3').hide();
+            }
+        });
+    });
+</script>
