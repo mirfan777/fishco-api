@@ -29,6 +29,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function () { return view('pages.user.index'); });
     });
 
+Route::get('/', function () { return view('pages.landing.index'); });
+
 
 
 require __DIR__.'/auth.php';
