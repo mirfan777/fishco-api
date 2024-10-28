@@ -88,7 +88,7 @@ Route::delete('/deleteUser/{id}', function($id){
 Route::get('/fish', [FishController::class, 'getAllFish']);
 Route::get('/fish/{id}', [FishController::class, 'getFishById']);
 Route::post('/fish/create', [FishController::class, 'createFish']);
-Route::put('/fish/update/{id}', [FishController::class, 'updateFish']);
+Route::post('/fish/update/{id}', [FishController::class, 'updateFish']);
 Route::delete('/fish/delete/{id}', [FishController::class, 'deleteFish']);
 
 

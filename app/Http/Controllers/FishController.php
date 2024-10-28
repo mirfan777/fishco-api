@@ -114,24 +114,24 @@ class FishController extends Controller
     
         // Langkah 2: Perbarui data di tabel `fish`
         $response = $existingFish->update([
-            'name' => $request->name,
-            'kingdom' => $request->kingdom,
-            'phylum' => $request->phylum,
-            'class' => $request->class,
-            'order' => $request->order,
-            'family' => $request->family,
-            'genus' => $request->genus,
-            'species' => $request->species,
-            'colour' => $request->colour,
-            'food_type' => $request->food_type,
-            'food' => $request->food,
-            'min_temperature' => $request->min_temperature,
-            'max_temperature' => $request->max_temperature,
-            'min_ph' => $request->min_ph,
-            'max_ph' => $request->max_ph,
-            'habitat' => $request->habitat,
-            'overview' => $request->overview,
-            'thumbnail' => $filename 
+            'name' => $request->name ?? $existingFish->name,
+            'kingdom' => $request->kingdom ?? $existingFish->kingdom,
+            'phylum' => $request->phylum ?? $existingFish->phylum,
+            'class' => $request->class ?? $existingFish->class,
+            'order' => $request->order ?? $existingFish->order,
+            'family' => $request->family ?? $existingFish->family,
+            'genus' => $request->genus ?? $existingFish->genus,
+            'species' => $request->species ?? $existingFish->species,
+            'colour' => $request->colour ?? $existingFish->colour,
+            'food_type' => $request->food_type ?? $existingFish->food_type,
+            'food' => $request->food ?? $existingFish->food,
+            'min_temperature' => $request->min_temperature ?? $existingFish->min_temperature,
+            'max_temperature' => $request->max_temperature  ?? $existingFish->max_temperature,
+            'min_ph' => $request->min_ph ?? $existingFish->min_ph,
+            'max_ph' => $request->max_ph    ?? $existingFish->max_ph,
+            'habitat' => $request->habitat ?? $existingFish->habitat,
+            'overview' => $request->overview ?? $existingFish->overview,
+            'thumbnail' => $filename  
         ]);
     
         // Langkah 3: Kembalikan respons update

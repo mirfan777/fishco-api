@@ -189,7 +189,7 @@
             // Send AJAX request
             $.ajax({
                 url: `/api/fish/update/${fishId}`,
-                type: 'PUT',
+                type: 'POST',
                 data: formData,
                 processData: false,
                 contentType: false,
