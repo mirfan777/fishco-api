@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Fish;
+use App\Models\FishImage;
 use App\Http\Resources\FishResource;
 use App\Http\Requests\FishRequest;
 use Illuminate\Support\Facades\Storage;
@@ -16,8 +17,14 @@ class FishController extends Controller
         $fishes = Fish::where('name', 'like', "%$query%")
                       ->orWhere('species', 'like', "%$query%")
                       ->paginate(5);
-    
-        return FishResource::collection($fishes);
+
+        $data = FishResource::collection($fishes);
+
+        return response()->json([
+            "status" => 200,
+            "message" => "Success",
+            "data" => $data
+        ]);
     }
     
     function getFishById($id, Request $request) {
@@ -27,8 +34,14 @@ class FishController extends Controller
                 $query->where('status', $status);
             }
         }])->find($id);
+
+        $data = new FishResource($fish);
     
-        return new FishResource($fish);
+        return response()->json([
+            "status" => 200,
+            "message" => "Success",
+            "data" => $data
+        ]);
     }
     
     function createFish(Request $request)
@@ -138,10 +151,77 @@ class FishController extends Controller
         return $response;
     }    
     
-    function deleteFish($id){
-        $response = Fish::where('id', $id)->delete();
-    
-        return $response;
-    } 
+    function uploadFishImage(Request $request, $id) {
+        $existingFish = Fish::find($id);
+
+        if (!$existingFish) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Fish not found'
+            ], 404);
+        }
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $timestamp = time();
+            $extension = $file->getClientOriginalExtension();
+            $filename = $timestamp . '.' . $extension;
+            $file->move(public_path('data/images'), $filename);
+
+            $timestamp = time();
+            $extension = $file->getClientOriginalExtension();
+            $filename = $timestamp . '.' . $extension;
+
+            // Create a new FishImage record
+            $fishImage = FishImage::create([
+                'fish_id' => $id,
+                'image' => $filename,
+                'status' => $request->status ?? 1,  // optional status value
+                'disease_id' => $request->disease_id ?? null  // optional disease ID
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Image uploaded successfully',
+                'data' => $fishImage
+            ], 201);
+        }
+
+        return response()->json([
+            'status' => 'error',
+            'message' => 'No image provided'
+        ], 422);
+    }
+
+    function deleteFishImage($id , $imgId) {
+        $fishImage = FishImage::where('id', $imgId)->where('fish_id', $id)->first();
+
+        if (!$fishImage) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Image not found in specified fish ID'
+            ], 404);
+        }
+
+        $imagePath = public_path('data/images/' . $fishImage->image);
+
+        // Delete the image record from the database
+        if ($fishImage->delete()) {
+            // Check if the image file exists and delete it
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Image deleted successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Failed to delete image'
+        ], 500);
+    }
     
 }

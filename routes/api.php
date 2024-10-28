@@ -73,7 +73,8 @@ Route::get('/fish/{id}', [FishController::class, 'getFishById']);
 Route::post('/fish/create', [FishController::class, 'createFish']);
 Route::post('/fish/update/{id}', [FishController::class, 'updateFish']);
 Route::delete('/fish/delete/{id}', [FishController::class, 'deleteFish']);
-
+Route::post('/fish/{id}/upload', [FishController::class, 'uploadFishImage']);
+Route::delete('/fish/{id}/delete-image/{img}', [FishController::class, 'deleteFishImage']);
 
 //Medicine
 
