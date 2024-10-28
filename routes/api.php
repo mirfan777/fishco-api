@@ -60,23 +60,6 @@ Route::post('/addUser', function(Request $request){
 
 });
 
-function updateFish(Request $request, $id)
-{
-    // Validate the request data
-    $request->validate([
-        'name' => 'required|string|max:255', // Adjust validation rules as needed
-    ]);
-
-    // Log the incoming request data
-    Log::info('Request data:', $request->all());
-
-    // Attempt to update the fish name
-    $response = Fish::where('id', $id)->update(['name' => $request->name]);
-
-    // Return success response
-    return response()->json(['status' => 'success', 'updated_rows' => $response]);
-}
-
 Route::delete('/deleteUser/{id}', function($id){
     $response = User::where('id', $id)->delete();
 
