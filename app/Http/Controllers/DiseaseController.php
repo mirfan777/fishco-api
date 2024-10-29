@@ -30,6 +30,33 @@ class DiseaseController extends Controller
         return new DiseaseResource($disease);
     }
 
+    function createDisease(Request $request) {
+        $disease = Disease::create($request->all());
+
+        return response()->json([
+            'message' => 'Disease created successfully',
+            'data' => new DiseaseResource($disease)
+        ], 201);
+    }
+
+
+    function updateDisease(Request $request, $id) {
+        $disease = Disease::find($id);
+
+        if (!$disease) {
+            return response()->json([
+                'message' => 'Disease not found'
+            ], 404);
+        }
+
+        $disease->update($request->all());
+
+        return response()->json([
+            'message' => 'Disease updated successfully',
+            'data' => new DiseaseResource($disease)
+        ]);
+    }
+
 
     function deleteDisease($id) {
         $disease = Disease::find($id);

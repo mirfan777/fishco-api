@@ -119,30 +119,11 @@ Route::get('/disease', [DiseaseController::class, 'getAllDisease']);
 
 Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
 
-Route::post('/addDisease', function(Request $request){
+Route::post('/disease/create', [DiseaseController::class, 'createDisease']);
 
-    $response = Disease::create([
-        'name' => $request->name,
-        'description' => $request->description,
-        'symptoms' => $request->symptoms,
-        'picture' => $request->picture
-    ]);
+Route::put('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
 
-    return $response;
-
-});
-
-Route::put('/updateDisease/{id}', function(Request $request, $id){
-    $response = Disease::where('id', $id)->update($request->all());
-
-    return $response;
-});
-
-Route::delete('/deleteDisease/{id}', function($id){
-    $response = Disease::where('id', $id)->delete();
-
-    return $response;
-});
+Route::delete('/disease/delete/{id}', [DiseaseController::class, 'deleteDisease']);
 
 
 //Article
