@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DiseaseRequest;
+
 use Illuminate\Http\Request;
 use App\Models\Disease;
 use App\Http\Resources\DiseaseResource;
@@ -30,12 +30,14 @@ class DiseaseController extends Controller
         return new DiseaseResource($disease);
     }
 
-    function createDisease(DiseaseRequest $request) {
+    function createDisease(Request $request) {
         $disease = Disease::create($request->all());
+
+        $data = new DiseaseResource($disease);
 
         return response()->json([
             'message' => 'Disease created successfully',
-            'data' => new DiseaseResource($disease)
+            'data' => $data
         ]);
     }
 

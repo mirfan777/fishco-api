@@ -172,7 +172,7 @@
                     filteredImages.forEach(image => {
                         $('#fish-images').append(`
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src="${image.image}" alt="Fish Image">
+                                <img class="h-auto max-w-full rounded-lg" src="/data/images/${image.image}" alt="Fish Image">
                             </div>
                         `);
                     });
