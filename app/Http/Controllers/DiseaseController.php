@@ -33,9 +33,11 @@ class DiseaseController extends Controller
     function createDisease(Request $request) {
         $disease = Disease::create($request->all());
 
+        $data = new DiseaseResource($disease);
+
         return response()->json([
             'message' => 'Disease created successfully',
-            'data' => new DiseaseResource($disease)
+            'data' => $data
         ]);
     }
 
