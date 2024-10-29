@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
 use App\Http\Controllers\FishController;
+use App\Http\Controllers\DiseaseController;
 
 use App\Http\Resources\AffiliateResource;
 use App\Http\Resources\ArticleResource;
@@ -113,13 +114,9 @@ Route::delete('/deleteMedicine/{id}', function($id){
 
 //Disease
 
-Route::get('/getAllDisease', function () {
-    return DiseaseResource::collection(Disease::all());
-});
+Route::get('/disease', [DiseaseController::class, 'getAllDisease']);
 
-Route::get('/getDisease/{id}', function($id){
-    return new DiseaseResource(Disease::find($id));
-});
+Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
 
 Route::post('/addDisease', function(Request $request){
 
