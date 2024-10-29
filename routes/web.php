@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/auth/login', function () { return view('pages.auth.login'); });
 
 
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['web'])->group(function () {
     Route::get('/dashboard', function () { return view('pages.dashboard.index'); });
 
     // Fish routes
@@ -27,9 +27,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // User routes
     Route::get('/user', function () { return view('pages.user.index'); });
-    });
+    Route::get('/', function () { return view('pages.landing.index'); });    
 
-Route::get('/', function () { return view('pages.landing.index'); });
+});
 
 
 

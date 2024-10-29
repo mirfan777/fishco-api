@@ -18,13 +18,7 @@ class FishController extends Controller
                       ->orWhere('species', 'like', "%$query%")
                       ->paginate(5);
 
-        $data = FishResource::collection($fishes);
-
-        return response()->json([
-            "status" => 200,
-            "message" => "Success",
-            "data" => $data
-        ]);
+        return FishResource::collection($fishes);
     }
     
     function getFishById($id, Request $request) {
