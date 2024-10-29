@@ -30,15 +30,14 @@ class DiseaseController extends Controller
         return new DiseaseResource($disease);
     }
 
-    function createDisease(Request $request) {
+    function createDisease(DiseaseRequest $request) {
         $disease = Disease::create($request->all());
 
         return response()->json([
             'message' => 'Disease created successfully',
             'data' => new DiseaseResource($disease)
-        ], 201);
+        ]);
     }
-
 
     function updateDisease(Request $request, $id) {
         $disease = Disease::find($id);

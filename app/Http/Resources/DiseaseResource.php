@@ -19,7 +19,6 @@ class DiseaseResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'symptoms' => $this->symptoms,
-            'picture' => $this->picture,
             'created_at' => $this->created_at->format('d-m-Y')
         ];
     }

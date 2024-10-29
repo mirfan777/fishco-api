@@ -24,8 +24,7 @@ class DiseaseRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'symptoms' => 'required|string',
-            'picture' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'symptoms' => 'required|string'
         ];
     }
 }
