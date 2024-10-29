@@ -33,4 +33,8 @@ Route::middleware(['web'])->group(function () {
 
 
 
+Route::get('/landing', function () {
+    return view('pages.landing.index');
+});
+
 require __DIR__.'/auth.php';
