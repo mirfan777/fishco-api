@@ -1,24 +1,23 @@
-// Import CSS
-import "flatpickr/dist/flatpickr.min.css";
-import "../css/satoshi.css";
-import "../css/style.css";
+// main.js
 
-// Import Libraries
+import "../css/style.css";
+import "../css/satoshi.css";
+import "flatpickr/dist/flatpickr.min.css";
+
 import Alpine from "alpinejs";
 import persist from "@alpinejs/persist";
-import flatpickr from "flatpickr";
 import 'flowbite';
-import jQuery from 'jquery';
+import flatpickr from "flatpickr";
+import chart01 from "./components/chart-01";
+import chart02 from "./components/chart-02";
+import chart03 from "./components/chart-03";
+import chart04 from "./components/chart-04";
 
-// Make jQuery globally available
-window.$ = jQuery;
-
-// Alpine.js Initialization
 Alpine.plugin(persist);
 window.Alpine = Alpine;
 Alpine.start();
 
-// Initialize flatpickr with options
+// Initialize Flatpickr without jQuery dependency
 flatpickr(".datepicker", {
   mode: "range",
   static: true,
@@ -28,7 +27,7 @@ flatpickr(".datepicker", {
   prevArrow:
     '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
   nextArrow:
-    '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
+    '<svg class="fill-current" width="7" height="11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
   onReady: (selectedDates, dateStr, instance) => {
     instance.element.value = dateStr.replace("to", "-");
     const customClass = instance.element.getAttribute("data-class");
@@ -39,7 +38,6 @@ flatpickr(".datepicker", {
   },
 });
 
-// Initialize flatpickr for form-datepicker
 flatpickr(".form-datepicker", {
   mode: "single",
   static: true,
@@ -48,16 +46,10 @@ flatpickr(".form-datepicker", {
   prevArrow:
     '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
   nextArrow:
-    '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
+    '<svg class="fill-current" width="7" height="11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
 });
 
-// Import and Initialize Charts
-import chart01 from "./components/chart-01";
-import chart02 from "./components/chart-02";
-import chart03 from "./components/chart-03";
-import chart04 from "./components/chart-04";
-
-// Document Loaded Event
+// Document Loaded Event Listener for charts (doesn't need window.$)
 document.addEventListener("DOMContentLoaded", () => {
   chart01();
   chart02();
