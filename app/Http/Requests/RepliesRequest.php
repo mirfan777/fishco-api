@@ -22,7 +22,9 @@ public function authorize(): bool
     public function rules(): array
     {
         return [
-            'body' => ['required', 'string']
+            'body' => 'required|string',
+            'user_id' => 'required|integer',
+            'comment_id' => 'required|integer'
         ];
     }
 }

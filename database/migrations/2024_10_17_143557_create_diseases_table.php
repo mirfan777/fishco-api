@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('symptoms');
             $table->string('picture');
+            $table->timestamps();
         });
     }
 

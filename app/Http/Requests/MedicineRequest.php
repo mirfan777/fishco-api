@@ -23,7 +23,9 @@ class MedicineRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'description' => 'required|string'
+            'description' => 'required|string',
+            'disease_id' => 'required|integer',
+            'fish_id' => 'required|integer'
         ];
     }
 }

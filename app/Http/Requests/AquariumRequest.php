@@ -22,6 +22,7 @@ class AquariumRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'user_id' => 'required|integer',
             'name' => 'required|string|max:255',
             'volume' => 'required|numeric',
             'length' => 'required|numeric',

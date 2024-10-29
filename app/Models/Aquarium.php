@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aquarium extends Model
 {
+    protected $table = 'aquariums';
+
     protected $guarded = ['id'];
 
     public function aquariumfishes()

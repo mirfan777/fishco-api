@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $table = 'comments';
+    
     protected $guarded = ['id'];
 
     public function user()
@@ -16,6 +18,11 @@ class Comment extends Model
     public function replies()
     {
         return $this->hasMany(Replies::class);
+    }
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
     }
 
     
