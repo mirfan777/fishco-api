@@ -12,7 +12,7 @@
     @include('pages.fish.fish.modals.create')
     @include('layout.main')
     
-    <main class="sm:ml-64 min-h-screen bg-gray-50">
+    <main class="sm:ml-64 min-h-screen bg-gray-50 pt-16 mt-5"> <!-- Added pt-16 for padding-top -->
         <section class="dark:bg-gray-900 p-3 sm:p-5">
             <div class="mx-auto w-full h-full px-4 lg:px-12">
                 <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6">Fish Table</h2>

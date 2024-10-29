@@ -168,7 +168,6 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Disease ' . $i,
                 'description' => 'Description ' . $i,
                 'symptoms' => 'Symptoms ' . $i,
-                'picture' => 'disease' . $i . '.jpg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ];

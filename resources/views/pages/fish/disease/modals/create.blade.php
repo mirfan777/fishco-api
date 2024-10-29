@@ -1,5 +1,5 @@
 <!-- Main modal -->
-<div id="create-disease" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-999999 bg-black bg-opacity-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div id="create-disease" tabindex="-1" aria-hidden="true" class="hidden overflow-x-hidden fixed top-0 right-0 left-0 z-[99999] bg-black bg-opacity-50 justify-center items-center w-full md:inset-0 h-[calc(100%-0rem)]">
     <div class="relative p-4 w-full max-w-4xl max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -19,83 +19,125 @@
             <div class="p-4 md:p-5 space-y-4">
                 <form class="w-full">
                     <div class="flex flex-col md:flex-row md:justify-between w-full gap-5">
-                        <!-- General -->
                         <div class="md:w-1/2">
-                            <!-- Disease Name -->
+                            <!-- Name -->
                             <div class="mb-3">
-                                <label for="disease_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Disease Name</label>
-                                <input type="text" id="disease_name" name="disease_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter disease name" required />
-                            </div>
-
-                            <!-- Affected Fish Type -->
-                            <div class="mb-3">
-                                <label for="fish_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Affected Fish Type</label>
-                                <input type="text" id="fish_type" name="fish_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter fish type" required />
+                                <label for="create-disease-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                <input type="text" id="create-disease-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter disease name" required />
                             </div>
 
                             <!-- Symptoms -->
                             <div class="mb-3">
-                                <label for="symptoms" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Symptoms</label>
-                                <input type="text" id="symptoms" name="symptoms" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter disease symptoms" required />
-                            </div>
-
-                            <!-- Cause -->
-                            <div class="mb-3">
-                                <label for="cause" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cause</label>
-                                <input type="text" id="cause" name="cause" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter disease cause" required />
-                            </div>
-
-                            <!-- Treatment -->
-                            <div class="mb-3">
-                                <label for="treatment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Treatment</label>
-                                <input type="text" id="treatment" name="treatment" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter treatment" required />
-                            </div>
-
-                            <!-- Prevention -->
-                            <div class="mb-3">
-                                <label for="prevention" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prevention</label>
-                                <input type="text" id="prevention" name="prevention" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter prevention method" required />
+                                <label for="create-symptoms" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Symptoms</label>
+                                <input type="text" id="create-symptoms" name="symptoms" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter symptoms" required />
                             </div>
                         </div>
-
+                    
                         <div class="md:w-1/2">
-                            <!-- Environment -->
-                            <!-- Water Type -->
+                            <!-- Description -->
                             <div class="mb-3">
-                                <label for="water_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Water Type</label>
-                                <input type="text" id="water_type" name="water_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Example: Freshwater, Saltwater" required />
-                            </div>
-
-                            <!-- Temperature -->
-                            <div class="mb-3">
-                                <label for="temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Temperature (°C)</label>
-                                <input type="number" step="0.1" id="temperature" name="temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter temperature" required />
-                            </div>
-
-                            <!-- pH -->
-                            <div class="mb-3">
-                                <label for="ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Water pH</label>
-                                <input type="number" step="0.1" id="ph" name="ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter water pH" required />
-                            </div>
-
-                            {{-- thumbnail dan overview --}}
-                            <div>
-                                <label for="disease_detail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Disease Details</label>
-                                <textarea id="disease_detail" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write details about the disease..."></textarea>
-
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload disease image</label>
-                                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                                <label for="create-disease-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Disease Description</label>
+                                <textarea id="create-disease-description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter description" required></textarea>
                             </div>
                         </div>
                     </div>
 
-                
                     <!-- Submit Button -->
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-                  </form>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
-  
+<script>
+$(document).ready(function() {
+    $('#create-disease form').on('submit', function(e) {
+        e.preventDefault();
+
+        // Validate form before submission
+        if (!validateForm()) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please fill out all required fields correctly.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
+        // Prepare form data without picture
+        const formData = {
+            name: $('#create-disease-name').val(),
+            description: $('#create-disease-description').val(),
+            symptoms: $('#create-symptoms').val()
+        };
+
+        // Disable submit button while processing
+        const submitBtn = $(this).find('button[type="submit"]');
+        submitBtn.prop('disabled', true);
+
+        $.ajax({
+            url: '/api/disease/create',
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                // Show success message
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Disease data has been successfully added',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    // Reset form and close modal
+                    $('#create-disease form')[0].reset();
+                    $('#create-disease').hide();
+                });
+                $('[data-modal-hide="create-disease"]').click();
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
+            },
+            error: function(xhr, status, error) {
+                // Show error message
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to add disease data. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                console.error('Error:', error);
+            },
+            complete: function() {
+                // Re-enable submit button and restore original text
+                submitBtn.prop('disabled', false);
+                submitBtn.html('Submit');
+            }
+        });
+    });
+
+    // Form validation
+    function validateForm() {
+        let isValid = true;
+
+        // Check required fields
+        $('#create-disease form input[required], #create-disease form textarea[required]').each(function() {
+            if (!$(this).val()) {
+                $(this).addClass('border-red-500');
+                isValid = false;
+            } else {
+                $(this).removeClass('border-red-500');
+            }
+        });
+
+        return isValid;
+    }
+
+    // Real-time validation on input change
+    $('#create-disease form input, #create-disease form textarea').on('input', function() {
+        if ($(this).val()) {
+            $(this).removeClass('border-red-500');
+        }
+    });
+});
+</script>

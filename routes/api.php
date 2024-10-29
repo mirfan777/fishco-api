@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
 use App\Http\Controllers\FishController;
+use App\Http\Controllers\DiseaseController;
 
 use App\Http\Resources\AffiliateResource;
 use App\Http\Resources\ArticleResource;
@@ -73,7 +74,8 @@ Route::get('/fish/{id}', [FishController::class, 'getFishById']);
 Route::post('/fish/create', [FishController::class, 'createFish']);
 Route::post('/fish/update/{id}', [FishController::class, 'updateFish']);
 Route::delete('/fish/delete/{id}', [FishController::class, 'deleteFish']);
-
+Route::post('/fish/{id}/upload', [FishController::class, 'uploadFishImage']);
+Route::delete('/fish/{id}/delete-image/{img}', [FishController::class, 'deleteFishImage']);
 
 //Medicine
 
@@ -113,38 +115,15 @@ Route::delete('/deleteMedicine/{id}', function($id){
 
 //Disease
 
-Route::get('/getAllDisease', function () {
-    return DiseaseResource::collection(Disease::all());
-});
+Route::get('/disease', [DiseaseController::class, 'getAllDisease']);
 
-Route::get('/getDisease/{id}', function($id){
-    return new DiseaseResource(Disease::find($id));
-});
+Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
 
-Route::post('/addDisease', function(Request $request){
+Route::post('/disease/create', [DiseaseController::class, 'createDisease']);
 
-    $response = Disease::create([
-        'name' => $request->name,
-        'description' => $request->description,
-        'symptoms' => $request->symptoms,
-        'picture' => $request->picture
-    ]);
+Route::put('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
 
-    return $response;
-
-});
-
-Route::put('/updateDisease/{id}', function(Request $request, $id){
-    $response = Disease::where('id', $id)->update($request->all());
-
-    return $response;
-});
-
-Route::delete('/deleteDisease/{id}', function($id){
-    $response = Disease::where('id', $id)->delete();
-
-    return $response;
-});
+Route::delete('/disease/delete/{id}', [DiseaseController::class, 'deleteDisease']);
 
 
 //Article
