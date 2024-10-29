@@ -13,7 +13,7 @@
   <body>
         @include('layout.main')
         <!-- ===== Main Content Start ===== -->
-        <main class="sm:ml-64 min-h-screen bg-gray-50 mt-5">
+        <main class="sm:ml-64 min-h-screen bg-gray-50 pt-16 mt-5"> <!-- Added pt-16 for padding-top -->
           ---
             title: Tailwind CSS Admin Dashboard - Flowbite
             description: Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Flowbite featuring charts, widgets, CRUD layouts, authentication pages, and more

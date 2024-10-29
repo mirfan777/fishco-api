@@ -82,7 +82,6 @@ $(document).ready(function() {
             type: 'POST',
             data: formData,
             success: function(response) {
-                console.log('Success:', response);  // Log the success response
                 // Show success message
                 Swal.fire({
                     title: 'Success!',
@@ -100,14 +99,14 @@ $(document).ready(function() {
                 }, 500);
             },
             error: function(xhr, status, error) {
-                console.error('Error:', error, 'Response:', xhr.responseText);  // Log the error response
                 // Show error message
                 Swal.fire({
                     title: 'Error!',
-                    text: Failed to add disease data. ${xhr.responseText || 'Please try again.'},
+                    text: 'Failed to add disease data. Please try again.',
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
+                console.error('Error:', error);
             },
             complete: function() {
                 // Re-enable submit button and restore original text
