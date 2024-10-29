@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 
 use App\Http\Controllers\FishController;
 use App\Http\Controllers\DiseaseController;
+use App\Http\Controllers\MedicineController;
 
 use App\Http\Resources\AffiliateResource;
 use App\Http\Resources\ArticleResource;
@@ -79,39 +80,15 @@ Route::delete('/fish/{id}/delete-image/{img}', [FishController::class, 'deleteFi
 
 //Medicine
 
-Route::get('/getAllMedicine', function () {
-    return MedicineResource::collection(Medicine::all());
-});
+Route::get('/medicine', [MedicineController::class, 'getAllMedicine']);
 
-Route::get('/getMedicine/{id}', function($id){
-    return new MedicineResource(Medicine::find($id));
-});
+Route::get('/medicine/{id}', [MedicineController::class, 'getMedicineById']);
 
-Route::post('/addMedicine', function(Request $request){
+Route::post('/medicine/create', [MedicineController::class, 'createMedicine']);
 
-    $response = Medicine::create([
-        'name' => $request->name,
-        'description' => $request->description,
-        'disease_id' => $request->disease_id,
-        'fish_id' => $request->fish_id
-    ]);
+Route::put('/medicine/update/{id}', [MedicineController::class, 'updateMedicine']);
 
-    return $response;
-
-});
-
-Route::put('/updateMedicine/{id}', function(Request $request, $id){
-    $response = Medicine::where('id', $id)->update($request->all());
-
-    return $response;
-});
-
-Route::delete('/deleteMedicine/{id}', function($id){
-    $response = Medicine::where('id', $id)->delete();
-
-    return $response;
-});
-
+Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedicine']);
 
 //Disease
 
