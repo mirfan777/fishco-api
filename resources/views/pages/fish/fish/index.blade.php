@@ -12,10 +12,10 @@
     @include('pages.fish.fish.modals.create')
     @include('layout.main')
     
-    <main class="sm:ml-64 min-h-screen bg-gray-50 pt-16 mt-5"> <!-- Added pt-16 for padding-top -->
+    <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5"> 
         <section class="dark:bg-gray-900 p-3 sm:p-5">
             <div class="mx-auto w-full h-full px-4 lg:px-12">
-                <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6">Fish Table</h2>
+                <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6" style="font-size: 24px;">Fish Table</h2>
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
                         <div class="w-full md:w-1/2">

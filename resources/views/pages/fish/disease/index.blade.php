@@ -13,13 +13,14 @@
     <body>
         <!-- Menyertakan modal untuk form "Tambah Data Penyakit" -->
         @include('pages.fish.disease.modals.create')
+        @include('pages.fish.disease.modals.edit')
         <!-- Menyertakan layout utama -->
         @include('layout.main')
         
-        <main class="sm:ml-64 min-h-screen bg-gray-50">
+        <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
             <section class="dark:bg-gray-900 p-3 sm:p-5">
                 <div class="mx-auto w-full h-full px-4 lg:px-12">
-                    <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6">Tabel Disease</h2>
+                    <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6" style="font-size: 24px;">Disease Table</h2>
                     <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                         <!-- Bagian Pencarian dan Tombol Tambah Data -->
                         <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
@@ -32,7 +33,7 @@
                             </div>
                             <!-- Tombol Tambah Data -->
                             <div class="w-full md:w-auto">
-                                <button data-modal-target="create-disease" data-modal-toggle="create-disease" class="bg-blue-700 text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
+                                <button data-modal-target="create-disease" data-modal-toggle="create-disease" class="bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
                             </div>
                         </div>
 
@@ -96,8 +97,8 @@
                                     <td class="px-4 py-3">${disease.name}</td>
                                     <td class="px-4 py-3">${disease.symptoms}</td>
                                     <td class="px-4 py-3">
-                                        <a href="/disease/detail/?id=${disease.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
-                                        <button class="bg-red-500 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                        <button onclick="location.href='/disease/detail/?id=${disease.id}'" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
+                                        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">Hapus</button>
                                     </td>
                                 </tr>
                             `);
