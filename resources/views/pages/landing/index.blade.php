@@ -55,30 +55,32 @@
     <!-- Navbar End -->
 
     <!-- Main Section Start -->
-    <section id="home" class="relative h-screen bg-[#FAFAFA] p-6 pt-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center w-[90%] lg:w-[70%] mx-auto">
-            <div class="space-y-6 lg:space-y-8 z-10">
+    <section id="home" class="relative h-screen bg-[#FAFAFA] p-4 sm:p-6 md:pt-10 pt-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center w-[95%] sm:w-[90%] lg:w-[70%] mx-auto">
+            <div class="space-y-4 sm:space-y-6 lg:space-y-8 z-10">
                 <h1 data-aos="slide-down"
-                    class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
                     Solusi Cerdas Bagi para Pecinta
-                    <span class="text-blue-600">Ikan Hias</span>
+                    <span class="text-aquarium-effect">Ikan Hias</span>
                 </h1>
-                <p data-aos="slide-down" class="text-lg md:text-xl lg:text-3xl text-gray-600 leading-relaxed">
+                <p data-aos="slide-down"
+                    class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-600 leading-relaxed">
                     Nikmati kemudahan mendeteksi penyakit, mengatur ekosistem akuarium, dan mendapatkan tips perawatan
                     terbaik.
                 </p>
                 <div class="flex space-x-4">
                     <a data-aos="slide-right" href="#"><img src="{{'images/landing/appstore.png'}}" alt="App Store"
-                            class="h-10 md:h-12 lg:h-14"></a>
+                            class="h-8 sm:h-10 md:h-12 lg:h-14"></a>
                     <a data-aos="slide-left" href="#"><img src="{{'images/landing/playstore.png'}}" alt="Google Play"
-                            class="h-10 md:h-12 lg:h-14"></a>
+                            class="h-8 sm:h-10 md:h-12 lg:h-14"></a>
                 </div>
             </div>
 
             <!-- Gambar Responsive -->
-            <div data-aos="slide-up" class="relative flex justify-center md:justify-end">
+            <div data-aos="slide-up"
+                class="relative flex justify-center md:justify-end h-[50vh] md:h-[60vh] lg:h-[70vh]">
                 <img src="{{'images/landing/scanner-header.png'}}" alt="Phone with Fish"
-                    class="w-full md:w-[80%] lg:w-full object-contain max-h-[500px]">
+                    class="w-[80%] sm:w-full md:w-[110%] lg:w-[120%] max-w-none object-contain">
             </div>
         </div>
     </section>
@@ -325,60 +327,197 @@
     </section>
     <!-- Process End -->
 
-    <!-- Testimoni Section Start -->
-    <section data-aos="fade-up" id="review" class="py-16 px-4 sm:px-6 lg:px-8 text-center relative">
-        <div class="text-center pb-4">
-            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">
-                Testimoni</h5>
-            <h1 class="text-4xl font-bold mb-5">Apa yang dikatakan mereka</h1>
+    <!-- Testimoni Start -->
+    <section data-aos="fade-up" class="mx-auto w-[90%] lg:w-[70%] py-10" id="review">
+        <div class="text-center mb-10">
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">Testimoni
+            </h5>
+            <h1 class="text-3xl sm:text-4xl font-bold mb-5">Apa yang Dikatakan Mereka</h1>
         </div>
-
-        <blockquote id="testimonial-text"
-            class="text-gray-700 text-sm italic md:text-lg lg:text-xl leading-relaxed mt-4 max-w-2xl mx-auto">
-            Aplikasi yang luar biasa! Ikan cupang saya sakit dan Fishco langsung mendeteksi penyakitnya dengan
-            akurat. Berkat saran dari aplikasinya, sekarang ikan saya sehat kembali!
-        </blockquote>
-
-        <p id="testimonial-name" class="mt-4 text-xl font-semibold text-gray-800">
-            <span class="font-bold" style="color: #0362A1">Zayn Orlando</span> - <span class="font-normal"
-                style="color: #0362A1">Pendiri YouTube</span>
-        </p>
-
-        <div class="container mx-auto w-[90%] lg:w-[70%] py-10 relative">
-            <button id="prev"
-                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-300 rounded-full p-2 hover:bg-gray-400">
-                <i class="fas fa-chevron-left text-lg text-gray-600"></i>
-            </button>
-
-            <div class="testimonial-carousel flex justify-center space-x-8 mt-8 relative overflow-visible">
-                <img data-index="0" src="{{'images/landing/profile-1.png'}}" alt="Profile 1"
-                    class="profile-img w-12 h-12 sm:w-16 sm:h-16 rounded-full object-contain cursor-pointer transition-transform duration-300 ease-out">
-                <img data-index="1" src="{{'images/landing/profile-2.png'}}" alt="Profile 2"
-                    class="profile-img w-12 h-12 sm:w-16 sm:h-16 rounded-full object-contain cursor-pointer transition-transform duration-300 ease-out">
-                <img data-index="2" src="{{'images/landing/profile-3.png'}}" alt="Profile 3"
-                    class="profile-img w-12 h-12 sm:w-16 sm:h-16 rounded-full object-contain cursor-pointer transition-transform duration-300 ease-out">
-                <img data-index="3" src="{{'images/landing/profile-4.png'}}" alt="Profile 4"
-                    class="profile-img w-12 h-12 sm:w-16 sm:h-16 rounded-full object-contain cursor-pointer transition-transform duration-300 ease-out">
-                <img data-index="4" src="{{'images/landing/profile-5.png'}}" alt="Profile 5"
-                    class="profile-img w-12 h-12 sm:w-16 sm:h-16 rounded-full object-contain cursor-pointer transition-transform duration-300 ease-out">
-                <img data-index="5" src="{{'images/landing/profile-6.png'}}" alt="Profile 6"
-                    class="profile-img w-12 h-12 sm:w-16 sm:h-16 rounded-full object-contain cursor-pointer transition-transform duration-300 ease-out">
-                <img data-index="6" src="{{'images/landing/profile-7.png'}}" alt="Profile 7"
-                    class="profile-img w-12 h-12 sm:w-16 sm:h-16 rounded-full object-contain cursor-pointer transition-transform duration-300 ease-out">
+        <div class="owl-carousel testimonial-carousel">
+            <div class="testimonial-item bg-white rounded-lg p-6 shadow-md transition-transform duration-500">
+                <div class="flex items-center mb-4">
+                    <div class="w-20 h-20 bg-white rounded-md p-1 shadow overflow-hidden">
+                        <img class="w-full h-full object-cover" src="{{'images/landing/profile-4.jpg'}}"
+                            alt="Client Image">
+                    </div>
+                    <div class="ml-4">
+                        <h5 class="text-lg font-semibold">Zayn Orlando</h5>
+                        <p class="text-sm text-gray-500">CEO Fishco</p>
+                        <div class="flex space-x-1 text-yellow-400">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">Aplikasi yang luar biasa! Ikan cupang saya sakit dan Fishco langsung mendeteksi
+                    penyakitnya dengan akurat. Berkat saran dari aplikasinya, sekarang ikan saya sehat kembali!</p>
             </div>
 
-            <button id="next"
-                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-300 rounded-full p-2 hover:bg-gray-400">
-                <i class="fas fa-chevron-right text-lg text-gray-600"></i>
+            <!-- 2 -->
+            <div class="testimonial-item bg-white rounded-lg p-6 shadow-md transition-transform duration-500">
+                <div class="flex items-center mb-4">
+                    <div class="w-20 h-20 bg-white rounded-md p-1 shadow overflow-hidden">
+                        <img class="w-full h-full object-cover" src="{{'images/landing/profile-1.jpg'}}"
+                            alt="Client Image">
+                    </div>
+                    <div class="ml-4">
+                        <h5 class="text-lg font-semibold">Jasmine</h5>
+                        <p class="text-sm text-gray-500">Konten Kreator Aquascape</p>
+                        <div class="flex space-x-1 text-yellow-400">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">Fishco telah menjadi asisten pribadi saya dalam merawat ikan hias. Fitur
+                    penjadwalan penggantian air sangat berguna untuk menjaga kualitas air tetap optimal.</p>
+            </div>
+
+            <!-- 3 -->
+            <div class="testimonial-item bg-white rounded-lg p-6 shadow-md transition-transform duration-500">
+                <div class="flex items-center mb-4">
+                    <div class="w-20 h-20 bg-white rounded-md p-1 shadow overflow-hidden">
+                        <img class="w-full h-full object-cover" src="{{'images/landing/profile-3.jpg'}}"
+                            alt="Client Image">
+                    </div>
+                    <div class="ml-4">
+                        <h5 class="text-lg font-semibold">Salsabila</h5>
+                        <p class="text-sm text-gray-500">Mahasiswi</p>
+                        <div class="flex space-x-1 text-yellow-400">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">Sebagai pemula, aku sering bingung saat ikan hiasku sakit. Berkat Fishco, aku
+                    bisa dengan mudah mengidentifikasi penyakit ikan dan memberikan perawatan yang tepat.</p>
+            </div>
+
+            <!-- 4 -->
+            <div class="testimonial-item bg-white rounded-lg p-6 shadow-md transition-transform duration-500">
+                <div class="flex items-center mb-4">
+                    <div class="w-20 h-20 bg-white rounded-md p-1 shadow overflow-hidden">
+                        <img class="w-full h-full object-cover" src="{{'images/landing/profile-5.jpg'}}"
+                            alt="Client Image">
+                    </div>
+                    <div class="ml-4">
+                        <h5 class="text-lg font-semibold">Freya Hakim</h5>
+                        <p class="text-sm text-gray-500">Indonesian Singer</p>
+                        <div class="flex space-x-1 text-yellow-400">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">Aku suka banget fitur sarannya. Setiap kali aku ada pertanyaan tentang
+                    perawatan ikan, Fishco selalu punya jawabannya. Plus, bisa langsung beli obatnya di e-commerce yang
+                    bekerja sama, jadi lebih praktis.</p>
+            </div>
+
+            <!-- 5 -->
+            <div class="testimonial-item bg-white rounded-lg p-6 shadow-md transition-transform duration-500">
+                <div class="flex items-center mb-4">
+                    <div class="w-20 h-20 bg-white rounded-md p-1 shadow overflow-hidden">
+                        <img class="w-full h-full object-cover" src="{{'images/landing/profile-6.jpg'}}"
+                            alt="Client Image">
+                    </div>
+                    <div class="ml-4">
+                        <h5 class="text-lg font-semibold">Irfan Kurnia</h5>
+                        <p class="text-sm text-gray-500">Pecinta Ikan Hias</p>
+                        <div class="flex space-x-1 text-yellow-400">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">AI bot di Fishco sangat informatif dan bisa diakses 24/7. Saya sering bertanya
+                    tentang cara merawat jenis ikan tertentu, dan Fishbot selalu memberikan jawaban yang jelas.</p>
+            </div>
+
+            <!-- 6 -->
+            <div class="testimonial-item bg-white rounded-lg p-6 shadow-md transition-transform duration-500">
+                <div class="flex items-center mb-4">
+                    <div class="w-20 h-20 bg-white rounded-md p-1 shadow overflow-hidden">
+                        <img class="w-full h-full object-cover" src="{{'images/landing/profile-2.jpg'}}"
+                            alt="Client Image">
+                    </div>
+                    <div class="ml-4">
+                        <h5 class="text-lg font-semibold">Andi Gunawan</h5>
+                        <p class="text-sm text-gray-500">Mahasiswa</p>
+                        <div class="flex space-x-1 text-yellow-400">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">Saya bisa memantau kesehatan ikan hias secara real-time. Fitur pemantauan
+                    memberikan notifikasi jika ada yang perlu diperhatikan, seperti suhu air atau pH. Ini sangat
+                    membantu untuk pemula seperti saya.</p>
+            </div>
+
+            <!-- 7 -->
+            <div class="testimonial-item bg-white rounded-lg p-6 shadow-md transition-transform duration-500">
+                <div class="flex items-center mb-4">
+                    <div class="w-20 h-20 bg-white rounded-md p-1 shadow overflow-hidden">
+                        <img class="w-full h-full object-cover" src="{{'images/landing/profile-7.jpg'}}"
+                            alt="Client Image">
+                    </div>
+                    <div class="ml-4">
+                        <h5 class="text-lg font-semibold">Jesica</h5>
+                        <p class="text-sm text-gray-500">Pecinta Ikan Hias</p>
+                        <div class="flex space-x-1 text-yellow-400">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">Fitur scanner penyakitnya sangat membantu! Aku sempat panik saat ikan cupangku
+                    lesu. Ternyata setelah di-scan, fishco merekomendasikan obat yang tepat. Ikan kesayangan aku
+                    langsung sembuh!</p>
+            </div>
+
+            <!-- Panah Navigasi di Bawah Carousel
+        <div class="owl-nav flex justify-center mt-6 space-x-4">
+            <button
+                class="owl-prev w-12 h-12 flex items-center justify-center bg-gradient-to-br from-primary to-secondary text-black rounded-full hover:bg-gradient-to-bl transition-transform duration-300 text-xl">
+                <i class="fas fa-chevron-left"></i>
             </button>
+            <button
+                class="owl-next w-12 h-12 flex items-center justify-center bg-gradient-to-br from-primary to-secondary text-black rounded-full hover:bg-gradient-to-bl transition-transform duration-300 text-xl">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div> -->
         </div>
     </section>
-    <!-- Testimoni Section End -->
+    <!-- Testimoni End --> <br>
 
     <!-- Contact Start -->
     <section id="kontak" class="container mx-auto w-[90%] lg:w-[70%] py-10" id="contact">
         <div data-aos="fade-up" data-aos-delay="100" class="text-center">
-            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">Kontak
+            <h5 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-medium">
+                Kontak
                 Kami</h5>
             <h1 class="text-3xl sm:text-4xl font-bold mb-5">Get In Touch!</h1>
         </div>
@@ -386,7 +525,8 @@
         <div data-aos="fade-up" data-aos-delay="200" class="flex justify-center">
             <div class="w-full">
                 <p class="text-center mb-4 text-gray-600">
-                    Kami siap membantu menjawab pertanyaan atau memberikan dukungan seputar aplikasi Fishco. Jangan ragu
+                    Kami siap membantu menjawab pertanyaan atau memberikan dukungan seputar aplikasi Fishco. Jangan
+                    ragu
                     untuk menghubungi kami jika kamu memerlukan informasi lebih lanjut atau ada hal yang ingin
                     didiskusikan. Kami akan dengan senang hati merespon setiap pertanyaan dan saran dari pengguna.
                 </p>
@@ -432,21 +572,32 @@
     <!-- Contact End -->
 
     <!-- Download Section Start -->
-    <section class="bg-[#F4FAFF] py-10">
-        <div class="container mx-auto text-center">
-            <h2 data-aos="fade-up" data-aos-delay="100" class="text-2xl font-semibold mb-5">Download Aplikasi Fishco
-                untuk iOS & Android</h2>
-            <div class="flex justify-center space-x-4">
+    <section data-aos="fade-up" class="relative bg-gradient-to-r from-[#38ABF8] to-[#0278C7] py-5">
+        <div
+            class="container mx-auto w-[95%] sm:w-[90%] lg:w-[70%] py-6 md:py-10 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 items-center md:items-start transform md:translate-x-8">
+
+            <!-- Heading aligned to the left -->
+            <h2 data-aos="fade-up" data-aos-delay="100"
+                class="text-2xl sm:text-3xl md:text-4xl font-semibold text-white text-center md:text-left">
+                Download Aplikasi Fishco untuk iOS & Android
+            </h2>
+
+            <!-- Download Buttons aligned to the right -->
+            <div class="flex space-x-4 justify-center md:ml-18">
                 <!-- App Store Button -->
                 <a data-aos="slide-right" data-aos-delay="200" href="{{'images/landing/appstore.png'}}" target="_blank">
-                    <img src="{{'images/landing/appstore.png'}}" alt="Download on the App Store" class="h-14">
+                    <img src="{{'images/landing/appstore.png'}}" alt="Download on the App Store" class="h-12 sm:h-14">
                 </a>
                 <!-- Google Play Button -->
                 <a data-aos="slide-left" data-aos-delay="200" href="{{'images/landing/playstore.png'}}" target="_blank">
-                    <img src="{{'images/landing/playstore.png'}}" alt="Get it on Google Play" class="h-14">
+                    <img src="{{'images/landing/playstore.png'}}" alt="Get it on Google Play" class="h-12 sm:h-14">
                 </a>
             </div>
         </div>
+
+        <!-- Fish Image positioned between blue and white sections
+        <img src="{{'images/landing/download-ikan.png'}}" alt="Fish Image"
+            class="absolute top-[90%] sm:top-[95%] md:top-[85%] lg:top-12 right-1/4 sm:right-12 transform -translate-y-1/2 w-20 sm:w-24 lg:w-28 lg:h-auto z-0"> -->
     </section>
     <!-- Download Section End -->
 
@@ -459,10 +610,12 @@
                     <h5 class="text-lg font-semibold text-gray-800 mb-3">Navigasi</h5>
                     <ul class="space-y-2">
                         <li><a href="#home" class="nav-link text-gray-600 hover:text-blue-500">Home</a></li>
-                        <li><a href="#tentang" class="nav-link text-gray-600 hover:text-blue-500">Tentang Kami</a></li>
+                        <li><a href="#tentang" class="nav-link text-gray-600 hover:text-blue-500">Tentang Kami</a>
+                        </li>
                         <li><a href="#fitur" class="nav-link text-gray-600 hover:text-blue-500">Fitur</a></li>
                         <li><a href="#review" class="nav-link text-gray-600 hover:text-blue-500">Review</a></li>
-                        <li><a href="#kontak" class="nav-link text-gray-600 hover:text-blue-500">Kontak Kami</a></li>
+                        <li><a href="#kontak" class="nav-link text-gray-600 hover:text-blue-500">Kontak Kami</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -470,8 +623,10 @@
                 <div>
                     <h5 class="text-lg font-semibold text-gray-800 mb-3">Apa yang Kami Lakukan</h5>
                     <p class="text-gray-600">
-                        Fishco berfokus untuk menyediakan solusi inovatif dalam merawat dan memelihara ikan hias. Kami
-                        menggabungkan teknologi terkini dengan antarmuka yang ramah pengguna, memberikan pengalaman yang
+                        Fishco berfokus untuk menyediakan solusi inovatif dalam merawat dan memelihara ikan hias.
+                        Kami
+                        menggabungkan teknologi terkini dengan antarmuka yang ramah pengguna, memberikan pengalaman
+                        yang
                         mudah dan menyenangkan bagi para pecinta ikan hias.
                     </p>
                 </div>
@@ -482,7 +637,8 @@
                     <ul class="space-y-2">
                         <li><a href="mailto:fishco@gmail.com"
                                 class="text-gray-600 hover:text-blue-500">fishco@gmail.com</a></li>
-                        <li><a href="tel:+6212345678" class="text-gray-600 hover:text-blue-500">+62 12345678</a></li>
+                        <li><a href="tel:+6212345678" class="text-gray-600 hover:text-blue-500">+62 12345678</a>
+                        </li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-500">Facebook</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-500">Linkedin</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-500">Twitter</a></li>
@@ -516,12 +672,17 @@
     <!-- Footer End -->
 
     <!-- Mobile Navbar (Hidden by Default) -->
-    <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white z-20 md:hidden">
+    <div id="mobile-menu" class="hidden fixed top-16 left-0 w-full bg-[#FAFAFA]/50 backdrop-blur-lg z-20 md:hidden">
         <div class="flex flex-col space-y-4 p-4">
-            <a href="#" class="text-lg font-semibold text-gray-600 hover:text-blue-500">Fitur</a>
-            <a href="#" class="text-lg font-semibold text-gray-600 hover:text-blue-500">Testimoni</a>
-            <a href="#" class="text-lg font-semibold text-gray-600 hover:text-blue-500">FAQ</a>
-            <a href="#" class="text-lg font-semibold text-gray-600 hover:text-blue-500">Kontak Kami</a>
+            <a href="#home" class="nav-link text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Home</a>
+            <a href="#tentang"
+                class="nav-link text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Tentang Kami</a>
+            <a href="#fitur"
+                class="nav-link text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Fitur</a>
+            <a href="#review"
+                class="nav-link text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Review</a>
+            <a href="#kontak" class="nav-link text-sm lg:text-xl font-semibold text-gray-600 hover:text-blue-500">Kontak
+                Kami</a>
         </div>
     </div>
 
@@ -633,9 +794,22 @@
 
 
         // Toggle Mobile Navbar Visibility
-        document.getElementById('menu-button').addEventListener('click', function () {
-            const mobileMenu = document.getElementById('mobile-menu');
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Tambahkan event listener untuk klik pada tombol
+        menuButton.addEventListener('click', () => {
+            // Toggle kelas 'hidden' untuk menampilkan atau menyembunyikan menu
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tambahkan event listener pada menu mobile untuk menutup saat diklik
+        mobileMenu.addEventListener('click', (event) => {
+            // Cek jika elemen yang diklik ada di dalam menu
+            if (event.target !== mobileMenu) {
+                // Tambahkan kembali kelas 'hidden' untuk menutup menu
+                mobileMenu.classList.add('hidden');
+            }
         });
 
         // JavaScript for FAQ Dropdown
@@ -713,105 +887,32 @@
             });
         });
 
-        //Testimoni
-        const testimonials = [
-            {
-                text: "Aplikasi yang luar biasa! Ikan cupang saya sakit dan Fishco langsung mendeteksi penyakitnya dengan akurat. Berkat saran dari aplikasinya, sekarang ikan saya sehat kembali!",
-                name: "Zayn Orlando",
-                role: "Pendiri YouTube",
-                profile: "{{'images/landing/profile-1.png'}}"
-            },
-            {
-                text: "Fishco memberikan saya wawasan yang luar biasa tentang cara menjaga ikan saya tetap sehat. Benar-benar aplikasi yang sangat bermanfaat!",
-                name: "Sara Lim",
-                role: "Ahli Akuakultur",
-                profile: "{{'images/landing/profile-2.png'}}"
-            },
-            {
-                text: "Berkat Fishco, saya dapat mengetahui penyakit ikan saya lebih cepat. Aplikasinya mudah digunakan dan sangat membantu!",
-                name: "Ken Yamada",
-                role: "Peternak Ikan",
-                profile: "{{'images/landing/profile-3.png'}}"
-            },
-            {
-                text: "Saya merekomendasikan Fishco untuk semua peternak ikan. Ini membantu saya untuk menjaga kondisi ikan saya tetap optimal.",
-                name: "Lina Gomez",
-                role: "Penggemar Akuarium",
-                profile: "{{'images/landing/profile-4.png'}}"
-            },
-            {
-                text: "Aplikasi ini sangat mempermudah dalam merawat ikan-ikan saya. Deteksi penyakitnya cepat dan tepat!",
-                name: "Michael Chen",
-                role: "Hobiis Ikan Hias",
-                profile: "{{'images/landing/profile-5.png'}}"
-            },
-            {
-                text: "Fishco membantu saya mengidentifikasi masalah ikan saya dengan sangat cepat. Sangat berguna untuk pemula dan ahli!",
-                name: "Siti Rahmawati",
-                role: "Kolektor Ikan",
-                profile: "{{'images/landing/profile-6.png'}}"
-            },
-            {
-                text: "Sangat direkomendasikan untuk pecinta ikan. Fishco memberikan saran yang tepat dan cepat untuk kesehatan ikan.",
-                name: "Andreas Nurhadi",
-                role: "Pakar Perikanan",
-                profile: "{{'images/landing/profile-7.png'}}"
-            }
-        ];
-
-        // Inisialisasi
-        let currentIndex = 0;
-
-        // Pilih elemen HTML
-        const testimonialText = document.getElementById('testimonial-text');
-        const testimonialName = document.getElementById('testimonial-name');
-        const profileImages = document.querySelectorAll('.profile-img');
-
-        // Fungsi untuk memperbarui testimoni
-        let isFirstLoad = true;
-
-        function updateTestimonial(index) {
-            const testimonial = testimonials[index];
-            testimonialText.textContent = testimonial.text;
-            testimonialName.innerHTML = `<span class="font-bold" style="color: #0362A1">${testimonial.name}</span> - <span class="font-normal" style="color: #0362A1">${testimonial.role}</span>`;
-
-            // Hapus kelas aktif dari semua gambar profil
-            profileImages.forEach(img => {
-                img.classList.remove('scale-150', 'ring', 'ring-blue-400');
-            });
-
-            // Tambahkan kelas aktif ke gambar yang dipilih
-            profileImages[index].classList.add('scale-150', 'ring', 'ring-blue-400');
-
-            // Hanya scroll jika bukan load pertama kali
-            if (!isFirstLoad) {
-                profileImages[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
-
-            isFirstLoad = false; // Setelah load pertama, set ke false
-        }
-
-        // Event listener untuk tombol panah
-        document.getElementById('prev').addEventListener('click', () => {
-            currentIndex = (currentIndex === 0) ? testimonials.length - 1 : currentIndex - 1;
-            updateTestimonial(currentIndex);
-        });
-
-        document.getElementById('next').addEventListener('click', () => {
-            currentIndex = (currentIndex === testimonials.length - 1) ? 0 : currentIndex + 1;
-            updateTestimonial(currentIndex);
-        });
-
-        // Event listener untuk klik pada gambar profil
-        profileImages.forEach((img, index) => {
-            img.addEventListener('click', () => {
-                currentIndex = index;
-                updateTestimonial(index);
+        // Testimoni
+        $(document).ready(function () {
+            $(".testimonial-carousel").owlCarousel({
+                autoplay: true,
+                smartSpeed: 1000,
+                loop: true,
+                center: true,
+                dots: false,
+                nav: true, // Aktifkan navigasi panah
+                navText: [
+                    '<span class="text-center flex items-center justify-center"><i class="fas fa-chevron-left"></i></span>',
+                    '<span class="text-center flex items-center justify-center"><i class="fas fa-chevron-right"></i></span>'
+                ],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    }
+                }
             });
         });
-
-        // Inisialisasi testimoni pertama
-        updateTestimonial(currentIndex);
     </script>
 
 </body>
