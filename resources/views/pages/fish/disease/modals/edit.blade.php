@@ -52,38 +52,17 @@
 
 
 <script>
-    function openEditModal(diseaseId) {
-        // Ambil data penyakit dari server menggunakan AJAX
-        fetch(`/api/diseases/${diseaseId}`)
-            .then(response => response.json())
-            .then(data => {
-                // Isi form dengan data penyakit
-                $('#edit-disease-name').val(data.name); // Pastikan ID ini sesuai dengan input form
-                $('#edit-symptoms').val(data.symptoms); // Pastikan ID ini sesuai dengan input form
-                $('#edit-disease-description').val(data.description); // Pastikan ID ini sesuai dengan input form
-                
-                // Tampilkan modal
-                $('#edit-disease').show(); // Pastikan modal ditampilkan
-            })
-            .catch(error => console.error('Error fetching disease data:', error));
-    }
+    
 
-    $(document).ready(function () {
         $('#edit-disease form').on('submit', function (e) {
             e.preventDefault();
+
+            console.log(currentDiseaseId);
 
             // Edit formData object
             const formData = new FormData();
 
-            // Append file if it exists
-            const fileInput = document.getElementById('edit-thumbnail');
-            if (fileInput.files.length > 0) {
-                formData.append('thumbnail', fileInput.files[0]);
-            }
-
-            // Get disease ID from the button context
-            const urlParams = new URLSearchParams(window.location.search);
-            const diseaseId = urlParams.get('id');
+            //get disease id
             
             // Append other form data to formData object
             formData.append('name', $('#edit-disease-name').val());
@@ -95,7 +74,7 @@
 
             // Send AJAX request
             $.ajax({
-                url: `/api/disease/update/${diseaseId}`,
+                url: `/api/disease/update/${currentDiseaseId}`, 
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -120,8 +99,11 @@
                         text: `Error: ${xhr.responseJSON.message || 'Data gagal diperbarui.'}`
                     });
                     console.log("Error response:", xhr.responseJSON);
+                    $('#edit-disease').hide(); // Sembunyikan modal setelah berhasil
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
                 }
             });
         });
-    });
 </script>

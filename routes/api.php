@@ -93,7 +93,7 @@ Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedici
 Route::get('/disease', [DiseaseController::class, 'getAllDisease']);
 Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
 Route::post('/disease/create', [DiseaseController::class, 'createDisease']);
-Route::put('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
+Route::post('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
 Route::delete('/disease/delete/{id}', [DiseaseController::class, 'deleteDisease']);
 
 

@@ -75,9 +75,10 @@
     <script>
         let currentPage = 1;
         let currentSearch = '';
+        let currentDiseaseId = null;
 
         const fetchDiseaseDataById = (id) => {
-            $.ajax({
+         $.ajax({
                 url: `/api/disease/${id}`,
                 method: 'GET',
                 success: function(response) {
@@ -85,6 +86,9 @@
                     $('#edit-disease-name').val(response.data.name);
                     $('#edit-symptoms').val(response.data.symptoms);
                     $('#edit-disease-description').val(response.data.description);
+
+                    currentDiseaseId = id;
+                    $('#edit-disease').show();
                 },
                 error: function(xhr, status, error) {
                     console.error("API Error:", error); // Debug: Log error details
