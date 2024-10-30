@@ -7,7 +7,7 @@
     <title>
       Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template
     </title>
-    @vite(['resources/css/style.css' , 'resources/css/satoshi.css' , 'resources/js/app.js'])
+    @vite(['resources/css/style.css'  , 'resources/js/app.js'])
   </head>
 
   <body

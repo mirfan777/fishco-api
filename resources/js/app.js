@@ -2,7 +2,6 @@
 import "flatpickr/dist/flatpickr.min.css";
 import "../css/style.css";
 
-// Import Libraries
 import Alpine from "alpinejs";
 import persist from "@alpinejs/persist";
 import 'flowbite';

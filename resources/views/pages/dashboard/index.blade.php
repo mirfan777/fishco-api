@@ -7,7 +7,7 @@
     <title>
       Admin Dashboard | FishcoApp
     </title>
-    @vite(['resources/css/style.css' , 'resources/css/satoshi.css' , 'resources/js/app.js'])
+    @vite(['resources/css/style.css'  , 'resources/js/app.js'])
   </head>
 
   <body>
