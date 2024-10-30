@@ -8,7 +8,7 @@
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                     Edit Data Disease
                 </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="edit-disease">
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" onclick="closeEditModal()">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                     </svg>
@@ -17,7 +17,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5 space-y-4">
-                <form class="w-full">
+                <form id="edit-disease-form">
                     <div class="flex flex-col md:flex-row md:justify-between w-full gap-5">
                         <div class="md:w-1/2">
                             <!-- Name -->
@@ -25,14 +25,12 @@
                                 <label for="edit-disease-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                                 <input type="text" id="edit-disease-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter disease name" required />
                             </div>
-
                             <!-- Symptoms -->
                             <div class="mb-3">
                                 <label for="edit-symptoms" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Symptoms</label>
                                 <input type="text" id="edit-symptoms" name="symptoms" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter symptoms" required />
                             </div>
                         </div>
-                    
                         <div class="md:w-1/2">
                             <!-- Description -->
                             <div class="mb-3">
@@ -41,7 +39,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Submit Button -->
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                 </form>
@@ -52,38 +49,17 @@
 
 
 <script>
-    function openEditModal(diseaseId) {
-        // Ambil data penyakit dari server menggunakan AJAX
-        fetch(`/api/diseases/${diseaseId}`)
-            .then(response => response.json())
-            .then(data => {
-                // Isi form dengan data penyakit
-                $('#edit-disease-name').val(data.name); // Pastikan ID ini sesuai dengan input form
-                $('#edit-symptoms').val(data.symptoms); // Pastikan ID ini sesuai dengan input form
-                $('#edit-disease-description').val(data.description); // Pastikan ID ini sesuai dengan input form
-                
-                // Tampilkan modal
-                $('#edit-disease').show(); // Pastikan modal ditampilkan
-            })
-            .catch(error => console.error('Error fetching disease data:', error));
-    }
+    
 
-    $(document).ready(function () {
         $('#edit-disease form').on('submit', function (e) {
             e.preventDefault();
+
+            console.log(currentDiseaseId);
 
             // Edit formData object
             const formData = new FormData();
 
-            // Append file if it exists
-            const fileInput = document.getElementById('edit-thumbnail');
-            if (fileInput.files.length > 0) {
-                formData.append('thumbnail', fileInput.files[0]);
-            }
-
-            // Get disease ID from the button context
-            const urlParams = new URLSearchParams(window.location.search);
-            const diseaseId = urlParams.get('id');
+            //get disease id
             
             // Append other form data to formData object
             formData.append('name', $('#edit-disease-name').val());
@@ -93,14 +69,15 @@
             const submitBtn = $(this).find('button[type="submit"]');
             submitBtn.prop('disabled', true);
 
-            // Send AJAX request
+            // Kirim permintaan AJAX
             $.ajax({
-                url: `/api/disease/update/${diseaseId}`,
+                url: `/api/disease/update/${currentDiseaseId}`, 
                 type: 'POST',
                 data: formData,
                 processData: false,
                 contentType: false,
                 success: function (response) {
+                    // Notifikasi sukses
                     Swal.fire({
                         icon: 'success',
                         title: 'Success!',
@@ -108,20 +85,28 @@
                         timer: 2000,
                         showConfirmButton: false
                     });
-                    $('#edit-disease').hide(); // Sembunyikan modal setelah berhasil
+
+                    // Menutup modal
+                    closeEditModal(); // Panggil fungsi untuk menutup modal
+
+                    // Reload halaman setelah 500ms
                     setTimeout(function () {
                         location.reload();
                     }, 500);
                 },
                 error: function (xhr, status, error) {
+                    // Notifikasi error
                     Swal.fire({
                         icon: 'error',
                         title: 'Failed!',
                         text: `Error: ${xhr.responseJSON.message || 'Data gagal diperbarui.'}`
                     });
                     console.log("Error response:", xhr.responseJSON);
+                    $('#edit-disease').hide(); // Sembunyikan modal setelah berhasil
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
                 }
             });
         });
-    });
 </script>
