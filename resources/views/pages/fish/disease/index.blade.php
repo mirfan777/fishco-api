@@ -96,8 +96,8 @@
                                 <tr class="border-b dark:border-gray-700">
                                     <td class="px-4 py-3">${disease.name}</td>
                                     <td class="px-4 py-3">${disease.symptoms}</td>
-                                    <td class="px-4 py-3">
-                                        <button onclick="location.href='/disease/detail/?id=${disease.id}'" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
+                                    <td class="px-4 py-3"><button onclick="openEditModal(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>                                                     
+                                        
                                         <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">Hapus</button>
                                     </td>
                                 </tr>
