@@ -75,11 +75,27 @@
     <script>
         let currentPage = 1;
         let currentSearch = '';
+
+        const fetchDiseaseDataById = (id) => {
+            $.ajax({
+                url: `/api/disease/${id}`,
+                method: 'GET',
+                success: function(response) {
+                    console.log("API Response:", response); 
+                    $('#edit-disease-name').val(response.data.name);
+                    $('#edit-symptoms').val(response.data.symptoms);
+                    $('#edit-disease-description').val(response.data.description);
+                },
+                error: function(xhr, status, error) {
+                    console.error("API Error:", error); // Debug: Log error details
+                }
+            });
+        };
     
-        const fetchDiseaseData = (page = 1, query = '') => {
+        const fetchDiseaseData = (page = 1, query = '' ) => {
             currentPage = page;
             currentSearch = query;
-            
+
             $.ajax({
                 url: `/api/disease?page=${page}&search=${query}`,
                 method: 'GET',
@@ -97,7 +113,7 @@
                                     <td class="px-4 py-3">${disease.name}</td>
                                     <td class="px-4 py-3">${disease.symptoms}</td>
                                     <td class="px-4 py-3">
-                                        <button onclick="location.href='/disease/detail/?id=${disease.id}'" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
+                                        <button data-modal-target="edit-disease" data-modal-toggle="edit-disease" onclick="fetchDiseaseDataById(${disease.id})"  class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
                                         <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">Hapus</button>
                                     </td>
                                 </tr>
