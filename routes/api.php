@@ -9,6 +9,8 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\FishController;
 use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\AffiliateController;
+use App\Http\Controllers\ProductController;
 
 use App\Http\Resources\AffiliateResource;
 use App\Http\Resources\ArticleResource;
@@ -81,25 +83,17 @@ Route::delete('/fish/{id}/delete-image/{img}', [FishController::class, 'deleteFi
 //Medicine
 
 Route::get('/medicine', [MedicineController::class, 'getAllMedicine']);
-
 Route::get('/medicine/{id}', [MedicineController::class, 'getMedicineById']);
-
 Route::post('/medicine/create', [MedicineController::class, 'createMedicine']);
-
 Route::put('/medicine/update/{id}', [MedicineController::class, 'updateMedicine']);
-
 Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedicine']);
 
 //Disease
 
 Route::get('/disease', [DiseaseController::class, 'getAllDisease']);
-
 Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
-
 Route::post('/disease/create', [DiseaseController::class, 'createDisease']);
-
 Route::put('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
-
 Route::delete('/disease/delete/{id}', [DiseaseController::class, 'deleteDisease']);
 
 
@@ -213,76 +207,20 @@ Route::delete('/deleteReply/{id}', function($id){
 
 //Product
 
-Route::get('/getAllProduct', function () {
-    return ProductResource::collection(Products::all());
-});
-
-Route::get('/getProduct/{id}', function($id){
-    return new ProductResource(Products::find($id));
-});
-
-Route::post('/addProduct', function(Request $request){
-
-    $response = Products::create([
-        'affiliate_id' => $request->affiliate_id,
-        'name' => $request->name,
-        'category' => $request->category,
-        'description' => $request->description,
-        'price' => $request->price,
-        'link' => $request->link
-    ]);
-
-    return $response;
-
-});
-
-Route::put('/updateProduct/{id}', function(Request $request, $id){
-    $response = Products::where('id', $id)->update($request->all());
-
-    return $response;
-});
-
-Route::delete('/deleteProduct/{id}', function($id){
-    $response = Products::where('id', $id)->delete();
-
-    return $response;
-});
+Route::get('/product', [ProductController::class, 'getAllProduct']);
+Route::get('/product/{id}', [ProductController::class, 'getProductById']);
+Route::post('/product/create', [ProductController::class, 'createProduct']);
+Route::put('/product/update/{id}', [ProductController::class, 'updateProduct']);
+Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct']);
 
 
 //Affiliate
 
-Route::get('/getAllAffiliate', function () {
-    return AffiliateResource::collection(Affiliate::all());
-});
-
-Route::get('/getAffiliate/{id}', function($id){
-    return new AffiliateResource(Affiliate::find($id));
-});
-
-Route::post('/addAffiliate', function(Request $request){
-
-    $response = Affiliate::create([
-        'name' => $request->name,
-        'address' => $request->address,
-        'phone_number' => $request->phone_number,
-        'link' => $request->link
-    ]);
-
-    return $response;
-
-});
-
-Route::put('/updateAffiliate/{id}', function(Request $request, $id){
-    $response = Affiliate::where('id', $id)->update($request->all());
-
-    return $response;
-});
-
-Route::delete('/deleteAffiliate/{id}', function($id){
-    $response = Affiliate::where('id', $id)->delete();
-
-    return $response;
-});
+Route::get('/affiliate', [AffiliateController::class, 'getAllAffiliate']);
+Route::get('/affiliate/{id}', [AffiliateController::class, 'getAffiliateById']);
+Route::post('/affiliate/create', [AffiliateController::class, 'createAffiliate']);
+Route::put('/affiliate/update/{id}', [AffiliateController::class, 'updateAffiliate']);
+Route::delete('/affiliate/delete/{id}', [AffiliateController::class, 'deleteAffiliate']);
 
 
 //Fish Image
