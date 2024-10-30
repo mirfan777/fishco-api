@@ -85,7 +85,7 @@ Route::delete('/fish/{id}/delete-image/{img}', [FishController::class, 'deleteFi
 Route::get('/medicine', [MedicineController::class, 'getAllMedicine']);
 Route::get('/medicine/{id}', [MedicineController::class, 'getMedicineById']);
 Route::post('/medicine/create', [MedicineController::class, 'createMedicine']);
-Route::put('/medicine/update/{id}', [MedicineController::class, 'updateMedicine']);
+Route::post('/medicine/update/{id}', [MedicineController::class, 'updateMedicine']);
 Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedicine']);
 
 //Disease
@@ -93,7 +93,7 @@ Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedici
 Route::get('/disease', [DiseaseController::class, 'getAllDisease']);
 Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
 Route::post('/disease/create', [DiseaseController::class, 'createDisease']);
-Route::put('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
+Route::post('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
 Route::delete('/disease/delete/{id}', [DiseaseController::class, 'deleteDisease']);
 
 
@@ -210,7 +210,7 @@ Route::delete('/deleteReply/{id}', function($id){
 Route::get('/product', [ProductController::class, 'getAllProduct']);
 Route::get('/product/{id}', [ProductController::class, 'getProductById']);
 Route::post('/product/create', [ProductController::class, 'createProduct']);
-Route::put('/product/update/{id}', [ProductController::class, 'updateProduct']);
+Route::post('/product/update/{id}', [ProductController::class, 'updateProduct']);
 Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct']);
 
 
@@ -219,7 +219,7 @@ Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct'
 Route::get('/affiliate', [AffiliateController::class, 'getAllAffiliate']);
 Route::get('/affiliate/{id}', [AffiliateController::class, 'getAffiliateById']);
 Route::post('/affiliate/create', [AffiliateController::class, 'createAffiliate']);
-Route::put('/affiliate/update/{id}', [AffiliateController::class, 'updateAffiliate']);
+Route::post('/affiliate/update/{id}', [AffiliateController::class, 'updateAffiliate']);
 Route::delete('/affiliate/delete/{id}', [AffiliateController::class, 'deleteAffiliate']);
 
 
