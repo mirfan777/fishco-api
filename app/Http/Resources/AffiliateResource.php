@@ -16,9 +16,6 @@ class AffiliateResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'address' => $this->address,
-            'phone_number' => $this->phone_number,
             'link' => $this->link,
             'created_at' => $this->created_at->format('d-m-Y')
         ];

@@ -105,9 +105,6 @@ class DatabaseSeeder extends Seeder
         $affiliates = [];
         for ($i = 1; $i <= $recordCount; $i++) {
             $affiliates[] = [
-                'name' => 'Affiliate ' . $i,
-                'address' => 'Affiliate Address ' . $i,
-                'phone_number' => '0987654321' . $i,
                 'link' => 'https://affiliate' . $i . '.com',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -119,7 +116,6 @@ class DatabaseSeeder extends Seeder
         $products = [];
         for ($i = 1; $i <= $recordCount; $i++) {
             $products[] = [
-                'affiliate_id' => rand(1, $recordCount),
                 'name' => 'Product ' . $i,
                 'category' => 'Category ' . rand(1, 5),
                 'description' => 'Description for product ' . $i,
