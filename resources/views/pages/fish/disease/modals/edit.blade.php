@@ -49,10 +49,15 @@
 
 
 <script>
-    
 
-        $('#edit-disease form').on('submit', function (e) {
-            e.preventDefault();
+        const closeEditModal = () => {
+                $('#edit-disease').hide(); // Hide the modal
+                $('#edit-disease-form')[0].reset(); // Reset the form
+            };
+
+            // Close modal on button click
+            $('#edit-disease form').on('submit', function (e) {
+                e.preventDefault();
 
             console.log(currentDiseaseId);
 
