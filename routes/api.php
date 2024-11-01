@@ -87,6 +87,7 @@ Route::get('/medicine/{id}', [MedicineController::class, 'getMedicineById']);
 Route::post('/medicine/create', [MedicineController::class, 'createMedicine']);
 Route::post('/medicine/update/{id}', [MedicineController::class, 'updateMedicine']);
 Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedicine']);
+Route::get('/dropdown-data', [MedicineController::class, 'getDropdownData']);
 
 //Disease
 
@@ -258,7 +259,11 @@ Route::delete('/deleteFishImage/{id}', function($id){
     return $response;
 });
 
+//Dropdown
+Route::get('/diseases', [DiseaseController::class, 'getAllDiseases']);
+Route::get('/fishes', [FishController::class, 'getAllFishes']);
 
+//Login
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest')
     ->name('register');

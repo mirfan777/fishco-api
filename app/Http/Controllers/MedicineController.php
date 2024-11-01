@@ -69,4 +69,14 @@ class MedicineController extends Controller
             'message' => 'Medicine deleted successfully'
         ]);
     }
+
+    public function getDropdownData(){
+        $diseases = \App\Models\Disease::all(['id', 'name']);
+        $fishes = \App\Models\Fish::all(['id', 'name']);
+        
+        return response()->json([
+            'diseases' => $diseases,
+            'fishes' => $fishes
+        ]);
+    }
 }

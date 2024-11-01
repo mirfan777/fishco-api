@@ -74,4 +74,8 @@ class DiseaseController extends Controller
             'message' => 'Disease deleted successfully'
         ]);
     }
+
+    public function getAllDiseases() {
+        return response()->json(Disease::all());
+    }
 }
