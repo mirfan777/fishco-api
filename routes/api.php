@@ -11,6 +11,7 @@ use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AquariumController;
 
 use App\Http\Resources\AffiliateResource;
 use App\Http\Resources\ArticleResource;
@@ -96,6 +97,13 @@ Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
 Route::post('/disease/create', [DiseaseController::class, 'createDisease']);
 Route::post('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
 Route::delete('/disease/delete/{id}', [DiseaseController::class, 'deleteDisease']);
+
+//Aquarium
+Route::get('/aquarium', [AquariumController::class, 'getAllAquarium']);
+Route::get('/aquarium/{id}', [AquariumController::class, 'getAquarium']);
+Route::post('/aquarium/create', [AquariumController::class, 'createAquarium']);
+Route::post('/aquarium/update/{id}', [AquariumController::class, 'updateAquarium']);
+Route::delete('/aquarium/delete/{id}', [AquariumController::class, 'deleteAquarium']);
 
 
 //Article
