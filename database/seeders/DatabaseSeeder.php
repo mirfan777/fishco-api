@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder
                 'slug' => 'article-' . $i,
                 'body' => 'This is the body of article ' . $i,
                 'user_id' => rand(1, $recordCount),
-                'comment_id' => rand(1, $recordCount),
+                'comment_id' => json_encode([rand(1, $recordCount)]),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];

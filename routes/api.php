@@ -12,6 +12,10 @@ use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AquariumController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\FishImageController;
 
 use App\Http\Resources\AffiliateResource;
 use App\Http\Resources\ArticleResource;
@@ -43,33 +47,33 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 //User
-Route::get('/getAllUser', function () {
-    return UserResource::collection(User::all());
-});
+// Route::get('/getAllUser', function () {
+//     return UserResource::collection(User::all());
+// });
 
-Route::get('/getUser/{id}', function($id){
-    return new UserResource(User::find($id));
-});
+// Route::get('/getUser/{id}', function($id){
+//     return new UserResource(User::find($id));
+// });
 
-Route::post('/addUser', function(Request $request){
+// Route::post('/addUser', function(Request $request){
 
-    $response = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => bcrypt($request->password),
-        'address' => $request->address,
-        'phone_number' => $request->phone_number
-    ]);
+//     $response = User::create([
+//         'name' => $request->name,
+//         'email' => $request->email,
+//         'password' => bcrypt($request->password),
+//         'address' => $request->address,
+//         'phone_number' => $request->phone_number
+//     ]);
 
-    return $response;
+//     return $response;
 
-});
+// });
 
-Route::delete('/deleteUser/{id}', function($id){
-    $response = User::where('id', $id)->delete();
+// Route::delete('/deleteUser/{id}', function($id){
+//     $response = User::where('id', $id)->delete();
 
-    return $response;
-});
+//     return $response;
+// });
 
 
 //Fish
@@ -81,8 +85,8 @@ Route::delete('/fish/delete/{id}', [FishController::class, 'deleteFish']);
 Route::post('/fish/{id}/upload', [FishController::class, 'uploadFishImage']);
 Route::delete('/fish/{id}/delete-image/{img}', [FishController::class, 'deleteFishImage']);
 
-//Medicine
 
+//Medicine
 Route::get('/medicine', [MedicineController::class, 'getAllMedicine']);
 Route::get('/medicine/{id}', [MedicineController::class, 'getMedicineById']);
 Route::post('/medicine/create', [MedicineController::class, 'createMedicine']);
@@ -90,8 +94,8 @@ Route::post('/medicine/update/{id}', [MedicineController::class, 'updateMedicine
 Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedicine']);
 Route::get('/dropdown-data', [MedicineController::class, 'getDropdownData']);
 
-//Disease
 
+//Disease
 Route::get('/disease', [DiseaseController::class, 'getAllDisease']);
 Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
 Route::post('/disease/create', [DiseaseController::class, 'createDisease']);
@@ -107,115 +111,31 @@ Route::delete('/aquarium/delete/{id}', [AquariumController::class, 'deleteAquari
 
 
 //Article
-
-Route::get('/getAllArticle', function () {
-    return ArticleResource::collection(Article::all());
-});
-
-Route::get('/getArticle/{id}', function($id){
-    return new ArticleResource(Article::find($id));
-});
-
-Route::post('/addArticle', function(Request $request){
-
-    $response = Article::create([
-        'title' => $request->title,
-        'slug' => $request->slug,
-        'body' => $request->body,
-        'user_id' => $request->user_id,
-        'comment_id' => $request->comment_id
-    ]);
-
-    return $response;
-
-});
-
-Route::put('/updateArticle/{id}', function(Request $request, $id){
-    $response = Article::where('id', $id)->update($request->all());
-
-    return $response;
-});
-
-Route::delete('/deleteArticle/{id}', function($id){
-    $response = Article::where('id', $id)->delete();
-
-    return $response;
-});
+Route::get('/article', [ArticleController::class, 'getAllArticle']);
+Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
+Route::post('/article/create', [ArticleController::class, 'createArticle']);
+Route::post('/article/update/{id}', [ArticleController::class, 'updateArticle']);
+Route::delete('/article/delete/{id}', [ArticleController::class, 'deleteArticle']);
 
 
 //Comment
-
-Route::get('/getAllComment', function () {
-    return CommentResource::collection(Comment::all());
-});
-
-Route::get('/getComment/{id}', function($id){
-    return new CommentResource(Comment::find($id));
-});
-
-Route::post('/addComment', function(Request $request){
-
-    $response = Comment::create([
-        'user_id' => $request->user_id,
-        'body' => $request->body,
-        'article_id' => $request->article_id
-    ]);
-
-    return $response;
-
-});
-
-Route::put('/updateComment/{id}', function(Request $request, $id){
-    $response = Comment::where('id', $id)->update($request->all());
-
-    return $response;
-});
-
-Route::delete('/deleteComment/{id}', function($id){
-    $response = Comment::where('id', $id)->delete();
-
-    return $response;
-});
+Route::get('/comment', [CommentController::class, 'getAllComment']);
+Route::get('/comment/{id}', [CommentController::class, 'getComment']);
+Route::post('/comment/create', [CommentController::class, 'addComment']);
+Route::post('/comment/update/{id}', [CommentController::class, 'updateComment']);
+Route::delete('/comment/delete/{id}', [CommentController::class, 'deleteComment']);
 
 
 //Reply
-
-Route::get('/getAllReply', function () {
-    return RepliesResource::collection(Replies::all());
-});
-
-Route::get('/getReply/{id}', function($id){
-    return new RepliesResource(Replies::find($id));
-});
-
-Route::post('/addReply', function(Request $request){
-
-    $response = Replies::create([
-        'comment_id' => $request->comment_id,
-        'user_id' => $request->user_id,
-        'body' => $request->body
-    ]);
-
-    return $response;
-
-});
-
-Route::put('/updateReply/{id}', function(Request $request, $id){
-    $response = Replies::where('id', $id)->update($request->all());
-
-    return $response;
-});
-
-Route::delete('/deleteReply/{id}', function($id){
-    $response = Replies::where('id', $id)->delete();
-
-    return $response;
-});
+Route::get('/reply', [ReplyController::class, 'getAllReplies']);
+Route::get('/reply/{id}', [ReplyController::class, 'getRepliesById']);
+Route::post('/reply/create', [ReplyController::class, 'createReplies']);
+Route::post('/reply/update/{id}', [ReplyController::class, 'updateReplies']);
+Route::delete('/reply/delete/{id}', [ReplyController::class, 'deleteReplies']);
 
 
 
 //Product
-
 Route::get('/product', [ProductController::class, 'getAllProduct']);
 Route::get('/product/{id}', [ProductController::class, 'getProductById']);
 Route::post('/product/create', [ProductController::class, 'createProduct']);
@@ -224,7 +144,6 @@ Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct'
 
 
 //Affiliate
-
 Route::get('/affiliate', [AffiliateController::class, 'getAllAffiliate']);
 Route::get('/affiliate/{id}', [AffiliateController::class, 'getAffiliateById']);
 Route::post('/affiliate/create', [AffiliateController::class, 'createAffiliate']);
@@ -233,39 +152,11 @@ Route::delete('/affiliate/delete/{id}', [AffiliateController::class, 'deleteAffi
 
 
 //Fish Image
-
-Route::get('/getAllFishImage', function () {
-    return FishImageResource::collection(FishImage::all());
-});
-
-Route::get('/getFishImage/{id}', function($id){
-    return new FishImageResource(FishImage::find($id));
-});
-
-Route::post('/addFishImage', function(Request $request){
-
-    $response = FishImage::create([
-        'fish_id' => $request->fish_id,
-        'image' => $request->image,
-        'status' => $request->status,
-        'disease_id' => $request->disease_id
-    ]);
-
-    return $response;
-
-});
-
-Route::put('/updateFishImage/{id}', function(Request $request, $id){
-    $response = FishImage::where('id', $id)->update($request->all());
-
-    return $response;
-});
-
-Route::delete('/deleteFishImage/{id}', function($id){
-    $response = FishImage::where('id', $id)->delete();
-
-    return $response;
-});
+Route::get('/fishimage',[FishImageController::class, 'getAllFishImage']);
+Route::get('/fishimage/{id}', [FishImageController::class, 'getFishImage']);
+Route::post('/fishimage/create', [FishImageController::class, 'createFishImage']);
+Route::post('/fishimage/update/{id}', [FishImageController::class, 'updateFishImage']);
+Route::delete('/fishimage/delete/{id}', [FishImageController::class, 'deleteFishImage']);
 
 //Dropdown
 Route::get('/diseases', [DiseaseController::class, 'getAllDiseases']);
