@@ -62,7 +62,7 @@
              </a>
           </li>
           <li>
-            <a href="/user" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="/users" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <svg width="20" height="20" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="fill-black" d="M10.2613 12.2813C10.2613 10.03 7.75127 8.2 5.50002 8.2C3.24877 8.2 0.73877 10.03 0.73877 12.2813M5.50002 6.16C6.22157 6.16 6.91358 5.87336 7.42379 5.36315C7.93401 4.85293 8.22064 4.16093 8.22064 3.43938C8.22064 2.71782 7.93401 2.02582 7.42379 1.5156C6.91358 1.00539 6.22157 0.71875 5.50002 0.71875C4.77846 0.71875 4.08646 1.00539 3.57625 1.5156C3.06603 2.02582 2.77939 2.71782 2.77939 3.43938C2.77939 4.16093 3.06603 4.85293 3.57625 5.36315C4.08646 5.87336 4.77846 6.16 5.50002 6.16Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>  
