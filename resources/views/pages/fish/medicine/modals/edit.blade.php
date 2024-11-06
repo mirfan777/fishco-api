@@ -62,93 +62,10 @@
 
 <script>
 $(document).ready(function() {
-    // Function to populate disease and fish dropdowns
-    function populateDropdowns(selectedDiseaseId = null, selectedFishId = null) {
-        console.log("Calling /api/dropdown-data");
-
-        return $.ajax({
-            url: '/api/dropdown-data',
-            type: 'GET',
-            success: function(data) {
-                console.log("Dropdown data received:", data);
-
-                const diseaseDropdown = $('#edit-disease-id');
-                const fishDropdown = $('#edit-fish-id');
-
-                // Clear existing options and add default option
-                diseaseDropdown.empty().append('<option value="">Select Disease</option>');
-                fishDropdown.empty().append('<option value="">Select Fish</option>');
-
-                // Populate disease dropdown
-                data.diseases.forEach(disease => {
-                    diseaseDropdown.append(`<option value="${disease.id}">${disease.name}</option>`);
-                });
-
-                // Populate fish dropdown
-                data.fishes.forEach(fish => {
-                    fishDropdown.append(`<option value="${fish.id}">${fish.name}</option>`);
-                });
-
-                // Set the selected options after populating the dropdowns
-                if (selectedDiseaseId) {
-                    console.log("Setting selected disease ID:", selectedDiseaseId);
-                    diseaseDropdown.val(selectedDiseaseId).change(); // Explicitly set the value
-                }
-                if (selectedFishId) {
-                    console.log("Setting selected fish ID:", selectedFishId);
-                    fishDropdown.val(selectedFishId).change(); // Explicitly set the value
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('Error fetching dropdown data:', error);
-                console.log('XHR object:', xhr);
-                console.log('Status:', status);
-            }
-        });
-    }
-
-    // Function to open the edit modal and populate data
-    window.openEditModal = function(id) {
-        console.log(`Opening edit modal for medicine ID: ${id}`);
-        
-        $.ajax({
-            url: `/api/medicine/${id}`,
-            type: 'GET',
-            success: function(response) {
-                const data = response.data;
-
-                console.log("Medicine data:", data);
-
-                // Populate form fields with medicine data
-                $('#edit-medicine-name').val(data.name);
-                $('#edit-medicine-description').val(data.description);
-
-                // Populate dropdowns and then show modal after a short delay
-                populateDropdowns(data.disease_id, data.fish_id).done(() => {
-                    setTimeout(() => {
-                        $('#edit-medicine').removeClass('hidden');
-                    }, 300); // 300 ms delay to ensure data is populated
-                });
-
-                // Set medicine ID on the form for submission
-                $('#edit-medicine-form').data('medicine-id', id);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error fetching medicine data:', error);
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Failed to load medicine data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
-    }
-
-    // Handle form submission for editing medicine
+    
     $('#edit-medicine-form').on('submit', function(e) {
         e.preventDefault();
-        const medicineId = $(this).data('medicine-id');
+        const medicineId = currentMedicineId;
         const formData = {
             name: $('#edit-medicine-name').val(),
             description: $('#edit-medicine-description').val(),
@@ -166,10 +83,11 @@ $(document).ready(function() {
                     text: 'Medicine data has been successfully updated.',
                     icon: 'success',
                     confirmButtonText: 'OK'
-                }).then(() => {
-                    $('#edit-medicine').addClass('hidden');
-                    location.reload();
-                });
+                })
+                $('[data-modal-hide="edit-medicine"]').click();
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
             },
             error: function(xhr, status, error) {
                 Swal.fire({

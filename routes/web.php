@@ -26,15 +26,15 @@ Route::middleware(['web'])->group(function () {
     Route::get('/report', function () { return view('pages.report.index'); });
 
     // User routes
-    Route::get('/user', function () { return view('pages.user.index'); });
-    Route::get('/', function () { return view('pages.landing.index'); });    
+    Route::get('/users', function () { return view('pages.user.index'); });
+
+    // Article routes
+    Route::get('/article', function () { return view('pages.article.index'); });
 
 });
 
+Route::get('/', function () { return view('pages.landing.index'); });    
 
 
-Route::get('/landing', function () {
-    return view('pages.landing.index');
-});
 
 require __DIR__.'/auth.php';

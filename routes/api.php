@@ -153,12 +153,16 @@ Route::delete('/fishimage/delete/{id}', [FishImageController::class, 'deleteFish
 Route::get('/diseases', [DiseaseController::class, 'getAllDiseases']);
 Route::get('/fishes', [FishController::class, 'getAllFishes']);
 
-//Login
+
+Route::post('/requestToken', [AuthenticatedSessionController::class, 'requestToken'])
+    ->middleware('guest')
+    ->name('requestToken');
+
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest')
     ->name('register');
 
-Route::middleware('web')->post('/login', [AuthenticatedSessionController::class, 'store'])
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])
     ->middleware('guest')
     ->name('login');
 
