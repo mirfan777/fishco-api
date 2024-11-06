@@ -129,7 +129,15 @@
                 <span class="ms-3">Report</span>
              </a>
           </li>
-       </ul>
+          <li>
+            <a href="/article" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.2583 5.8668C16.975 6.15013 16.7 6.42513 16.6917 6.70013C16.6667 6.9668 16.95 7.2418 17.2167 7.50013C17.6167 7.9168 18.0083 8.2918 17.9917 8.70013C17.975 9.10846 17.55 9.53346 17.125 9.95013L13.6833 13.4001L12.5 12.2168L16.0417 8.68346L15.2417 7.88346L14.0583 9.05846L10.9333 5.93346L14.1333 2.7418C14.4583 2.4168 15 2.4168 15.3083 2.7418L17.2583 4.6918C17.5833 5.00013 17.5833 5.5418 17.2583 5.8668ZM2.5 14.3751L10.4667 6.40013L13.5917 9.52513L5.625 17.5001H2.5V14.3751Z" fill="black"/>
+               </svg>
+               <span class="ms-3">Artikel</span>
+             </a>
+          </li>
+      </ul>
     </div>
  </aside>
 

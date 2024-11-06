@@ -64,7 +64,7 @@
 $(document).ready(function() {
     // Function to populate disease and fish dropdowns
     function populateDropdowns(selectedDiseaseId = null, selectedFishId = null) {
-        console.log("Calling /api/dropdown-data");
+        console.log(populateDropdowns);
 
         return $.ajax({
             url: '/api/dropdown-data',
@@ -109,7 +109,7 @@ $(document).ready(function() {
 
     // Function to open the edit modal and populate data
     window.openEditModal = function(id) {
-        console.log(`Opening edit modal for medicine ID: ${id}`);
+        console.log();
         
         $.ajax({
             url: `/api/medicine/${id}`,
@@ -127,7 +127,7 @@ $(document).ready(function() {
                 populateDropdowns(data.disease_id, data.fish_id).done(() => {
                     setTimeout(() => {
                         $('#edit-medicine').removeClass('hidden');
-                    }, 300); // 300 ms delay to ensure data is populated
+                    });
                 });
 
                 // Set medicine ID on the form for submission

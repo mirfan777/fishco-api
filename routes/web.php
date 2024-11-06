@@ -27,7 +27,10 @@ Route::middleware(['web'])->group(function () {
 
     // User routes
     Route::get('/user', function () { return view('pages.user.index'); });
-    Route::get('/', function () { return view('pages.landing.index'); });    
+    Route::get('/', function () { return view('pages.landing.index'); });   
+    
+    //Article routes
+    Route::get('/user', function () { return view('pages.article.index'); });
 
 });
 
