@@ -1,211 +1,217 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Artikel</title>
-        <!-- Menyertakan file CSS dan JavaScript dari Vite -->
-        @vite(['resources/css/style.css', 'resources/js/app.js'])
-        <!-- Library jQuery dan SweetAlert2 untuk keperluan interaksi dan notifikasi -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    </head>
-    <body>
-        <!-- Menyertakan modal untuk form "Tambah Data Penyakit" -->
-        @include('pages.article.modals.create')
-        @include('pages.article.modals.edit')
-        <!-- Menyertakan layout utama -->
-        @include('layout.main')
-        
-        <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
-            <section class="dark:bg-gray-900 p-3 sm:p-5">
-                <div class="mx-auto w-full h-full px-4 lg:px-12">
-                    <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6" style="font-size: 24px;">Article Table</h2>
-                    <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
-                        <!-- Bagian Pencarian dan Tombol Tambah Data -->
-                        <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
-                            <!-- Form Pencarian -->
-                            <div class="w-full md:w-1/2">
-                                <form id="searchForm" class="flex items-center" onsubmit="handleSearch(event)">
-                                    <label for="simple-search" class="sr-only">Cari</label>
-                                    <input type="text" id="simple-search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-10 p-2" placeholder="Cari penyakit">
-                                </form>
-                            </div>
-                            <!-- Tombol Tambah Data -->
-                            <div class="w-full md:w-auto">
-                                <button data-modal-target="create-article" data-modal-toggle="create-article" class="bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
-                            </div>
-                        </div>
+<html lang="en">
 
-                        <!-- Tabel Data Penyakit -->
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-sm text-left text-gray-500">
-                                <thead class="bg-gray-50 text-gray-700 uppercase text-xs dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th scope="col" class="px-4 py-3">Article Name</th>
-                                        <th scope="col" class="px-4 py-3">Symptoms</th>
-                                        <th scope="col" class="px-4 py-3">Action</th>
-                                    </tr> 
-                                </thead>
-                                <tbody id="articleTable" class="bg-white dark:bg-gray-800">
-                                    <!-- Baris data akan dimuat secara dinamis dengan JavaScript -->
-                                </tbody>
-                            </table>
-                        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+    @vite(['resources/css/style.css', 'resources/js/app.js'])
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 
-                        <!-- Navigasi Pagination -->
-                        <nav class="flex items-center justify-between p-4" aria-label="Navigasi Tabel">
-                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400" id="pagination-info">
-                                <!-- Info halaman akan dimuat secara dinamis -->
-                            </span>
-                            <ul class="inline-flex items-center -space-x-px" id="pagination">
-                                <!-- Tombol pagination akan dimuat secara dinamis -->
-                            </ul>
-                        </nav>
+<body>
+    @include('pages.article.modals.create')
+    @include('pages.article.modals.edit')
+    @include('layout.main')
+
+    <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
+        <section class="dark:bg-gray-900 p-3 sm:p-5">
+            <div class="mx-auto w-full h-full px-4 lg:px-12">
+                <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6" style="font-size: 24px;">Tabel Artikel</h2>
+                <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+                    <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
+                        <div class="w-full md:w-1/2">
+                            <form id="searchForm" class="flex items-center">
+                                <label for="simple-search" class="sr-only">Cari</label>
+                                <input type="text" id="simple-search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-10 p-2" placeholder="Cari artikel">
+                            </form>
+                        </div>
+                        <div class="w-full md:w-auto">
+                            <button data-modal-target="create-article" data-modal-toggle="create-article" class="bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
+                        </div>
                     </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500">
+                            <thead class="bg-gray-50 text-gray-700 uppercase text-xs dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-4 py-3">Judul</th>
+                                    <th scope="col" class="px-4 py-3">Slug</th>
+                                    <th scope="col" class="px-4 py-3">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="articleTable" class="bg-white dark:bg-gray-800">
+                                <!-- Data rows will be dynamically loaded by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <nav class="flex items-center justify-between p-4" aria-label="Table Navigation">
+                        <span class="text-sm font-normal text-gray-500 dark:text-gray-400" id="pagination-info"></span>
+                        <ul class="inline-flex items-center -space-x-px" id="pagination"></ul>
+                    </nav>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
+    </main>
 
-        
-        
-    </body>
-    </html>
+    <script>
+        let currentPage = 1;
+        let currentSearch = '';
 
-<script>
-    let currentPage = 1;
-    let currentSearch = '';
-    let currentArticleId = null;
+        const fetchArticleData = (page = 1, query = '') => {
+            currentPage = page;
+            currentSearch = query;
 
-    const initializeModalPosition = () => {
-        $('#edit-article').removeClass('hidden').addClass('flex').css({
-            'justify-content': 'center',
-            'align-items': 'center'
-        });
-    };
+            $.ajax({
+                url: `/api/article?page=${page}&search=${query}`,
+                method: 'GET',
+                success: function(response) {
+                    const articleTable = $('#articleTable');
+                    articleTable.empty();
 
-    const fetchArticleDataById = (id) => {
-        $.ajax({
-            url: `/api/article/${id}`,
-            method: 'GET',
-            success: function(response) {
-                console.log("API Response:", response); 
-                $('#edit-article-name').val(response.data.name);
-                $('#edit-symptoms').val(response.data.symptoms);
-                $('#edit-article-description').val(response.data.description);
+                    if (response.data && response.data.length > 0) {
+                        response.data.forEach(article => {
+                            articleTable.append(`
+                                <tr class="border-b dark:border-gray-700">
+                                    <td class="px-4 py-3">${article.title}</td>
+                                    <td class="px-4 py-3">${article.slug}</td>
+                                    <td class="px-4 py-3">
+                                        <a href="/article/detail/?id=${article.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
+                                        <button onclick="deleteArticle(${article.id})" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                    </td>
+                                </tr>
+                            `);
+                        });
 
-                currentArticleId = id;
-                initializeModalPosition(); // Ensure modal is centered
-                $('#edit-article').show();
-            },
-            error: function(xhr, status, error) {
-                console.error("API Error:", error); // Debug: Log error details
-            }
-        });
-    };
-    
-    const fetchDiseaseData = (page = 1, query = '' ) => {
-        currentPage = page;
-        currentSearch = query;
-
-        $.ajax({
-            url: `/api/disease?page=${page}&search=${query}`,
-            method: 'GET',
-            success: function(response) {
-                console.log("API Response:", response); // Debug: Log entire response
-
-                const diseaseTable = $('#diseaseTable');
-                diseaseTable.empty();
-
-                // Ensure response structure is as expected
-                if (response.data && response.data.length > 0) {
-                    response.data.forEach(disease => {
-                        diseaseTable.append(`
-                            <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">${disease.name}</td>
-                                <td class="px-4 py-3">${disease.symptoms}</td>
-                                <td class="px-4 py-3">
-                                    <button data-modal-target="edit-disease" data-modal-toggle="edit-disease" onclick="fetchDiseaseDataById(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
-                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">Hapus</button>
-                                </td>
+                        renderPagination(response.meta);
+                    } else {
+                        articleTable.append(`
+                            <tr>
+                                <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
                             </tr>
                         `);
-                    });
-
-                    renderPagination(response.meta);
-                } else {
-                    diseaseTable.append(`
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#articleTable').html(`
                         <tr>
-                            <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
+                            <td colspan="3" class="px-4 py-3 text-center text-red-500">Gagal memuat data</td>
                         </tr>
                     `);
                 }
-            },
-            error: function(xhr, status, error) {
-                console.error("API Error:", error); // Debug: Log error details
-                $('#diseaseTable').html(`
-                    <tr>
-                        <td colspan="3" class="px-4 py-3 text-center text-red-500">Gagal memuat data</td>
-                    </tr>
-                `);
-            }
-        });
-    };
+            });
+        };
 
-    const renderPagination = (meta) => {
-        const pagination = $('#pagination');
-        const paginationInfo = $('#pagination-info');
-        
-        // Update pagination info
-        paginationInfo.html(`
-            Showing <span class="font-semibold text-gray-900 dark:text-white">${meta.from}-${meta.to}</span> of 
-            <span class="font-semibold text-gray-900 dark:text-white">${meta.total}</span>
-        `);
+        const renderPagination = (meta) => {
+            const pagination = $('#pagination');
+            const paginationInfo = $('#pagination-info');
 
-        pagination.empty();
+            paginationInfo.html(`Showing <span class="font-semibold text-gray-900 dark:text-white">${meta.from}-${meta.to}</span> of <span class="font-semibold text-gray-900 dark:text-white">${meta.total}</span>`);
+            pagination.empty();
 
-        // Previous page button
-        pagination.append(`
-            <li>
-                <button onclick="fetchDiseaseData(${meta.current_page - 1}, '${currentSearch}')" 
-                        class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg ${meta.current_page === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}"
-                        ${meta.current_page === 1 ? 'disabled' : ''}>
-                    Previous
-                </button>
-            </li>
-        `);
-
-        // Page numbers
-        meta.links.slice(1, -1).forEach(link => {
             pagination.append(`
                 <li>
-                    <button onclick="fetchDiseaseData(${link.label}, '${currentSearch}')" 
-                            class="px-3 py-2 leading-tight ${link.active 
-                                ? 'text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700' 
-                                : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100'}">
-                        ${link.label}
-                    </button>
+                    <button onclick="fetchArticleData(${meta.current_page - 1}, '${currentSearch}')" class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg ${meta.current_page === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}" ${meta.current_page === 1 ? 'disabled' : ''}>Previous</button>
                 </li>
             `);
+
+            meta.links.slice(1, -1).forEach(link => {
+                pagination.append(`
+                    <li>
+                        <button onclick="fetchArticleData(${link.label}, '${currentSearch}')" class="px-3 py-2 leading-tight ${link.active ? 'text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700' : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100'}">${link.label}</button>
+                    </li>
+                `);
+            });
+
+            pagination.append(`
+                <li>
+                    <button onclick="fetchArticleData(${meta.current_page + 1}, '${currentSearch}')" class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg ${meta.current_page === meta.last_page ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}" ${meta.current_page === meta.last_page ? 'disabled' : ''}>Next</button>
+                </li>
+            `);
+        };
+
+        const createArticle = () => {
+            const formData = {
+                title: $('#create-article-title').val(),
+                slug: $('#create-article-slug').val(),
+                body: $('#create-article-body').val()
+            };
+
+            $.ajax({
+                url: '/api/article/create',
+                method: 'POST',
+                data: formData,
+                success: function(response) {
+                    Swal.fire('Success', response.message, 'success');
+                    $('#create-article').hide();
+                    fetchArticleData(currentPage, currentSearch);
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire('Error', 'Failed to create article', 'error');
+                }
+            });
+        };
+
+        const updateArticle = () => {
+            const formData = {
+                title: $('#edit-article-title').val(),
+                slug: $('#edit-article-slug').val(),
+                body: $('#edit-article-body').val()
+            };
+
+            $.ajax({
+                url: `/api/article/update/${currentArticleId}`,
+                method: 'POST',
+                data: formData,
+                success: function(response) {
+                    Swal.fire('Success', response.message, 'success');
+                    $('#edit-article').hide();
+                    fetchArticleData(currentPage, currentSearch);
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire('Error', 'Failed to update article', 'error');
+                }
+            });
+        };
+
+        const deleteArticle = (id) => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: `/api/article/delete/${id}`,
+                        method: 'DELETE',
+                        success: function(response) {
+                            Swal.fire('Deleted!', response.message, 'success');
+                            fetchArticleData(currentPage, currentSearch);
+                        },
+                        error: function(xhr, status, error) {
+                            Swal.fire('Error', 'Failed to delete article', 'error');
+                        }
+                    });
+                }
+            });
+        };
+
+        $('#searchForm').on('submit', function(e) {
+            e.preventDefault();
+            const query = $('#simple-search').val();
+            fetchArticleData(1, query);
         });
 
-        // Next page button
-        pagination.append(`
-            <li>
-                <button onclick="fetchDiseaseData(${meta.current_page + 1}, '${currentSearch}')" 
-                        class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg ${meta.current_page === meta.last_page ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}"
-                        ${meta.current_page === meta.last_page ? 'disabled' : ''}>
-                    Next
-                </button>
-            </li>
-        `);
-    };
+        $(document).ready(function() {
+            fetchArticleData();
+        });
+    </script>
+</body>
 
-    fetchDiseaseData();
-
-    $('#searchForm').on('submit', function(e) {
-        e.preventDefault();
-        const query = $('#simple-search').val();
-        fetchDiseaseData(1, query);
-    });
-</script>
+</html>

@@ -30,6 +30,7 @@ Route::middleware(['web'])->group(function () {
 
     // Article routes
     Route::get('/article', function () { return view('pages.article.index'); });
+    Route::get('/article/detail', function () { return view('pages.article.detail'); });
 
 });
 

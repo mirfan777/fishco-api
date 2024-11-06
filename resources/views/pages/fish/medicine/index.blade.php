@@ -20,7 +20,7 @@
         <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
             <section class="dark:bg-gray-900 p-3 sm:p-5">
                 <div class="mx-auto w-full h-full px-4 lg:px-12">
-                    <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6" style="font-size: 24px;">Medicine Table</h2>
+                    <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6" style="font-size: 24px;">Tabel Obat Ikan</h2>
                     <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                         <!-- Bagian Pencarian dan Tombol Tambah Data -->
                         <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
@@ -42,9 +42,9 @@
                             <table class="w-full text-sm text-left text-gray-500">
                                 <thead class="bg-gray-50 text-gray-700 uppercase text-xs dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th scope="col" class="px-4 py-3">Medicine Name</th>
-                                        <th scope="col" class="px-4 py-3">Description</th>
-                                        <th scope="col" class="px-4 py-3">Action</th>
+                                        <th scope="col" class="px-4 py-3">Nama Obat</th>
+                                        <th scope="col" class="px-4 py-3">Deskripsi Obat</th>
+                                        <th scope="col" class="px-4 py-3">Aksi</th>
                                     </tr> 
                                 </thead>
                                 <tbody id="medicineTable" class="bg-white dark:bg-gray-800">
