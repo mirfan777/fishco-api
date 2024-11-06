@@ -101,17 +101,6 @@ class DatabaseSeeder extends Seeder
         }
         DB::table('replies')->insert($replies);
 
-        // Seed affiliates table
-        $affiliates = [];
-        for ($i = 1; $i <= $recordCount; $i++) {
-            $affiliates[] = [
-                'link' => 'https://affiliate' . $i . '.com',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ];
-        }
-        DB::table('affiliates')->insert($affiliates);
-
         // Seed products table
         $products = [];
         for ($i = 1; $i <= $recordCount; $i++) {
@@ -151,6 +140,8 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
                 'thumbnail' => 'fish' . $i . '.jpg',
                 'overview' => 'Overview ' . $i,
+                'min_size' => rand(1, 10),
+                'max_size' => rand(11, 20)
             ];
         }
         DB::table('fishes')->insert($fish);

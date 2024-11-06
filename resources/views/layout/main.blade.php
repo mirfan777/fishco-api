@@ -108,14 +108,9 @@
                   </svg>
             </button>
             <ul id="produk" class="hidden py-2 px-5 space-y-2">
-                <li>
-                    <a href="/product/affiliate" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                       <span class="ms-3">Product Affiliate</span>
-                    </a>
-                 </li>
                  <li>
                     <a href="/product" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                       <span class="ms-3">Product</span>
+                       <span class="ms-3">Product Affiliate</span>
                     </a>
                  </li>
             </ul>

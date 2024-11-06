@@ -134,21 +134,12 @@ Route::post('/reply/update/{id}', [ReplyController::class, 'updateReplies']);
 Route::delete('/reply/delete/{id}', [ReplyController::class, 'deleteReplies']);
 
 
-
 //Product
 Route::get('/product', [ProductController::class, 'getAllProduct']);
 Route::get('/product/{id}', [ProductController::class, 'getProductById']);
 Route::post('/product/create', [ProductController::class, 'createProduct']);
 Route::post('/product/update/{id}', [ProductController::class, 'updateProduct']);
 Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct']);
-
-
-//Affiliate
-Route::get('/affiliate', [AffiliateController::class, 'getAllAffiliate']);
-Route::get('/affiliate/{id}', [AffiliateController::class, 'getAffiliateById']);
-Route::post('/affiliate/create', [AffiliateController::class, 'createAffiliate']);
-Route::post('/affiliate/update/{id}', [AffiliateController::class, 'updateAffiliate']);
-Route::delete('/affiliate/delete/{id}', [AffiliateController::class, 'deleteAffiliate']);
 
 
 //Fish Image

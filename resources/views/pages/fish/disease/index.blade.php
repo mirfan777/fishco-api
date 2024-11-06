@@ -7,6 +7,7 @@
         <!-- Menyertakan file CSS dan JavaScript dari Vite -->
         @vite(['resources/css/style.css', 'resources/js/app.js'])
         <!-- Library jQuery dan SweetAlert2 untuk keperluan interaksi dan notifikasi -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
@@ -70,8 +71,8 @@
         
         
     </body>
-    </html>
-
+ 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     let currentPage = 1;
     let currentSearch = '';
@@ -209,3 +210,4 @@
         fetchDiseaseData(1, query);
     });
 </script>
+</html>

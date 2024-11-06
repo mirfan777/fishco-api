@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('habitat');
             $table->string('overview');
             $table->string('thumbnail');
+            $table->float('min_size');
+            $table->float('max_size');
             $table->timestamps();
         });
     }

@@ -43,56 +43,38 @@
       </div>
     </section>
     
-    <!-- jQuery AJAX Login Script -->
-    <script>
-        $(document).ready(function() {
-            const csrfToken = $('meta[name="csrf-token"]').attr('content'); 
-            
-            $('#loginForm').on('submit', function(e) {
-                e.preventDefault(); // Prevent default form submission
-                
-                // Kosongkan pesan error setiap kali submit
-                $('#emailError').text('');
-                $('#passwordError').text('');
 
-                // Ambil data dari form
-                const email = $('#email').val();
-                const password = $('#password').val();
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#loginButton').click(function(e) {
+        e.preventDefault();
 
-                $.ajax({
-                    url: '/api/login',
-                    type: 'POST',
-                    dataType: 'json',
-                    contentType: 'application/json',
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken // Sertakan CSRF token di header
-                    },
-                    data: JSON.stringify({
-                        email: email,
-                        password: password
-                    }),
-                    success: function(response) {
-                      alert(response.message); // Menampilkan pesan sukses
-                      window.location.href = '/dashboard'; // Redirect ke dashboard
-                    },
-                    error: function(xhr) {
-                        if (xhr.status === 422) {
-                            // Jika ada error validasi dari server
-                            const errors = xhr.responseJSON.errors;
-                            if (errors.email) {
-                                $('#emailError').text(errors.email[0]);
-                            }
-                            if (errors.password) {
-                                $('#passwordError').text(errors.password[0]);
-                            }
-                        } else {
-                            // Aksi jika login gagal karena alasan lain
-                            alert('Login gagal: ' + xhr.responseJSON.message);
-                        }
-                    }
-                });
-            });
+        const email = $('#email').val();
+        const password = $('#password').val();
+
+        $.ajax({
+            url: '/api/login',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            data: JSON.stringify({
+                email: email,
+                password: password
+            }),
+            success: function(response) {
+                alert(response.message); 
+                window.location.href = '/dashboard'; 
+            },
+            error: function(xhr) {
+                alert('Login failed: ' + xhr.responseText);
+            }
         });
-    </script>
+    });
+});
+</script>
 </body>
 </html>

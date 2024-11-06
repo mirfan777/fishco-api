@@ -9,8 +9,4 @@ class Products extends Model
     protected $table = 'products';
     
     protected $guarded = ['id'];
-
-    public function affiliate(){
-        return $this->hasOne(Affiliate::class);
-    }
 }
