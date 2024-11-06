@@ -49,7 +49,8 @@
         </div>
     </div>
 </div>
-
+{{-- <meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script>
 $(document).ready(function() {
     $('#create-disease form').on('submit', function(e) {
@@ -81,6 +82,9 @@ $(document).ready(function() {
             url: '/api/disease/create',
             type: 'POST',
             data: formData,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
             success: function(response) {
                 // Show success message
                 Swal.fire({
