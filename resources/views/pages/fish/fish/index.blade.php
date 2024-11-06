@@ -15,13 +15,13 @@
     <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5"> 
         <section class="dark:bg-gray-900 p-3 sm:p-5">
             <div class="mx-auto w-full h-full px-4 lg:px-12">
-                <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6" style="font-size: 24px;">Fish Table</h2>
+                <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6" style="font-size: 24px;">Tabel Ikan</h2>
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
                         <div class="w-full md:w-1/2">
                             <form id="searchForm" class="flex items-center">
                                 <label for="simple-search" class="sr-only">Search</label>
-                                <input type="text" id="simple-search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-10 p-2" placeholder="Search">
+                                <input type="text" id="simple-search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-10 p-2" placeholder="Cari Ikan">
                             </form>
                         </div>
                         <div class="w-full md:w-auto">
@@ -32,11 +32,11 @@
                         <table class="w-full text-sm text-left text-gray-500">
                             <thead class="bg-gray-50 text-gray-700 uppercase text-xs dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th class="px-4 py-3">Fish name</th>
-                                    <th class="px-4 py-3">Species</th>
+                                    <th class="px-4 py-3">Nama Ikan</th>
+                                    <th class="px-4 py-3">Spesies</th>
                                     <th class="px-4 py-3">Habitat</th>
-                                    <th class="px-4 py-3">Food Type</th>
-                                    <th class="px-4 py-3">Action</th>
+                                    <th class="px-4 py-3">Jenis Makanan</th>
+                                    <th class="px-4 py-3">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody id="fishTable" class="bg-white dark:bg-gray-800">
