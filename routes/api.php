@@ -9,13 +9,13 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\FishController;
 use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\MedicineController;
-use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AquariumController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\FishImageController;
+use App\Http\Controllers\ReportController;
 
 use App\Http\Resources\AffiliateResource;
 use App\Http\Resources\ArticleResource;
@@ -148,6 +148,13 @@ Route::get('/fishimage/{id}', [FishImageController::class, 'getFishImage']);
 Route::post('/fishimage/create', [FishImageController::class, 'createFishImage']);
 Route::post('/fishimage/update/{id}', [FishImageController::class, 'updateFishImage']);
 Route::delete('/fishimage/delete/{id}', [FishImageController::class, 'deleteFishImage']);
+
+//Report
+Route::get('/report', [ReportController::class, 'getAllReport']);
+Route::get('/report/{id}', [ReportController::class, 'getReportById']);
+Route::post('/report/create', [ReportController::class, 'createReport']);
+Route::post('/report/update/{id}', [ReportController::class, 'updateReport']);
+Route::delete('/report/delete/{id}', [ReportController::class, 'deleteReport']);
 
 //Dropdown
 Route::get('/diseases', [DiseaseController::class, 'getAllDiseases']);

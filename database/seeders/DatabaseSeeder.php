@@ -176,6 +176,8 @@ class DatabaseSeeder extends Seeder
         }
         DB::table('medicines')->insert($medicine);
 
+        // Seed fish_images table
+
         $fishImages = [];
         for ($i = 1; $i <= $recordCount; $i++) {
             $fishImages[] = [
@@ -188,6 +190,20 @@ class DatabaseSeeder extends Seeder
             ];
         }
         DB::table('fish_images')->insert($fishImages);
+
+
+        // Seed reports table
+        $reports = [];
+        for ($i = 1; $i <= $recordCount; $i++) {
+            $reports[] = [
+                'user_id' => rand(1, $recordCount),
+                'title' => 'Report ' . $i,
+                'report' => 'This is the report for user ' . $i,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        }
+        DB::table('reports')->insert($reports);
 
     
 
