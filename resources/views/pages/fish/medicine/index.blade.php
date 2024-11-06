@@ -84,22 +84,62 @@
         });
     };
 
+    function populateDropdowns(diseaseId = null, fishId = null) {
+
+        $.ajax({
+            url: '/api/diseases',
+            type: 'GET',
+            success: function(data) {
+                const diseaseDropdown = $('#edit-disease-id');
+                diseaseDropdown.empty();
+                diseaseDropdown.append('<option value="">Select Disease</option>');
+                data.forEach(function(disease) {
+                    const isSelected = diseaseId === disease.id ? 'selected' : '';
+                    diseaseDropdown.append(`<option value="${disease.id}" ${isSelected}>${disease.name}</option>`);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching diseases:', error);
+            }
+        });
+
+        // Populate Fish Dropdown
+        $.ajax({
+            url: '/api/fishes',
+            type: 'GET',
+            success: function(data) {
+                const fishDropdown = $('#edit-fish-id');
+                fishDropdown.empty();
+                fishDropdown.append('<option value="">Select Fish</option>');
+                data.forEach(function(fish) {
+                    const isSelected = fishId === fish.id ? 'selected' : '';
+                    fishDropdown.append(`<option value="${fish.id}" ${isSelected}>${fish.name}</option>`);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching fishes:', error);
+            }
+        });
+    }
+
+
     const fetchMedicineDataById = (id) => {
         $.ajax({
             url: `/api/medicine/${id}`,
             method: 'GET',
             success: function(response) {
-                console.log("API Response:", response); 
+                
                 $('#edit-medicine-name').val(response.data.name);
-                // $('#edit-symptoms').val(response.data.symptoms);
                 $('#edit-medicine-description').val(response.data.description);
+                
+                populateDropdowns(response.data.disease_id, response.data.fish_id);
 
                 currentMedicineId = id;
-                initializeModalPosition(); // Ensure modal is centered
+                initializeModalPosition();
                 $('#edit-medicine').show();
             },
             error: function(xhr, status, error) {
-                console.error("API Error:", error); // Debug: Log error details
+                console.error("API Error:", error); 
             }
         });
     };
