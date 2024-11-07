@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles</title>
+    <title>Articles Management</title>
     @vite(['resources/css/style.css', 'resources/js/app.js'])
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
+    <!-- Include modals for create and edit actions -->
     @include('pages.article.modals.create')
     @include('pages.article.modals.edit')
     @include('layout.main')
@@ -22,16 +23,19 @@
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
                         <div class="w-full md:w-1/2">
+                            <!-- Search Form -->
                             <form id="searchForm" class="flex items-center">
                                 <label for="simple-search" class="sr-only">Cari</label>
                                 <input type="text" id="simple-search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-10 p-2" placeholder="Cari artikel">
                             </form>
                         </div>
                         <div class="w-full md:w-auto">
+                            <!-- Add Article Button -->
                             <button data-modal-target="create-article" data-modal-toggle="create-article" class="bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
                         </div>
                     </div>
 
+                    <!-- Articles Table -->
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500">
                             <thead class="bg-gray-50 text-gray-700 uppercase text-xs dark:bg-gray-700 dark:text-gray-400">
@@ -47,6 +51,7 @@
                         </table>
                     </div>
 
+                    <!-- Pagination Navigation -->
                     <nav class="flex items-center justify-between p-4" aria-label="Table Navigation">
                         <span class="text-sm font-normal text-gray-500 dark:text-gray-400" id="pagination-info"></span>
                         <ul class="inline-flex items-center -space-x-px" id="pagination"></ul>
@@ -56,10 +61,12 @@
         </section>
     </main>
 
+    <!-- JavaScript Section -->
     <script>
         let currentPage = 1;
         let currentSearch = '';
 
+        // Fetch article data and populate the table
         const fetchArticleData = (page = 1, query = '') => {
             currentPage = page;
             currentSearch = query;
@@ -84,7 +91,6 @@
                                 </tr>
                             `);
                         });
-
                         renderPagination(response.meta);
                     } else {
                         articleTable.append(`
@@ -104,6 +110,7 @@
             });
         };
 
+        // Render pagination based on the API metadata
         const renderPagination = (meta) => {
             const pagination = $('#pagination');
             const paginationInfo = $('#pagination-info');
@@ -132,76 +139,7 @@
             `);
         };
 
-        const createArticle = () => {
-            const formData = {
-                title: $('#create-article-title').val(),
-                slug: $('#create-article-slug').val(),
-                body: $('#create-article-body').val()
-            };
-
-            $.ajax({
-                url: '/api/article/create',
-                method: 'POST',
-                data: formData,
-                success: function(response) {
-                    Swal.fire('Success', response.message, 'success');
-                    $('#create-article').hide();
-                    fetchArticleData(currentPage, currentSearch);
-                },
-                error: function(xhr, status, error) {
-                    Swal.fire('Error', 'Failed to create article', 'error');
-                }
-            });
-        };
-
-        const updateArticle = () => {
-            const formData = {
-                title: $('#edit-article-title').val(),
-                slug: $('#edit-article-slug').val(),
-                body: $('#edit-article-body').val()
-            };
-
-            $.ajax({
-                url: `/api/article/update/${currentArticleId}`,
-                method: 'POST',
-                data: formData,
-                success: function(response) {
-                    Swal.fire('Success', response.message, 'success');
-                    $('#edit-article').hide();
-                    fetchArticleData(currentPage, currentSearch);
-                },
-                error: function(xhr, status, error) {
-                    Swal.fire('Error', 'Failed to update article', 'error');
-                }
-            });
-        };
-
-        const deleteArticle = (id) => {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: `/api/article/delete/${id}`,
-                        method: 'DELETE',
-                        success: function(response) {
-                            Swal.fire('Deleted!', response.message, 'success');
-                            fetchArticleData(currentPage, currentSearch);
-                        },
-                        error: function(xhr, status, error) {
-                            Swal.fire('Error', 'Failed to delete article', 'error');
-                        }
-                    });
-                }
-            });
-        };
-
+        // Search form submission
         $('#searchForm').on('submit', function(e) {
             e.preventDefault();
             const query = $('#simple-search').val();
