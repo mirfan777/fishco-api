@@ -18,7 +18,8 @@ return new class extends Migration
             $table->text('body');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users'); 
-            $table->json('comment_id')->nullable(); //
+            $table->json('comment_id')->nullable(); 
+            $table->string('thumbnail');
             $table->timestamps();
         });
     }

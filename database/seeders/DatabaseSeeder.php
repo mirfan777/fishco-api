@@ -69,6 +69,7 @@ class DatabaseSeeder extends Seeder
                 'body' => 'This is the body of article ' . $i,
                 'user_id' => rand(1, $recordCount),
                 'comment_id' => json_encode([rand(1, $recordCount)]),
+                'thumbnail' => 'article' . $i . '.jpg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];

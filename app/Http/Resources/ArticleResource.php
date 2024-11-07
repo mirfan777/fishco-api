@@ -21,6 +21,7 @@ class ArticleResource extends JsonResource
             'body' => $this->body,
             'user_id' => $this->user_id,
             'comment_id' => $this->comment_id,
+            'thumbnail' => $this->thumbnail,
             'created_at' => $this->created_at->format('d-m-Y')
         ];
     }

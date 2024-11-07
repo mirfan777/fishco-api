@@ -29,29 +29,61 @@ class ArticleController extends Controller
     }
 
     function createArticle(Request $request){
-        $article = Article::create($request->all());
+        try {
+            if($request->hasFile('thumbnail')){
+                $file = $request->file('thumbnail');
+                $timestamp = time();
+                $extension = $file->getClientOriginalExtension();
+                $filename = $timestamp . '.' . $extension;
 
-        return response()->json([
-            'message' => 'Article created successfully',
-            'data' => new ArticleResource($article)
-        ]);
+                $file->move(public_path('data/images'), $filename);
+
+                $article = Article::create([
+                    'title' => $request->title,
+                    'body' => $request->body,
+                    'thumbnail' => $filename
+                ]);
+
+                return response()->json([
+                    'message' => 'Article created successfully',
+                    'data' => new ArticleResource($article)
+                ]);
+            } else {
+                return response()->json([
+                    'message' => 'Please upload a thumbnail'
+                ], 400);
+            }
+        }
+        catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to create article'
+            ], 400);
+        }
     }
 
     function updateArticle(Request $request, $id){
-        $article = Article::find($id);
+        $existingArticle = Article::find($id);
 
-        if (!$article) {
-            return response()->json([
-                'message' => 'Article not found'
-            ], 404);
+        if($request->hasFile('thumbnail')){
+            $file = $request->file('thumbnail');
+            $timestamp = time();
+            $extension = $file->getClientOriginalExtension();
+            $filename = $timestamp . '.' . $extension;
+
+            $file->move(public_path('data/images'), $filename);
+
+            $existingArticle->thumbnail = $filename;
+        }else{
+            $filename = $existingArticle->thumbnail;
         }
 
-        $article->update($request->all());
-
-        return response()->json([
-            'message' => 'Article updated successfully',
-            'data' => new ArticleResource($article)
+        $response = $existingArticle->update([
+            'title' => $request->title,
+            'body' => $request->body,
+            'thumbnail' => $filename
         ]);
+
+        return $response;
     }
 
     function deleteArticle($id){
