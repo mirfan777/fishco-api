@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'User ' . $i,
                 'email' => 'user' . $i . '@example.com',
                 'password' => bcrypt('password'),
-                'role_id' => rand(1, 2),
+                'role' => rand(1, 3),
                 'address' => 'Address ' . $i,
                 'phone_number' => '123456789' . $i,
                 'email_verified_at' => Carbon::now(),

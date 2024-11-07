@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\FishController;
 use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\MedicineController;
@@ -74,6 +75,12 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 //     return $response;
 // });
+
+// User
+Route::get('/users', [UserController::class, 'getAllUsers']);
+Route::get('/user', [UserController::class, 'getAllUser']);
+Route::get('/user/{id}', [UserController::class, 'getUserById']);
+
 
 
 //Fish

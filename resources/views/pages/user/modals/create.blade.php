@@ -1,14 +1,14 @@
 <!-- Main modal -->
-<div id="create-fish" tabindex="-1" aria-hidden="true" class="hidden overflow-x-hidden fixed top-0 right-0 left-0 z-[99999] bg-black bg-opacity-50 justify-center items-center w-full md:inset-0 h-[calc(100%-0rem)]">
-    <div class="relative p-4 w-full max-w-4xl max-h-full">
+<div id="create-user" tabindex="-1" aria-hidden="true" class="hidden overflow-x-hidden fixed top-0 right-0 left-0 z-[99999] bg-black bg-opacity-50 justify-center items-center w-full md:inset-0 h-[calc(100%-0rem)]">
+    <div class="relative p-4 w-full max-w-xl max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Tambah Data Ikan
+                    Tambah User
                 </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="create-fish">
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="create-user">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                     </svg>
@@ -17,191 +17,108 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5 space-y-4">
-                <form class="w-full" enctype="multipart/form-data">
-                    <div class="flex flex-col md:flex-row md:justify-between w-full gap-5">
-                        {{-- taksonomi --}}
-                        <div class="md:w-1/2">
+                <form class="w-full">
+                    <div class="flex flex-col">
+                        <div class="w-full">
                             <!-- Name -->
                             <div class="mb-3">
-                                <label for="create-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                <input type="text" id="create-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter fish name" required />
-                            </div>
-                        
-                            <!-- Kingdom -->
-                            <div class="mb-3">
-                                <label for="create-kingdom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kingdom</label>
-                                <input type="text" id="create-kingdom" name="kingdom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter kingdom" required />
-                            </div>
-                        
-                            <!-- Phylum -->
-                            <div class="mb-3">
-                                <label for="create-phylum" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phylum</label>
-                                <input type="text" id="create-phylum" name="phylum" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter phylum" required />
-                            </div>
-                        
-                            <!-- Class -->
-                            <div class="mb-3">
-                                <label for="create-class" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class</label>
-                                <input type="text" id="create-class" name="class" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter class" required />
-                            </div>
-                        
-                            <!-- Order -->
-                            <div class="mb-3">
-                                <label for="create-order" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Order</label>
-                                <input type="text" id="create-order" name="order" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter order" required />
-                            </div>
-                        
-                            <!-- Family -->
-                            <div class="mb-3">
-                                <label for="create-family" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Family</label>
-                                <input type="text" id="create-family" name="family" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter family" required />
-                            </div>
-                        
-                            <!-- Genus -->
-                            <div class="mb-3">
-                                <label for="create-genus" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Genus</label>
-                                <input type="text" id="create-genus" name="genus" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter genus" required />
-                            </div>
-                        
-                            <!-- Species -->
-                            <div class="mb-3">
-                                <label for="create-species" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Species</label>
-                                <input type="text" id="create-species" name="species" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter species" required />
-                            </div>
-                        
-                            <!-- Colour -->
-                            <div class="mb-3">
-                                <label for="create-colour" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Colour</label>
-                                <input type="text" id="create-colour" name="colour" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter colour" required />
-                            </div>
-                        </div>
-                    
-                        <div class="md:w-1/2">
-                            {{-- food --}}
-                            <div>
-                                <!-- Food Type -->
-                                <div class="mb-3">
-                                    <label for="create-food_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Food Type</label>
-                                    <input type="text" id="create-food_type" name="food_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter food type" required />
-                                </div>
-                            
-                                <!-- Food -->
-                                <div class="mb-3">
-                                    <label for="create-food" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Food</label>
-                                    <input type="text" id="create-food" name="food" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter food" required />
-                                </div>
+                                <label for="create-user-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                <input type="text" id="create-user-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter name" required />
                             </div>
 
-                            {{-- habitat --}}
-                            <div>
-                                <!-- Habitat -->
-                                <div class="mb-3">
-                                    <label for="create-habitat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Habitat</label>
-                                    <input type="text" id="create-habitat" name="habitat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter habitat" required />
-                                </div>
-
-                                <!-- Min Temperature -->
-                                <div class="mb-3">
-                                    <label for="create-min_temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min Temperature</label>
-                                    <input type="number" step="0.1" id="create-min_temperature" name="min_temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter min temperature" required />
-                                </div>
-
-                                <!-- Max Temperature -->
-                                <div class="mb-3">
-                                    <label for="create-max_temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max Temperature</label>
-                                    <input type="number" step="0.1" id="create-max_temperature" name="max_temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter max temperature" required />
-                                </div>
-
-                                <!-- Min pH -->
-                                <div class="mb-3">
-                                    <label for="create-min_ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min pH</label>
-                                    <input type="number" step="0.1" id="create-min_ph" name="min_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter min pH" required />
-                                </div>
-
-                                <!-- Max pH -->
-                                <div class="mb-3">
-                                    <label for="create-max_ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max pH</label>
-                                    <input type="number" step="0.1" id="create-max_ph" name="max_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter max pH" required />
-                                </div>
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="create-user-email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                <input type="email" id="create-user-email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter email" required />
                             </div>
 
-                            {{-- thumbnail dan overview --}}
-                            <div>
-                                <label for="create-overview" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fish Detail</label>
-                                <textarea id="create-overview" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Overview"></textarea>
-                            
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="create-thumbnail">Upload fish image</label>
-                                <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-thumbnail" type="file">
+                            <!-- Password -->
+                            <div class="mb-3">
+                                <label for="create-user-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                <input type="password" id="create-user-password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter password" required />
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div class="mb-3">
+                                <label for="create-user-confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
+                                <input type="password" id="create-user-confirm-password" name="confirm_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm password" required />
+                            </div>
+
+                            <!-- Address -->
+                            <div class="mb-3">
+                                <label for="create-user-address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                                <textarea id="create-user-address" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter address" required></textarea>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="mb-3">
+                                <label for="create-user-phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+                                <input type="text" id="create-user-phone" name="phone_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter phone number" required />
                             </div>
                         </div>
                     </div>
 
-                
                     <!-- Submit Button -->
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-                  </form>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
+{{-- <meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script>
-    $(document).ready(function() {
-    $('#create-fish form').on('submit', function(e) {
+$(document).ready(function() {
+    $('#create-user form').on('submit', function(e) {
         e.preventDefault();
-        
-        // Create FormData object to handle file uploads
-        const formData = new FormData();
-        
-        // Get the file input
-        const fileInput = document.getElementById('create-thumbnail');
-        if (fileInput.files.length > 0) {
-            formData.append('thumbnail', fileInput.files[0]);
+
+        // Validate form before submission
+        if (!validateForm()) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please fill out all required fields correctly.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
         }
-        
-        // Add all other form fields to FormData
-        formData.append('name', $('#create-name').val());
-        formData.append('kingdom', $('#create-kingdom').val());
-        formData.append('phylum', $('#create-phylum').val());
-        formData.append('class', $('#create-class').val());
-        formData.append('order', $('#create-order').val());
-        formData.append('family', $('#create-family').val());
-        formData.append('genus', $('#create-genus').val());
-        formData.append('species', $('#create-species').val());
-        formData.append('colour', $('#create-colour').val());
-        formData.append('food_type', $('#create-food_type').val());
-        formData.append('food', $('#create-food').val());
-        formData.append('min_temperature', $('#create-min_temperature').val());
-        formData.append('max_temperature', $('#create-max_temperature').val());
-        formData.append('min_ph', $('#create-min_ph').val());
-        formData.append('max_ph', $('#create-max_ph').val());
-        formData.append('habitat', $('#create-habitat').val());
-        formData.append('overview', $('#create-overview').val());
+
+        // Prepare form data without picture
+        const formData = {
+            name: $('#create-user-name').val(),
+            email: $('#create-user-email').val(),
+            password: $('#create-user-password').val(),
+            confirm_password: $('#create-user-confirm-password').val(),
+            address: $('#create-user-address').val(),
+            phone_number: $('#create-user-phone').val(),
+            role: 1
+        };
 
         // Disable submit button while processing
         const submitBtn = $(this).find('button[type="submit"]');
         submitBtn.prop('disabled', true);
 
         $.ajax({
-            url: '/api/fish/create',
+            url: '/api/register',
             type: 'POST',
             data: formData,
-            processData: false,
-            contentType: false,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
             success: function(response) {
                 // Show success message
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Fish data has been successfully added',
+                    text: 'User data has been successfully added',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 }).then((result) => {
                     // Reset form and close modal
-                    $('#create-fish form')[0].reset();
-                    $('#create-fish').hide();
-                    
+                    $('#create-user form')[0].reset();
+                    $('#create-user').hide();
                 });
-                $('[data-modal-hide="create-fish"]').click();
+                $('[data-modal-hide="create-user"]').click();
                 setTimeout(function () {
                     location.reload();
                 }, 500);
@@ -210,11 +127,10 @@
                 // Show error message
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Failed to add fish data. Please try again.',
+                    text: 'Failed to add user data. Please try again.',
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
-                
                 console.error('Error:', error);
             },
             complete: function() {
@@ -228,9 +144,9 @@
     // Form validation
     function validateForm() {
         let isValid = true;
-        
+
         // Check required fields
-        $('#create-fish form input[required], #create-fish form textarea[required]').each(function() {
+        $('#create-user form input[required], #create-user form textarea[required]').each(function() {
             if (!$(this).val()) {
                 $(this).addClass('border-red-500');
                 isValid = false;
@@ -238,33 +154,12 @@
                 $(this).removeClass('border-red-500');
             }
         });
-        
-        // Validate number fields
-        const numberFields = ['min_temperature', 'max_temperature', 'min_ph', 'max_ph'];
-        numberFields.forEach(field => {
-            const value = $(`#${field}`).val();
-            if (value && !$.isNumeric(value)) {
-                $(`#${field}`).addClass('border-red-500');
-                isValid = false;
-            }
-        });
-        
-        // Validate file input
-        const fileInput = document.getElementById('file_input');
-        if (fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-            if (!validTypes.includes(file.type)) {
-                $(fileInput).addClass('border-red-500');
-                isValid = false;
-            }
-        }
-        
+
         return isValid;
     }
 
     // Real-time validation on input change
-    $('#create-fish form input, #create-fish form textarea').on('input', function() {
+    $('#create-user form input, #create-user form textarea').on('input', function() {
         if ($(this).val()) {
             $(this).removeClass('border-red-500');
         }
