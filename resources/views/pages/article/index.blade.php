@@ -13,7 +13,6 @@
 <body>
     <!-- Include modals for create and edit actions -->
     @include('pages.article.modals.create')
-    @include('pages.article.modals.edit')
     @include('layout.main')
 
     <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">

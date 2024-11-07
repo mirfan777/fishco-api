@@ -94,8 +94,8 @@ $(document).ready(function() {
                 }).then(() => {
                     $('#create-article form')[0].reset();
                     $('#create-article').hide();
-                    $('[data-modal-hide="create-article"]').click();
                 });
+                $('[data-modal-hide="create-article"]').click();
                 setTimeout(function () {
                     location.reload();
                 }, 500);
