@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disease</title>
+    <title>Product</title>
     <!-- Menyertakan file CSS dan JavaScript dari Vite -->
     @vite(['resources/css/style.css', 'resources/js/app.js'])
     <!-- Library jQuery dan SweetAlert2 untuk keperluan interaksi dan notifikasi -->
@@ -13,15 +13,15 @@
 </head>
 <body>
     <!-- Menyertakan modal untuk form "Tambah Data Penyakit" -->
-    @include('pages.fish.disease.modals.create')
-    @include('pages.fish.disease.modals.edit')
+    @include('pages.product.product.modals.create')
+    @include('pages.product.product.modals.edit')
     <!-- Menyertakan layout utama -->
     @include('layout.main')
     
     <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
         <section class="dark:bg-gray-900 p-3 sm:p-5">
             <div class="mx-auto w-full h-full px-4 lg:px-12">
-                <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6" style="font-size: 24px;">Disease Table</h2>
+                <h2 class="text-title-md2 font-bold text-black dark:text-white mb-6" style="font-size: 24px;">Product Table</h2>
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <!-- Bagian Pencarian dan Tombol Tambah Data -->
                     <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
@@ -34,7 +34,7 @@
                         </div>
                         <!-- Tombol Tambah Data -->
                         <div class="w-full md:w-auto">
-                            <button data-modal-target="create-disease" data-modal-toggle="create-disease" class="bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
+                            <button data-modal-target="create-product" data-modal-toggle="create-product" class="bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
                         </div>
                     </div>
 
@@ -43,12 +43,15 @@
                         <table class="w-full text-sm text-left text-gray-500">
                             <thead class="bg-gray-50 text-gray-700 uppercase text-xs dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" class="px-4 py-3">Disease Name</th>
-                                    <th scope="col" class="px-4 py-3">Symptoms</th>
+                                    <th scope="col" class="px-4 py-3">Name/th>
+                                    <th scope="col" class="px-4 py-3">Category</th>
+                                    <th scope="col" class="px-4 py-3">Description</th>
+                                    <th scope="col" class="px-4 py-3">Price</th>
+                                    <th scope="col" class="px-4 py-3">Link</th>
                                     <th scope="col" class="px-4 py-3">Action</th>
                                 </tr> 
                             </thead>
-                            <tbody id="diseaseTable" class="bg-white dark:bg-gray-800">
+                            <tbody id="productTable" class="bg-white dark:bg-gray-800">
                                 <!-- Baris data akan dimuat secara dinamis dengan JavaScript -->
                             </tbody>
                         </table>
@@ -76,28 +79,28 @@
 <script>
 let currentPage = 1;
 let currentSearch = '';
-let currentDiseaseId = null;
+let currentProductId = null;
 
 const initializeModalPosition = () => {
-    $('#edit-disease').removeClass('hidden').addClass('flex').css({
+    $('#edit-product').removeClass('hidden').addClass('flex').css({
         'justify-content': 'center',
         'align-items': 'center'
     });
 };
 
-const fetchDiseaseDataById = (id) => {
+const fetchProductDataById = (id) => {
     $.ajax({
-        url: `/api/disease/${id}`,
+        url: `/api/product/${id}`,
         method: 'GET',
         success: function(response) {
             console.log("API Response:", response); 
-            $('#edit-disease-name').val(response.data.name);
+            $('#edit-product-name').val(response.data.name);
             $('#edit-symptoms').val(response.data.symptoms);
-            $('#edit-disease-description').val(response.data.description);
+            $('#edit-product-description').val(response.data.description);
 
-            currentDiseaseId = id;
+            currentProductId = id;
             initializeModalPosition(); // Ensure modal is centered
-            $('#edit-disease').show();
+            $('#edit-product').show();
         },
         error: function(xhr, status, error) {
             console.error("API Error:", error); // Debug: Log error details
@@ -105,28 +108,31 @@ const fetchDiseaseDataById = (id) => {
     });
 };
 
-const fetchDiseaseData = (page = 1, query = '' ) => {
+const fetchProductData = (page = 1, query = '' ) => {
     currentPage = page;
     currentSearch = query;
 
     $.ajax({
-        url: `/api/disease?page=${page}&search=${query}`,
+        url: `/api/product?page=${page}&search=${query}`,
         method: 'GET',
         success: function(response) {
             console.log("API Response:", response); // Debug: Log entire response
 
-            const diseaseTable = $('#diseaseTable');
-            diseaseTable.empty();
+            const productTable = $('#productTable');
+            productTable.empty();
 
             // Ensure response structure is as expected
             if (response.data && response.data.length > 0) {
-                response.data.forEach(disease => {
-                    diseaseTable.append(`
+                response.data.forEach(product => {
+                    productTable.append(`
                         <tr class="border-b dark:border-gray-700">
-                            <td class="px-4 py-3">${disease.name}</td>
-                            <td class="px-4 py-3">${disease.symptoms}</td>
+                            <td class="px-4 py-3">${product.name}</td>
+                            <td class="px-4 py-3">${product.category}</td>
+                            <td class="px-4 py-3">${product.description}</td>
+                            <td class="px-4 py-3">${product.price}</td>
+                            <td class="px-4 py-3">${product.link}</td>
                             <td class="px-4 py-3">
-                                <button data-modal-target="edit-disease" data-modal-toggle="edit-disease" onclick="fetchDiseaseDataById(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
+                                <button data-modal-target="edit-product" data-modal-toggle="edit-product" onclick="fetchProductDataById(${product.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
                                 <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">Hapus</button>
                             </td>
                         </tr>
@@ -135,7 +141,7 @@ const fetchDiseaseData = (page = 1, query = '' ) => {
 
                 renderPagination(response.meta);
             } else {
-                diseaseTable.append(`
+                productTable.append(`
                     <tr>
                         <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
                     </tr>
@@ -144,7 +150,7 @@ const fetchDiseaseData = (page = 1, query = '' ) => {
         },
         error: function(xhr, status, error) {
             console.error("API Error:", error); // Debug: Log error details
-            $('#diseaseTable').html(`
+            $('#productTable').html(`
                 <tr>
                     <td colspan="3" class="px-4 py-3 text-center text-red-500">Gagal memuat data</td>
                 </tr>
@@ -168,7 +174,7 @@ const renderPagination = (meta) => {
     // Previous page button
     pagination.append(`
         <li>
-            <button onclick="fetchDiseaseData(${meta.current_page - 1}, '${currentSearch}')" 
+            <button onclick="fetchProductData(${meta.current_page - 1}, '${currentSearch}')" 
                     class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg ${meta.current_page === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}"
                     ${meta.current_page === 1 ? 'disabled' : ''}>
                 Previous
@@ -180,7 +186,7 @@ const renderPagination = (meta) => {
     meta.links.slice(1, -1).forEach(link => {
         pagination.append(`
             <li>
-                <button onclick="fetchDiseaseData(${link.label}, '${currentSearch}')" 
+                <button onclick="fetchProductData(${link.label}, '${currentSearch}')" 
                         class="px-3 py-2 leading-tight ${link.active 
                             ? 'text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700' 
                             : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100'}">
@@ -193,7 +199,7 @@ const renderPagination = (meta) => {
     // Next page button
     pagination.append(`
         <li>
-            <button onclick="fetchDiseaseData(${meta.current_page + 1}, '${currentSearch}')" 
+            <button onclick="fetchProductData(${meta.current_page + 1}, '${currentSearch}')" 
                     class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg ${meta.current_page === meta.last_page ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}"
                     ${meta.current_page === meta.last_page ? 'disabled' : ''}>
                 Next
@@ -202,12 +208,12 @@ const renderPagination = (meta) => {
     `);
 };
 
-fetchDiseaseData();
+fetchProductData();
 
 $('#searchForm').on('submit', function(e) {
     e.preventDefault();
     const query = $('#simple-search').val();
-    fetchDiseaseData(1, query);
+    fetchProductData(1, query);
 });
 </script>
 </html>
