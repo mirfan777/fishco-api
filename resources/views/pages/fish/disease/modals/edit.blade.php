@@ -49,64 +49,63 @@
 
 
 <script>
-    
-            // Close modal on button click
-            $('#edit-disease form').on('submit', function (e) {
-                e.preventDefault();
+        // Close modal on button click
+        $('#edit-disease form').on('submit', function (e) {
+            e.preventDefault();
 
-            console.log(currentDiseaseId);
+        console.log(currentDiseaseId);
 
-            // Edit formData object
-            const formData = new FormData();
+        // Edit formData object
+        const formData = new FormData();
 
-            //get disease id
-            
-            // Append other form data to formData object
-            formData.append('name', $('#edit-disease-name').val());
-            formData.append('symptoms', $('#edit-symptoms').val());
-            formData.append('description', $('#edit-disease-description').val());
+        //get disease id
+        
+        // Append other form data to formData object
+        formData.append('name', $('#edit-disease-name').val());
+        formData.append('symptoms', $('#edit-symptoms').val());
+        formData.append('description', $('#edit-disease-description').val());
 
-            const submitBtn = $(this).find('button[type="submit"]');
-            submitBtn.prop('disabled', true);
+        const submitBtn = $(this).find('button[type="submit"]');
+        submitBtn.prop('disabled', true);
 
-            // Kirim permintaan AJAX
-            $.ajax({
-                url: `/api/disease/update/${currentDiseaseId}`, 
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    // Notifikasi sukses
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success!',
-                        text: 'Data berhasil diperbarui!',
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
+        // Kirim permintaan AJAX
+        $.ajax({
+            url: `/api/disease/update/${currentDiseaseId}`, 
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // Notifikasi sukses
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Data berhasil diperbarui!',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
 
-                    // Menutup modal
-                    closeEditModal(); // Panggil fungsi untuk menutup modal
+                // Menutup modal
+                closeEditModal(); // Panggil fungsi untuk menutup modal
 
-                    // Reload halaman setelah 500ms
-                    setTimeout(function () {
-                        location.reload();
-                    }, 500);
-                },
-                error: function (xhr, status, error) {
-                    // Notifikasi error
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Failed!',
-                        text: `Error: ${xhr.responseJSON.message || 'Data gagal diperbarui.'}`
-                    });
-                    console.log("Error response:", xhr.responseJSON);
-                    $('#edit-disease').hide(); // Sembunyikan modal setelah berhasil
-                    setTimeout(function () {
-                        location.reload();
-                    }, 2000);
-                }
-            });
+                // Reload halaman setelah 500ms
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
+            },
+            error: function (xhr, status, error) {
+                // Notifikasi error
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Failed!',
+                    text: `Error: ${xhr.responseJSON.message || 'Data gagal diperbarui.'}`
+                });
+                console.log("Error response:", xhr.responseJSON);
+                $('#edit-disease').hide(); // Sembunyikan modal setelah berhasil
+                setTimeout(function () {
+                    location.reload();
+                }, 2000);
+            }
         });
+    });
 </script>
