@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('fish_images', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('fish_id');
-            $table->foreign('fish_id')->references('id')->on('fishes');
+            $table->foreign('fish_id')->references('id')->on('fishes')->onDelete('cascade');
             $table->integer('status');
             $table->unsignedBigInteger('disease_id');
-            $table->foreign('disease_id')->references('id')->on('diseases');
+            $table->foreign('disease_id')->references('id')->on('diseases')->onDelete('cascade');
             $table->string('image');
             $table->timestamps();
         });

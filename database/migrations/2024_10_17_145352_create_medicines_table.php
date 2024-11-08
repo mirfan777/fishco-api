@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->unsignedBigInteger('disease_id');
-            $table->foreign('disease_id')->references('id')->on('diseases');
+            $table->foreign('disease_id')->references('id')->on('diseases')->onDelete('cascade');
             $table->unsignedBigInteger('fish_id');
-            $table->foreign('fish_id')->references('id')->on('fishes');
+            $table->foreign('fish_id')->references('id')->on('fishes')->onDelete('cascade');
             $table->timestamps();
         });
     }
