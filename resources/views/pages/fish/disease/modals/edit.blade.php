@@ -68,15 +68,16 @@
         const submitBtn = $(this).find('button[type="submit"]');
         submitBtn.prop('disabled', true);
 
+        url: `/api/disease/update/${currentDiseaseId}`, 
+
         // Kirim permintaan AJAX
         $.ajax({
-            url: `/api/disease/update/${currentDiseaseId}`, 
+            url: `/api/disease/update/${currentDiseaseId}`,
             type: 'POST',
             data: formData,
             processData: false,
             contentType: false,
             success: function (response) {
-                // Notifikasi sukses
                 Swal.fire({
                     icon: 'success',
                     title: 'Success!',
@@ -84,27 +85,19 @@
                     timer: 2000,
                     showConfirmButton: false
                 });
-
-                // Menutup modal
-                closeEditModal(); // Panggil fungsi untuk menutup modal
-
-                // Reload halaman setelah 500ms
+                $('[data-modal-hide="edit-disease"]').click();
                 setTimeout(function () {
                     location.reload();
                 }, 500);
             },
+                
             error: function (xhr, status, error) {
-                // Notifikasi error
                 Swal.fire({
                     icon: 'error',
                     title: 'Failed!',
                     text: `Error: ${xhr.responseJSON.message || 'Data gagal diperbarui.'}`
                 });
                 console.log("Error response:", xhr.responseJSON);
-                $('#edit-disease').hide(); // Sembunyikan modal setelah berhasil
-                setTimeout(function () {
-                    location.reload();
-                }, 2000);
             }
         });
     });
