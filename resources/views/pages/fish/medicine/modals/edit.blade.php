@@ -77,6 +77,9 @@ $(document).ready(function() {
             url: `/api/medicine/update/${medicineId}`,
             type: 'POST',
             data: formData,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
             success: function(response) {
                 Swal.fire({
                     title: 'Success!',

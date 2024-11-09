@@ -43,7 +43,7 @@
                         <table class="w-full text-sm text-left text-gray-500">
                             <thead class="bg-gray-50 text-gray-700 uppercase text-xs dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" class="px-4 py-3">Name/th>
+                                    <th scope="col" class="px-4 py-3">Name</th>
                                     <th scope="col" class="px-4 py-3">Category</th>
                                     <th scope="col" class="px-4 py-3">Description</th>
                                     <th scope="col" class="px-4 py-3">Price</th>
@@ -95,7 +95,9 @@ const fetchProductDataById = (id) => {
         success: function(response) {
             console.log("API Response:", response); 
             $('#edit-product-name').val(response.data.name);
-            $('#edit-symptoms').val(response.data.symptoms);
+            $('#edit-product-category').val(response.data.category);
+            $('#edit-product-price').val(response.data.price);
+            $('#edit-product-link').val(response.data.link);
             $('#edit-product-description').val(response.data.description);
 
             currentProductId = id;

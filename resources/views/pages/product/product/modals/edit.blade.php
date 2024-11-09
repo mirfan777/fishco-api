@@ -29,19 +29,19 @@
                             <!-- Category -->
                             <div class="mb-3">
                                 <label for="edit-category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                <input type="text" id="edit-category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Category" required />
+                                <input type="text" id="edit-product-category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Category" required />
                             </div>
                             
                             <!-- Price -->
                             <div class="mb-3">
                                 <label for="edit-price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                                <input type="number" id="edit-price" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Price" required />
+                                <input type="number" id="edit-product-price" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Price" required />
                             </div>
 
                             <!-- Link -->
                             <div class="mb-3">
                                 <label for="edit-link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link</label>
-                                <input type="text" id="edit-link" name="link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Link" required />
+                                <input type="url" id="edit-product-link" name="link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Link" required />
                             </div>
                         </div>
                     
@@ -63,69 +63,53 @@
 
 
 <script>
+   $(document).ready(function() {
     
-            // Close modal on button click
-            $('#edit-product form').on('submit', function (e) {
-                e.preventDefault();
+    $('#edit-product-form').on('submit', function(e) {
+        e.preventDefault();
+        const productId = currentProductId;
+        const formData = {
+            name: $('#edit-product-name').val(),
+            category: $('#edit-product-category').val(),
+            price: $('#edit-product-price').val(),
+            link: $('#edit-product-link').val(),
+            description: $('#edit-product-description').val()
+        };
 
-            console.log(currentProductId);
-
-            // Edit formData object
-            const formData = new FormData();
-
-            //get product id
-            
-            // Append other form data to formData object
-            formData.append('name', $('#edit-product-name').val());
-            formData.append('category', $('#edit-category').val());
-            formData.append('price', $('#edit-price').val());
-            formData.append('link', $('#edit-link').val());
-            formData.append('description', $('#edit-product-description').val());
-
-            const submitBtn = $(this).find('button[type="submit"]');
-            submitBtn.prop('disabled', true);
-
-            // Kirim permintaan AJAX
-            $.ajax({
-                url: `/api/product/update/${currentProductId}`, 
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                headers: {
+        $.ajax({
+            url: `/api/product/update/${productId}`,
+            type: 'POST',
+            data: formData,
+            headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
-                success: function (response) {
-                    // Notifikasi sukses
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success!',
-                        text: 'Data berhasil diperbarui!',
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
-
-                    // Menutup modal
-                    closeEditModal(); // Panggil fungsi untuk menutup modal
-
-                    // Reload halaman setelah 500ms
+            success: function(response) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Product data has been successfully updated.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                $('[data-modal-hide="edit-product"]').click();
                     setTimeout(function () {
                         location.reload();
                     }, 500);
-                },
-                error: function (xhr, status, error) {
-                    // Notifikasi error
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Failed!',
-                        text: `Error: ${xhr.responseJSON.message || 'Data gagal diperbarui.'}`
-                    });
-                    console.log("Error response:", xhr.responseJSON);
-                    $('#edit-product').hide(); // Sembunyikan modal setelah berhasil
-                    setTimeout(function () {
-                        location.reload();
-                    }, 2000);
-                }
-            });
+            },
+            error: function(xhr, status, error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to update product data. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                console.error('Error:', error);
+            }
         });
+    });
+
+    // Hide modal on button click
+    $('[data-modal-hide="edit-product"]').on('click', function() {
+        $('#edit-product').addClass('hidden');
+    });
+});
 </script>
