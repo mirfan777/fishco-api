@@ -17,9 +17,16 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('body');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users'); 
-            $table->json('comment_id')->nullable(); 
             $table->string('thumbnail');
+            $table->unsignedBigInteger('comment_id')->nullable(); // Nullable initially
+            $table->timestamps();
+        });
+
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->text('body');
+            $table->unsignedBigInteger('article_id')->nullable(); // Nullable initially
             $table->timestamps();
         });
     }
@@ -30,5 +37,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('articles');
+        Schema::dropIfExists('comments');
     }
 };
+
+
+

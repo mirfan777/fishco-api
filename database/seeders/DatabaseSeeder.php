@@ -60,47 +60,55 @@ class DatabaseSeeder extends Seeder
         }
         DB::table('sessions')->insert($sessions);
 
-        // Seed articles table
-        $articles = [];
-        for ($i = 1; $i <= $recordCount; $i++) {
-            $articles[] = [
-                'title' => 'Article ' . $i,
-                'slug' => 'article-' . $i,
-                'body' => 'This is the body of article ' . $i,
-                'user_id' => rand(1, $recordCount),
-                'comment_id' => json_encode([rand(1, $recordCount)]),
-                'thumbnail' => 'article' . $i . '.jpg',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ];
-        }
-        DB::table('articles')->insert($articles);
+       // Seed articles table first with placeholder data
+       $articles = [];
+       for ($i = 1; $i <= $recordCount; $i++) {
+           $articles[] = [
+               'title' => 'Article ' . $i,
+               'slug' => 'article-' . $i,
+               'body' => 'This is the body of article ' . $i,
+               'user_id' => rand(1, $recordCount),
+               'comment_id' => null, // Placeholder for now
+               'thumbnail' => 'article' . $i . '.jpg',
+               'created_at' => Carbon::now(),
+               'updated_at' => Carbon::now(),
+           ];
+       }
+       DB::table('articles')->insert($articles);
 
-        // Seed comments table
-        $comments = [];
-        for ($i = 1; $i <= $recordCount; $i++) {
-            $comments[] = [
-                'user_id' => rand(1, $recordCount),
-                'body' => 'This is a comment ' . $i,
-                'article_id' => rand(1, $recordCount),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ];
-        }
-        DB::table('comments')->insert($comments);
+       // Seed comments table with references to articles
+       $comments = [];
+       for ($i = 1; $i <= $recordCount; $i++) {
+           $comments[] = [
+               'body' => 'Comment ' . $i,
+               'user_id' => rand(1, $recordCount),
+               'article_id' => rand(1, $recordCount), // Reference to articles
+               'created_at' => Carbon::now(),
+               'updated_at' => Carbon::now(),
+           ];
+       }
+       DB::table('comments')->insert($comments);
 
-        // Seed replies table
-        $replies = [];
-        for ($i = 1; $i <= $recordCount; $i++) {
-            $replies[] = [
-                'comment_id' => rand(1, $recordCount),
-                'user_id' => rand(1, $recordCount),
-                'body' => 'This is a reply ' . $i,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ];
-        }
-        DB::table('replies')->insert($replies);
+       // Update articles table with correct comment_id references
+       $comments = DB::table('comments')->get();
+       foreach ($comments as $comment) {
+           DB::table('articles')
+               ->where('id', $comment->article_id)
+               ->update(['comment_id' => $comment->id]);
+       }
+
+       // Seed replies table
+       $replies = [];
+       for ($i = 1; $i <= $recordCount; $i++) {
+           $replies[] = [
+               'body' => 'Reply ' . $i,
+               'user_id' => rand(1, $recordCount),
+               'comment_id' => rand(1, $recordCount), // Reference to comments
+               'created_at' => Carbon::now(),
+               'updated_at' => Carbon::now(),
+           ];
+       }
+       DB::table('replies')->insert($replies);
 
         // Seed products table
         $products = [];
