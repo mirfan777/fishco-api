@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Http\Resources\ArticleResource;
+use Illuminate\Support\Facades\Log;
 
 class ArticleController extends Controller
 {
@@ -28,20 +29,30 @@ class ArticleController extends Controller
         return new ArticleResource($article);
     }
 
-    function createArticle(Request $request){
+    public function createArticle(Request $request)
+    {
         try {
-            if($request->hasFile('thumbnail')){
-                $file = $request->file('thumbnail');
-                $timestamp = time();
-                $extension = $file->getClientOriginalExtension();
-                $filename = $timestamp . '.' . $extension;
+            // Validate request data
+            $request->validate([
+                'title' => 'required|string|max:255',
+                'body' => 'required|string',
+                'slug' => 'required|string',
+                'user_id' => 'required|exists:users,id',
+                'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
 
-                $file->move(public_path('data/images'), $filename);
+            // Check if thumbnail is uploaded
+            if ($request->hasFile('thumbnail')) {
+                $thumbnail = $request->file('thumbnail');
+                $thumbnailPath = $thumbnail->store('thumbnails', 'public');
 
+                // Create article
                 $article = Article::create([
                     'title' => $request->title,
                     'body' => $request->body,
-                    'thumbnail' => $filename
+                    'slug' => $request->slug,
+                    'user_id' => $request->user_id,
+                    'thumbnail' => $thumbnailPath,
                 ]);
 
                 return response()->json([
@@ -53,13 +64,17 @@ class ArticleController extends Controller
                     'message' => 'Please upload a thumbnail'
                 ], 400);
             }
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
+            // Log the exception message
+            Log::error('Failed to create article: ' . $e->getMessage());
+
             return response()->json([
-                'message' => 'Failed to create article'
+                'message' => 'Failed to create article',
+                'error' => $e->getMessage()
             ], 400);
         }
     }
+
 
     function updateArticle(Request $request, $id){
         $existingArticle = Article::find($id);

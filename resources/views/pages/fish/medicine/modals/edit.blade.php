@@ -80,6 +80,9 @@ $(document).ready(function() {
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
             success: function(response) {
                 Swal.fire({
                     title: 'Success!',

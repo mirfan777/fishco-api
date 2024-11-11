@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Fish;
 use App\Models\FishImage;
 use App\Http\Resources\FishResource;
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\FishRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+
 
 class FishController extends Controller
 {
@@ -70,6 +72,8 @@ class FishController extends Controller
                     'max_ph' => $request->max_ph,
                     'habitat' => $request->habitat,
                     'overview' => $request->overview,
+                    'min_size' => $request->min_size,
+                    'max_size' => $request->max_size,
                     'thumbnail' => $filename 
                 ]);
 
@@ -87,7 +91,7 @@ class FishController extends Controller
 
         } catch (\Exception $e) {
             // Log the error
-            \Log::error('Error creating fish: ' . $e->getMessage());
+            Log::error('Error creating fish: ' . $e->getMessage());
 
             return response()->json([
                 'status' => 'error',
@@ -138,6 +142,8 @@ class FishController extends Controller
             'max_ph' => $request->max_ph    ?? $existingFish->max_ph,
             'habitat' => $request->habitat ?? $existingFish->habitat,
             'overview' => $request->overview ?? $existingFish->overview,
+            'min_size' => $request->min_size ?? $existingFish->min_size,
+            'max_size' => $request->max_size ?? $existingFish->max_size,
             'thumbnail' => $filename  
         ]);
     
