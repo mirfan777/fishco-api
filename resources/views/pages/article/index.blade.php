@@ -85,7 +85,7 @@
                                     <td class="px-4 py-3">${article.slug}</td>
                                     <td class="px-4 py-3">
                                         <a href="/article/detail/?id=${article.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
-                                        <button onclick="deleteArticle(${article.id})" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${article.id})">Hapus</button>
                                     </td>
                                 </tr>
                             `);
@@ -108,6 +108,44 @@
                 }
             });
         };
+        
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah kamu yakin untuk menghapus?',
+                text: "Data yang dihapus tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0e91e9',
+                cancelButtonColor: '#f56565',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: `/api/article/delete/${id}`,
+                        type: 'DELETE',
+                        success: function(result) {
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: 'Article has been deleted successfully.',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then(() => {
+                                location.reload(); // Reload the page to reflect changes
+                            });
+                        },
+                        error: function(err) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Failed to delete article. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    });
+                }
+            });
+        }
 
         // Render pagination based on the API metadata
         const renderPagination = (meta) => {

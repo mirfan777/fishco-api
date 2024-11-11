@@ -135,7 +135,7 @@ const fetchProductData = (page = 1, query = '' ) => {
                             <td class="px-4 py-3">${product.link}</td>
                             <td class="px-4 py-3">
                                 <button data-modal-target="edit-product" data-modal-toggle="edit-product" onclick="fetchProductDataById(${product.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
-                                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${product.id})">Hapus</button>
                             </td>
                         </tr>
                     `);
@@ -160,6 +160,44 @@ const fetchProductData = (page = 1, query = '' ) => {
         }
     });
 };
+
+function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah kamu yakin untuk menghapus?',
+                text: "Data yang dihapus tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0e91e9',
+                cancelButtonColor: '#f56565',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: `/api/product/delete/${id}`,
+                        type: 'DELETE',
+                        success: function(result) {
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: 'Product has been deleted successfully.',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then(() => {
+                                location.reload(); // Reload the page to reflect changes
+                            });
+                        },
+                        error: function(err) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Failed to delete product. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    });
+                }
+            });
+        }
 
 const renderPagination = (meta) => {
     const pagination = $('#pagination');

@@ -105,9 +105,9 @@ $(document).ready(function() {
     });
 
     // Hide modal on button click
-    $('[data-modal-hide="edit-medicine"]').on('click', function() {
-        $('#edit-medicine').addClass('hidden');
-    });
+    // $('[data-modal-hide="edit-medicine"]').on('click', function() {
+    //     $('#edit-medicine').addClass('hidden');
+    // });
 });
 </script>
 
