@@ -43,9 +43,9 @@ use App\Models\Medicine;
 use App\Models\Products;
 use App\Models\FishImage;
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 //User
 // Route::get('/getAllUser', function () {

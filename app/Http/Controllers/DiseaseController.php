@@ -76,6 +76,7 @@ class DiseaseController extends Controller
     }
 
     public function getAllDiseases() {
-        return response()->json(Disease::all());
+        return response()->json([
+            "data" => Disease::all()]);
     }
 }
