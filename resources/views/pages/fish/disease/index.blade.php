@@ -73,7 +73,7 @@
                 success: function(response) {
                     console.log("API Response:", response);
                     $('#edit-disease-name').val(response.data.name);
-                    $('#edit-symptoms').val(response.data.symptoms);
+                    $('#edit-disease-symptoms').val(response.data.symptoms);
                     $('#edit-disease-description').val(response.data.description);
 
                     currentDiseaseId = id;
@@ -106,7 +106,7 @@
                                     <td class="px-4 py-3">${disease.symptoms}</td>
                                     <td class="px-4 py-3">
                                         <button onclick="fetchDiseaseDataById(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
-                                        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${disease.id})">Hapus</button>
                                     </td>
                                 </tr>
                             `);
@@ -123,6 +123,44 @@
                 }
             });
         };
+
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah kamu yakin untuk menghapus?',
+                text: "Data yang dihapus tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0e91e9',
+                cancelButtonColor: '#f56565',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: `/api/disease/delete/${id}`,
+                        type: 'DELETE',
+                        success: function(result) {
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: 'Disease has been deleted successfully.',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then(() => {
+                                location.reload(); // Reload the page to reflect changes
+                            });
+                        },
+                        error: function(err) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Failed to delete disease. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    });
+                }
+            });
+        }
 
         // Render Pagination
         const renderPagination = (meta) => {
@@ -146,11 +184,6 @@
                 <li><button onclick="fetchDiseaseData(${meta.current_page + 1}, '${currentSearch}')" class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg ${meta.current_page === meta.last_page ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}" ${meta.current_page === meta.last_page ? 'disabled' : ''}>Next</button></li>
             `);
         };
-
-        // Event to Hide the Modal
-        $(document).on('click', '[data-modal-hide="edit-disease"]', function () {
-            $('#edit-disease').addClass('hidden'); // Hide modal
-        });
 
         // Initial Fetch
         fetchDiseaseData();
