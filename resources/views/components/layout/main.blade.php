@@ -7,9 +7,33 @@
    <title>Fishco</title>
    @vite(['resources/css/style.css', 'resources/js/app.js'])
    <meta name="csrf-token" content="{{ csrf_token() }}">
+   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
+   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
    <script>
-      if (localStorage.token) {
-         window.location.href = '/login';
+      if (!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined' || localStorage.getItem('token') === 'null') {
+        window.location.href = '/auth/login';
+      }else{
+        $.ajax({
+            url: `/api/profile`,
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                localStorage.setItem('token', response.token);
+            },
+            error: function (xhr) {
+                console.error('Error:', xhr);
+                localStorage.removeItem('token');
+                window.location.href = '/auth/login';
+            }
+        }); 
       }
    </script>
 </head>
@@ -56,7 +80,15 @@
                       <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
                     </li>
                     <li>
-                      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                      <a id="logout" href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                      <script>
+                        document.getElementById('logout').addEventListener('click', signOut);
+
+                        function signOut() {
+                          localStorage.removeItem('token');
+                          window.location.href = '/auth/login';
+                        }
+                      </script>
                     </li>
                   </ul>
                 </div>
@@ -152,7 +184,7 @@
       </div>
    </aside>
 
-   @yield('main')
+   {{$slot}}
   
    
    </body>

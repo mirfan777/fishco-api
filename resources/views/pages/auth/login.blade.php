@@ -49,20 +49,22 @@ $(document).ready(function() {
         const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
-            url: '/api/login',
+            url: '/api/requestToken',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',
             headers: {
-                'X-CSRF-TOKEN': csrfToken
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
             },
             data: JSON.stringify({
                 email: email,
-                password: password
+                password: password,
+                device_name: 'web'
             }),
             success: function(response) {
-                alert(response.message); 
-                window.location.href = '/dashboard'; 
+                localStorage.setItem('token', response.token);
+                alert(response.token);
+                window.location.href = '/fish';
             },
             error: function(xhr) {
                 alert('Login failed: ' + xhr.responseText);

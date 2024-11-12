@@ -43,128 +43,103 @@ use App\Models\Medicine;
 use App\Models\Products;
 use App\Models\FishImage;
 
-// Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
-//User
-// Route::get('/getAllUser', function () {
-//     return UserResource::collection(User::all());
-// });
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/profile', function (Request $request) {return $request->user();});
+    Route::delete('/logout', [AuthenticatedSessionController::class, 'revokeToken']);
 
-// Route::get('/getUser/{id}', function($id){
-//     return new UserResource(User::find($id));
-// });
+    // User
+    Route::get('/users', [UserController::class, 'getAllUsers']);
+    Route::get('/user', [UserController::class, 'getAllUser']);
+    Route::get('/user/{id}', [UserController::class, 'getUserById']);
+    Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
 
-// Route::post('/addUser', function(Request $request){
+    //Fish
+    Route::get('/fish', [FishController::class, 'getAllFish']);
+    Route::get('/fish/{id}', [FishController::class, 'getFishById']);
+    Route::post('/fish/create', [FishController::class, 'createFish']);
+    Route::post('/fish/update/{id}', [FishController::class, 'updateFish']);
+    Route::delete('/fish/delete/{id}', [FishController::class, 'deleteFish']);
+    Route::post('/fish/{id}/upload', [FishController::class, 'uploadFishImage']);
+    Route::delete('/fish/{id}/delete-image/{img}', [FishController::class, 'deleteFishImage']);
+    Route::get('/fishes', [FishController::class, 'getAllFishes']);
 
-//     $response = User::create([
-//         'name' => $request->name,
-//         'email' => $request->email,
-//         'password' => bcrypt($request->password),
-//         'address' => $request->address,
-//         'phone_number' => $request->phone_number
-//     ]);
-
-//     return $response;
-
-// });
-
-// Route::delete('/deleteUser/{id}', function($id){
-//     $response = User::where('id', $id)->delete();
-
-//     return $response;
-// });
-
-// User
-Route::get('/users', [UserController::class, 'getAllUsers']);
-Route::get('/user', [UserController::class, 'getAllUser']);
-Route::get('/user/{id}', [UserController::class, 'getUserById']);
-Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
-
-//Fish
-Route::get('/fish', [FishController::class, 'getAllFish']);
-Route::get('/fish/{id}', [FishController::class, 'getFishById']);
-Route::post('/fish/create', [FishController::class, 'createFish']);
-Route::post('/fish/update/{id}', [FishController::class, 'updateFish']);
-Route::delete('/fish/delete/{id}', [FishController::class, 'deleteFish']);
-Route::post('/fish/{id}/upload', [FishController::class, 'uploadFishImage']);
-Route::delete('/fish/{id}/delete-image/{img}', [FishController::class, 'deleteFishImage']);
-Route::get('/fishes', [FishController::class, 'getAllFishes']);
-
-//Medicine
-Route::get('/medicine', [MedicineController::class, 'getAllMedicine']);
-Route::get('/medicine/{id}', [MedicineController::class, 'getMedicineById']);
-Route::post('/medicine/create', [MedicineController::class, 'createMedicine']);
-Route::post('/medicine/update/{id}', [MedicineController::class, 'updateMedicine']);
-Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedicine']);
-Route::get('/dropdown-data', [MedicineController::class, 'getDropdownData']);
-Route::get('/medicines', [MedicineController::class, 'getAllMedicines']);
+    //Medicine
+    Route::get('/medicine', [MedicineController::class, 'getAllMedicine']);
+    Route::get('/medicine/{id}', [MedicineController::class, 'getMedicineById']);
+    Route::post('/medicine/create', [MedicineController::class, 'createMedicine']);
+    Route::post('/medicine/update/{id}', [MedicineController::class, 'updateMedicine']);
+    Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedicine']);
+    Route::get('/dropdown-data', [MedicineController::class, 'getDropdownData']);
+    Route::get('/medicines', [MedicineController::class, 'getAllMedicines']);
 
 
-//Disease
-Route::get('/disease', [DiseaseController::class, 'getAllDisease']);
-Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
-Route::post('/disease/create', [DiseaseController::class, 'createDisease']);
-Route::post('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
-Route::delete('/disease/delete/{id}', [DiseaseController::class, 'deleteDisease']);
-Route::get('/diseases', [DiseaseController::class, 'getAllDiseases']);
+    //Disease
+    Route::get('/disease', [DiseaseController::class, 'getAllDisease']);
+    Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
+    Route::post('/disease/create', [DiseaseController::class, 'createDisease']);
+    Route::post('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
+    Route::delete('/disease/delete/{id}', [DiseaseController::class, 'deleteDisease']);
+    Route::get('/diseases', [DiseaseController::class, 'getAllDiseases']);
 
-//Aquarium
-Route::get('/aquarium', [AquariumController::class, 'getAllAquarium']);
-Route::get('/aquarium/{id}', [AquariumController::class, 'getAquarium']);
-Route::post('/aquarium/create', [AquariumController::class, 'createAquarium']);
-Route::post('/aquarium/update/{id}', [AquariumController::class, 'updateAquarium']);
-Route::delete('/aquarium/delete/{id}', [AquariumController::class, 'deleteAquarium']);
-
-
-//Article
-Route::get('/article', [ArticleController::class, 'getAllArticle']);
-Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
-Route::post('/article/create', [ArticleController::class, 'createArticle']);
-Route::post('/article/update/{id}', [ArticleController::class, 'updateArticle']);
-Route::delete('/article/delete/{id}', [ArticleController::class, 'deleteArticle']);
-Route::get('/articles', [ArticleController::class, 'getAllArticles']);
+    //Aquarium
+    Route::get('/aquarium', [AquariumController::class, 'getAllAquarium']);
+    Route::get('/aquarium/{id}', [AquariumController::class, 'getAquarium']);
+    Route::post('/aquarium/create', [AquariumController::class, 'createAquarium']);
+    Route::post('/aquarium/update/{id}', [AquariumController::class, 'updateAquarium']);
+    Route::delete('/aquarium/delete/{id}', [AquariumController::class, 'deleteAquarium']);
 
 
-//Comment
-Route::get('/comment', [CommentController::class, 'getAllComment']);
-Route::get('/comment/{id}', [CommentController::class, 'getComment']);
-Route::post('/comment/create', [CommentController::class, 'addComment']);
-Route::post('/comment/update/{id}', [CommentController::class, 'updateComment']);
-Route::delete('/comment/delete/{id}', [CommentController::class, 'deleteComment']);
+    //Article
+    Route::get('/article', [ArticleController::class, 'getAllArticle']);
+    Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
+    Route::post('/article/create', [ArticleController::class, 'createArticle']);
+    Route::post('/article/update/{id}', [ArticleController::class, 'updateArticle']);
+    Route::delete('/article/delete/{id}', [ArticleController::class, 'deleteArticle']);
+    Route::get('/articles', [ArticleController::class, 'getAllArticles']);
 
 
-//Reply
-Route::get('/reply', [ReplyController::class, 'getAllReplies']);
-Route::get('/reply/{id}', [ReplyController::class, 'getRepliesById']);
-Route::post('/reply/create', [ReplyController::class, 'createReplies']);
-Route::post('/reply/update/{id}', [ReplyController::class, 'updateReplies']);
-Route::delete('/reply/delete/{id}', [ReplyController::class, 'deleteReplies']);
+    //Comment
+    Route::get('/comment', [CommentController::class, 'getAllComment']);
+    Route::get('/comment/{id}', [CommentController::class, 'getComment']);
+    Route::post('/comment/create', [CommentController::class, 'addComment']);
+    Route::post('/comment/update/{id}', [CommentController::class, 'updateComment']);
+    Route::delete('/comment/delete/{id}', [CommentController::class, 'deleteComment']);
 
 
-//Product
-Route::get('/product', [ProductController::class, 'getAllProduct']);
-Route::get('/product/{id}', [ProductController::class, 'getProductById']);
-Route::post('/product/create', [ProductController::class, 'createProduct']);
-Route::post('/product/update/{id}', [ProductController::class, 'updateProduct']);
-Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct']);
-Route::get('/products', [ProductController::class, 'getAllProducts']);
+    //Reply
+    Route::get('/reply', [ReplyController::class, 'getAllReplies']);
+    Route::get('/reply/{id}', [ReplyController::class, 'getRepliesById']);
+    Route::post('/reply/create', [ReplyController::class, 'createReplies']);
+    Route::post('/reply/update/{id}', [ReplyController::class, 'updateReplies']);
+    Route::delete('/reply/delete/{id}', [ReplyController::class, 'deleteReplies']);
 
 
-//Fish Image
-Route::get('/fishimage',[FishImageController::class, 'getAllFishImage']);
-Route::get('/fishimage/{id}', [FishImageController::class, 'getFishImage']);
-Route::post('/fishimage/create', [FishImageController::class, 'createFishImage']);
-Route::post('/fishimage/update/{id}', [FishImageController::class, 'updateFishImage']);
-Route::delete('/fishimage/delete/{id}', [FishImageController::class, 'deleteFishImage']);
+    //Product
+    Route::get('/product', [ProductController::class, 'getAllProduct']);
+    Route::get('/product/{id}', [ProductController::class, 'getProductById']);
+    Route::post('/product/create', [ProductController::class, 'createProduct']);
+    Route::post('/product/update/{id}', [ProductController::class, 'updateProduct']);
+    Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct']);
+    Route::get('/products', [ProductController::class, 'getAllProducts']);
 
-//Report
-Route::get('/report', [ReportController::class, 'getAllReport']);
-Route::get('/report/{id}', [ReportController::class, 'getReportById']);
-Route::post('/report/create', [ReportController::class, 'createReport']);
-Route::post('/report/update/{id}', [ReportController::class, 'updateReport']);
-Route::delete('/report/delete/{id}', [ReportController::class, 'deleteReport']);
+
+    //Fish Image
+    Route::get('/fishimage',[FishImageController::class, 'getAllFishImage']);
+    Route::get('/fishimage/{id}', [FishImageController::class, 'getFishImage']);
+    Route::post('/fishimage/create', [FishImageController::class, 'createFishImage']);
+    Route::post('/fishimage/update/{id}', [FishImageController::class, 'updateFishImage']);
+    Route::delete('/fishimage/delete/{id}', [FishImageController::class, 'deleteFishImage']);
+
+    //Report
+    Route::get('/report', [ReportController::class, 'getAllReport']);
+    Route::get('/report/{id}', [ReportController::class, 'getReportById']);
+    Route::post('/report/create', [ReportController::class, 'createReport']);
+    Route::post('/report/update/{id}', [ReportController::class, 'updateReport']);
+    Route::delete('/report/delete/{id}', [ReportController::class, 'deleteReport']);
+});
+
+
 
 Route::post('/requestToken', [AuthenticatedSessionController::class, 'requestToken'])
     ->middleware('guest')

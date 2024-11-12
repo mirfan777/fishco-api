@@ -45,6 +45,17 @@ class AuthenticatedSessionController extends Controller
         return response()->json(['token' => $token]);
     }
 
+    public function revokeToken(Request $request)
+    {
+        $user = User::where('id', $request->user()->id)->first();
+
+        $user->tokens()->delete();
+        
+        $request->user()->currentAccessToken()->delete();
+        
+        return response()->json(['message' => 'Token revoked']);
+    }
+
     /**
      * Destroy an authenticated session.
      */
