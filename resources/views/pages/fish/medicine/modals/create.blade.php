@@ -6,7 +6,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Tambah Data Medicine
+                    Tambah Data Obat Ikan
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="create-medicine">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -22,13 +22,13 @@
                         <div class="md:w-1/2">
                             <!-- Name -->
                             <div class="mb-3">
-                                <label for="create-medicine-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                <label for="create-medicine-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Obat:</label>
                                 <input type="text" id="create-medicine-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter medicine name" required />
                             </div>
 
                             <!-- Description -->
                             <div class="mb-3">
-                                <label for="create-medicine-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Medicine Description</label>
+                                <label for="create-medicine-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi Obat:</label>
                                 <textarea id="create-medicine-description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter description" required></textarea>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                         <div class="md:w-1/2">
                             <!-- Disease Dropdown -->
                             <div class="mb-3">
-                                <label for="create-disease-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Disease</label>
+                                <label for="create-disease-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Penyakit yang dapat diobati:</label>
                                 <select id="create-disease-id" name="disease_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                     <option value="">Select a Disease</option>
                                 </select>
@@ -44,7 +44,7 @@
 
                             <!-- Fish Dropdown -->
                             <div class="mb-3">
-                                <label for="create-fish-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fish</label>
+                                <label for="create-fish-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ikan yang cocok untuk obat ini:</label>
                                 <select id="create-fish-id" name="fish_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                     <option value="">Select a Fish</option>
                                 </select>
@@ -68,13 +68,18 @@ $(document).ready(function() {
         $.ajax({
             url: '/api/diseases',
             type: 'GET',
-            success: function(data) {
+            success: function(response) {
+                console.log('Diseases data:', response); 
                 const diseaseDropdown = $('#create-disease-id');
                 diseaseDropdown.empty();
                 diseaseDropdown.append('<option value="">Select Disease</option>');
-                data.forEach(function(disease) {
-                    diseaseDropdown.append(`<option value="${disease.id}">${disease.name}</option>`);
-                });
+                if (Array.isArray(response.data)) {
+                    response.data.forEach(function(disease) {
+                        diseaseDropdown.append(`<option value="${disease.id}">${disease.name}</option>`);
+                    });
+                } else {
+                    console.error('Expected an array but got:', response.data);
+                }
             },
             error: function(xhr, status, error) {
                 console.error('Error fetching diseases:', error);
@@ -85,13 +90,18 @@ $(document).ready(function() {
         $.ajax({
             url: '/api/fishes',
             type: 'GET',
-            success: function(data) {
+            success: function(response) {
+                console.log('Fishes data:', response); // Tambahkan ini untuk memeriksa data
                 const fishDropdown = $('#create-fish-id');
                 fishDropdown.empty();
                 fishDropdown.append('<option value="">Select Fish</option>');
-                data.forEach(function(fish) {
-                    fishDropdown.append(`<option value="${fish.id}">${fish.name}</option>`);
-                });
+                if (Array.isArray(response)) {
+                    response.forEach(function(fish) {
+                        fishDropdown.append(`<option value="${fish.id}">${fish.name}</option>`);
+                    });
+                } else {
+                    console.error('Expected an array but got:', response);
+                }
             },
             error: function(xhr, status, error) {
                 console.error('Error fetching fishes:', error);
@@ -136,7 +146,7 @@ $(document).ready(function() {
             success: function(response) {
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Medicine data has been successfully added',
+                    text: 'Data obat berhasil ditambahkan.',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 }).then((result) => {
@@ -151,7 +161,7 @@ $(document).ready(function() {
             error: function(xhr, status, error) {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Failed to add medicine data. Please try again.',
+                    text: 'Gagal untuk menambahkan data obat, silahkan coba lagi.',
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });

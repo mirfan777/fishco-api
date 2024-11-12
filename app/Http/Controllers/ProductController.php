@@ -69,4 +69,10 @@ class ProductController extends Controller
             'message' => 'Product deleted successfully'
         ]);
     }
+
+    public function getAllProducts() {
+        return response()->json([
+            "data" => Products::all()
+        ]);
+    }
 }

@@ -225,6 +225,7 @@ class FishController extends Controller
     }
     
     public function getAllFishes() {
-        return response()->json(Fish::all());
+        return response()->json([
+            "data" => Fish::all()]);
     }
 }

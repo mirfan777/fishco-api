@@ -7,6 +7,9 @@
         <!-- Menyertakan file CSS dan JavaScript dari Vite -->
         @vite(['resources/css/style.css', 'resources/js/app.js'])
         <!-- Library jQuery dan SweetAlert2 untuk keperluan interaksi dan notifikasi -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
+        <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
@@ -24,63 +27,71 @@
                     <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                         <!-- Bagian Pencarian dan Tombol Tambah Data -->
                         <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
-                            <!-- Form Pencarian -->
-                            <div class="w-full md:w-1/2">
-                                <form id="searchForm" class="flex items-center" onsubmit="handleSearch(event)">
-                                    <label for="simple-search" class="sr-only">Cari</label>
-                                    <input type="text" id="simple-search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-10 p-2" placeholder="Cari penyakit">
-                                </form>
-                            </div>
                             <!-- Tombol Tambah Data -->
                             <div class="w-full md:w-auto">
                                 <button data-modal-target="create-medicine" data-modal-toggle="create-medicine" class="bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
                             </div>
                         </div>
+                        
 
                         <!-- Tabel Data Penyakit -->
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-sm text-left text-gray-500">
+                        <div class="overflow-x-auto p-5">
+                            <table class="w-full text-sm text-left text-gray-500 " id="medicine-table" >
                                 <thead class="bg-gray-50 text-gray-700 uppercase text-xs dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th scope="col" class="px-4 py-3">Nama Obat</th>
-                                        <th scope="col" class="px-4 py-3">Deskripsi Obat</th>
+                                        <th scope="col" class="px-4 py-3">
+                                            <span class="flex items-center">
+                                                Nama Obat
+                                                <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                                </svg>
+                                            </span>
+                                        </th>
+                                        <th scope="col" class="px-4 py-3">
+                                            <span class="flex items-center">
+                                                Deskripsi Obat
+                                                <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                                </svg>
+                                            </span>
+                                        </th>
                                         <th scope="col" class="px-4 py-3">Aksi</th>
                                     </tr> 
                                 </thead>
-                                <tbody id="medicineTable" class="bg-white dark:bg-gray-800">
-                                    <!-- Baris data akan dimuat secara dinamis dengan JavaScript -->
+                                <tbody class="bg-white dark:bg-gray-800">
+
                                 </tbody>
                             </table>
                         </div>
-
-                        <!-- Navigasi Pagination -->
-                        <nav class="flex items-center justify-between p-4" aria-label="Navigasi Tabel">
-                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400" id="pagination-info">
-                                <!-- Info halaman akan dimuat secara dinamis -->
-                            </span>
-                            <ul class="inline-flex items-center -space-x-px" id="pagination">
-                                <!-- Tombol pagination akan dimuat secara dinamis -->
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </section>
-        </main>
-
-        
-        
+        </main> 
     </body>
-    </html>
+</html>
 
 <script>
-    let currentPage = 1;
-    let currentSearch = '';
     let currentMedicineId = null;
+    let dataTable;
 
     const initializeModalPosition = () => {
         $('#edit-medicine').removeClass('hidden').addClass('flex').css({
             'justify-content': 'center',
             'align-items': 'center'
+        });
+    };
+
+    const initializeDataTable = () => {
+        if (dataTable) {
+            dataTable.destroy(); // Destroy previous instance if it exists
+        }
+
+        dataTable = new simpleDatatables.DataTable("#medicine-table", {
+            searchable: true,
+            paging: true,
+            perPage: 5,
+            perPageSelect: [5, 10, 15, 20, 25],
+            sortable: true
         });
     };
 
@@ -144,23 +155,19 @@
         });
     };
     
-    const fetchMedicineData = (page = 1, query = '' ) => {
-        currentPage = page;
-        currentSearch = query;
-
+    const fetchMedicineData = () => {
         $.ajax({
-            url: `/api/medicine?page=${page}&search=${query}`,
+            url: `/api/medicines`,
             method: 'GET',
             success: function(response) {
-                console.log("API Response:", response); // Debug: Log entire response
+                console.log("API Response:", response);
 
-                const medicineTable = $('#medicineTable');
-                medicineTable.empty();
+                const medicineTableBody = $('#medicine-table tbody'); // Target the tbody directly
+                medicineTableBody.empty();
 
-                // Ensure response structure is as expected
                 if (response.data && response.data.length > 0) {
                     response.data.forEach(medicine => {
-                        medicineTable.append(`
+                        medicineTableBody.append(`
                             <tr class="border-b dark:border-gray-700">
                                 <td class="px-4 py-3">${medicine.name}</td>
                                 <td class="px-4 py-3">${medicine.description}</td>
@@ -171,21 +178,22 @@
                             </tr>
                         `);
                     });
-
-                    renderPagination(response.meta);
                 } else {
-                    medicineTable.append(`
+                    medicineTableBody.append(`
                         <tr>
                             <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
                         </tr>
                     `);
                 }
+
+                // Reinitialize DataTable after updating the content
+                initializeDataTable();
             },
             error: function(xhr, status, error) {
-                console.error("API Error:", error); // Debug: Log error details
-                $('#medicineTable').html(`
+                console.error("API Error:", error);
+                $('#medicine-table tbody').html(`
                     <tr>
-                        <td colspan="3" class="px-4 py-3 text-center text-red-500">Gagal memuat data</td>
+                        <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
                     </tr>
                 `);
             }
@@ -209,8 +217,8 @@
                         type: 'DELETE',
                         success: function(result) {
                             Swal.fire({
-                                title: 'Deleted!',
-                                text: 'Medicine has been deleted successfully.',
+                                title: 'Terhapus!',
+                                text: 'Obat ikan berhasil dihapus.',
                                 icon: 'success',
                                 confirmButtonText: 'OK'
                             }).then(() => {
@@ -220,7 +228,7 @@
                         error: function(err) {
                             Swal.fire({
                                 title: 'Error!',
-                                text: 'Failed to delete medicine. Please try again.',
+                                text: 'Gagal untuk menghapus obat ikan, silahkan coba lagi',
                                 icon: 'error',
                                 confirmButtonText: 'OK'
                             });

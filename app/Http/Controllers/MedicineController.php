@@ -79,4 +79,9 @@ class MedicineController extends Controller
             'fishes' => $fishes
         ]);
     }
+
+    public function getAllMedicines() {
+        return response()->json([
+            "data" => Medicine::all()]);
+    }
 }

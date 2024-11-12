@@ -80,8 +80,7 @@ use App\Models\FishImage;
 Route::get('/users', [UserController::class, 'getAllUsers']);
 Route::get('/user', [UserController::class, 'getAllUser']);
 Route::get('/user/{id}', [UserController::class, 'getUserById']);
-
-
+Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
 
 //Fish
 Route::get('/fish', [FishController::class, 'getAllFish']);
@@ -91,7 +90,7 @@ Route::post('/fish/update/{id}', [FishController::class, 'updateFish']);
 Route::delete('/fish/delete/{id}', [FishController::class, 'deleteFish']);
 Route::post('/fish/{id}/upload', [FishController::class, 'uploadFishImage']);
 Route::delete('/fish/{id}/delete-image/{img}', [FishController::class, 'deleteFishImage']);
-
+Route::get('/fishes', [FishController::class, 'getAllFishes']);
 
 //Medicine
 Route::get('/medicine', [MedicineController::class, 'getAllMedicine']);
@@ -100,6 +99,7 @@ Route::post('/medicine/create', [MedicineController::class, 'createMedicine']);
 Route::post('/medicine/update/{id}', [MedicineController::class, 'updateMedicine']);
 Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedicine']);
 Route::get('/dropdown-data', [MedicineController::class, 'getDropdownData']);
+Route::get('/medicines', [MedicineController::class, 'getAllMedicines']);
 
 
 //Disease
@@ -108,6 +108,7 @@ Route::get('/disease/{id}', [DiseaseController::class, 'getDiseaseById']);
 Route::post('/disease/create', [DiseaseController::class, 'createDisease']);
 Route::post('/disease/update/{id}', [DiseaseController::class, 'updateDisease']);
 Route::delete('/disease/delete/{id}', [DiseaseController::class, 'deleteDisease']);
+Route::get('/diseases', [DiseaseController::class, 'getAllDiseases']);
 
 //Aquarium
 Route::get('/aquarium', [AquariumController::class, 'getAllAquarium']);
@@ -123,6 +124,7 @@ Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
 Route::post('/article/create', [ArticleController::class, 'createArticle']);
 Route::post('/article/update/{id}', [ArticleController::class, 'updateArticle']);
 Route::delete('/article/delete/{id}', [ArticleController::class, 'deleteArticle']);
+Route::get('/articles', [ArticleController::class, 'getAllArticles']);
 
 
 //Comment
@@ -147,6 +149,7 @@ Route::get('/product/{id}', [ProductController::class, 'getProductById']);
 Route::post('/product/create', [ProductController::class, 'createProduct']);
 Route::post('/product/update/{id}', [ProductController::class, 'updateProduct']);
 Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct']);
+Route::get('/products', [ProductController::class, 'getAllProducts']);
 
 
 //Fish Image
@@ -162,11 +165,6 @@ Route::get('/report/{id}', [ReportController::class, 'getReportById']);
 Route::post('/report/create', [ReportController::class, 'createReport']);
 Route::post('/report/update/{id}', [ReportController::class, 'updateReport']);
 Route::delete('/report/delete/{id}', [ReportController::class, 'deleteReport']);
-
-//Dropdown
-Route::get('/diseases', [DiseaseController::class, 'getAllDiseases']);
-Route::get('/fishes', [FishController::class, 'getAllFishes']);
-
 
 Route::post('/requestToken', [AuthenticatedSessionController::class, 'requestToken'])
     ->middleware('guest')

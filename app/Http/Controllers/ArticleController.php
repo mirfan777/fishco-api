@@ -116,4 +116,10 @@ class ArticleController extends Controller
             'message' => 'Article deleted successfully'
         ]);
     }
+
+    public function getAllArticles() {
+        return response()->json([
+            "data" => Article::all()
+        ]);
+    }
 }

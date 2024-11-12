@@ -3,10 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Disease</title>
-        <!-- Menyertakan file CSS dan JavaScript dari Vite -->
+        <title>Fishco Admin | Tabel Penyakit Ikan</title>
         @vite(['resources/css/style.css', 'resources/js/app.js'])
-        <!-- Library jQuery dan SweetAlert2 untuk keperluan interaksi dan notifikasi -->
+        <!-- Library jQuery dan SweetAlert2 -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
         <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
@@ -14,10 +13,9 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
-        <!-- Menyertakan modal untuk form "Tambah Data Penyakit" -->
+        <!-- Modals etc -->
         @include('pages.fish.disease.modals.create')
         @include('pages.fish.disease.modals.edit')
-        <!-- Menyertakan layout utama -->
         @include('layout.main')
         
         <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
@@ -67,9 +65,6 @@
                 </div>
             </section>
         </main>
-
-        
-        
     </body>
 </html>
 
@@ -116,7 +111,7 @@
                                 <td class="px-4 py-3">${disease.symptoms}</td>
                                 <td class="px-4 py-3">
                                     <button data-modal-target="edit-disease" data-modal-toggle="edit-disease" onclick="fetchDiseaseDataById(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
-                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">Hapus</button>
+                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${disease.id})">Hapus</button>
                                 </td>
                             </tr>
                         `);
@@ -142,6 +137,46 @@
             }
         });
     };
+
+    function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah kamu yakin untuk menghapus?',
+                text: "Data yang dihapus tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0e91e9',
+                cancelButtonColor: '#f56565',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: `/api/disease/delete/${id}`,
+                        type: 'DELETE',
+                        success: function(result) {
+                            Swal.fire({
+                                title: 'Terhapus!',
+                                text: 'Penyakit ikan berhasil dihapus.',
+                                icon: 'success',
+                                timer: 1200, 
+                                showConfirmButton: false
+                            }).then(() => {
+                                location.reload(); // Reload the page to reflect changes
+                            });
+                        },
+                        error: function(err) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Gagal untuk menghapus penyakit ikan, silahkan coba lagi',
+                                icon: 'error',
+                                timer: 1200, 
+                                showConfirmButton: false
+                            });
+                        }
+                    });
+                }
+            });
+        }
 
     const fetchDiseaseDataById = (id) => {
         $.ajax({
