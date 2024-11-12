@@ -45,6 +45,35 @@ class AuthenticatedSessionController extends Controller
         return response()->json(['token' => $token]);
     }
 
+    public function requestTokenAdmin(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+        'device_name' => 'required',
+    ]);
+
+    $validated = Auth::validate($request->only('email', 'password'));
+
+    $user = User::where('email', $request->email)->first();
+
+    if (!$validated || !$user) {
+        throw ValidationException::withMessages([
+            'credential' => 'The provided credentials are incorrect.',
+        ]);
+    }
+
+    // Check if the user's role is allowed (only roles 1 and 2)
+    if (!in_array($user->role, [1, 2])) {
+        return response()->json(['error' => 'Access denied. You do not have the required permissions.'], 403);
+    }
+
+    $token = $user->createToken($request->device_name)->plainTextToken;
+
+    return response()->json(['token' => $token]);
+}
+
+
     public function revokeToken(Request $request)
     {
         $user = User::where('id', $request->user()->id)->first();

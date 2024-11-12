@@ -34,6 +34,7 @@
                         </div>
                         <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
                     </form>
+                    <div id="errorAlert" class="hidden"></div>
                 </div>
             </div>
         </div>
@@ -41,6 +42,10 @@
     
 <script>
 $(document).ready(function() {
+    if (localStorage.getItem('user') || localStorage.getItem('token')) {
+        window.location.href = '/fish';
+    }
+
     $('#loginForm').on('submit', function(e) {
         e.preventDefault();
 
@@ -49,7 +54,7 @@ $(document).ready(function() {
         const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
-            url: '/api/requestToken',
+            url: '/api/requestTokenAdmin',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',
@@ -62,12 +67,52 @@ $(document).ready(function() {
                 device_name: 'web'
             }),
             success: function(response) {
-                localStorage.setItem('token', response.token);
-                alert(response.token);
-                window.location.href = '/fish';
+                let token = response.token;
+                
+                $.ajax({
+                    url: `/api/profile`,
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token,
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        localStorage.setItem('user', JSON.stringify(response));
+                        localStorage.setItem('token', token);
+
+                        window.location.href = '/fish';
+                    },
+                    error: function (xhr) {
+                        localStorage.removeItem('user');
+                        localStorage.removeItem('token');
+                    }
+                }); 
             },
             error: function(xhr) {
-                alert('Login failed: ' + xhr.responseText);
+                let errorMessage = 'Login failed';
+                        if (xhr.responseJSON && xhr.responseJSON.error) {
+                            errorMessage = xhr.responseJSON.error;
+                        } else if (xhr.responseText) {
+                            errorMessage = xhr.responseText;
+                        }
+
+                        // Create the alert HTML dynamically
+                        const alertHtml = `
+                            <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Access Denied:</span> ${errorMessage}
+                                </div>
+                            </div>
+                        `;
+
+                        // Inject the alert HTML into the placeholder and make it visible
+                        $('#errorAlert').html(alertHtml).removeClass('hidden');
             }
         });
     });

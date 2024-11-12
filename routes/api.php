@@ -141,9 +141,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 
-Route::post('/requestToken', [AuthenticatedSessionController::class, 'requestToken'])
-    ->middleware('guest')
-    ->name('requestToken');
+Route::post('/requestToken', [AuthenticatedSessionController::class, 'requestToken'])->name('requestToken');
+Route::post('/requestTokenAdmin', [AuthenticatedSessionController::class, 'requestTokenAdmin'])->name('requestTokenAdmin');
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest')

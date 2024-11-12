@@ -13,27 +13,8 @@
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
    <script>
-      if (!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined' || localStorage.getItem('token') === 'null') {
+      if (!localStorage.getItem('user') || localStorage.getItem('user') === 'undefined' || localStorage.getItem('user') === 'null') {
         window.location.href = '/auth/login';
-      }else{
-        $.ajax({
-            url: `/api/profile`,
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('token'),
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function (response) {
-                localStorage.setItem('token', response.token);
-            },
-            error: function (xhr) {
-                console.error('Error:', xhr);
-                localStorage.removeItem('token');
-                window.location.href = '/auth/login';
-            }
-        }); 
       }
    </script>
 </head>
@@ -86,6 +67,7 @@
 
                         function signOut() {
                           localStorage.removeItem('token');
+                          localStorage.removeItem('user');
                           window.location.href = '/auth/login';
                         }
                       </script>
