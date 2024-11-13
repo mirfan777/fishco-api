@@ -49,12 +49,18 @@
         </div>
     </div>
 </div>
+
 {{-- <meta name="csrf-token" content="{{ csrf_token() }}">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
 <script>
 $(document).ready(function() {
     $('#create-disease form').on('submit', function(e) {
         e.preventDefault();
+
+        // Disable submit button while processing
+        const submitBtn = $(this).find('button[type="submit"]');
+        submitBtn.prop('disabled', true);
 
         // Validate form before submission
         if (!validateForm()) {
@@ -64,26 +70,23 @@ $(document).ready(function() {
                 icon: 'error',
                 confirmButtonText: 'OK'
             });
+            submitBtn.prop('disabled', false);
             return;
         }
 
-        // Prepare form data without picture
-        const formData = {
-            name: $('#create-disease-name').val(),
-            description: $('#create-disease-description').val(),
-            symptoms: $('#create-symptoms').val()
-        };
-
-        // Disable submit button while processing
-        const submitBtn = $(this).find('button[type="submit"]');
-        submitBtn.prop('disabled', true);
+        // Prepare form data
+        const formData = new FormData(this);
 
         $.ajax({
             url: '/api/disease/create',
             type: 'POST',
             data: formData,
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            processData: false,
+            contentType: false,
+            headers: { 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Accept': 'application/json',
             },
             success: function(response) {
                 // Show success message
@@ -110,38 +113,15 @@ $(document).ready(function() {
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
-                console.error('Error:', error);
-            },
-            complete: function() {
-                // Re-enable submit button and restore original text
                 submitBtn.prop('disabled', false);
-                submitBtn.html('Submit');
             }
         });
     });
 
-    // Form validation
     function validateForm() {
-        let isValid = true;
-
-        // Check required fields
-        $('#create-disease form input[required], #create-disease form textarea[required]').each(function() {
-            if (!$(this).val()) {
-                $(this).addClass('border-red-500');
-                isValid = false;
-            } else {
-                $(this).removeClass('border-red-500');
-            }
-        });
-
-        return isValid;
+        // Add your form validation logic here
+        // Return true if the form is valid, otherwise return false
+        return true;
     }
-
-    // Real-time validation on input change
-    $('#create-disease form input, #create-disease form textarea').on('input', function() {
-        if ($(this).val()) {
-            $(this).removeClass('border-red-500');
-        }
-    });
 });
 </script>

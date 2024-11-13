@@ -1,23 +1,7 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Fishco Admin | Tabel Penyakit Ikan</title>
-        @vite(['resources/css/style.css', 'resources/js/app.js'])
-        <!-- Library jQuery dan SweetAlert2 -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
-        <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    </head>
-    <body>
+<x-layout.main>
         <!-- Modals etc -->
         @include('pages.fish.disease.modals.create')
-        @include('pages.fish.disease.modals.edit')
-        @include('layout.main')
-        
+        @include('pages.fish.disease.modals.edit')       
         <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
             <section class="dark:bg-gray-900 p-3 sm:p-5">
                 <div class="mx-auto w-full h-full px-4 lg:px-12">
@@ -65,8 +49,7 @@
                 </div>
             </section>
         </main>
-    </body>
-</html>
+</x-layout.main>
 
 <script>
     let currentDiseaseId = null;
@@ -97,6 +80,12 @@
         $.ajax({
             url: `/api/diseases`,
             method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             success: function(response) {
                 console.log("API Response:", response);
 
@@ -153,6 +142,13 @@
                     $.ajax({
                         url: `/api/disease/delete/${id}`,
                         type: 'DELETE',
+                        processData: false,
+                        contentType: false,
+                        headers: { 
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            'Accept': 'application/json',
+                        },
                         success: function(result) {
                             Swal.fire({
                                 title: 'Terhapus!',
@@ -182,10 +178,16 @@
         $.ajax({
             url: `/api/disease/${id}`,
             method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             success: function(response) {
                 console.log("API Response:", response); 
                 $('#edit-disease-name').val(response.data.name);
-                $('#edit-symptoms').val(response.data.symptoms);
+                $('#edit-disease-symptoms').val(response.data.symptoms);
                 $('#edit-disease-description').val(response.data.description);
 
                 currentDiseaseId = id;

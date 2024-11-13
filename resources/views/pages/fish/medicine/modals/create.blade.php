@@ -68,6 +68,11 @@ $(document).ready(function() {
         $.ajax({
             url: '/api/diseases',
             type: 'GET',
+            headers: { 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Accept': 'application/json',
+            },
             success: function(response) {
                 console.log('Diseases data:', response); 
                 const diseaseDropdown = $('#create-disease-id');
@@ -90,17 +95,22 @@ $(document).ready(function() {
         $.ajax({
             url: '/api/fishes',
             type: 'GET',
+            headers: { 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Accept': 'application/json',
+            },
             success: function(response) {
                 console.log('Fishes data:', response); // Tambahkan ini untuk memeriksa data
                 const fishDropdown = $('#create-fish-id');
                 fishDropdown.empty();
                 fishDropdown.append('<option value="">Select Fish</option>');
-                if (Array.isArray(response)) {
-                    response.forEach(function(fish) {
+                if (Array.isArray(response.data)) {
+                    response.data.forEach(function(fish) {
                         fishDropdown.append(`<option value="${fish.id}">${fish.name}</option>`);
                     });
                 } else {
-                    console.error('Expected an array but got:', response);
+                    console.error('Expected an array but got:', response.data);
                 }
             },
             error: function(xhr, status, error) {
@@ -127,33 +137,39 @@ $(document).ready(function() {
         }
 
         const formData = {
-            name: $('#create-medicine-name').val(),
-            description: $('#create-medicine-description').val(),
-            disease_id: $('#create-disease-id').val(),
-            fish_id: $('#create-fish-id').val(),
-        };
+        name: $('#create-medicine-name').val(),
+        description: $('#create-medicine-description').val(),
+        disease_id: $('#create-disease-id').val(),
+        fish_id: $('#create-fish-id').val(),
+    };
 
-        const submitBtn = $(this).find('button[type="submit"]');
-        submitBtn.prop('disabled', true);
+    console.log(formData); // Log formData to the console
 
-        $.ajax({
-            url: '/api/medicine/create',
-            type: 'POST',
-            data: formData,
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
-            },
-            success: function(response) {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Data obat berhasil ditambahkan.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    $('#create-medicine form')[0].reset();
-                    $('#create-medicine').hide();
-                });
-                $('[data-modal-hide="create-medicine"]').click();
+    const submitBtn = $(this).find('button[type="submit"]');
+    submitBtn.prop('disabled', true);
+
+    $.ajax({
+        url: '/api/medicine/create',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        headers: { 
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Accept': 'application/json',
+        },
+        success: function(response) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Data obat berhasil ditambahkan.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                $('#create-medicine form')[0].reset();
+                $('#create-medicine').hide();
+            });
+            $('[data-modal-hide="create-medicine"]').click();
                 setTimeout(function () {
                     location.reload();
                 }, 500);

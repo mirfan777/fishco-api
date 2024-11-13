@@ -64,23 +64,28 @@ $(document).ready(function() {
         $.ajax({
             url: `/api/disease/update/${diseaseId}`,
             type: 'POST',
-            data: formData,
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            headers: { 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Accept': 'application/json',
             },
             success: function(response) {
+                console.log('Response:', response); // Log the response
                 Swal.fire({
                     title: 'Success!',
                     text: 'Disease data has been successfully updated.',
                     icon: 'success',
                     confirmButtonText: 'OK'
-                })
+                });
+
+                // Update the UI with the new data
+                $('#disease-name').text(response.data.name);
+                $('#disease-description').text(response.data.description);
+
                 $('[data-modal-hide="edit-disease"]').click();
-                    setTimeout(function () {
-                        location.reload();
-                    }, 500);
             },
             error: function(xhr, status, error) {
+                console.error('Error:', error); // Log the error
                 Swal.fire({
                     title: 'Error!',
                     text: 'Failed to update disease data. Please try again.',

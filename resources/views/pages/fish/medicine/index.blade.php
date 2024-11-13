@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Medicine</title>
-        <!-- Menyertakan file CSS dan JavaScript dari Vite -->
-        @vite(['resources/css/style.css', 'resources/js/app.js'])
-        <!-- Library jQuery dan SweetAlert2 untuk keperluan interaksi dan notifikasi -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
-        <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    </head>
-    <body>
-        <!-- Menyertakan modal untuk form "Tambah Data Penyakit" -->
-        @include('pages.fish.medicine.modals.create')
-        @include('pages.fish.medicine.modals.edit')
-        <!-- Menyertakan layout utama -->
-        @include('layout.main')
-        
+<x-layout.main>
+    <!-- Modals etc -->
+    @include('pages.fish.medicine.modals.create')
+    @include('pages.fish.medicine.modals.edit') 
+    
         <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
             <section class="dark:bg-gray-900 p-3 sm:p-5">
                 <div class="mx-auto w-full h-full px-4 lg:px-12">
@@ -67,8 +50,7 @@
                 </div>
             </section>
         </main> 
-    </body>
-</html>
+</x-layout.main>
 
 <script>
     let currentMedicineId = null;
@@ -138,6 +120,12 @@
         $.ajax({
             url: `/api/medicine/${id}`,
             method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             success: function(response) {
                 
                 $('#edit-medicine-name').val(response.data.name);
@@ -159,6 +147,12 @@
         $.ajax({
             url: `/api/medicines`,
             method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             success: function(response) {
                 console.log("API Response:", response);
 
@@ -215,12 +209,20 @@
                     $.ajax({
                         url: `/api/medicine/delete/${id}`,
                         type: 'DELETE',
+                        processData: false,
+                        contentType: false,
+                        headers: { 
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            'Accept': 'application/json',
+                        },
                         success: function(result) {
                             Swal.fire({
                                 title: 'Terhapus!',
                                 text: 'Obat ikan berhasil dihapus.',
                                 icon: 'success',
-                                confirmButtonText: 'OK'
+                                timer: 1200, 
+                                showConfirmButton: false
                             }).then(() => {
                                 location.reload(); // Reload the page to reflect changes
                             });
@@ -230,7 +232,8 @@
                                 title: 'Error!',
                                 text: 'Gagal untuk menghapus obat ikan, silahkan coba lagi',
                                 icon: 'error',
-                                confirmButtonText: 'OK'
+                                timer: 1200, 
+                                showConfirmButton: false
                             });
                         }
                     });
@@ -238,60 +241,5 @@
             });
         }
 
-    const renderPagination = (meta) => {
-        const pagination = $('#pagination');
-        const paginationInfo = $('#pagination-info');
-        
-        // Update pagination info
-        paginationInfo.html(`
-            Showing <span class="font-semibold text-gray-900 dark:text-white">${meta.from}-${meta.to}</span> of 
-            <span class="font-semibold text-gray-900 dark:text-white">${meta.total}</span>
-        `);
-
-        pagination.empty();
-
-        // Previous page button
-        pagination.append(`
-            <li>
-                <button onclick="fetchMedicineData(${meta.current_page - 1}, '${currentSearch}')" 
-                        class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg ${meta.current_page === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}"
-                        ${meta.current_page === 1 ? 'disabled' : ''}>
-                    Previous
-                </button>
-            </li>
-        `);
-
-        // Page numbers
-        meta.links.slice(1, -1).forEach(link => {
-            pagination.append(`
-                <li>
-                    <button onclick="fetchMedicineData(${link.label}, '${currentSearch}')" 
-                            class="px-3 py-2 leading-tight ${link.active 
-                                ? 'text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700' 
-                                : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100'}">
-                        ${link.label}
-                    </button>
-                </li>
-            `);
-        });
-
-        // Next page button
-        pagination.append(`
-            <li>
-                <button onclick="fetchMedicineData(${meta.current_page + 1}, '${currentSearch}')" 
-                        class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg ${meta.current_page === meta.last_page ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'}"
-                        ${meta.current_page === meta.last_page ? 'disabled' : ''}>
-                    Next
-                </button>
-            </li>
-        `);
-    };
-
     fetchMedicineData();
-
-    $('#searchForm').on('submit', function(e) {
-        e.preventDefault();
-        const query = $('#simple-search').val();
-        fetchMedicineData(1, query);
-    });
 </script>
