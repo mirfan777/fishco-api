@@ -4,6 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\ProductResource;
+use App\Http\Resources\FishResource;
 
 class DiseaseResource extends JsonResource
 {
@@ -17,9 +19,16 @@ class DiseaseResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'disease_type' => $this->disease_type,
+            'cause_agent' => $this->cause_agent,
+            'affected_part' => $this->affected_part,
             'description' => $this->description,
             'symptoms' => $this->symptoms,
-            'created_at' => $this->created_at->format('d-m-Y')
+            'prevention' => $this->prevention,
+            'note' => $this->note,
+            'product_recommendation' => new ProductResource($this->product_recommendation),
+            'affected_fish' => new FishResource($this->affected_fish),
+            'created_at' => $this->created_at
         ];
     }
 }

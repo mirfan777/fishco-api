@@ -13,9 +13,14 @@ return new class extends Migration
     {
         Schema::create('diseases', function (Blueprint $table) {
             $table->id();
+            $table->integer('disease_type');
             $table->string('name');
-            $table->text('description');
+            $table->string('cause_agent');
+            $table->string('affected_part');
             $table->string('symptoms');
+            $table->string('prevention');
+            $table->text('description');
+            $table->string('note');
             $table->timestamps();
         });
     }

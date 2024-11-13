@@ -163,6 +163,11 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Disease ' . $i,
                 'description' => 'Description ' . $i,
                 'symptoms' => 'Symptoms ' . $i,
+                'cause_agent' => 'Cause Agent ' . $i,
+                'affected_part' => 'Affected Part ' . $i,
+                'prevention' => 'Prevention ' . $i,
+                'note' => 'Note ' . $i,
+                'disease_type' => rand(1, 5),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ];
@@ -212,6 +217,33 @@ class DatabaseSeeder extends Seeder
             ];
         }
         DB::table('reports')->insert($reports);
+
+        // affected_disease_fish table
+        $affectedDiseaseFish = [];
+        for ($i = 1; $i <= $recordCount; $i++) {
+            $affectedDiseaseFish[] = [
+                'disease_id' => rand(1, $recordCount),
+                'fish_id' => rand(1, $recordCount),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        }
+
+        DB::table('affected_disease_fish')->insert($affectedDiseaseFish);
+
+        // product treatments recommendation table
+        $productTreatments = [];
+        for ($i = 1; $i <= $recordCount; $i++) {
+            $productTreatments[] = [
+                'product_id' => rand(1, $recordCount),
+                'disease_id' => rand(1, $recordCount),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        }
+
+        DB::table('product_treatment_recommendations')->insert($productTreatments);
+
 
     
 

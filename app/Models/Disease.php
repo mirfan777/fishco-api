@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
+use App\Models\AffectedDiseaseFish;
 
 class Disease extends Model
 {
@@ -10,13 +12,14 @@ class Disease extends Model
     
     protected $guarded = ['id']; 
 
-    public function medicine()
+
+    public function product_recommendation()
     {
-        return $this->hasMany(Medicine::class);
+        return $this->hasMany(ProductTreatmentRecommendation::class);
     }
 
-    public function fish()
+    public function affected_fish()
     {
-        return $this->hasOne(FishImage::class);
+        return $this->hasMany(AffectedDiseaseFish::class);
     }
 }
