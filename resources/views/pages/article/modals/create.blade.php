@@ -55,45 +55,51 @@
         $('#create-article form').on('submit', function(e) {
             e.preventDefault();
             
-            // Create FormData object to handle file uploads
+            // Membuat objek FormData untuk menangani upload file
             const formData = new FormData();
             
-            // Get the file input
+            // Mendapatkan input file
             const fileInput = document.getElementById('create-article-thumbnail');
             if (fileInput.files.length > 0) {
                 formData.append('thumbnail', fileInput.files[0]);
             }
             
-            // Add form fields to FormData
+            // Menambahkan field form ke FormData
             formData.append('title', $('#create-article-title').val());
             formData.append('slug', $('#create-article-slug').val());
             formData.append('body', $('#create-article-body').val());
+            formData.append('user_id', '1');
 
-            // Log FormData entries for debugging
+            // Log entri FormData untuk debugging
             for (let [key, value] of formData.entries()) {
-                console.log(${key}:, value);
+                console.log(`${key}:`, value);
             }
 
-            // Disable submit button while processing
+            // Menonaktifkan tombol submit saat proses berlangsung
             const submitBtn = $(this).find('button[type="submit"]');
             submitBtn.prop('disabled', true);
 
-            // Send AJAX request
+            // Mengirim permintaan AJAX
             $.ajax({
                 url: '/api/article/create',
                 type: 'POST',
                 data: formData,
                 processData: false,
                 contentType: false,
+                headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
                 success: function(response) {
-                    // Show success message
+                    // Menampilkan pesan sukses
                     Swal.fire({
-                        title: 'Success!',
-                        text: 'Article data has been successfully added',
+                        title: 'Sukses!',
+                        text: 'Data artikel berhasil ditambahkan',
                         icon: 'success',
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        // Reset form and close modal
+                        // Mereset form dan menutup modal
                         $('#create-article form')[0].reset();
                         $('#create-article').hide();
                     });
@@ -106,7 +112,7 @@
                     console.error('Error creating article:', xhr.responseText);
                 },
                 complete: function() {
-                    // Re-enable submit button after request completes
+                    // Mengaktifkan kembali tombol submit setelah permintaan selesai
                     submitBtn.prop('disabled', false);
                 }
             });

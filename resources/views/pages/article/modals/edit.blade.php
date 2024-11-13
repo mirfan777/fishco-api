@@ -71,6 +71,7 @@
             formData.append('title', $('#edit-article-title').val());
             formData.append('slug', $('#edit-article-slug').val());
             formData.append('body', $('#edit-article-body').val());
+            formData.append('thumbnail', $('#edit-article-thumbnail').val());
 
             const submitBtn = $(this).find('button[type="submit"]');
             submitBtn.prop('disabled', true);
@@ -82,6 +83,11 @@
                 data: formData,
                 processData: false,
                 contentType: false,
+                headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
                 success: function (response) {
                     Swal.fire({
                         icon: 'success',

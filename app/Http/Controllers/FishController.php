@@ -223,6 +223,19 @@ class FishController extends Controller
             'message' => 'Failed to delete image'
         ], 500);
     }
+
+    public function deleteFish($id)
+    {
+        try {
+            $fish = Fish::findOrFail($id);
+            $fish->delete();
+            return response()->json(['success' => 'Fish deleted successfully']);
+        } catch (\Exception $e) {
+            // Log the error for debugging
+            \Log::error('Failed to delete fish: ' . $e->getMessage());
+            return response()->json(['error' => 'Failed to delete fish, please try again'], 500);
+        }
+    }
     
     public function getAllFishes() {
         return response()->json([

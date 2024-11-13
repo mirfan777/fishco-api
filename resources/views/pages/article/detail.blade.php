@@ -1,35 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail Article</title>
-    <!-- Include CSS dan JavaScript -->
-    @vite(['resources/css/style.css', 'resources/js/app.js'])
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
-    @include('pages.article.modals.edit')
-    @include('layout.main')
-    
-    <main class="sm:ml-64 min-h-screen mt-20 bg-gray-50">
-        <div class="flex flex-col lg:flex-row gap-2 mb-5 lg:p-20 p-2">
-            <div class="flex flex-col">
-                <h1 id="detail-article-title" class="text-title text-4xl">Judul Article</h1>
-                <div class="flex flex-col gap-5 md:flex-row md:gap-56">
-                    <div class="flex flex-col gap-2">
-                        <div class="flex"><p class="w-40">Slug</p><p id="detail-slug">: </p></div>
-                        <div class="flex"><p class="w-40">Body</p><p id="detail-body">: </p></div>
+<x-layout.main>
+        @include('pages.article.modals.edit')
+        
+        <main class="sm:ml-64 min-h-screen mt-20 bg-gray-50">
+            <div class="flex flex-col lg:flex-row gap-2 mb-5 lg:p-20 p-2">
+                <div class="flex flex-col">
+                    <h1 id="detail-article-title" class="text-title text-4xl">Judul Article</h1>
+                    <div class="flex flex-col gap-5 md:flex-row md:gap-56">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex"><p class="w-40">Slug</p><p id="detail-slug">: </p></div>
+                            <div class="flex"><p class="w-40">Body</p><p id="detail-body">: </p></div>
+                        </div>
+                    </div>
+                    <div class="flex md:flex-row flex-col w-full gap-5 mt-5">
+                        <button data-modal-target="edit-article" data-modal-toggle="edit-article" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Edit data</button>
                     </div>
                 </div>
-                <div class="flex md:flex-row flex-col w-full gap-5 mt-5">
-                    <button data-modal-target="edit-article" data-modal-toggle="edit-article" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Edit data</button>
-                </div>
             </div>
-        </div>
-    </main>
+        </main>
+</x-layout.main>
 
     <script>
         $(document).ready(function () {
@@ -60,6 +48,11 @@
           $.ajax({
               url: `/api/article/${articleId}`,
               method: 'GET',
+              headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
               success: function (response) {
                   const article = response.data;
 

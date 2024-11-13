@@ -102,9 +102,12 @@ $(document).ready(function() {
         $.ajax({
             url: '/api/register',
             type: 'POST',
-            data: formData,
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
+            headers: { 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Accept': 'application/json',
             },
             success: function(response) {
                 // Show success message

@@ -23,14 +23,16 @@
                         <div class="flex"><p class="w-40">Colour</p><p id="detail-colour">: </p></div>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <h2 class="text-title text-xl font-bold">Foods</h2>
-                        <div class="flex"><p class="w-40">Type</p><p id="detail-food-type">: </p></div>
-                        <div class="flex"><p class="w-40">Food</p><p id="detail-food">: </p></div>
+                        <h2 class="text-title text-xl font-bold">Makanan</h2>
+                        <div class="flex"><p class="w-40">Tipe</p><p id="detail-food-type">: </p></div>
+                        <div class="flex"><p class="w-40">Makanan</p><p id="detail-food">: </p></div>
                         <h2 class="text-title text-xl font-bold">Habitat</h2>
-                        <div class="flex"><p class="w-40">Type</p><p id="detail-habitat">: </p></div>
-                        <h2 class="text-title text-xl font-bold">Water Conditions</h2>
-                        <div class="flex"><p class="w-40">Temperature</p><p id="detail-temperature">: </p></div>
+                        <div class="flex"><p class="w-40">Tipe</p><p id="detail-habitat">: </p></div>
+                        <h2 class="text-title text-xl font-bold">Kondisi Air</h2>
+                        <div class="flex"><p class="w-40">Temperatur</p><p id="detail-temperature">: </p></div>
                         <div class="flex"><p class="w-40">pH</p><p id="detail-ph">: </p></div>
+                        <h2 class="text-title text-xl font-bold">Ukuran ikan</h2>
+                        <div class="flex"><p class="w-40">Ukuran</p><p id="detail-size">: </p></div>
                     </div>
                 </div>
                 <div class="mt-5">
@@ -115,6 +117,9 @@
                     `: ${fish.min_temperature}°C - ${fish.max_temperature}°C` : ": Not available");
                 $('#detail-ph').text((fish.min_ph && fish.max_ph) ? 
                     `: ${fish.min_ph} - ${fish.max_ph}` : ": Not available");
+                console.log("min_size:", fish.min_size, "max_size:", fish.max_size);
+                $('#detail-size').text((fish.min_size > 0 && fish.max_size > 0) ? 
+                `: ${fish.min_size}cm - ${fish.max_size}cm` : ": Not available");
                 $('#detail-habitat').text(fish.habitat ? `: ${fish.habitat}` : ": Not available");
                 $('#detail-overview').text(fish.overview ? fish.overview : "No overview available");
 
@@ -135,6 +140,8 @@
                 $('#edit-max_temperature').val(fish.max_temperature ? fish.max_temperature : "Not available");
                 $('#edit-min_ph').val(fish.min_ph ? fish.min_ph : "Not available");
                 $('#edit-max_ph').val(fish.max_ph ? fish.max_ph : "Not available");
+                $('#edit-min_size').val(fish.min_size ? fish.min_size : "Not available");
+                $('#edit-max_size').val(fish.max_size ? fish.max_size : "Not available");
                 $('#edit-habitat').val(fish.habitat ? fish.habitat : "Not available");
                 $('#edit-overview').val(fish.overview ? fish.overview : "No overview available");
 

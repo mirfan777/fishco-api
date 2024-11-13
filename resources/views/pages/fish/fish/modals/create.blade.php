@@ -23,56 +23,56 @@
                         <div class="md:w-1/2">
                             <!-- Name -->
                             <div class="mb-3">
-                                <label for="create-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                <input type="text" id="create-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter fish name" required />
+                                <label for="create-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                                <input type="text" id="create-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan nama ikan" required />
                             </div>
                         
                             <!-- Kingdom -->
                             <div class="mb-3">
                                 <label for="create-kingdom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kingdom</label>
-                                <input type="text" id="create-kingdom" name="kingdom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter kingdom" required />
+                                <input type="text" id="create-kingdom" name="kingdom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan kingdom" required />
                             </div>
                         
                             <!-- Phylum -->
                             <div class="mb-3">
                                 <label for="create-phylum" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phylum</label>
-                                <input type="text" id="create-phylum" name="phylum" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter phylum" required />
+                                <input type="text" id="create-phylum" name="phylum" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan phylum" required />
                             </div>
                         
                             <!-- Class -->
                             <div class="mb-3">
                                 <label for="create-class" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class</label>
-                                <input type="text" id="create-class" name="class" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter class" required />
+                                <input type="text" id="create-class" name="class" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan class" required />
                             </div>
                         
                             <!-- Order -->
                             <div class="mb-3">
                                 <label for="create-order" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Order</label>
-                                <input type="text" id="create-order" name="order" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter order" required />
+                                <input type="text" id="create-order" name="order" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan order" required />
                             </div>
                         
                             <!-- Family -->
                             <div class="mb-3">
                                 <label for="create-family" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Family</label>
-                                <input type="text" id="create-family" name="family" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter family" required />
+                                <input type="text" id="create-family" name="family" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan family" required />
                             </div>
                         
                             <!-- Genus -->
                             <div class="mb-3">
                                 <label for="create-genus" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Genus</label>
-                                <input type="text" id="create-genus" name="genus" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter genus" required />
+                                <input type="text" id="create-genus" name="genus" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan genus" required />
                             </div>
                         
                             <!-- Species -->
                             <div class="mb-3">
-                                <label for="create-species" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Species</label>
-                                <input type="text" id="create-species" name="species" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter species" required />
+                                <label for="create-species" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Spesies</label>
+                                <input type="text" id="create-species" name="species" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan spepies" required />
                             </div>
                         
                             <!-- Colour -->
                             <div class="mb-3">
-                                <label for="create-colour" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Colour</label>
-                                <input type="text" id="create-colour" name="colour" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter colour" required />
+                                <label for="create-colour" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Warna</label>
+                                <input type="text" id="create-colour" name="colour" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan warna" required />
                             </div>
                         </div>
                     
@@ -81,14 +81,14 @@
                             <div>
                                 <!-- Food Type -->
                                 <div class="mb-3">
-                                    <label for="create-food_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Food Type</label>
-                                    <input type="text" id="create-food_type" name="food_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter food type" required />
+                                    <label for="create-food_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe Makanan</label>
+                                    <input type="text" id="create-food_type" name="food_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan tipe makanan" required />
                                 </div>
                             
                                 <!-- Food -->
                                 <div class="mb-3">
-                                    <label for="create-food" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Food</label>
-                                    <input type="text" id="create-food" name="food" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter food" required />
+                                    <label for="create-food" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Makanan</label>
+                                    <input type="text" id="create-food" name="food" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan makanan" required />
                                 </div>
                             </div>
 
@@ -97,49 +97,62 @@
                                 <!-- Habitat -->
                                 <div class="mb-3">
                                     <label for="create-habitat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Habitat</label>
-                                    <input type="text" id="create-habitat" name="habitat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter habitat" required />
+                                    <input type="text" id="create-habitat" name="habitat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan habitat" required />
                                 </div>
 
                                 <!-- Min Temperature -->
                                 <div class="mb-3">
                                     <label for="create-min_temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min Temperature</label>
-                                    <input type="number" step="0.1" id="create-min_temperature" name="min_temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter min temperature" required />
+                                    <input type="number" step="0.1" id="create-min_temperature" name="min_temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan min temperatur" required />
                                 </div>
 
                                 <!-- Max Temperature -->
                                 <div class="mb-3">
                                     <label for="create-max_temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max Temperature</label>
-                                    <input type="number" step="0.1" id="create-max_temperature" name="max_temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter max temperature" required />
+                                    <input type="number" step="0.1" id="create-max_temperature" name="max_temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan max temperatur" required />
                                 </div>
 
                                 <!-- Min pH -->
                                 <div class="mb-3">
                                     <label for="create-min_ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min pH</label>
-                                    <input type="number" step="0.1" id="create-min_ph" name="min_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter min pH" required />
+                                    <input type="number" step="0.1" id="create-min_ph" name="min_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH min" required />
                                 </div>
 
                                 <!-- Max pH -->
                                 <div class="mb-3">
                                     <label for="create-max_ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max pH</label>
-                                    <input type="number" step="0.1" id="create-max_ph" name="max_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter max pH" required />
+                                    <input type="number" step="0.1" id="create-max_ph" name="max_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max" required />
                                 </div>
-                            </div>
 
-                            {{-- thumbnail dan overview --}}
-                            <div>
-                                <label for="create-overview" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fish Detail</label>
-                                <textarea id="create-overview" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Overview"></textarea>
-                            
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="create-thumbnail">Upload fish image</label>
-                                <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-thumbnail" type="file">
+                                <!-- Min size -->
+                                <div class="mb-3">
+                                    <label for="create-min_ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min Size</label>
+                                    <input type="number" step="0.1" id="create-min_size" name="min_size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan ukuran min" required />
+                                </div>
+
+                                <!-- Max size -->
+                                <div class="mb-3">
+                                    <label for="create-max_ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max Size</label>
+                                    <input type="number" step="0.1" id="create-max_size" name="max_size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan ukuran max" required />
+                                </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Fish Detail and Thumbnail -->
+                    <div class="mt-5">
+                        <label for="create-overview" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detail Ikan</label>
+                        <textarea id="create-overview" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan detail ikan"></textarea>
+                    </div>
+                    <div class="mt-5">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="create-thumbnail">Upload gambar ikan</label>
+                        <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-thumbnail" type="file">
+                    </div>
+
                 
                     <!-- Submit Button -->
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-                  </form>
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5">Submit</button>
+                </form>
             </div>
         </div>
     </div>
@@ -175,6 +188,8 @@
         formData.append('max_temperature', $('#create-max_temperature').val());
         formData.append('min_ph', $('#create-min_ph').val());
         formData.append('max_ph', $('#create-max_ph').val());
+        formData.append('min_size', $('#create-min_size').val());
+        formData.append('max_size', $('#create-max_size').val());
         formData.append('habitat', $('#create-habitat').val());
         formData.append('overview', $('#create-overview').val());
 

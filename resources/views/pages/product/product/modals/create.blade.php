@@ -61,8 +61,6 @@
         </div>
     </div>
 </div>
-{{-- <meta name="csrf-token" content="{{ csrf_token() }}">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script>
 $(document).ready(function() {
     $('#create-product form').on('submit', function(e) {
@@ -88,17 +86,17 @@ $(document).ready(function() {
             description: $('#create-product-description').val()
         };
 
+        // Log form data for debugging
+        console.log('Form Data:', formData);
+
         // Disable submit button while processing
-        const submitBtn = $(this).find('button[type="submit"]');
-        submitBtn.prop('disabled', true);
+        $('button[type="submit"]').prop('disabled', true);
 
         $.ajax({
-            url: '/api/product/create',
+            url: '/api/product/create', // Replace with your actual endpoint URL
             type: 'POST',
-            data: formData,
-            data: formData,
-            processData: false,
-            contentType: false,
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
             headers: { 
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -122,6 +120,9 @@ $(document).ready(function() {
                 }, 500);
             },
             error: function(xhr, status, error) {
+                // Log error details for debugging
+                console.error('Error details:', xhr.responseText);
+
                 // Show error message
                 Swal.fire({
                     title: 'Error!',
@@ -129,15 +130,14 @@ $(document).ready(function() {
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
-                console.error('Error:', error);
-            },
-            complete: function() {
-                // Re-enable submit button and restore original text
-                submitBtn.prop('disabled', false);
-                submitBtn.html('Submit');
+
+                // Re-enable submit button
+                $('button[type="submit"]').prop('disabled', false);
             }
         });
     });
+
+    console.log(formData);
 
     // Form validation
     function validateForm() {

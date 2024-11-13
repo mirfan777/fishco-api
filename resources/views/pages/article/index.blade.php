@@ -1,6 +1,5 @@
 <x-layout.main>
     @include('pages.article.modals.create')
-    @include('pages.article.modals.edit') 
     
     <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
         <section class="dark:bg-gray-900 p-3 sm:p-5">
@@ -69,6 +68,32 @@
         });
     };
 
+    const fetchArticleDataById = (id) => {
+        $.ajax({
+            url: `/api/articles/${id}`,
+            method: 'GET',
+            headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
+            success: function(response) {
+                console.log("API Response:", response); 
+                $('#edit-article-title').val(response.data.name);
+                $('#edit-article-slug').val(response.data.category);
+                $('#edit-article-body').val(response.data.price);
+                $('#edit-article-thumbnail').val(response.data.link);
+
+                currentArticleId = id;
+                initializeModalPosition(); // Ensure modal is centered
+                $('#edit-article').show();
+            },
+            error: function(xhr, status, error) {
+                console.error("API Error:", error); // Debug: Log error details
+            }
+        });
+    };
+
     const fetchArticleData = () => {
         $.ajax({
             url: `/api/articles`,
@@ -85,14 +110,14 @@
                 articleTableBody.empty();
 
                 if (response.data && response.data.length > 0) {
-                    response.data.forEach(aricle => {
+                    response.data.forEach(article => {
                         articleTableBody.append(`
                             <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">${aricle.title}</td>
-                                <td class="px-4 py-3">${aricle.slug}</td>
+                                <td class="px-4 py-3">${article.title}</td>
+                                <td class="px-4 py-3">${article.slug}</td>
                                 <td class="px-4 py-3">
-                                    <button data-modal-target="edit-aricle" data-modal-toggle="edit-aricle" onclick="fetchArticleDataById(${aricle.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
-                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${aricle.id})">Hapus</button>
+                                    <a href="/article/detail/?id=${article.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
+                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${article.id})">Hapus</button>
                                 </td>
                             </tr>
                         `);
