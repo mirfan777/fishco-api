@@ -40,6 +40,7 @@ class FishRequest extends FormRequest
             'habitat' => 'required|string|max:255',
             'overview' => 'required|string',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'average_size' => 'required|string|max:255',
         ];
     }
 }

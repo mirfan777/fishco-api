@@ -149,8 +149,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now(),
                 'thumbnail' => 'fish' . $i . '.jpg',
                 'overview' => 'Overview ' . $i,
-                'min_size' => rand(1, 10),
-                'max_size' => rand(11, 20)
+                'average_size' => rand(1, 10)
             ];
         }
         DB::table('fishes')->insert($fish);

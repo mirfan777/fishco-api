@@ -72,8 +72,7 @@ class FishController extends Controller
                     'max_ph' => $request->max_ph,
                     'habitat' => $request->habitat,
                     'overview' => $request->overview,
-                    'min_size' => $request->min_size,
-                    'max_size' => $request->max_size,
+                    'average_size' => $request->average_size,
                     'thumbnail' => $filename 
                 ]);
 
@@ -142,8 +141,7 @@ class FishController extends Controller
             'max_ph' => $request->max_ph    ?? $existingFish->max_ph,
             'habitat' => $request->habitat ?? $existingFish->habitat,
             'overview' => $request->overview ?? $existingFish->overview,
-            'min_size' => $request->min_size ?? $existingFish->min_size,
-            'max_size' => $request->max_size ?? $existingFish->max_size,
+            'average_size' => $request->average_size ?? $existingFish->average_size,
             'thumbnail' => $filename  
         ]);
     
@@ -232,7 +230,7 @@ class FishController extends Controller
             return response()->json(['success' => 'Fish deleted successfully']);
         } catch (\Exception $e) {
             // Log the error for debugging
-            \Log::error('Failed to delete fish: ' . $e->getMessage());
+            Log::error('Failed to delete fish: ' . $e->getMessage());
             return response()->json(['error' => 'Failed to delete fish, please try again'], 500);
         }
     }

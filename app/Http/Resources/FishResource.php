@@ -34,6 +34,7 @@ class FishResource extends JsonResource
             'habitat' => $this->habitat,
             'overview' => $this->overview,
             'thumbnail' => $this->thumbnail,
+            'average_size' => $this->average_size,
             'created_at' => $this->created_at->format('d-m-Y'),
             'images' => FishImageResource::collection($this->images)
         ];

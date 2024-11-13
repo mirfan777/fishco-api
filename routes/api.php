@@ -18,30 +18,9 @@ use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\FishImageController;
 use App\Http\Controllers\ReportController;
 
-use App\Http\Resources\AffiliateResource;
-use App\Http\Resources\ArticleResource;
-use App\Http\Resources\CommentResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Resources\DiseaseResource;
-use App\Http\Resources\FishResource;
-use App\Http\Resources\MedicineResource;
-use App\Http\Resources\ProductResource;
-use App\Http\Resources\RepliesResource;
-use App\Http\Resources\UserResource;
-use App\Http\Resources\FishImageResource;
-
-use App\Models\User;
-use App\Models\Fish;
-use App\Models\Article;
-use App\Models\Comment;
-use App\Models\Replies;
-use App\Models\Affiliate;
-use App\Models\Disease;
-use App\Models\Medicine;
-use App\Models\Products;
-use App\Models\FishImage;
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
