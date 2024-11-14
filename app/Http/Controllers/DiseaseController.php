@@ -18,7 +18,7 @@ class DiseaseController extends Controller
         return DiseaseResource::collection($diseases);
     }
 
-    function getDiseaseById($id, Request $request) {
+    function getDiseaseById($id) {
         $disease = Disease::find($id);
 
         if (!$disease) {

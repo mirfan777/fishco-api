@@ -10,8 +10,8 @@ class CommentController extends Controller
 {
     function getAllComment(Request $request){
         $query = $request->query('search', '');
-        $comments = Comment::where('name', 'like', "%$query%")
-                      ->paginate(5);
+        $comments = Comment::where('body', 'like', "%$query%")
+                  ->paginate(5);
         return CommentResource::collection($comments);
     }
 
@@ -28,7 +28,12 @@ class CommentController extends Controller
     }
 
     function addComment(Request $request){
-        $comment = Comment::create($request->all());
+        $comment = Comment::create(
+            [
+                'user_id' => $request->user_id,
+                'body' => $request->body
+            ]
+        );
 
         $data = new CommentResource($comment);
 
@@ -39,20 +44,21 @@ class CommentController extends Controller
     }
 
     function updateComment(Request $request, $id){
-        $comment = Comment::find($id);
+        $existingComment = Comment::find($id);
 
-        if(!$comment){
+        if(!$existingComment){
             return response()->json([
                 'message' => 'Comment not found'
             ], 404);
         }
 
-        $comment->update($request->all());
+        $response = $existingComment->update(
+            [
+                'body' => $request->body
+            ]
+        );
 
-        return response()->json([
-            'message' => 'Comment updated successfully',
-            'data' => new CommentResource($comment)
-        ]);
+        return $response;
     }
 
     function deleteComment($id){

@@ -24,7 +24,12 @@ class DiseaseRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'symptoms' => 'required|string'
+            'disease_type' => 'required|integer',
+            'cause_agent' => 'required|string|max:255',
+            'affected_part' => 'required|string|max:255',
+            'symptoms' => 'required|string|max:255',
+            'prevention' => 'required|string|max:255',
+            'note' => 'required|string|max:255',
         ];
     }
 }
