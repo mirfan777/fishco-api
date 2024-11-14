@@ -7,6 +7,9 @@
   color: #2d3748; /* Sesuaikan warna teks */
 }
 
+.custom-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
 /* .hidden {
   display: none;
 } */

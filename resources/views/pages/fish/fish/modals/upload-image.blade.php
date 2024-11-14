@@ -67,8 +67,13 @@
 
 <script>
     $(document).ready(function() {
+        // Set the fishId value dynamically
+        var fishId = 'your-dynamic-fish-id-value'; // Replace with actual dynamic value
+        $('#fishId').val(fishId);
+
         // Sembunyikan input 'jenis penyakit' saat pertama kali
         $('#upload-disease').closest('.mb-3').hide();
+        $('#upload-disease').prop('required', false);
 
         // Event untuk radio button status
         $('input[name="status"]').on('change', function() {
@@ -76,9 +81,11 @@
             if ($('#upload-status-1').is(':checked')) {
                 // Tampilkan input 'jenis penyakit'
                 $('#upload-disease').closest('.mb-3').show();
+                $('#upload-disease').prop('required', true);
             } else {
                 // Sembunyikan input 'jenis penyakit' jika pilihan 'Sehat' dipilih
                 $('#upload-disease').closest('.mb-3').hide();
+                $('#upload-disease').prop('required', false);
             }
         });
     });

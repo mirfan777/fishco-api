@@ -17,9 +17,14 @@
             </div>
             <!-- Modal Body -->
             <div class="p-4 md:p-5 space-y-4">
-                <form id="createArticleForm" class="w-full">
+                <form id="createArticleForm" class="w-full" onsubmit="makeTextareaVisible()" method="POST" enctype="multipart/form-data">
                     <div class="flex flex-col w-full gap-5">
                         <div class="w-full">
+                            <!-- Thumbnail Upload -->
+                            <div class="mb-3">
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="create-article-thumbnail">Upload Thumbnail Artikel</label>
+                                <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-article-thumbnail" type="file">
+                            </div>
                             <!-- Title -->
                             <div class="mb-3">
                                 <label for="create-article-title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
@@ -33,12 +38,7 @@
                             <!-- Description/Body -->
                             <div class="mb-3">
                                 <label for="create-article-body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
-                                <textarea id="create-article-body" name="body" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article body" required></textarea>
-                            </div>
-                            <!-- Thumbnail Upload -->
-                            <div>
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="create-article-thumbnail">Upload Thumbnail Artikel</label>
-                                <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-article-thumbnail" type="file">
+                                <textarea id="create-article-body" name="body" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article body" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -51,6 +51,17 @@
 </div>
 
 <script>
+    // Inisialisasi CKEditor 5 pada textarea
+    ClassicEditor
+        .create(document.querySelector('#create-article-body'))
+        .catch(error => {
+            console.error(error);
+        });
+
+    function makeTextareaVisible() {
+        document.querySelector('#create-article-body').style.display = 'block';
+    }
+
     $(document).ready(function() {
         $('#create-article form').on('submit', function(e) {
             e.preventDefault();
@@ -72,17 +83,13 @@
 
             // Log entri FormData untuk debugging
             for (let [key, value] of formData.entries()) {
-                console.log(`${key}:`, value);
+                console.log(key, value);
             }
 
-            // Menonaktifkan tombol submit saat proses berlangsung
-            const submitBtn = $(this).find('button[type="submit"]');
-            submitBtn.prop('disabled', true);
-
-            // Mengirim permintaan AJAX
+            // Submit the form directly
             $.ajax({
                 url: '/api/article/create',
-                type: 'POST',
+                method: 'POST',
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -92,14 +99,12 @@
                     'Accept': 'application/json',
                 },
                 success: function(response) {
-                    // Menampilkan pesan sukses
                     Swal.fire({
                         title: 'Sukses!',
                         text: 'Data artikel berhasil ditambahkan',
                         icon: 'success',
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        // Mereset form dan menutup modal
                         $('#create-article form')[0].reset();
                         $('#create-article').hide();
                     });
@@ -112,7 +117,6 @@
                     console.error('Error creating article:', xhr.responseText);
                 },
                 complete: function() {
-                    // Mengaktifkan kembali tombol submit setelah permintaan selesai
                     submitBtn.prop('disabled', false);
                 }
             });

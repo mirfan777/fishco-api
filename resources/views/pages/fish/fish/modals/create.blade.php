@@ -81,34 +81,51 @@
                             <div>
                                 <!-- Food Type -->
                                 <div class="mb-3">
-                                    <label for="create-food_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe Makanan</label>
-                                    <input type="text" id="create-food_type" name="food_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan tipe makanan" required />
-                                </div>
-                            
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Food Type</label>
+                                    <div class="flex items-center">
+                                        <input type="radio" id="food-type-herbivora" name="food_type" value="Herbivora" class="mr-2">
+                                        <label for="food-type-herbivora" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Herbivora</label>
+                                        
+                                        <input type="radio" id="food-type-karnivora" name="food_type" value="Karnivora" class="mr-2">
+                                        <label for="food-type-karnivora" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Karnivora</label>
+                                        
+                                        <input type="radio" id="food-type-omnivora" name="food_type" value="Omnivora" class="mr-2">
+                                        <label for="food-type-omnivora" class="text-sm font-medium text-gray-900 dark:text-white">Omnivora</label>
+                                    </div>
+                                </div>   
+
                                 <!-- Food -->
                                 <div class="mb-3">
                                     <label for="create-food" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Makanan</label>
                                     <input type="text" id="create-food" name="food" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan makanan" required />
                                 </div>
                             </div>
-
                             {{-- habitat --}}
                             <div>
                                 <!-- Habitat -->
                                 <div class="mb-3">
-                                    <label for="create-habitat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Habitat</label>
-                                    <input type="text" id="create-habitat" name="habitat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan habitat" required />
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Habitat</label>
+                                    <div class="flex items-center">
+                                        <input type="radio" id="habitat-air-tawar" name="habitat" value="Air Tawar" class="mr-2">
+                                        <label for="habitat-air-tawar" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air Tawar</label>
+                                        
+                                        <input type="radio" id="habitat-air-laut" name="habitat" value="Air laut" class="mr-2">
+                                        <label for="habitat-air-laut" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air Laut</label>
+                                        
+                                        <input type="radio" id="habitat-air-payau" name="habitat" value="Air Payau" class="mr-2">
+                                        <label for="habitat-air-payau" class="text-sm font-medium text-gray-900 dark:text-white">Air Payau</label>
+                                    </div>
                                 </div>
 
                                 <!-- Min Temperature -->
                                 <div class="mb-3">
-                                    <label for="create-min_temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min Temperature</label>
+                                    <label for="create-min_temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min Temperature (°C)</label>
                                     <input type="number" step="0.1" id="create-min_temperature" name="min_temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan min temperatur" required />
                                 </div>
 
                                 <!-- Max Temperature -->
                                 <div class="mb-3">
-                                    <label for="create-max_temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max Temperature</label>
+                                    <label for="create-max_temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max Temperature (°C)</label>
                                     <input type="number" step="0.1" id="create-max_temperature" name="max_temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan max temperatur" required />
                                 </div>
 
@@ -126,14 +143,13 @@
 
                                 <!-- Min size -->
                                 <div class="mb-3">
-                                    <label for="create-min_ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min Size</label>
-                                    <input type="number" step="0.1" id="create-min_size" name="min_size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan ukuran min" required />
+                                    <label for="create-average_size" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rata - Rata ukuran (cm)</label>
+                                    <input type="number" step="0.1" id="create-average_size" name="average_size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan rata - rata ukuran ikan" required />
                                 </div>
 
-                                <!-- Max size -->
                                 <div class="mb-3">
-                                    <label for="create-max_ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max Size</label>
-                                    <input type="number" step="0.1" id="create-max_size" name="max_size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan ukuran max" required />
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="create-thumbnail">Upload gambar ikan</label>
+                                    <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-thumbnail" type="file">
                                 </div>
                             </div>
                         </div>
@@ -144,10 +160,7 @@
                         <label for="create-overview" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detail Ikan</label>
                         <textarea id="create-overview" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan detail ikan"></textarea>
                     </div>
-                    <div class="mt-5">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="create-thumbnail">Upload gambar ikan</label>
-                        <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-thumbnail" type="file">
-                    </div>
+                    
 
                 
                     <!-- Submit Button -->
@@ -160,134 +173,133 @@
 
 <script>
     $(document).ready(function() {
-    $('#create-fish form').on('submit', function(e) {
-        e.preventDefault();
-        
-        // Create FormData object to handle file uploads
-        const formData = new FormData();
-        
-        // Get the file input
-        const fileInput = document.getElementById('create-thumbnail');
-        if (fileInput.files.length > 0) {
-            formData.append('thumbnail', fileInput.files[0]);
-        }
-        
-        // Add all other form fields to FormData
-        formData.append('name', $('#create-name').val());
-        formData.append('kingdom', $('#create-kingdom').val());
-        formData.append('phylum', $('#create-phylum').val());
-        formData.append('class', $('#create-class').val());
-        formData.append('order', $('#create-order').val());
-        formData.append('family', $('#create-family').val());
-        formData.append('genus', $('#create-genus').val());
-        formData.append('species', $('#create-species').val());
-        formData.append('colour', $('#create-colour').val());
-        formData.append('food_type', $('#create-food_type').val());
-        formData.append('food', $('#create-food').val());
-        formData.append('min_temperature', $('#create-min_temperature').val());
-        formData.append('max_temperature', $('#create-max_temperature').val());
-        formData.append('min_ph', $('#create-min_ph').val());
-        formData.append('max_ph', $('#create-max_ph').val());
-        formData.append('min_size', $('#create-min_size').val());
-        formData.append('max_size', $('#create-max_size').val());
-        formData.append('habitat', $('#create-habitat').val());
-        formData.append('overview', $('#create-overview').val());
-
-        // Disable submit button while processing
-        const submitBtn = $(this).find('button[type="submit"]');
-        submitBtn.prop('disabled', true);
-
-        $.ajax({
-            url: '/api/fish/create',
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            headers: { 
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Accept': 'application/json',
-            },
-            success: function(response) {
-                // Show success message
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Fish data has been successfully added',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    // Reset form and close modal
-                    $('#create-fish form')[0].reset();
-                    $('#create-fish').hide();
-                    
-                });
-                $('[data-modal-hide="create-fish"]').click();
-                setTimeout(function () {
-                    location.reload();
-                }, 500);
-            },
-            error: function(xhr, status, error) {
-                // Show error message
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Failed to add fish data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-                
-                console.error('Error:', error);
-            },
-            complete: function() {
-                // Re-enable submit button and restore original text
-                submitBtn.prop('disabled', false);
-                submitBtn.html('Submit');
+        $('#create-fish form').on('submit', function(e) {
+            e.preventDefault();
+            
+            // Create FormData object to handle file uploads
+            const formData = new FormData();
+            
+            // Get the file input
+            const fileInput = document.getElementById('create-thumbnail');
+            if (fileInput.files.length > 0) {
+                formData.append('thumbnail', fileInput.files[0]);
             }
-        });
-    });
+            
+            // Add all other form fields to FormData
+            formData.append('name', $('#create-name').val());
+            formData.append('kingdom', $('#create-kingdom').val());
+            formData.append('phylum', $('#create-phylum').val());
+            formData.append('class', $('#create-class').val());
+            formData.append('order', $('#create-order').val());
+            formData.append('family', $('#create-family').val());
+            formData.append('genus', $('#create-genus').val());
+            formData.append('species', $('#create-species').val());
+            formData.append('colour', $('#create-colour').val());
+            formData.append('food_type', $('input[name="food_type"]:checked').val());
+            formData.append('food', $('#create-food').val());
+            formData.append('min_temperature', $('#create-min_temperature').val());
+            formData.append('max_temperature', $('#create-max_temperature').val());
+            formData.append('min_ph', $('#create-min_ph').val());
+            formData.append('max_ph', $('#create-max_ph').val());
+            formData.append('average_size', $('#create-average_size').val());
+            formData.append('habitat', $('input[name="habitat"]:checked').val());
+            formData.append('overview', $('#create-overview').val());
 
-    // Form validation
-    function validateForm() {
-        let isValid = true;
-        
-        // Check required fields
-        $('#create-fish form input[required], #create-fish form textarea[required]').each(function() {
-            if (!$(this).val()) {
-                $(this).addClass('border-red-500');
-                isValid = false;
-            } else {
+            // Disable submit button while processing
+            const submitBtn = $(this).find('button[type="submit"]');
+            submitBtn.prop('disabled', true);
+
+            $.ajax({
+                url: '/api/fish/create',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
+                success: function(response) {
+                    // Show success message
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Fish data has been successfully added',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        // Reset form and close modal
+                        $('#create-fish form')[0].reset();
+                        $('#create-fish').hide();
+                        
+                    });
+                    $('[data-modal-hide="create-fish"]').click();
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
+                },
+                error: function(xhr, status, error) {
+                    // Show error message
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Failed to add fish data. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                    
+                    console.error('Error:', error);
+                },
+                complete: function() {
+                    // Re-enable submit button and restore original text
+                    submitBtn.prop('disabled', false);
+                    submitBtn.html('Submit');
+                }
+            });
+        });
+
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+            
+            // Check required fields
+            $('#create-fish form input[required], #create-fish form textarea[required]').each(function() {
+                if (!$(this).val()) {
+                    $(this).addClass('border-red-500');
+                    isValid = false;
+                } else {
+                    $(this).removeClass('border-red-500');
+                }
+            });
+            
+            // Validate number fields
+            const numberFields = ['min_temperature', 'max_temperature', 'min_ph', 'max_ph'];
+            numberFields.forEach(field => {
+                const value = $(`#${field}`).val();
+                if (value && !$.isNumeric(value)) {
+                    $(`#${field}`).addClass('border-red-500');
+                    isValid = false;
+                }
+            });
+            
+            // Validate file input
+            const fileInput = document.getElementById('file_input');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                if (!validTypes.includes(file.type)) {
+                    $(fileInput).addClass('border-red-500');
+                    isValid = false;
+                }
+            }
+            
+            return isValid;
+        }
+
+        // Real-time validation on input change
+        $('#create-fish form input, #create-fish form textarea').on('input', function() {
+            if ($(this).val()) {
                 $(this).removeClass('border-red-500');
             }
         });
-        
-        // Validate number fields
-        const numberFields = ['min_temperature', 'max_temperature', 'min_ph', 'max_ph'];
-        numberFields.forEach(field => {
-            const value = $(`#${field}`).val();
-            if (value && !$.isNumeric(value)) {
-                $(`#${field}`).addClass('border-red-500');
-                isValid = false;
-            }
-        });
-        
-        // Validate file input
-        const fileInput = document.getElementById('file_input');
-        if (fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-            if (!validTypes.includes(file.type)) {
-                $(fileInput).addClass('border-red-500');
-                isValid = false;
-            }
-        }
-        
-        return isValid;
-    }
-
-    // Real-time validation on input change
-    $('#create-fish form input, #create-fish form textarea').on('input', function() {
-        if ($(this).val()) {
-            $(this).removeClass('border-red-500');
-        }
     });
-});
 </script>
