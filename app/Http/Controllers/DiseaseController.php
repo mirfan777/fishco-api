@@ -77,6 +77,6 @@ class DiseaseController extends Controller
 
     public function getAllDiseases() {  
         return response()->json([
-            "data" => Disease::all()]);
+            "data" => DiseaseResource::collection(Disease::with('affected_fish', 'product_recommendation')->get())]);
     }
 }

@@ -15,7 +15,6 @@
                             </div>
                         </div>
                         
-
                         <!-- Tabel Data Penyakit -->
                         <div class="overflow-x-auto p-5">
                             <table class="w-full text-sm text-left text-gray-500 " id="disease-table" >
@@ -23,7 +22,7 @@
                                     <tr>
                                         <th scope="col" class="px-4 py-3">
                                             <span class="flex items-center">
-                                                Nama Penyakit
+                                                disease name
                                                 <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                                 </svg>
@@ -31,13 +30,37 @@
                                         </th>
                                         <th scope="col" class="px-4 py-3">
                                             <span class="flex items-center">
-                                                Gejala
+                                                disease type
                                                 <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                                 </svg>
                                             </span>
                                         </th>
-                                        <th scope="col" class="px-4 py-3">Aksi</th>
+                                        <th scope="col" class="px-4 py-3">
+                                            <span class="flex items-center">
+                                                cause agent
+                                                <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                                </svg>
+                                            </span>
+                                        </th>
+                                        <th scope="col" class="px-4 py-3">
+                                            <span class="flex items-center">
+                                                affected part
+                                                <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                                </svg>
+                                            </span>
+                                        </th>
+                                        <th scope="col" class="px-4 py-3">
+                                            <span class="flex items-center">
+                                                affected fish
+                                                <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                                                </svg>
+                                            </span>
+                                        </th>           
+                                        <th scope="col" class="px-4 py-3">Action</th>
                                     </tr> 
                                 </thead>
                                 <tbody class="bg-white dark:bg-gray-800">
@@ -59,6 +82,7 @@
         $('#edit-disease').removeClass('hidden').addClass('flex').css({
             'justify-content': 'center',
             'align-items': 'center'
+            
         });
     };
 
@@ -75,6 +99,33 @@
             sortable: true
         });
     };
+
+    $('#create-affected-fish').select2({
+        placeholder: 'Pilih ikan yang terpengaruh',
+        width: '100%'
+    });
+
+    // Fetch data dari API menggunakan AJAX
+    $.ajax({
+        url: '/api/fishes',
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        success: function(response) {
+            // Memasukkan data ikan ke dalam select option
+            if (response.data && response.data.length > 0) {
+                response.data.forEach(fish => {
+                    $('#create-affected-fish').append(new Option(fish.name, fish.id));
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("API Error:", error);
+        }
+    });
 
     const fetchDiseaseData = () => {
         $.ajax({
@@ -94,10 +145,15 @@
 
                 if (response.data && response.data.length > 0) {
                     response.data.forEach(disease => {
+                        const fishNames = disease.affected_fish.map(fish => fish.name).join(' , ');
+
                         diseaseTableBody.append(`
                             <tr class="border-b dark:border-gray-700">
                                 <td class="px-4 py-3">${disease.name}</td>
-                                <td class="px-4 py-3">${disease.symptoms}</td>
+                                <td class="px-4 py-3">${disease.type}</td>
+                                <td class="px-4 py-3">${disease.cause_agent}</td>
+                                <td class="px-4 py-3">${disease.affected_part}</td>
+                                <td class="px-4 py-3">${fishNames}</td>
                                 <td class="px-4 py-3">
                                     <button data-modal-target="edit-disease" data-modal-toggle="edit-disease" onclick="fetchDiseaseDataById(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
                                     <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${disease.id})">Hapus</button>
