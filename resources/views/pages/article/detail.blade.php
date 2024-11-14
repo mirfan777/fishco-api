@@ -52,7 +52,7 @@
                         const article = response.data;
 
                         console.log("Fetched article data:", article); // Debugging line
-                        const thumbnailUrl = article.thumbnail.startsWith('http') ? article.thumbnail : '/data/images/' + article.thumbnail;
+                        const thumbnailUrl = article.thumbnail.startsWith('http') ? article.thumbnail : '/data/thumbnails/' + article.thumbnail;
                         console.log("Thumbnail URL:", thumbnailUrl);
 
                         // Additional debugging
