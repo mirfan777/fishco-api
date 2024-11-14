@@ -17,13 +17,13 @@
             </div>
             <!-- Modal Body -->
             <div class="p-4 md:p-5 space-y-4">
-                <form id="createArticleForm" class="w-full" onsubmit="makeTextareaVisible()" method="POST" enctype="multipart/form-data">
+                <form id="createArticleForm" class="w-full" method="POST" enctype="multipart/form-data">
                     <div class="flex flex-col w-full gap-5">
                         <div class="w-full">
                             <!-- Thumbnail Upload -->
                             <div class="mb-3">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="create-article-thumbnail">Upload Thumbnail Artikel</label>
-                                <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-article-thumbnail" type="file">
+                                <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-article-thumbnail" type="file" accept=".jpeg,.png,.jpg,.gif,.svg">
                             </div>
                             <!-- Title -->
                             <div class="mb-3">
@@ -51,17 +51,6 @@
 </div>
 
 <script>
-    // Inisialisasi CKEditor 5 pada textarea
-    ClassicEditor
-        .create(document.querySelector('#create-article-body'))
-        .catch(error => {
-            console.error(error);
-        });
-
-    function makeTextareaVisible() {
-        document.querySelector('#create-article-body').style.display = 'block';
-    }
-
     $(document).ready(function() {
         $('#create-article form').on('submit', function(e) {
             e.preventDefault();
@@ -72,7 +61,15 @@
             // Mendapatkan input file
             const fileInput = document.getElementById('create-article-thumbnail');
             if (fileInput.files.length > 0) {
-                formData.append('thumbnail', fileInput.files[0]);
+                const file = fileInput.files[0];
+                const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'];
+                
+                if (validTypes.includes(file.type)) {
+                    formData.append('thumbnail', file);
+                } else {
+                    alert('Invalid file type. Please upload an image file (jpeg, png, jpg, gif, svg).');
+                    return;
+                }
             }
             
             // Menambahkan field form ke FormData
@@ -87,6 +84,9 @@
             }
 
             // Submit the form directly
+            const submitBtn = $(this).find('button[type="submit"]');
+            submitBtn.prop('disabled', true);
+
             $.ajax({
                 url: '/api/article/create',
                 method: 'POST',
@@ -99,6 +99,7 @@
                     'Accept': 'application/json',
                 },
                 success: function(response) {
+                    console.log('Article created successfully:', response);
                     Swal.fire({
                         title: 'Sukses!',
                         text: 'Data artikel berhasil ditambahkan',

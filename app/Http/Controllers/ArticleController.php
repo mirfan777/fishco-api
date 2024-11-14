@@ -44,7 +44,8 @@ class ArticleController extends Controller
             // Check if thumbnail is uploaded
             if ($request->hasFile('thumbnail')) {
                 $thumbnail = $request->file('thumbnail');
-                $thumbnailPath = $thumbnail->store('thumbnails', 'public');
+                $filename = time() . '_' . $thumbnail->getClientOriginalName();
+                $thumbnailPath = $thumbnail->storeAs('public/thumbnails', $filename);
 
                 // Create article
                 $article = Article::create([
@@ -52,7 +53,7 @@ class ArticleController extends Controller
                     'body' => $request->body,
                     'slug' => $request->slug,
                     'user_id' => $request->user_id,
-                    'thumbnail' => $thumbnailPath,
+                    'thumbnail' => $filename,
                 ]);
 
                 return response()->json([
@@ -75,30 +76,37 @@ class ArticleController extends Controller
         }
     }
 
-
     function updateArticle(Request $request, $id){
         $existingArticle = Article::find($id);
 
-        if($request->hasFile('thumbnail')){
-            $file = $request->file('thumbnail');
-            $timestamp = time();
-            $extension = $file->getClientOriginalExtension();
-            $filename = $timestamp . '.' . $extension;
-
-            $file->move(public_path('data/images'), $filename);
-
-            $existingArticle->thumbnail = $filename;
-        }else{
-            $filename = $existingArticle->thumbnail;
+        if (!$existingArticle) {
+            return response()->json([
+                'message' => 'Article not found'
+            ], 404);
         }
 
-        $response = $existingArticle->update([
-            'title' => $request->title,
-            'body' => $request->body,
-            'thumbnail' => $filename
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        return $response;
+        if($request->hasFile('thumbnail')){
+            $file = $request->file('thumbnail');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('public/thumbnails', $filename);
+
+            $existingArticle->thumbnail = $filename;
+        }
+
+        $existingArticle->title = $request->title;
+        $existingArticle->body = $request->body;
+        $existingArticle->save();
+
+        return response()->json([
+            'message' => 'Article updated successfully',
+            'data' => new ArticleResource($existingArticle)
+        ]);
     }
 
     function deleteArticle($id){
