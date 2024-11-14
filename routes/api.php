@@ -17,6 +17,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\FishImageController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ProductRecommendationController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -116,6 +117,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/report/create', [ReportController::class, 'createReport']);
     Route::post('/report/update/{id}', [ReportController::class, 'updateReport']);
     Route::delete('/report/delete/{id}', [ReportController::class, 'deleteReport']);
+
+    //Product Recommendation
+    Route::get('/product-recommendation/{diseaseId}', [ProductRecommendationController::class, 'getRecommendationTreatmentProduct']);
 });
 
 
