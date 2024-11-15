@@ -26,18 +26,89 @@
                                 <input type="text" id="create-disease-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter disease name" required />
                             </div>
 
-                            <!-- Symptoms -->
+                            <!-- disease_type -->
                             <div class="mb-3">
-                                <label for="create-symptoms" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Symptoms</label>
+                                <label for="create-disease_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">disease_type</label>
                                 <input type="text" id="create-symptoms" name="symptoms" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter symptoms" required />
                             </div>
-                        </div>
-                    
-                        <div class="md:w-1/2">
-                            <!-- Description -->
+
+                            <!-- cause_agent -->
                             <div class="mb-3">
-                                <label for="create-disease-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Disease Description</label>
-                                <textarea id="create-disease-description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter description" required></textarea>
+                                <label for="create-cause_agent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">cause_agent</label>
+                                <input type="text" id="create-symptoms" name="symptoms" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter symptoms" required />
+                            </div>
+
+                            <!-- affected_part -->
+                            <div class="mb-3 ">
+                                <label for="create-cause_agent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Affected Parts</label>
+                                <div class="flex gap-5">
+                                    <div>
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                        </div>
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                        </div>
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                        </div>
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                        </div>
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                        </div>
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="create-affected-fish" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Affected Fish</label>
+                                <select id="create-affected-fish" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" multiple="multiple">
+                                    <!-- Data akan diisi secara dinamis oleh AJAX -->
+                                </select>
+                            </div>
+                        
+                        </div>
+
+                        <div class="md:w-1/2">
+                            <!-- description -->
+                            <div class="mb-3">
+                                <label for="create-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">description</label>
+                                <textarea id="create-disease-description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter descriptions" required></textarea>
+                            </div>
+
+                            <!-- symptoms -->
+                            <div class="mb-3">
+                                <label for="create-symptom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">symptom</label>
+                                <textarea id="create-disease-symptom" name="symptom" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter symptoms" required></textarea>
+                            </div>
+
+                            <!-- note -->
+                            <div class="mb-3">
+                                <label for="create-note" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">note</label>
+                                <textarea id="create-disease-note" name="note" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter notes" required></textarea>
+                            </div>
+
+                            <!-- Product Recommendation -->
+                            <div class="mb-3">
+                                <label for="create-affected-fish" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Affected Fish</label>
+                                <textarea id="create-affected-fish" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter description" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -55,6 +126,8 @@
 
 <script>
 $(document).ready(function() {
+    
+
     $('#create-disease form').on('submit', function(e) {
         e.preventDefault();
 

@@ -3,21 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Products;
+use App\Models\Product;
 use App\Http\Resources\ProductResource;
 
 class ProductController extends Controller
 {
     function getAllProduct (Request $request) {
         $query = $request->query('search', ''); 
-        $products = Products::where('name', 'like', "%$query%")
+        $product = Product::where('name', 'like', "%$query%")
                       ->paginate(5);
     
-        return ProductResource::collection($products);
+        return ProductResource::collection($product);
     }
 
     function getProductById($id, Request $request) {
-        $product = Products::find($id);
+        $product = Product::find($id);
 
         if (!$product) {
             return response()->json([
@@ -29,7 +29,7 @@ class ProductController extends Controller
     }
 
     function createProduct(Request $request) {
-        $product = Products::create($request->all());
+        $product = Product::create($request->all());
 
         return response()->json([
             'message' => 'Product created successfully',
@@ -38,7 +38,7 @@ class ProductController extends Controller
     }
 
     function updateProduct(Request $request, $id) {
-        $product = Products::find($id);
+        $product = Product::find($id);
 
         if (!$product) {
             return response()->json([
@@ -55,7 +55,7 @@ class ProductController extends Controller
     }
 
     function deleteProduct($id) {
-        $product = Products::find($id);
+        $product = Product::find($id);
 
         if (!$product) {
             return response()->json([
@@ -72,7 +72,7 @@ class ProductController extends Controller
 
     public function getAllProducts() {
         return response()->json([
-            "data" => Products::all()
+            "data" => Product::all()
         ]);
     }
 }

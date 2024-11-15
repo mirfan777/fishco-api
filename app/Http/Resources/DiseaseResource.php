@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\FishResource;
+use App\Http\Resources\AffectedFishResource;
+use App\Http\Resources\ProductRecommendationTreatmentResource;
 
 class DiseaseResource extends JsonResource
 {
@@ -26,8 +28,21 @@ class DiseaseResource extends JsonResource
             'symptoms' => $this->symptoms,
             'prevention' => $this->prevention,
             'note' => $this->note,
-            'product_recommendation' => new ProductResource($this->product_recommendation),
-            'affected_fish' => new FishResource($this->affected_fish),
+            'affected_fish' => $this->affected_fish->map(function ($fish) {
+                return [
+                    'id' => $fish->id,
+                    'name' => $fish->name,
+                ];
+            }),
+            'products_recommendation' => $this->product_recommendation->map(function ($product) {
+                return [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'description' => $product->description,
+                    'link' => $product->link,   
+                ];
+            }),
             'created_at' => $this->created_at
         ];
     }

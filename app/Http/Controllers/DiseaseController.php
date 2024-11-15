@@ -19,14 +19,14 @@ class DiseaseController extends Controller
     }
 
     function getDiseaseById($id, Request $request) {
-        $disease = Disease::find($id);
+        $disease = Disease::with('affected_fish', 'product_recommendation')->where('id', $id)->first();
 
         if (!$disease) {
             return response()->json([
                 'message' => 'Disease not found'
             ], 404);
         }
-    
+
         return new DiseaseResource($disease);
     }
 
@@ -75,8 +75,8 @@ class DiseaseController extends Controller
         ]);
     }
 
-    public function getAllDiseases() {
+    public function getAllDiseases() {  
         return response()->json([
-            "data" => Disease::all()]);
+            "data" => DiseaseResource::collection(Disease::with('affected_fish', 'product_recommendation')->get())]);
     }
 }

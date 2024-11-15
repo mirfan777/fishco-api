@@ -17,7 +17,7 @@ class ArticleController extends Controller
         return ArticleResource::collection($articles);
     }
 
-    function getArticleById($id, Request $request){
+    function getArticleById($id){
         $article = Article::find($id);
 
         if (!$article) {
@@ -33,19 +33,19 @@ class ArticleController extends Controller
     {
         try {
             // Validate request data
-            $request->validate([
-                'title' => 'required|string|max:255',
-                'body' => 'required|string',
-                'slug' => 'required|string',
-                'user_id' => 'required|exists:users,id',
-                'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
+            // $request->validate([
+            //     'title' => 'required|string|max:255',
+            //     'body' => 'required|string',
+            //     'slug' => 'required|string',
+            //     'user_id' => 'required|exists:users,id',
+            //     'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
 
             // Check if thumbnail is uploaded
             if ($request->hasFile('thumbnail')) {
                 $thumbnail = $request->file('thumbnail');
                 $filename = time() . '_' . $thumbnail->getClientOriginalName();
-                $thumbnailPath = $thumbnail->storeAs('public/thumbnails', $filename);
+                $thumbnail->move(public_path('data/thumbnails'), $filename);
 
                 // Create article
                 $article = Article::create([
@@ -85,28 +85,27 @@ class ArticleController extends Controller
             ], 404);
         }
 
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'body' => 'required|string',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        // $request->validate([
+        //     'title' => 'required|string|max:255',
+        //     'body' => 'required|string',
+        //     'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
 
         if($request->hasFile('thumbnail')){
             $file = $request->file('thumbnail');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/thumbnails', $filename);
-
-            $existingArticle->thumbnail = $filename;
+            $file->move(public_path('data/thumbnails'), $filename);
+        }else{
+            $filename = $existingArticle->thumbnail;
         }
 
-        $existingArticle->title = $request->title;
-        $existingArticle->body = $request->body;
-        $existingArticle->save();
-
-        return response()->json([
-            'message' => 'Article updated successfully',
-            'data' => new ArticleResource($existingArticle)
+        $response = $existingArticle->update([
+            'title' => $request->title ?? $existingArticle->title,
+            'body' => $request->body ?? $existingArticle->body,
+            'thumbnail' => $filename 
         ]);
+
+        return $response;
     }
 
     function deleteArticle($id){
