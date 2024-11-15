@@ -175,20 +175,6 @@ class DatabaseSeeder extends Seeder
         DB::table('diseases')->insert($disease);
 
 
-        // Seed Medicine table
-        $medicine = [];
-        for ($i = 1; $i <= $recordCount; $i++) {
-            $medicine[] = [
-                'name' => 'Medicine ' . $i,
-                'description' => 'Description ' . $i,
-                'disease_id' => rand(1, $recordCount),
-                'fish_id' => rand(1, $recordCount),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ];
-        }
-        DB::table('medicines')->insert($medicine);
-
         // Seed fish_images table
 
         $fishImages = [];
