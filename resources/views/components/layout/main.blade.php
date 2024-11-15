@@ -17,9 +17,6 @@
       if (!localStorage.getItem('user') || localStorage.getItem('user') === 'undefined' || localStorage.getItem('user') === 'null') {
         window.location.href = '/auth/login';
       }
-
-
-      
    </script>
 </head>
 <body>

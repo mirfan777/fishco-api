@@ -1,4 +1,4 @@
-<!-- Main Modal for Creating Article -->
+<!-- Main Modal for Editing Article -->
 <div id="edit-article" tabindex="-1" aria-hidden="true" class="hidden overflow-x-hidden fixed top-0 right-0 left-0 z-[99999] bg-black bg-opacity-50 justify-center items-center w-full md:inset-0 h-[calc(100%-0rem)]">
     <div class="relative p-4 w-full max-w-4xl max-h-full">
         <!-- Modal Content -->
@@ -17,9 +17,14 @@
             </div>
             <!-- Modal Body -->
             <div class="p-4 md:p-5 space-y-4">
-                <form id="editArticleForm" class="w-full">
-                    <div class="flex flex-col md:flex-row md:justify-between w-full gap-5">
-                        <div class="md:w-1/2">
+                <form id="editArticleForm" class="w-full" method="POST" enctype="multipart/form-data">
+                    <div class="flex flex-col w-full gap-5">
+                        <div class="w-full">
+                            <!-- Thumbnail Upload -->
+                            <div class="mb-3">
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="edit-article-thumbnail">Upload Thumbnail Artikel</label>
+                                <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="edit-article-thumbnail" type="file" accept=".jpeg,.png,.jpg,.gif,.svg">
+                            </div>
                             <!-- Title -->
                             <div class="mb-3">
                                 <label for="edit-article-title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
@@ -30,19 +35,15 @@
                                 <label for="edit-article-slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug</label>
                                 <input type="text" id="edit-article-slug" name="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article slug" required />
                             </div>
-                        </div>
-                        
-                        <div class="md:w-1/2">
                             <!-- Description/Body -->
                             <div class="mb-3">
                                 <label for="edit-article-body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
-                                <textarea id="edit-article-body" name="body" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article body" required></textarea>
+                                <textarea id="edit-article-body" name="body" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article body" required></textarea>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                    <!-- Submit Button with Spacing -->
+                    <button type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                 </form>
             </div>
         </div>
@@ -57,13 +58,21 @@
             // Edit formData object
             const formData = new FormData();
 
-            // // Append file if it exists
-            // const fileInput = document.getElementById('edit-thumbnail');
-            // if (fileInput.files.length > 0) {
-            //     formData.append('thumbnail', fileInput.files[0]);
-            // }
+            // Append file if it exists
+            const fileInput = document.getElementById('edit-article-thumbnail');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'];
+                
+                if (validTypes.includes(file.type)) {
+                    formData.append('thumbnail', file);
+                } else {
+                    alert('Invalid file type. Please upload an image file (jpeg, png, jpg, gif, svg).');
+                    return;
+                }
+            }
 
-            // Get fish ID and collect form data
+            // Get article ID and collect form data
             const urlParams = new URLSearchParams(window.location.search);
             const articleId = urlParams.get('id');
             
@@ -71,7 +80,6 @@
             formData.append('title', $('#edit-article-title').val());
             formData.append('slug', $('#edit-article-slug').val());
             formData.append('body', $('#edit-article-body').val());
-            formData.append('thumbnail', $('#edit-article-thumbnail').val());
 
             const submitBtn = $(this).find('button[type="submit"]');
             submitBtn.prop('disabled', true);
@@ -109,9 +117,11 @@
                         text: `Error: ${xhr.responseJSON.message || 'Data gagal diperbarui.'}`
                     });
                     console.log("Error response:", xhr.responseJSON);
+                },
+                complete: function() {
+                    submitBtn.prop('disabled', false);
                 }
             });
         });
     });
 </script>
-
