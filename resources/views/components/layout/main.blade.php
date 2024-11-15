@@ -19,13 +19,10 @@
       if (!localStorage.getItem('user') || localStorage.getItem('user') === 'undefined' || localStorage.getItem('user') === 'null') {
         window.location.href = '/auth/login';
       }
+
+      const authUser = JSON.parse(localStorage.getItem('user'));
    </script>
 
-   <style>
-      .select2-container {
-  z-index: 99999999999999999 !important; /* Pastikan select2 berada di atas modal */
-}
-   </style>
 </head>
 <body>
 <nav class="fixed top-0 z-50 w-full bg-primary-800 border-b border-primary-900 dark:bg-gray-800 dark:border-gray-700 custom-shadow">
@@ -53,10 +50,14 @@
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
                   <div class="px-4 py-3" role="none">
                     <p class="text-sm text-gray-900 dark:text-white" role="none">
-                      Neil Sims
+                      <script>
+                        document.write(authUser.name);
+                      </script>
                     </p>
                     <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                      neil.sims@flowbite.com
+                        <script>
+                           document.write(authUser.email);
+                        </script>
                     </p>
                   </div>
                   <ul class="py-1" role="none">
@@ -98,7 +99,7 @@
                   <span class="ms-3">User</span>
               </a>
               <script>
-                if (JSON.parse(localStorage.getItem('user')).role == 1) {
+                if (authUser.role == 1) {
                   document.getElementById('users').style.display = 'visible';
                 } else {
                   document.getElementById('users').style.display = 'invisible';
