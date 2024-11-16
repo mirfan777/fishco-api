@@ -9,7 +9,6 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FishController;
 use App\Http\Controllers\DiseaseController;
-use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AquariumController;
 use App\Http\Controllers\ArticleController;
@@ -43,16 +42,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/fish/{id}/upload', [FishController::class, 'uploadFishImage']);
     Route::delete('/fish/{id}/delete-image/{img}', [FishController::class, 'deleteFishImage']);
     Route::get('/fishes', [FishController::class, 'getAllFishes']);
-
-    //Medicine
-    Route::get('/medicine', [MedicineController::class, 'getAllMedicine']);
-    Route::get('/medicine/{id}', [MedicineController::class, 'getMedicineById']);
-    Route::post('/medicine/create', [MedicineController::class, 'createMedicine']);
-    Route::post('/medicine/update/{id}', [MedicineController::class, 'updateMedicine']);
-    Route::delete('/medicine/delete/{id}', [MedicineController::class, 'deleteMedicine']);
-    Route::get('/dropdown-data', [MedicineController::class, 'getDropdownData']);
-    Route::get('/medicines', [MedicineController::class, 'getAllMedicines']);
-
 
     //Disease
     Route::get('/disease', [DiseaseController::class, 'getAllDisease']);
