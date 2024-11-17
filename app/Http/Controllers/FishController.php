@@ -22,6 +22,27 @@ class FishController extends Controller
 
         return FishResource::collection($fishes);
     }
+
+    public function getAllFishes(Request $request) {
+        $query = Fish::query();
+
+        if ($request->query('habitat')) {
+            $query->where('habitat', $request->query('habitat'));
+        }
+
+        if ($request->query('food_type')) {
+            $query->where('food_type', $request->query('food_type'));
+        }
+
+        if ($request->query('withImages') === 'true') {
+            $query->with('images');
+        }
+
+        return response()->json([
+            "data" => FishResource::collection($query->get())
+        ]);
+
+    }
     
     function getFishById($id, Request $request) {
         $status = $request->query('status');
@@ -239,24 +260,5 @@ class FishController extends Controller
         }
     }
     
-    public function getAllFishes(Request $request) {
-        $query = Fish::query();
-
-        if ($request->query('habitat')) {
-            $query->where('habitat', $request->query('habitat'));
-        }
-
-        if ($request->query('food_type')) {
-            $query->where('food_type', $request->query('food_type'));
-        }
-
-        if ($request->query('withImages') === 'true') {
-            $query->with('images');
-        }
-
-        return response()->json([
-            "data" => FishResource::collection($query->get())
-        ]);
-
-    }
+    
 }
