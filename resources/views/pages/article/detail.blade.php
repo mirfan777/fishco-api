@@ -1,31 +1,45 @@
 <x-layout.main>
-    @include('pages.article.modals.edit')
-    
     <main class="min-h-screen pt-12 sm:ml-64 bg-gray-50">
         <div class="container mx-auto p-6">
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
                 <div class="flex flex-col lg:flex-row gap-8 lg:p-12">
                     <!-- Article Details Section -->
                     <div class="w-full">
-                        <!-- Thumbnail Image -->
-                        <div class="w-full lg:w-1/3 flex justify-center">
-                            <img id="detail-thumbnail" class="rounded-lg w-full h-auto lg:w-auto lg:h-60" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="Article Thumbnail">
-                        </div>
-                        
                         <h1 id="detail-article-title" class="text-4xl font-bold text-gray-900 dark:text-white mb-6">Judul Artikel</h1>
+                        <!-- Thumbnail Image -->
+                        <div class="w-full flex justify-center">
+                            <img id="detail-thumbnail" class="rounded-lg w-full" src="" alt="Article Thumbnail">
+                        </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <!-- Article Metadata -->
-                            <div>
-                                <p class="text-gray-700 dark:text-gray-300"><span class="font-medium">Slug:</span> <span id="detail-slug" class="ml-2"></span></p>
-                                <p class="text-gray-700 dark:text-gray-300 mt-4"><span class="font-medium">Body:</span> <span id="detail-body" class="ml-2"></span></p>
+                        <form id="editArticleForm" class="w-full" enctype="multipart/form-data">
+                            <div class="flex flex-col w-full gap-5">
+                                <div class="w-full">
+                                    <!-- Thumbnail Upload -->
+                                    <div class="mb-3">
+                                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="edit-article-thumbnail">Ubah Thumbnail</label>
+                                        <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="edit-article-thumbnail" type="file" accept=".jpeg,.png,.jpg,.gif,.svg">
+                                    </div>
+                                    <!-- Title -->
+                                    <div class="mb-3">
+                                        <label for="edit-article-title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+                                        <input type="text" id="edit-article-title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article title" required />
+                                    </div>
+                                    <!-- Slug -->
+                                    <div class="mb-3">
+                                        <label for="edit-article-slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug</label>
+                                        <input type="text" id="edit-article-slug" name="slug" class="bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article slug" readonly />
+                                    </div>
+                                    <!-- Description/Body -->
+                                    <div class="mb-3">
+                                        <label for="edit-article-body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
+                                        <textarea id="edit-article-body" name="body" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article body" required></textarea>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                    
+                            <button type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        </form>
 
-                        <!-- Action Button -->
-                        <div class="flex gap-4 mt-8">
-                            <button data-modal-target="edit-article" data-modal-toggle="edit-article" class="text-white bg-yellow-400 hover:bg-yellow-500 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-900">Edit data</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -66,8 +80,6 @@
                         img.src = thumbnailUrl;
 
                         $('#detail-article-title').text(article.title ? article.title : "Not available");
-                        $('#detail-slug').text(article.slug ? `: ${article.slug}` : ": Not available");
-                        $('#detail-body').text(article.body ? `: ${article.body}` : ": Not available");
                         $('#detail-thumbnail').attr("src", thumbnailUrl).attr("alt", article.title);
 
                         // edit article modal   
@@ -89,5 +101,86 @@
         } else {
             console.error('Article ID not found in URL');
         }
+
+        
+        function generateSlug(title) {
+            return title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+        }
+
+       
+        $('#edit-article-title').on('input', function() {
+            const title = $(this).val();
+            const slug = generateSlug(title);
+            $('#edit-article-slug').val(slug);
+        });
+
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+            $('#edit-article-slug').prop('readonly', false)
+    
+            const formData = new FormData();
+
+            formData.append('title', $('#edit-article-title').val());
+            formData.append('slug', $('#edit-article-slug').val());
+            formData.append('body', $('#edit-article-body').val());
+            const fileInput = document.getElementById('edit-article-thumbnail');
+            
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'];
+                
+                if (validTypes.includes(file.type)) {
+                    formData.append('thumbnail', file);
+                } else {
+                    alert('Invalid file type. Please upload an image file (jpeg, png, jpg, gif, svg).');
+                    return;
+                }
+            }
+
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = urlParams.get('id');
+        
+
+            const submitBtn = $(this).find('button[type="submit"]');
+           
+            $.ajax({
+                url: `/api/article/update/${articleId}`,
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
+                success: function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Data berhasil diperbarui!',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                },
+                
+                
+                error: function (xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Failed!',
+                        text: `Error: ${xhr.responseJSON.message || 'Data gagal diperbarui.'}`
+                    });
+                    console.log("Error response:", xhr.responseJSON);
+                },
+                complete: function() {
+                    submitBtn.prop('disabled', false);
+                }
+            });
+        });
     });
 </script>

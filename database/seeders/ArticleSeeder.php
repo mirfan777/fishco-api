@@ -25,7 +25,7 @@ class ArticleSeeder extends Seeder
                'body' => 'This is the body of article ' . $i,
                'user_id' => rand(1, 2),
                'comment_id' => null, // Placeholder for now
-               'thumbnail' => 'article' . $i . '.jpg',
+               'thumbnail' => 'default.png',
                'created_at' => Carbon::now(),
                'updated_at' => Carbon::now(),
            ];
