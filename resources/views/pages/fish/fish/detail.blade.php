@@ -94,7 +94,6 @@
 </x-layout.main>
 
 <script>
-    
 
     $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);

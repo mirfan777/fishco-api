@@ -8,12 +8,15 @@
     @vite(['resources/css/style.css', 'resources/js/app.js'])
     <!-- owl carousel -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <!-- CDN ICON -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Animate -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 </head>
 
 <body class="bg-white relative">
@@ -687,10 +690,7 @@
     </div>
 
     <!-- scrtipt owl carousel -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <!-- Animate -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
         //Animate
         document.addEventListener('DOMContentLoaded', function () {
@@ -854,18 +854,17 @@
         });
 
         // skrinsut
-        $(document).ready(function () {
-            $("#screenshot-carousel").owlCarousel({
+        $("#screenshot-carousel").owlCarousel({
                 items: 1, // Tampilkan 1 gambar per slide
                 loop: true, // Untuk membuat carousel berputar terus-menerus
                 margin: 10, // Spasi antar item (jika diperlukan)
                 nav: true, // Menampilkan tombol next/prev
                 dots: true, // Menampilkan dots navigasi
-                autoplay: false, // Mengaktifkan autoplay
-                autoplayTimeout: 5000, // Waktu antara slide otomatis (dalam ms)
+                autoplay: true, // Mengaktifkan autoplay
+                autoplayTimeout: 3000, // Waktu antara slide otomatis (dalam ms)
                 autoplayHoverPause: true, // Pause autoplay ketika user hover
-                // smartSpeed: 1000, // Kecepatan transisi (dalam ms) saat klik
-                // autoplaySpeed: 1000, // Kecepatan transisi saat autoplay (dalam ms)
+                smartSpeed: 1000, // Kecepatan transisi (dalam ms) saat klik
+                autoplaySpeed: 1000, // Kecepatan transisi saat autoplay (dalam ms)
                 dotsContainer: '#customDots', // Custom dot navigation (di luar carousel)
                 responsive: {
                     0: {
@@ -885,10 +884,7 @@
                 var slideIndex = $(this).data('slide');
                 $('#screenshot-carousel').trigger('to.owl.carousel', [slideIndex, 300]);
             });
-        });
 
-        // Testimoni
-        $(document).ready(function () {
             $(".testimonial-carousel").owlCarousel({
                 autoplay: true,
                 smartSpeed: 1000,
@@ -912,7 +908,6 @@
                     }
                 }
             });
-        });
     </script>
 
 </body>
