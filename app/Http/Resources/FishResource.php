@@ -25,6 +25,8 @@ class FishResource extends JsonResource
             'genus' => $this->genus,
             'species' => $this->species,
             'colour' => $this->colour,
+            'venomous' => $this->venomous,
+            'poisonous' => $this->poisonous,
             'food_type' => $this->food_type,
             'food' => $this->food,
             'min_temperature' => $this->min_temperature,

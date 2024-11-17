@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Disease;
 use App\Http\Resources\DiseaseResource;
 use App\Http\Requests\DiseaseRequestRequest;
+use Illuminate\Support\Facades\Log;
 
 class DiseaseController extends Controller
 {
@@ -30,27 +31,99 @@ class DiseaseController extends Controller
         return new DiseaseResource($disease);
     }
 
-    function createDisease(Request $request) {
-        $disease = Disease::create($request->all());
+    public function createDisease(Request $request)
+    {   
+        // Validate request data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'disease_type' => 'required|string',
+            'cause_agent' => 'required|string',
+            'description' => 'required|string',
+            'symptoms' => 'required|string',
+            'note' => 'required|string',
+            'prevention' => 'required|string',
+            'affected_part' => 'required|array',
+            'affected_part.*' => 'string',
+            'affected_fish' => 'array',
+            'product_recommendations' => 'array'
+        ]);
 
-        $data = new DiseaseResource($disease);
+        $disease = Disease::create([
+            'name' => $validated['name'],
+            'disease_type' => $validated['disease_type'],
+            'cause_agent' => $validated['cause_agent'],
+            'description' => $validated['description'],
+            'symptoms' => $validated['symptoms'],
+            'note' => $validated['note'],
+            'prevention' => $validated['prevention'],
+            'affected_part' => implode(',', $validated['affected_part'])
+        ]);
 
+        if ($request->has('affected_fish')) {
+            $affectedFish = $validated['affected_fish'];
+            $disease->affected_fish()->attach($affectedFish);
+        }
+
+        if ($request->has('product_recommendations')) {
+            $productRecommendations = $validated['product_recommendations'];
+            $disease->product_recommendation()->attach($productRecommendations);
+        }
+
+       
         return response()->json([
             'message' => 'Disease created successfully',
-            'data' => $data
-        ]);
+            'data' => new DiseaseResource($disease)
+        ], 201);
     }
 
-    function updateDisease(Request $request, $id) {
+    public function updateDisease(Request $request, $id)
+    {
+        // Find the disease
         $disease = Disease::find($id);
-
         if (!$disease) {
             return response()->json([
                 'message' => 'Disease not found'
             ], 404);
         }
 
-        $disease->update($request->all());
+        // Validate request data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'disease_type' => 'required|string',
+            'cause_agent' => 'required|string',
+            'description' => 'required|string',
+            'symptoms' => 'required|string',
+            'note' => 'required|string',
+            'prevention' => 'required|string',
+            'affected_part' => 'required|array',
+            'affected_part.*' => 'string',
+            'affected_fish' => 'array',
+            'product_recommendations' => 'array'
+        ]);
+
+        // Update disease basic information
+        $disease->update([
+            'name' => $validated['name'],
+            'disease_type' => $validated['disease_type'],
+            'cause_agent' => $validated['cause_agent'],
+            'description' => $validated['description'],
+            'symptoms' => $validated['symptoms'],
+            'note' => $validated['note'],
+            'prevention' => $validated['prevention'],
+            'affected_part' => implode(',', $validated['affected_part'])
+        ]);
+
+        // Update affected fish relationships if provided
+        if ($request->has('affected_fish')) {
+            $affectedFish = $validated['affected_fish'];
+            $disease->affected_fish()->sync($affectedFish);
+        }
+
+        // Update product recommendations relationships if provided
+        if ($request->has('product_recommendations')) {
+            $productRecommendations = $validated['product_recommendations'];
+            $disease->product_recommendation()->sync($productRecommendations);
+        }
 
         return response()->json([
             'message' => 'Disease updated successfully',

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('category');
+            $table->string('category'); // 1. Fish Medicine, 2. Fish Food, 3. Aquarium Equipment, 4. Aquarium Decor, 5. Live Fish
             $table->text('description');
             $table->integer('price');
             $table->text('link');

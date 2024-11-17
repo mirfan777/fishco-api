@@ -17,184 +17,194 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5 space-y-4">
-                <form class="w-full">
+                <form class="w-full" id="createDiseaseForm">
                     <div class="flex flex-col md:flex-row md:justify-between w-full gap-5">
                         <div class="md:w-1/2">
                             <!-- Name -->
                             <div class="mb-3">
                                 <label for="create-disease-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                <input type="text" id="create-disease-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter disease name" required />
+                                <input type="text" id="create-disease-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                             </div>
-
+            
                             <!-- disease_type -->
                             <div class="mb-3">
-                                <label for="create-disease_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">disease_type</label>
-                                <input type="text" id="create-symptoms" name="symptoms" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter symptoms" required />
+                                <label for="create-disease-type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Disease Type</label>
+                                <input type="text" id="create-disease-type" name="disease_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                             </div>
-
+            
                             <!-- cause_agent -->
                             <div class="mb-3">
-                                <label for="create-cause_agent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">cause_agent</label>
-                                <input type="text" id="create-symptoms" name="symptoms" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter symptoms" required />
+                                <label for="create-cause-agent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cause Agent</label>
+                                <input type="text" id="create-cause-agent" name="cause_agent" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                             </div>
-
-                            <!-- affected_part -->
-                            <div class="mb-3 ">
-                                <label for="create-cause_agent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Affected Parts</label>
+            
+                            <!-- affected_parts -->
+                            <div class="mb-3">
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Affected Parts</label>
                                 <div class="flex gap-5">
                                     <div>
                                         <div class="flex items-center mb-4">
-                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                            <input type="checkbox" name="affected_parts[]" value="fins" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Fins</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                            <input type="checkbox" name="affected_parts[]" value="gills" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Gills</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                            <input type="checkbox" name="affected_parts[]" value="scales" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Scales</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                            <input type="checkbox" name="affected_parts[]" value="head" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Head</label>
+                                        </div>
+                                        <div class="flex items-center mb-4">
+                                            <input type="checkbox" name="affected_parts[]" value="swimming" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">swimming</label>
+                                        </div>
+                                        <div class="flex items-center mb-4">
+                                            <input type="checkbox" name="affected_parts[]" value="weight" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">weight</label>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="flex items-center mb-4">
-                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                            <input type="checkbox" name="affected_parts[]" value="body" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Body</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                            <input type="checkbox" name="affected_parts[]" value="tail" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Tail</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+                                            <input type="checkbox" name="affected_parts[]" value="eyes" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Eyes</label>
+                                        </div>
+                                        <div class="flex items-center mb-4">
+                                            <input type="checkbox" name="affected_parts[]" value="mouth" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Mouth</label>
+                                        </div>
+                                        <div class="flex items-center mb-4">
+                                            <input type="checkbox" name="affected_parts[]" value="behaviour" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                            <label class="ms-2 text-sm font-medium text-gray-900">behaviour</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+            
+                            <!-- Affected Fish -->
                             <div class="mb-3">
                                 <label for="create-affected-fish" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Affected Fish</label>
-                                <select id="create-affected-fish" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" multiple="multiple">
-                                    <!-- Data akan diisi secara dinamis oleh AJAX -->
+                                <select id="create-affected-fish" name="affected_fish[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full" multiple>
                                 </select>
                             </div>
-                        
                         </div>
-
+            
                         <div class="md:w-1/2">
                             <!-- description -->
                             <div class="mb-3">
-                                <label for="create-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">description</label>
-                                <textarea id="create-disease-description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter descriptions" required></textarea>
+                                <label for="create-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                <textarea id="create-description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" required></textarea>
                             </div>
-
+            
                             <!-- symptoms -->
                             <div class="mb-3">
-                                <label for="create-symptom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">symptom</label>
-                                <textarea id="create-disease-symptom" name="symptom" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter symptoms" required></textarea>
+                                <label for="create-symptom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Symptoms</label>
+                                <textarea id="create-symptom" name="symptom" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" required></textarea>
                             </div>
 
+                            <!-- prevention -->
+                            <div class="mb-3">
+                                <label for="create-prevention" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prevention</label>
+                                <textarea id="create-prevention" name="prevention" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" required></textarea>
+                            </div>
+            
                             <!-- note -->
                             <div class="mb-3">
-                                <label for="create-note" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">note</label>
-                                <textarea id="create-disease-note" name="note" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter notes" required></textarea>
+                                <label for="create-note" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Note</label>
+                                <textarea id="create-note" name="note" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" required></textarea>
                             </div>
-
-                            <!-- Product Recommendation -->
+            
+                            <!-- Product Recommendations -->
                             <div class="mb-3">
-                                <label for="create-affected-fish" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Affected Fish</label>
-                                <textarea id="create-affected-fish" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter description" required></textarea>
+                                <label for="create-products" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Recommendations</label>
+                                <select id="create-products" name="product_recommendations[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full" multiple>
+                                </select>
                             </div>
                         </div>
                     </div>
-
+            
                     <!-- Submit Button -->
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-{{-- <meta name="csrf-token" content="{{ csrf_token() }}">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-$(document).ready(function() {
-    
 
-    $('#create-disease form').on('submit', function(e) {
-        e.preventDefault();
+        $(document).ready(function() {
+        
+            $('#createDiseaseForm').on('submit', function(e) {
+                e.preventDefault();
+        
+                const submitBtn = $(this).find('button[type="submit"]');
+                submitBtn.prop('disabled', true);
+        
+                const formData = {
+                    name: $('#create-disease-name').val(),
+                    symptoms: $('#create-symptom').val(),
+                    description: $('#create-description').val(),
+                    note: $('#create-note').val(),
+                    disease_type: $('#create-disease-type').val(),
+                    cause_agent: $('#create-cause-agent').val(),
+                    prevention: $('#create-prevention').val(),
+                    affected_fish: $('#create-affected-fish').val(),
+                    product_recommendations: $('#create-products').val(),
+                    affected_part: $('input[name="affected_parts[]"]:checked').map(function() {
+                        return $(this).val();
+                    }).get(),
+                }
 
-        // Disable submit button while processing
-        const submitBtn = $(this).find('button[type="submit"]');
-        submitBtn.prop('disabled', true);
-
-        // Validate form before submission
-        if (!validateForm()) {
-            Swal.fire({
-                title: 'Error!',
-                text: 'Please fill out all required fields correctly.',
-                icon: 'error',
-                confirmButtonText: 'OK'
+                console.log('Form Data:', formData);
+                
+        
+                $.ajax({
+                    url: '/api/disease/create',
+                    type: 'POST',
+                    data: formData,
+                    content: 'application/json',
+                    headers: { 
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        'Accept': 'application/json',
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Disease data has been successfully added',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            
+                            $('#createDiseaseForm')[0].reset();
+                            $('#create-affected-fish').val(null).trigger('change');
+                            $('#create-products').val(null).trigger('change');
+                            $('#create-disease').modal('hide');
+                        });
+                        $('[data-modal-hide="create-disease"]').click();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        
+                    }
+                });
             });
-            submitBtn.prop('disabled', false);
-            return;
-        }
-
-        // Prepare form data
-        const formData = new FormData(this);
-
-        $.ajax({
-            url: '/api/disease/create',
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            headers: { 
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Accept': 'application/json',
-            },
-            success: function(response) {
-                // Show success message
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Disease data has been successfully added',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    // Reset form and close modal
-                    $('#create-disease form')[0].reset();
-                    $('#create-disease').hide();
-                });
-                $('[data-modal-hide="create-disease"]').click();
-                setTimeout(function () {
-                    location.reload();
-                }, 500);
-            },
-            error: function(xhr, status, error) {
-                // Show error message
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Failed to add disease data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-                submitBtn.prop('disabled', false);
-            }
         });
-    });
-
-    function validateForm() {
-        // Add your form validation logic here
-        // Return true if the form is valid, otherwise return false
-        return true;
-    }
-});
-</script>
+    </script>

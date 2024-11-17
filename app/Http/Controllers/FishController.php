@@ -135,6 +135,8 @@ class FishController extends Controller
             'colour' => $request->colour ?? $existingFish->colour,
             'food_type' => $request->food_type ?? $existingFish->food_type,
             'food' => $request->food ?? $existingFish->food,
+            'venomous' => $request->venomous ?? $existingFish->venomous,
+            'poisonous' => $request->poisonous ?? $existingFish->poisonous,
             'min_temperature' => $request->min_temperature ?? $existingFish->min_temperature,
             'max_temperature' => $request->max_temperature  ?? $existingFish->max_temperature,
             'min_ph' => $request->min_ph ?? $existingFish->min_ph,
@@ -159,7 +161,10 @@ class FishController extends Controller
             ], 404);
         }
 
+
         if ($request->hasFile('image')) {
+            
+
             $file = $request->file('image');
             $timestamp = time();
             $extension = $file->getClientOriginalExtension();
@@ -170,12 +175,11 @@ class FishController extends Controller
             $extension = $file->getClientOriginalExtension();
             $filename = $timestamp . '.' . $extension;
 
-            // Create a new FishImage record
             $fishImage = FishImage::create([
                 'fish_id' => $id,
                 'image' => $filename,
-                'status' => $request->status ?? 1,  // optional status value
-                'disease_id' => $request->disease_id ?? null  // optional disease ID
+                'status' => $request->status ?? 1,
+                'disease_id' => ($request->status ?? 1) == 0 ? null : $request->disease_id
             ]);
 
             return response()->json([
@@ -235,7 +239,13 @@ class FishController extends Controller
         }
     }
     
-    public function getAllFishes() {
+    public function getAllFishes(Request $request) {
+        if($request->query('withImages') === 'true') {
+            return response()->json([
+                "data" => FishResource::collection(Fish::with('images')->get())
+            ]);
+        }
+
         return response()->json([
             "data" => Fish::all()]);
     }

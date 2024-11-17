@@ -32,6 +32,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/article', function () { return view('pages.article.index'); });
     Route::get('/article/detail', function () { return view('pages.article.detail'); });
 
+    Route::get('/testing', function () { return view('pages.testing.index'); });
 });
 
 Route::get('/', function () { return view('pages.landing.index'); });    

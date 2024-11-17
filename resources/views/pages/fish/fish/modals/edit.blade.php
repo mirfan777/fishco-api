@@ -1,6 +1,6 @@
 <!-- Main modal -->
-<div id="edit-fish" tabindex="-1" aria-hidden="true" class=" hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-[99999] bg-black bg-opacity-50 justify-center items-center w-full md:inset-0 h-[calc(100%-   0rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-4xl max-h-full ">
+<div id="edit-fish" tabindex="-1" aria-hidden="true" class="hidden overflow-x-hidden fixed top-0 right-0 left-0 z-[99999] bg-black bg-opacity-50 justify-center items-center w-full md:inset-0 h-[calc(100%-0rem)]">
+    <div class="relative p-4 w-full max-w-4xl max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- Modal header -->
@@ -77,84 +77,98 @@
                         </div>
                     
                         <div class="md:w-1/2">
+                            {{-- venomous and poisonous --}}
+                            <div class="">
+                               <label class="block  text-sm font-medium text-gray-900 dark:text-white">Berbahaya</label>
+                               <div class="flex gap-2 py-3">
+                                    <div class="flex items-center mb-4">
+                                        <input id="edit-venomous" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="edit-venomous" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Beracun</label>
+                                    </div>
+                                    <div class="flex items-center mb-4">
+                                        <input id="edit-poisonous" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="edit-poisonous" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Berbisa</label>
+                                    </div>
+                               </div>
+                            </div>
+
                             {{-- food --}}
                             <div>
                                 <!-- Food Type -->
-                                <div class="mb-3">
-                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Food Type</label>
-                                    <div class="flex items-center">
-                                        <input type="radio" id="food-type-herbivora" name="food_type" value="Herbivora" class="mr-2">
+                                <div class="">
+                                    <label class="block mb-1  text-sm font-medium text-gray-900 dark:text-white">Food Type</label>
+                                    <div class="flex items-center py-5">
+                                        <input type="radio" id="food-type-karnivora" name="food_type" value="1" class="mr-2">
+                                        <label for="food-type-karnivora" class="mr-4 text-sm font-medium text-gray1-900 dark:text-white">Karnivora</label>
+
+                                        <input type="radio" id="food-type-herbivora" name="food_type" value="2" class="mr-2">
                                         <label for="food-type-herbivora" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Herbivora</label>
                                         
-                                        <input type="radio" id="food-type-karnivora" name="food_type" value="Karnivora" class="mr-2">
-                                        <label for="food-type-karnivora" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Karnivora</label>
-                                        
-                                        <input type="radio" id="food-type-omnivora" name="food_type" value="Omnivora" class="mr-2">
+                                        <input type="radio" id="food-type-omnivora" name="food_type" value="3" class="mr-2">
                                         <label for="food-type-omnivora" class="text-sm font-medium text-gray-900 dark:text-white">Omnivora</label>
                                     </div>
-                                </div>
-                            
+                                </div>   
+
                                 <!-- Food -->
-                                <div class="mb-3">
+                                <div class="">
                                     <label for="edit-food" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Makanan</label>
                                     <input type="text" id="edit-food" name="food" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan makanan" required />
                                 </div>
                             </div>
-
                             {{-- habitat --}}
                             <div>
                                 <!-- Habitat -->
-                                <div class="mb-3">
-                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Habitat</label>
-                                    <div class="flex items-center">
-                                        <input type="radio" id="habitat-air-tawar" name="habitat" value="Air Tawar" class="mr-2">
+                                <div class="">
+                                    <label class="block my-2 text-sm font-medium text-gray-900 dark:text-white">Habitat</label>
+                                    <div class="flex items-center py-3">
+                                        <input type="radio" id="habitat-air-tawar" name="habitat" value="1" class="mr-2">
                                         <label for="habitat-air-tawar" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air Tawar</label>
                                         
-                                        <input type="radio" id="habitat-air-laut" name="habitat" value="Air Laut" class="mr-2">
-                                        <label for="habitat-air-laut" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air laut</label>
+                                        <input type="radio" id="habitat-air-laut" name="habitat" value="2" class="mr-2">
+                                        <label for="habitat-air-laut" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air Laut</label>
                                         
-                                        <input type="radio" id="habitat-air-payau" name="habitat" value="Air Payau" class="mr-2">
+                                        <input type="radio" id="habitat-air-payau" name="habitat" value="3" class="mr-2">
                                         <label for="habitat-air-payau" class="text-sm font-medium text-gray-900 dark:text-white">Air Payau</label>
                                     </div>
                                 </div>
 
                                 <!-- Min Temperature -->
-                                <div class="mb-3">
-                                    <label for="edit-min_temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min Temperature (°C)</label>
+                                <div class="">
+                                    <label for="edit-min_temperature" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Min Temperature (°C)</label>
                                     <input type="number" step="0.1" id="edit-min_temperature" name="min_temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan min temperatur" required />
                                 </div>
 
                                 <!-- Max Temperature -->
-                                <div class="mb-3">
-                                    <label for="edit-max_temperature" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max Temperature (°C)</label>
+                                <div class="">
+                                    <label for="edit-max_temperature" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Max Temperature (°C)</label>
                                     <input type="number" step="0.1" id="edit-max_temperature" name="max_temperature" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan max temperatur" required />
                                 </div>
 
                                 <!-- Min pH -->
-                                <div class="mb-3">
-                                    <label for="edit-min_ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min pH</label>
+                                <div class="">
+                                    <label for="edit-min_ph" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Min pH</label>
                                     <input type="number" step="0.1" id="edit-min_ph" name="min_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH min" required />
                                 </div>
 
                                 <!-- Max pH -->
-                                <div class="mb-3">
-                                    <label for="edit-max_ph" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max pH</label>
+                                <div class="">
+                                    <label for="edit-max_ph" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Max pH</label>
                                     <input type="number" step="0.1" id="edit-max_ph" name="max_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max" required />
                                 </div>
 
-                                <!-- Average size -->
-                                <div class="mb-3">
-                                    <label for="edit-average_size" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rata - rata ukuran ikan (cm)</label>
-                                    <input type="number" step="0.1" id="edit-average_size" name="average_size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan ukuran min" required />
+                                <!-- Min size -->
+                                <div class="">
+                                    <label for="edit-average_size" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Rata - Rata ukuran (cm)</label>
+                                    <input type="number" step="0.1" id="edit-average_size" name="average_size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan rata - rata ukuran ikan" required />
                                 </div>
 
-                                <!-- Max size -->
-                                <div class="mb-3">
-                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="edit-thumbnail">Upload gambar ikan</label>
-                                    <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="edit-thumbnail" type="file">
-                                </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="">
+                        <label class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white" for="edit-thumbnail">Upload gambar ikan</label>
+                        <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="edit-thumbnail" type="file">
                     </div>
 
                     <!-- Fish Detail and Thumbnail -->
@@ -162,6 +176,8 @@
                         <label for="edit-overview" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detail Ikan</label>
                         <textarea id="edit-overview" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan detail ikan"></textarea>
                     </div>
+                    
+
                 
                     <!-- Submit Button -->
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5">Submit</button>
@@ -189,6 +205,8 @@
             // Get fish ID and collect form data
             const urlParams = new URLSearchParams(window.location.search);
             const fishId = urlParams.get('id');
+
+            console.log($('#edit-venomous').is(':checked'))
             
             // Append other form data to formData object
             formData.append('name', $('#edit-name').val());
@@ -200,6 +218,8 @@
             formData.append('genus', $('#edit-genus').val());
             formData.append('species', $('#edit-species').val());
             formData.append('colour', $('#edit-colour').val());
+            formData.append('venomous', $('#edit-venomous').is(':checked') ? 1 : 0);
+            formData.append('poisonous', $('#edit-poisonous').is(':checked') ? 1 : 0);
             formData.append('food_type', $('input[name="food_type"]:checked').val());
             formData.append('food', $('#edit-food').val());
             formData.append('habitat', $('input[name="habitat"]:checked').val());

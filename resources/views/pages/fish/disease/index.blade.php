@@ -74,9 +74,22 @@
         </main>
 </x-layout.main>
 
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <script>
     let currentDiseaseId = null;
     let dataTable;
+
+    $('#edit-affected-fish, #create-affected-fish').select2({
+        placeholder: 'Select affected fish',
+        allowClear: true
+    });
+
+    $('#edit-products, #create-products').select2({
+        placeholder: 'Select products',
+        allowClear: true
+    });
 
     const initializeModalPosition = () => {
         $('#edit-disease').removeClass('hidden').addClass('flex').css({
@@ -100,12 +113,22 @@
         });
     };
 
-    $('#create-affected-fish').select2({
-        placeholder: 'Pilih ikan yang terpengaruh',
-        width: '100%'
-    });
+    $.ajax({
+            url: '/api/products',
+            type: 'GET',
+            headers: { 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Accept': 'application/json',
+            },
+            success: function(response) {
+                const productSelect = $('#create-products');
+                response.data.forEach(product => {
+                    productSelect.append(new Option(product.name, product.id));
+                });
+            }
+        });
 
-    // Fetch data dari API menggunakan AJAX
     $.ajax({
         url: '/api/fishes',
         method: 'GET',
@@ -115,12 +138,10 @@
             'Authorization': 'Bearer ' + localStorage.getItem('token')
         },
         success: function(response) {
-            // Memasukkan data ikan ke dalam select option
-            if (response.data && response.data.length > 0) {
-                response.data.forEach(fish => {
-                    $('#create-affected-fish').append(new Option(fish.name, fish.id));
-                });
-            }
+            const fishSelect = $('#create-affected-fish');
+                    response.data.forEach(fish => {
+                        fishSelect.append(new Option(fish.name, fish.id));
+                    });
         },
         error: function(xhr, status, error) {
             console.error("API Error:", error);
@@ -150,7 +171,7 @@
                         diseaseTableBody.append(`
                             <tr class="border-b dark:border-gray-700">
                                 <td class="px-4 py-3">${disease.name}</td>
-                                <td class="px-4 py-3">${disease.type}</td>
+                                <td class="px-4 py-3">${disease.disease_type}</td>
                                 <td class="px-4 py-3">${disease.cause_agent}</td>
                                 <td class="px-4 py-3">${disease.affected_part}</td>
                                 <td class="px-4 py-3">${fishNames}</td>
@@ -213,7 +234,7 @@
                                 timer: 1200, 
                                 showConfirmButton: false
                             }).then(() => {
-                                location.reload(); // Reload the page to reflect changes
+                                location.reload(); 
                             });
                         },
                         error: function(err) {
@@ -230,31 +251,88 @@
             });
         }
 
-    const fetchDiseaseDataById = (id) => {
-        $.ajax({
-            url: `/api/disease/${id}`,
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('token'),
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                console.log("API Response:", response); 
-                $('#edit-disease-name').val(response.data.name);
-                $('#edit-disease-symptoms').val(response.data.symptoms);
-                $('#edit-disease-description').val(response.data.description);
+        const fetchDiseaseDataById = (id) => {
+                $.ajax({
+                    url: `/api/disease/${id}`,
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
 
-                currentDiseaseId = id;
-                initializeModalPosition(); // Ensure modal is centered
-                $('#edit-disease').show();
-            },
-            error: function(xhr, status, error) {
-                console.error("API Error:", error); // Debug: Log error details
-            }
-        });
-    };
+                        currentDiseaseId = response.data.id;
+                        
+                        $('#edit-disease-name').val(response.data.name);
+                        $('#edit-disease-type').val(response.data.disease_type);
+                        $('#edit-cause-agent').val(response.data.cause_agent);
+                        $('#edit-description').val(response.data.description);
+                        $('#edit-symptom').val(response.data.symptoms);
+                        $('#edit-prevention').val(response.data.prevention);
+                        $('#edit-note').val(response.data.note);
+
+                       
+                        $.ajax({
+                            url: '/api/fishes',
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                            },
+                            success: function(fishResponse) {
+                                const editFishSelect = $('#edit-affected-fish');
+                                editFishSelect.empty(); 
+                                
+                                fishResponse.data.forEach(fish => {
+                                    const isSelected = response.data.affected_fish.some(selectedFish => selectedFish.id === fish.id);
+                                    const option = new Option(fish.name, fish.id, isSelected, isSelected);
+                                    editFishSelect.append(option);
+                                });
+                                editFishSelect.trigger('change'); 
+                            }
+                        });
+
+                       
+                        $.ajax({
+                            url: '/api/products',
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                            },
+                            success: function(productResponse) {
+                                const editProductSelect = $('#edit-products');
+                                editProductSelect.empty(); // Clear current options
+                                
+                                // Append all product options
+                                productResponse.data.forEach(product => {
+                                    const isSelected = response.data.products_recommendation.some(selectedProduct => selectedProduct.id === product.id);
+                                    const option = new Option(product.name, product.id, isSelected, isSelected);
+                                    editProductSelect.append(option);
+                                });
+                                editProductSelect.trigger('change'); 
+                            }
+                        });
+
+                        $('input[name="edit-affected_parts[]"]').prop('checked', false);
+                        if (response.data.affected_part) {
+                            const affectedParts = response.data.affected_part.toLowerCase().split(',');
+                            affectedParts.forEach(part => {
+                                $(`input[name="edit-affected_parts[]"][value="${part.trim()}"]`).prop('checked', true);
+                            });
+                        }
+
+
+                        // Show modal
+                        $('#edit-disease').show();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("API Error:", error);
+                    }
+                });
+            };
 
     // Fetch data and initialize table on page load
     fetchDiseaseData();

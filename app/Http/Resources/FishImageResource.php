@@ -18,6 +18,7 @@ class FishImageResource extends JsonResource
             'id' => $this->id,
             'fish_id' => $this->fish_id,
             'image' => $this->image,
+            'url' => asset('data/images/' . $this->image),
             'status' => $this->status,
             'disease_id' => $this->disease_id,
             'created_at' => $this->created_at,

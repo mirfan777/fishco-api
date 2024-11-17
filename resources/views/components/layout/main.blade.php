@@ -7,12 +7,11 @@
    <title>Fishco</title>
    @vite(['resources/css/style.css', 'resources/js/app.js'])
    <meta name="csrf-token" content="{{ csrf_token() }}">
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+   
    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script> -->
 
    <script>
@@ -21,6 +20,12 @@
       }
 
       const authUser = JSON.parse(localStorage.getItem('user'));
+
+      if (authUser.role != 1 && authUser.role != 2) {
+         localStorage.removeItem('token');
+         localStorage.removeItem('user');
+         window.location.href = '/auth/login';
+      } 
    </script>
 
 </head>
