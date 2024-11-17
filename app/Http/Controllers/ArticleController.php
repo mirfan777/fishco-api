@@ -101,6 +101,7 @@ class ArticleController extends Controller
 
         $response = $existingArticle->update([
             'title' => $request->title ?? $existingArticle->title,
+            'slug' => $request->slug ?? $existingArticle->slug,
             'body' => $request->body ?? $existingArticle->body,
             'thumbnail' => $filename 
         ]);
