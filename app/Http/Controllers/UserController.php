@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -48,6 +49,38 @@ class UserController extends Controller
 
         return response()->json([
             'message' => 'User deleted successfully'
+        ]);
+    }
+
+    function updateUser($id, Request $request) {
+        $user = User::find($id);
+    
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found'
+            ], 404);
+        }
+    
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|confirmed',
+            'phone_number' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+        ]);
+    
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        if (!empty($validatedData['password'])) {
+            $user->password = Hash::make($validatedData['password']);
+        }
+        $user->phone_number = $validatedData['phone_number'];
+        $user->address = $validatedData['address'];
+        $user->save();
+    
+        return response()->json([
+            'message' => 'User updated successfully',
+            'data' => new UserResource($user)
         ]);
     }
 }

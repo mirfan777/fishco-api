@@ -224,7 +224,7 @@
                     // Show success message
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Fish data has been successfully added',
+                        text: 'Data Ikan Berhasil Ditambahkan!',
                         icon: 'success',
                         confirmButtonText: 'OK'
                     }).then((result) => {
@@ -242,7 +242,7 @@
                     // Show error message
                     Swal.fire({
                         title: 'Error!',
-                        text: 'Failed to add fish data. Please try again.',
+                        text: 'Gagal untuk menambahkan data Ikan, silahkan coba lagi.',
                         icon: 'error',
                         confirmButtonText: 'OK'
                     });

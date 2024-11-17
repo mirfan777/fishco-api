@@ -32,6 +32,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', [UserController::class, 'getAllUser']);
     Route::get('/user/{id}', [UserController::class, 'getUserById']);
     Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
+    Route::post('/user/update/{id}', [UserController::class, 'updateUser']);
 
     //Fish
     Route::get('/fish', [FishController::class, 'getAllFish']);

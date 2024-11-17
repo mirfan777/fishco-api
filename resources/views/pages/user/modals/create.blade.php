@@ -22,38 +22,39 @@
                         <div class="w-full">
                             <!-- Name -->
                             <div class="mb-3">
-                                <label for="create-user-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                <input type="text" id="create-user-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter name" required />
+                                <label for="create-user-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                                <input type="text" id="create-user-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan nama" required />
                             </div>
 
                             <!-- Email -->
                             <div class="mb-3">
                                 <label for="create-user-email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                <input type="email" id="create-user-email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter email" required />
+                                <input type="email" id="create-user-email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan email" required />
                             </div>
 
                             <!-- Password -->
                             <div class="mb-3">
                                 <label for="create-user-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                                <input type="password" id="create-user-password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter password" required />
+                                <input type="password" id="create-user-password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan password" required />
                             </div>
 
                             <!-- Confirm Password -->
                             <div class="mb-3">
-                                <label for="create-user-confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
-                                <input type="password" id="create-user-confirm-password" name="confirm_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm password" required />
-                            </div>
-
-                            <!-- Address -->
-                            <div class="mb-3">
-                                <label for="create-user-address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                                <textarea id="create-user-address" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter address" required></textarea>
+                                <label for="create-user-confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Konfirmasi Password</label>
+                                <input type="password" id="create-user-confirm-password" name="confirm_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Konfirmasi Password" required />
+                                <p id="password-error" class="text-red-500 text-sm mt-1 hidden">Password dan Konfirmasi Password tidak sesuai.</p>
                             </div>
 
                             <!-- Phone Number -->
                             <div class="mb-3">
-                                <label for="create-user-phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
-                                <input type="text" id="create-user-phone" name="phone_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter phone number" required />
+                                <label for="create-user-phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No. Hp</label>
+                                <input type="text" id="create-user-phone" name="phone_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter No. Hp" required />
+                            </div>
+
+                            <!-- Address -->
+                            <div class="mb-3">
+                                <label for="create-user-address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
+                                <input type="text" id="create-user-address" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Alamat" required />
                             </div>
                         </div>
                     </div>
@@ -68,6 +69,7 @@
 
 {{-- <meta name="csrf-token" content="{{ csrf_token() }}">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
 <script>
 $(document).ready(function() {
     $('#create-user form').on('submit', function(e) {
@@ -90,8 +92,8 @@ $(document).ready(function() {
             email: $('#create-user-email').val(),
             password: $('#create-user-password').val(),
             confirm_password: $('#create-user-confirm-password').val(),
-            address: $('#create-user-address').val(),
             phone_number: $('#create-user-phone').val(),
+            address: $('#create-user-address').val(),
             role: 1
         };
 
@@ -135,6 +137,7 @@ $(document).ready(function() {
                     confirmButtonText: 'OK'
                 });
                 console.error('Error:', error);
+                console.error('Response:', xhr.responseText);
             },
             complete: function() {
                 // Re-enable submit button and restore original text
@@ -157,6 +160,18 @@ $(document).ready(function() {
                 $(this).removeClass('border-red-500');
             }
         });
+
+        // Check if passwords match
+        const password = $('#create-user-password').val();
+        const confirmPassword = $('#create-user-confirm-password').val();
+        if (password !== confirmPassword) {
+            $('#create-user-confirm-password').addClass('border-red-500');
+            $('#password-error').removeClass('hidden');
+            isValid = false;
+        } else {
+            $('#create-user-confirm-password').removeClass('border-red-500');
+            $('#password-error').addClass('hidden');
+        }
 
         return isValid;
     }

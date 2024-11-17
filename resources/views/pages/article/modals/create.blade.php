@@ -33,7 +33,7 @@
                             <!-- Slug -->
                             <div class="mb-3">
                                 <label for="create-article-slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug</label>
-                                <input type="text" id="create-article-slug" name="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article slug" required />
+                                <input type="text" id="create-article-slug" name="slug" class="bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article slug" readonly />
                             </div>
                             <!-- Description/Body -->
                             <div class="mb-3">
@@ -52,6 +52,18 @@
 
 <script>
     $(document).ready(function() {
+        // Function to generate slug from title
+        function generateSlug(title) {
+            return title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+        }
+
+        // Event listener for title input
+        $('#create-article-title').on('input', function() {
+            const title = $(this).val();
+            const slug = generateSlug(title);
+            $('#create-article-slug').val(slug);
+        });
+
         $('#create-article form').on('submit', function(e) {
             e.preventDefault();
             
