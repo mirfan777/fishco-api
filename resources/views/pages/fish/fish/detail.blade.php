@@ -1,5 +1,5 @@
 <x-layout.main>
-    @include('pages.fish.fish.modals.upload-image')
+    <!-- @include('pages.fish.fish.modals.upload-image') -->
     @include('pages.fish.fish.modals.edit')
     
     <main class="min-h-screen pt-12 sm:ml-64 bg-gray-50">
@@ -80,17 +80,17 @@
             </div>
 
             <!-- Tab Navigation -->
-            <ul class="flex justify-left border-b mt-10 border-gray-200 dark:border-gray-700 text-gray-500 text-sm font-medium">
+            <!-- <ul class="flex justify-left border-b mt-10 border-gray-200 dark:border-gray-700 text-gray-500 text-sm font-medium">
                 <li class="mr-2">
                     <a href="#" data-status="0" class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500">Ikan Sehat</a>
                 </li>
                 <li class="mr-2">
                     <a href="#" data-status="1" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Ikan Sakit</a>
                 </li>
-            </ul>
+            </ul> -->
 
             <!-- Fish Images Gallery -->
-            <div id="fish-images" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 p-6 mt-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg"></div>
+            <!-- <div id="fish-images" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 p-6 mt-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg"></div> -->
         </div>
     </main>
 </x-layout.main>
@@ -262,7 +262,7 @@
                 const fish = response.data;
                 const filteredImages = fish.images.filter(image => image.status === status);
 
-                $('#fish-images').empty();
+    //             $('#fish-images').empty();
 
                 filteredImages.forEach(image => {
                     $('#fish-images').append(`

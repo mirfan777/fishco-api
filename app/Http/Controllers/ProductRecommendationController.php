@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Resources\DiseaseResource;
 use App\Models\Fish;
 use App\Models\Disease;
-use App\Models\Medicine;
 use App\Models\Product;
 
 class ProductRecommendationController extends Controller

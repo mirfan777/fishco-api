@@ -222,7 +222,13 @@
             formData.append('poisonous', $('#edit-poisonous').is(':checked') ? 1 : 0);
             formData.append('food_type', $('input[name="food_type"]:checked').val());
             formData.append('food', $('#edit-food').val());
-            formData.append('habitat', $('input[name="habitat"]:checked').val());
+
+            // Check if habitat is selected
+            const habitat = $('input[name="habitat"]:checked').val();
+            if (habitat !== undefined) {
+                formData.append('habitat', habitat);
+            }
+
             formData.append('min_temperature', $('#edit-min_temperature').val());
             formData.append('max_temperature', $('#edit-max_temperature').val());
             formData.append('min_ph', $('#edit-min_ph').val());

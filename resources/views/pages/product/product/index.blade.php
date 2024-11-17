@@ -11,7 +11,7 @@
                     <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
                         <!-- Tombol Tambah Data -->
                         <div class="w-full md:w-auto">
-                            <button data-modal-target="create-product" data-modal-toggle="create-product" class="bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
+                            <button data-modal-target="create-product" data-modal-toggle="create-product" class="bg-[#0278c7] hover:bg-[#0362a1] text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
                         </div>
                     </div>
                     

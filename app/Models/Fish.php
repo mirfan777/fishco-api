@@ -10,11 +10,6 @@ class Fish extends Model
 
     protected $table = 'fishes';
 
-    public function medicines(){
-            
-            return $this->hasMany(Medicine::class);
-    }
-
     public function aquariumfishes(){
             
             return $this->hasMany(AquariumFish::class); //kebalik sama penghuni fish maybe(?) harusnya belongsTo

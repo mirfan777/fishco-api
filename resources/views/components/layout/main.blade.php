@@ -132,11 +132,6 @@
                          <span class="ms-3">Fish</span>
                       </a>
                    </li>
-                   <li>
-                      <a href="/medicine" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                         <span class="ms-3">Medicine</span>
-                      </a>
-                   </li>
               </ul>
             </li>
             <li>
@@ -157,7 +152,7 @@
                    </li>
               </ul>
             </li>
-            <li>
+            {{-- <li>
                <a href="/report" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                   <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path class="fill-black" fill-rule="evenodd" clip-rule="evenodd" d="M2.34375 0.979492C2.21943 0.979492 2.1002 1.02888 2.01229 1.11679C1.92439 1.20469 1.875 1.32392 1.875 1.44824V11.6764C1.875 11.8007 1.92439 11.9199 2.01229 12.0078C2.1002 12.0957 2.21943 12.1451 2.34375 12.1451H10.7812C10.9056 12.1451 11.0248 12.0957 11.1127 12.0078C11.2006 11.9199 11.25 11.8007 11.25 11.6764V5.02855C11.2501 4.96561 11.2376 4.90329 11.2131 4.84531C11.1886 4.78732 11.1527 4.73486 11.1075 4.69105L7.41656 1.11355C7.32926 1.02844 7.21224 0.980686 7.09031 0.98043L2.34375 0.979492ZM9.62437 4.5598L7.55906 2.55637V4.5598H9.62437ZM5.625 5.15605H3.75V4.21855H5.625V5.15605ZM9.375 7.4998H3.75V6.5623H9.375V7.4998ZM3.75 9.84355H9.375V8.90605H3.75V9.84355Z" fill="white"/>
@@ -165,7 +160,7 @@
                    </svg>
                   <span class="ms-3">Report</span>
                </a>
-            </li>
+            </li> --}}
             <li>
               <a href="/article" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

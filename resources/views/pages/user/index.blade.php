@@ -10,7 +10,7 @@
                     <div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0 md:space-x-4">
                         <!-- Tombol Tambah Data -->
                         <div class="w-full md:w-auto">
-                            <button data-modal-target="create-user" data-modal-toggle="create-user" class="bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
+                            <button data-modal-target="create-user" data-modal-toggle="create-user" class="bg-[#0278c7] hover:bg-[#0362a1] text-white font-medium rounded-lg text-sm px-5 py-2.5">Tambah data</button>
                         </div>
                     </div>
                     
@@ -106,6 +106,39 @@
         });
     };
     
+    const fetchUserDataById = (id) => {
+            $.ajax({
+                url: `/api/user/${id}`,
+                method: 'GET',
+                headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
+                success: function(response) {
+                    const user = response.data;
+                    if (user) {
+                        $('#edit-user-name').val(user.name);
+                        $('#edit-user-email').val(user.email);
+                        $('#edit-user-password').val(user.password);
+                        $('#edit-user-confirm-password').val(user.password);
+                        $('#edit-user-phone').val(user.phone_number);
+                        $('#edit-user-address').val(user.address);
+                        currentUserId = user.id;
+                        initializeModalPosition();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Failed!',
+                        text: 'Failed to fetch user data. Please try again.'
+                    });
+                    console.log("Error response:", xhr.responseJSON);
+                }
+            });
+        }
+
     const fetchUserData = () => {
         $.ajax({
             url: `/api/users`,
