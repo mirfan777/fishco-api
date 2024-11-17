@@ -95,7 +95,7 @@ class FishSeeder extends Seeder
         foreach ($bettaImage as $image) {
             $fishImages[] = [
                 'fish_id' => 1, // ID for Betta
-                'status' => 1,
+                'status' => 0,
                 'disease_id' => null,
                 'image' => $image,
                 'created_at' => Carbon::now(),
@@ -107,7 +107,7 @@ class FishSeeder extends Seeder
         foreach ($carissusImage as $image) {
             $fishImages[] = [
                 'fish_id' => 2, // ID for Carassius
-                'status' => 1,
+                'status' => 0,
                 'disease_id' => null,
                 'image' => $image,
                 'created_at' => Carbon::now(),
