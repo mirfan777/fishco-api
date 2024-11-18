@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('genus');
             $table->string('species');
             $table->string('colour');
-            $table->integer('food_type'); // 1.carnivore 2.herbivore 3.omnivore
+            $table->string('food_type'); // 1.carnivore 2.herbivore 3.omnivore
             $table->string('food');
             $table->float('min_temperature');
             $table->float('max_temperature');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->float('max_ph');
             $table->integer('venomous')->default(0);
             $table->integer('poisonous')->default(0);
-            $table->integer('habitat'); // 1.freshwater 2.saltwater 3.brackish
+            $table->string('habitat'); // 1.freshwater 2.saltwater 3.brackish
             $table->string('overview');
             $table->string('thumbnail');
             $table->float('average_size');

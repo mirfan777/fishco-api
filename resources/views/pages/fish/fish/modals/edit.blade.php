@@ -98,13 +98,13 @@
                                 <div class="">
                                     <label class="block mb-1  text-sm font-medium text-gray-900 dark:text-white">Food Type</label>
                                     <div class="flex items-center py-5">
-                                        <input type="radio" id="food-type-karnivora" name="food_type" value="1" class="mr-2">
+                                        <input type="radio" id="food-type-karnivora" name="food_type" value="Karnivora" class="mr-2">
                                         <label for="food-type-karnivora" class="mr-4 text-sm font-medium text-gray1-900 dark:text-white">Karnivora</label>
 
-                                        <input type="radio" id="food-type-herbivora" name="food_type" value="2" class="mr-2">
+                                        <input type="radio" id="food-type-herbivora" name="food_type" value="Herbivora" class="mr-2">
                                         <label for="food-type-herbivora" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Herbivora</label>
                                         
-                                        <input type="radio" id="food-type-omnivora" name="food_type" value="3" class="mr-2">
+                                        <input type="radio" id="food-type-omnivora" name="food_type" value="Omnivora" class="mr-2">
                                         <label for="food-type-omnivora" class="text-sm font-medium text-gray-900 dark:text-white">Omnivora</label>
                                     </div>
                                 </div>   
@@ -121,13 +121,13 @@
                                 <div class="">
                                     <label class="block my-2 text-sm font-medium text-gray-900 dark:text-white">Habitat</label>
                                     <div class="flex items-center py-3">
-                                        <input type="radio" id="habitat-air-tawar" name="habitat" value="1" class="mr-2">
+                                        <input type="radio" id="habitat-air-tawar" name="habitat" value="Air Tawar" class="mr-2">
                                         <label for="habitat-air-tawar" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air Tawar</label>
                                         
-                                        <input type="radio" id="habitat-air-laut" name="habitat" value="2" class="mr-2">
+                                        <input type="radio" id="habitat-air-laut" name="habitat" value="Air Laut" class="mr-2">
                                         <label for="habitat-air-laut" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air Laut</label>
                                         
-                                        <input type="radio" id="habitat-air-payau" name="habitat" value="3" class="mr-2">
+                                        <input type="radio" id="habitat-air-payau" name="habitat" value="Air Payau" class="mr-2">
                                         <label for="habitat-air-payau" class="text-sm font-medium text-gray-900 dark:text-white">Air Payau</label>
                                     </div>
                                 </div>
@@ -193,11 +193,25 @@
         $('#edit-fish form').on('submit', function (e) {
             e.preventDefault();
 
-            // edit formData object
+            // Validate file input
+            const fileInput = document.getElementById('edit-thumbnail');
+            const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                if (!validTypes.includes(file.type)) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Invalid File Type',
+                        text: 'Only JPEG, PNG, and GIF files are allowed.'
+                    });
+                    return;
+                }
+            }
+
+            // Create FormData object
             const formData = new FormData();
 
             // Append file if it exists
-            const fileInput = document.getElementById('edit-thumbnail');
             if (fileInput.files.length > 0) {
                 formData.append('thumbnail', fileInput.files[0]);
             }
@@ -206,8 +220,6 @@
             const urlParams = new URLSearchParams(window.location.search);
             const fishId = urlParams.get('id');
 
-            console.log($('#edit-venomous').is(':checked'))
-            
             // Append other form data to formData object
             formData.append('name', $('#edit-name').val());
             formData.append('kingdom', $('#edit-kingdom').val());
@@ -265,11 +277,20 @@
                     }, 500);
                 },
                 error: function (xhr, status, error) {
+                    // Close modal on error
+                    $('#edit-fish').hide();
+
                     Swal.fire({
                         icon: 'error',
                         title: 'Failed!',
                         text: `Error: ${xhr.responseJSON.message || 'Data gagal diperbarui.'}`
+                    }).then((result) => {
+                        // Ensure modal and backdrop are removed
+                        $('#edit-fish').hide();
+                        $('#edit-fish form')[0].reset();
+                        $('[data-modal-hide="edit-fish"]').click();
                     });
+
                     console.log("Error response:", xhr.responseJSON);
                 },
                 complete: function () {

@@ -98,13 +98,13 @@
                                 <div class="">
                                     <label class="block mb-1  text-sm font-medium text-gray-900 dark:text-white">Food Type</label>
                                     <div class="flex items-center py-5">
-                                        <input type="radio" id="food-type-karnivora" name="food_type" value="1" class="mr-2">
+                                        <input type="radio" id="food-type-karnivora" name="food_type" value="Karnivora" class="mr-2">
                                         <label for="food-type-karnivora" class="mr-4 text-sm font-medium text-gray1-900 dark:text-white">Karnivora</label>
 
-                                        <input type="radio" id="food-type-herbivora" name="food_type" value="2" class="mr-2">
+                                        <input type="radio" id="food-type-herbivora" name="food_type" value="Herbivora" class="mr-2">
                                         <label for="food-type-herbivora" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Herbivora</label>
                                         
-                                        <input type="radio" id="food-type-omnivora" name="food_type" value="3" class="mr-2">
+                                        <input type="radio" id="food-type-omnivora" name="food_type" value="Omnivora" class="mr-2">
                                         <label for="food-type-omnivora" class="text-sm font-medium text-gray-900 dark:text-white">Omnivora</label>
                                     </div>
                                 </div>   
@@ -121,13 +121,13 @@
                                 <div class="">
                                     <label class="block my-2 text-sm font-medium text-gray-900 dark:text-white">Habitat</label>
                                     <div class="flex items-center py-3">
-                                        <input type="radio" id="habitat-air-tawar" name="habitat" value="1" class="mr-2">
+                                        <input type="radio" id="habitat-air-tawar" name="habitat" value="Air Tawar" class="mr-2">
                                         <label for="habitat-air-tawar" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air Tawar</label>
                                         
-                                        <input type="radio" id="habitat-air-laut" name="habitat" value="2" class="mr-2">
+                                        <input type="radio" id="habitat-air-laut" name="habitat" value="Air Laut" class="mr-2">
                                         <label for="habitat-air-laut" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air Laut</label>
                                         
-                                        <input type="radio" id="habitat-air-payau" name="habitat" value="3" class="mr-2">
+                                        <input type="radio" id="habitat-air-payau" name="habitat" value="Air Payau" class="mr-2">
                                         <label for="habitat-air-payau" class="text-sm font-medium text-gray-900 dark:text-white">Air Payau</label>
                                     </div>
                                 </div>
@@ -250,7 +250,7 @@
                         // Reset form and close modal
                         $('#create-fish form')[0].reset();
                         $('#create-fish').hide();
-                        
+                        $('.modal-backdrop').remove(); // Remove the modal backdrop
                     });
                     $('[data-modal-hide="create-fish"]').click();
                     setTimeout(function () {
@@ -258,14 +258,22 @@
                     }, 500);
                 },
                 error: function(xhr, status, error) {
+                    // Close modal on error
+                    $('#create-fish').hide();
+
                     // Show error message
                     Swal.fire({
                         title: 'Error!',
                         text: 'Gagal untuk menambahkan data Ikan, silahkan coba lagi.',
                         icon: 'error',
                         confirmButtonText: 'OK'
+                    }).then((result) => {
+                        // Ensure modal and backdrop are removed
+                        $('#create-fish').hide();
+                        $('#create-fish form')[0].reset();
+                        $('[data-modal-hide="create-fish"]').click();
                     });
-                    
+
                     console.error('Error:', error);
                 },
                 complete: function() {
