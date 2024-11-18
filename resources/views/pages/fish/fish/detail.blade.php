@@ -79,7 +79,8 @@
                 </div>
             </div>
 
-             <ul class="flex justify-left border-b mt-10 border-gray-200 dark:border-gray-700 text-gray-500 text-sm font-medium">
+             
+            <ul id="navbar" class="flex justify-left border-b mt-10 border-gray-200 dark:border-gray-700 text-gray-500 text-sm font-medium">
                 <li class="mr-2">
                     <a href="#" data-status="0" class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500">Ikan Sehat</a>
                 </li>
@@ -87,7 +88,6 @@
                     <a href="#" data-status="1" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Ikan Sakit</a>
                 </li>
             </ul> 
-
              <div id="fish-images" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 p-6 mt-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg"></div> 
         </div>
     </main>
@@ -106,15 +106,16 @@
         console.error("No fishId found in URL.");
     }
 
-    $('ul a').on('click', function (e) {
+    $('#navbar a').on('click', function (e) {
         e.preventDefault();
 
-        $('ul a').removeClass('text-blue-600 bg-gray-100 dark:text-blue-500 dark:bg-gray-800');
+        $('#navbar a').removeClass('text-blue-600 bg-gray-100 dark:text-blue-500 dark:bg-gray-800');
         $(this).addClass('text-blue-600 bg-gray-100 dark:text-blue-500 dark:bg-gray-800');
 
         const status = $(this).data('status');
         loadFishImages(fishId, status);
     });
+
 
     window.getImageId = function (imageId) {
         Swal.fire({
