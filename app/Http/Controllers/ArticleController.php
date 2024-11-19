@@ -17,6 +17,14 @@ class ArticleController extends Controller
         return ArticleResource::collection($articles);
     }
 
+    function getThreeArticle(Request $request){
+        $query = $request->query('search', '');
+        $articles = Article::where('title', 'like', "%$query%")
+                      ->paginate(3);
+        
+        return ArticleResource::collection($articles);
+    }
+
     function getArticleById($id){
         $article = Article::find($id);
 
