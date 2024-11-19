@@ -107,8 +107,8 @@
                 const fishTableBody = $('#fish-table tbody'); // Target the tbody directly
                 fishTableBody.empty();
 
-                if (response.data && response.data.length > 0) {
-                    response.data.forEach(fish => {
+                if (response && response.length > 0) {
+                    response.forEach(fish => {
                         // Map habitat values to display text
                         const habitatMap = {
                             freshwater: "Air Tawar",
