@@ -14,7 +14,7 @@ class FishResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        $data = [
             'id' => $this->id,
             'name' => $this->name,
             'kingdom' => $this->kingdom,
@@ -45,6 +45,6 @@ class FishResource extends JsonResource
             $data['images'] = FishImageResource::collection($this->images);
         }
 
-        return data;
+        return $data;
     }
 }

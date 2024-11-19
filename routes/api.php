@@ -67,6 +67,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/article/update/{id}', [ArticleController::class, 'updateArticle']);
     Route::delete('/article/delete/{id}', [ArticleController::class, 'deleteArticle']);
     Route::get('/articles', [ArticleController::class, 'getAllArticles']);
+    Route::get('/articles/three', [ArticleController::class, 'getThreeArticle']);
 
 
     //Comment
