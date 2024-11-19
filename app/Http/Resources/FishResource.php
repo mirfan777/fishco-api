@@ -45,6 +45,6 @@ class FishResource extends JsonResource
             $data['images'] = FishImageResource::collection($this->images);
         }
 
-        return data;
+        return $data;
     }
 }
