@@ -38,9 +38,7 @@ class FishController extends Controller
             $query->with('images');
         }
 
-        return response()->json([
-            "data" => FishResource::collection($query->get())
-        ]);
+        return response()->json(FishResource::collection($query->get()));
 
     }
     
@@ -71,10 +69,10 @@ class FishController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $filename = $timestamp . '.' . $extension;
 
-                // Store the file in public/data/images directory
+                
                 $file->move(public_path('data/images'), $filename);
 
-                // Create fish record with all data
+               
                 $fish = Fish::create([
                     'name' => $request->name,
                     'kingdom' => $request->kingdom,
