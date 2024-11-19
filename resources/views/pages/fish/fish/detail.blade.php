@@ -106,7 +106,7 @@
         console.error("No fishId found in URL.");
     }
 
-    $('#navbar a').on('click', function (e) {
+     $('#navbar a').on('click', function (e) {
         e.preventDefault();
 
         $('#navbar a').removeClass('text-blue-600 bg-gray-100 dark:text-blue-500 dark:bg-gray-800');
