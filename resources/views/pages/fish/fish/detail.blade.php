@@ -171,8 +171,6 @@
         }
     }
 
-    
-
     function loadFishData(fishId) {
         $.ajax({
             url: `/api/fish/${fishId}`,
@@ -197,20 +195,35 @@
                 $('#detail-colour').text(fish.colour || "Not available");
                 $('#detail-venomous').text(fish.venomous ? "Yes" : "No");
                 $('#detail-poisonous').text(fish.poisonous ? "Yes" : "No");
-                $('#detail-food-type').text(fish.food_type || "Not available");
+
+                // Map food type values to display text
+                const foodTypeMap = {
+                    carnivore: "Karnivora",
+                    herbivore: "Herbivora",
+                    omnivore: "Omnivora"
+                };
+                $('#detail-food-type').text(foodTypeMap[fish.food_type] || "Not available");
+
                 $('#detail-food').text(fish.food || "Not available");
+
+                // Map habitat values to display text
+                const habitatMap = {
+                    freshwater: "Air Tawar",
+                    saltwater: "Air Laut",
+                    brackishwater: "Air Payau"
+                };
+                $('#detail-habitat').text(habitatMap[fish.habitat] || "Not available");
+
                 $('#detail-temperature').text((fish.min_temperature && fish.max_temperature) ? `${fish.min_temperature}°C - ${fish.max_temperature}°C` : "Not available");
                 $('#detail-ph').text((fish.min_ph && fish.max_ph) ? `${fish.min_ph}pH - ${fish.max_ph}pH` : "Not available");
                 $('#detail-average_size').text(fish.average_size ? `${fish.average_size} cm` : "Not available");
-                $('#detail-habitat').text(fish.habitat || "Not available");
                 $('#detail-overview').text(fish.overview || "No overview available");
 
-                
                 const foodTypeValue = fish.food_type?.toString();
                 if (foodTypeValue) {
                     $(`input[name="food_type"][value="${foodTypeValue}"]`).prop('checked', true);
                 }
-                
+
                 const habitatValue = fish.habitat?.toString();
                 if (habitatValue) {
                     $(`input[name="habitat"][value="${habitatValue}"]`).prop('checked', true);
@@ -234,7 +247,7 @@
                 $('#edit-min_ph').val(fish.min_ph || "Not available");
                 $('#edit-max_ph').val(fish.max_ph || "Not available");
                 $('#edit-average_size').val(fish.average_size || "Not available");
-                
+
                 $('#edit-overview').val(fish.overview || "No overview available");
                 $('#edit-thumbnail').val(fish.thumbnail || "No thumbnail available");
 

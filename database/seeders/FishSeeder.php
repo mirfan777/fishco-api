@@ -45,7 +45,7 @@ class FishSeeder extends Seeder
                 'genus' => 'Betta',
                 'species' => 'Betta sp',
                 'colour' => 'Various (Blue, Red, Green, Multi-colored)',
-                'food_type' => 1, //carnivore
+                'food_type' => 'carnivore',
                 'food' => 'Bloodworms, Brine Shrimp, Daphnia, Fish Pellets',
                 'venomous' => 0 ,
                 'poisonous' => 0 ,
@@ -53,7 +53,7 @@ class FishSeeder extends Seeder
                 'max_temperature' => 30,
                 'min_ph' => 6.0,
                 'max_ph' => 8.0,
-                'habitat' => 1,
+                'habitat' => 'freshwater',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'thumbnail' => $bettaImage[0],
@@ -70,7 +70,7 @@ class FishSeeder extends Seeder
                 'genus' => 'Carassius',
                 'species' => 'Carassius auratus',
                 'colour' => 'Gold, Orange, Red, White, Black, Mixed',
-                'food_type' => 3, //omnivore
+                'food_type' => 'omnivore', //omnivore
                 'food' => 'Fish flakes, pellets, plants, small crustaceans, insects',
                 'venomous' => 0 ,
                 'poisonous' => 0 ,
@@ -78,7 +78,7 @@ class FishSeeder extends Seeder
                 'max_temperature' => 28,
                 'min_ph' => 6.0,
                 'max_ph' => 8.0,
-                'habitat' => 1, //freshwater
+                'habitat' => 'freshwater', //freshwater
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'thumbnail' => $carissusImage[0],

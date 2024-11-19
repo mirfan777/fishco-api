@@ -22,7 +22,7 @@
                                     <tr>
                                         <th scope="col" class="px-4 py-3">
                                             <span class="flex items-center">
-                                                disease name
+                                                nama penyakit
                                                 <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                                 </svg>
@@ -30,7 +30,7 @@
                                         </th>
                                         <th scope="col" class="px-4 py-3">
                                             <span class="flex items-center">
-                                                disease type
+                                                tipe penyakit
                                                 <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                                 </svg>
@@ -38,7 +38,7 @@
                                         </th>
                                         <th scope="col" class="px-4 py-3">
                                             <span class="flex items-center">
-                                                cause agent
+                                                penyebab
                                                 <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                                 </svg>
@@ -46,7 +46,7 @@
                                         </th>
                                         <th scope="col" class="px-4 py-3">
                                             <span class="flex items-center">
-                                                affected part
+                                                bagian yang terkena
                                                 <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                                 </svg>
@@ -54,7 +54,7 @@
                                         </th>
                                         <th scope="col" class="px-4 py-3">
                                             <span class="flex items-center">
-                                                affected fish
+                                                ikan yang terdampak
                                                 <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                                 </svg>

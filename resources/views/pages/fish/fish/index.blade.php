@@ -102,37 +102,49 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(response) {
-            console.log("API Response:", response);
+                console.log("API Response:", response);
 
-            const fishTableBody = $('#fish-table tbody'); // Target the tbody directly
-            fishTableBody.empty();
+                const fishTableBody = $('#fish-table tbody'); // Target the tbody directly
+                fishTableBody.empty();
 
-            if (response.data && response.data.length > 0) {
-                response.data.forEach(fish => {
-                    // Check if habitat and food_type are defined
-                    const habitat = fish.habitat !== undefined ? fish.habitat : 'N/A';
-                    const foodType = fish.food_type !== undefined ? fish.food_type : 'N/A';
+                if (response.data && response.data.length > 0) {
+                    response.data.forEach(fish => {
+                        // Map habitat values to display text
+                        const habitatMap = {
+                            freshwater: "Air Tawar",
+                            saltwater: "Air Laut",
+                            brackishwater: "Air Payau"
+                        };
+                        const habitat = habitatMap[fish.habitat] || 'N/A';
 
+                        // Map food type values to display text
+                        const foodTypeMap = {
+                            carnivore: "Karnivora",
+                            herbivore: "Herbivora",
+                            omnivore: "Omnivora"
+                        };
+                        const foodType = foodTypeMap[fish.food_type] || 'N/A';
+
+                        fishTableBody.append(`
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">${fish.name}</td>
+                                <td class="px-4 py-3">${fish.species}</td>
+                                <td class="px-4 py-3">${habitat}</td>
+                                <td class="px-4 py-3">${foodType}</td>
+                                <td class="px-4 py-3">
+                                    <a href="/fish/detail/?id=${fish.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
+                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${fish.id})">Hapus</button>
+                                </td>
+                            </tr>
+                        `);
+                    });
+                } else {
                     fishTableBody.append(`
-                        <tr class="border-b dark:border-gray-700">
-                            <td class="px-4 py-3">${fish.name}</td>
-                            <td class="px-4 py-3">${fish.species}</td>
-                            <td class="px-4 py-3">${habitat}</td>
-                            <td class="px-4 py-3">${foodType}</td>
-                            <td class="px-4 py-3">
-                                <a href="/fish/detail/?id=${fish.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
-                                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${fish.id})">Hapus</button>
-                            </td>
+                        <tr>
+                            <td colspan="5" class="px-4 py-3 text-center">No data available</td>
                         </tr>
                     `);
-                });
-            } else {
-                fishTableBody.append(`
-                    <tr>
-                        <td colspan="5" class="px-4 py-3 text-center">No data available</td>
-                    </tr>
-                `);
-            }
+                }
 
                 // Reinitialize DataTable after updating the content
                 initializeDataTable();
@@ -141,7 +153,7 @@
                 console.error("API Error:", error);
                 $('#fish-table tbody').html(`
                     <tr>
-                        <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
+                        <td colspan="5" class="px-4 py-3 text-center">Data tidak ditemukan</td>
                     </tr>
                 `);
             }

@@ -88,7 +88,7 @@
     </nav>
     
     <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
-      <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+      <div class="h-full px-5 pb-4 overflow-y-auto bg-white dark:bg-gray-800"> <!-- Ubah px-3 menjadi px-6 -->
          <ul class="space-y-2 font-medium text-white">  
             <li>
                <a href="/dashboard" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -114,55 +114,36 @@
               </script>
            </li>
             <li>
-              <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="ikan" data-collapse-toggle="ikan">
-                    <svg width="20" height="20" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path class="fill-black" d="M11.977 1.44444H13.3V0H0.7V1.44444H2.023C0.727858 2.78774 0.000571952 4.60526 0 6.5C0 9.36722 1.617 11.8372 3.962 13H10.038C11.2255 12.4126 12.2277 11.4906 12.9288 10.3403C13.6299 9.19015 14.0013 7.85875 14 6.5C14 4.52833 13.223 2.74444 11.977 1.44444ZM3.024 2.46278L3.99 1.44444H10.01L10.976 2.46278C11.3566 2.85524 11.6797 3.30292 11.935 3.79167C11.1659 3.66262 10.4356 3.35382 9.8 2.88889C8.092 4.12389 5.908 4.12389 4.2 2.88889C3.542 3.36556 2.8 3.67611 2.065 3.79167C2.317 3.30778 2.639 2.86 3.024 2.46278ZM9.695 11.5556H4.305C3.42326 11.0623 2.68755 10.3317 2.17604 9.44155C1.66453 8.55138 1.39635 7.53485 1.4 6.5C1.4 6.08833 1.449 5.67667 1.533 5.28667C2.46313 5.26068 3.37526 5.01615 4.2 4.57167C5.95 5.51056 8.05 5.51056 9.8 4.57167C10.64 5.01944 11.55 5.265 12.467 5.28667C12.551 5.67667 12.6 6.08833 12.6 6.5C12.6036 7.53485 12.3355 8.55138 11.824 9.44155C11.3125 10.3317 10.5767 11.0623 9.695 11.5556ZM10.5 8.30556C10.5 9.30222 9.324 10.1111 7.875 10.1111C7.063 10.1111 6.342 9.85111 5.831 9.50444C5.369 10.1111 4.431 10.1111 3.5 10.1111C4.27 10.1111 4.55 9.30222 4.55 8.30556C4.55 7.30889 4.27 6.5 3.5 6.5C4.431 6.5 5.369 6.5 5.859 7.15722C6.342 6.76 7.063 6.5 7.875 6.5C9.324 6.5 10.5 7.30889 10.5 8.30556Z" fill="white"/>
-                    </svg>
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Data Ikan</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                    </svg>
-              </button>
-              <ul id="ikan" class="hidden py-2 px-5 space-y-2">
+               <a class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="ikan" data-collapse-toggle="ikan">
+                  <svg width="20" height="20" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path class="fill-black" d="M11.977 1.44444H13.3V0H0.7V1.44444H2.023C0.727858 2.78774 0.000571952 4.60526 0 6.5C0 9.36722 1.617 11.8372 3.962 13H10.038C11.2255 12.4126 12.2277 11.4906 12.9288 10.3403C13.6299 9.19015 14.0013 7.85875 14 6.5C14 4.52833 13.223 2.74444 11.977 1.44444ZM3.024 2.46278L3.99 1.44444H10.01L10.976 2.46278C11.3566 2.85524 11.6797 3.30292 11.935 3.79167C11.1659 3.66262 10.4356 3.35382 9.8 2.88889C8.092 4.12389 5.908 4.12389 4.2 2.88889C3.542 3.36556 2.8 3.67611 2.065 3.79167C2.317 3.30778 2.639 2.86 3.024 2.46278ZM9.695 11.5556H4.305C3.42326 11.0623 2.68755 10.3317 2.17604 9.44155C1.66453 8.55138 1.39635 7.53485 1.4 6.5C1.4 6.08833 1.449 5.67667 1.533 5.28667C2.46313 5.26068 3.37526 5.01615 4.2 4.57167C5.95 5.51056 8.05 5.51056 9.8 4.57167C10.64 5.01944 11.55 5.265 12.467 5.28667C12.551 5.67667 12.6 6.08833 12.6 6.5C12.6036 7.53485 12.3355 8.55138 11.824 9.44155C11.3125 10.3317 10.5767 11.0623 9.695 11.5556ZM10.5 8.30556C10.5 9.30222 9.324 10.1111 7.875 10.1111C7.063 10.1111 6.342 9.85111 5.831 9.50444C5.369 10.1111 4.431 10.1111 3.5 10.1111C4.27 10.1111 4.55 9.30222 4.55 8.30556C4.55 7.30889 4.27 6.5 3.5 6.5C4.431 6.5 5.369 6.5 5.859 7.15722C6.342 6.76 7.063 6.5 7.875 6.5C9.324 6.5 10.5 7.30889 10.5 8.30556Z" fill="white"/>
+                  </svg>
+                  <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Data Ikan</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+               </a>
+               <ul id="ikan" class="hidden py-2 px-5 space-y-2">
                   <li>
-                      <a href="/fish/disease" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                         <span class="ms-3">Penyakit ikan</span>
-                      </a>
-                   </li>
-                   <li>
-                      <a href="/fish" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                         <span class="ms-3">Fish</span>
-                      </a>
-                   </li>
-              </ul>
+                     <a href="/fish/disease" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <span class="ms-3">Penyakit ikan</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/fish" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <span class="ms-3">Fish</span>
+                     </a>
+                  </li>
+               </ul>
             </li>
             <li>
-              <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="produk" data-collapse-toggle="produk">
-                    <svg width="20" height="20" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path class="fill-black" d="M14 0H0V4.10526H0.7V11.6316C0.7 11.9945 0.8475 12.3426 1.11005 12.5992C1.3726 12.8558 1.7287 13 2.1 13H11.9C12.2713 13 12.6274 12.8558 12.8899 12.5992C13.1525 12.3426 13.3 11.9945 13.3 11.6316V4.10526H14V0ZM1.4 1.36842H12.6V2.73684H1.4V1.36842ZM11.9 11.6316H2.1V4.10526H11.9V11.6316ZM4.9 5.47368H9.1C9.1 5.83661 8.9525 6.18468 8.68995 6.4413C8.4274 6.69793 8.0713 6.84211 7.7 6.84211H6.3C5.9287 6.84211 5.5726 6.69793 5.31005 6.4413C5.0475 6.18468 4.9 5.83661 4.9 5.47368Z" fill="white"/>
-                    </svg>
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Data Produk</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                    </svg>
-              </button>
-              <ul id="produk" class="hidden py-2 px-5 space-y-2">
-                   <li>
-                      <a href="/product" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                         <span class="ms-3">Product Affiliate</span>
-                      </a>
-                   </li>
-              </ul>
+            <a href="/product" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg width="20" height="20" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path class="fill-black" d="M14 0H0V4.10526H0.7V11.6316C0.7 11.9945 0.8475 12.3426 1.11005 12.5992C1.3726 12.8558 1.7287 13 2.1 13H11.9C12.2713 13 12.6274 12.8558 12.8899 12.5992C13.1525 12.3426 13.3 11.9945 13.3 11.6316V4.10526H14V0ZM1.4 1.36842H12.6V2.73684H1.4V1.36842ZM11.9 11.6316H2.1V4.10526H11.9V11.6316ZM4.9 5.47368H9.1C9.1 5.83661 8.9525 6.18468 8.68995 6.4413C8.4274 6.69793 8.0713 6.84211 7.7 6.84211H6.3C5.9287 6.84211 5.5726 6.69793 5.31005 6.4413C5.0475 6.18468 4.9 5.83661 4.9 5.47368Z" fill="white"/>
+               </svg>
+               <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Produk</span>
+            </a>
             </li>
-            {{-- <li>
-               <a href="/report" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                  <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path class="fill-black" fill-rule="evenodd" clip-rule="evenodd" d="M2.34375 0.979492C2.21943 0.979492 2.1002 1.02888 2.01229 1.11679C1.92439 1.20469 1.875 1.32392 1.875 1.44824V11.6764C1.875 11.8007 1.92439 11.9199 2.01229 12.0078C2.1002 12.0957 2.21943 12.1451 2.34375 12.1451H10.7812C10.9056 12.1451 11.0248 12.0957 11.1127 12.0078C11.2006 11.9199 11.25 11.8007 11.25 11.6764V5.02855C11.2501 4.96561 11.2376 4.90329 11.2131 4.84531C11.1886 4.78732 11.1527 4.73486 11.1075 4.69105L7.41656 1.11355C7.32926 1.02844 7.21224 0.980686 7.09031 0.98043L2.34375 0.979492ZM9.62437 4.5598L7.55906 2.55637V4.5598H9.62437ZM5.625 5.15605H3.75V4.21855H5.625V5.15605ZM9.375 7.4998H3.75V6.5623H9.375V7.4998ZM3.75 9.84355H9.375V8.90605H3.75V9.84355Z" fill="white"/>
-                      <path class="fill-black" d="M12.1875 7.03125V13.125H4.21875V14.0625H12.6562C12.7806 14.0625 12.8998 14.0131 12.9877 13.9252C13.0756 13.8373 13.125 13.7181 13.125 13.5938V7.03125H12.1875Z" fill="white"/>
-                   </svg>
-                  <span class="ms-3">Report</span>
-               </a>
-            </li> --}}
             <li>
               <a href="/article" class="nav-link flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -189,6 +170,16 @@
       navLinks.forEach(link => {
          if (link.getAttribute('href') === currentUrl) {
             link.classList.add('selected');
+         }
+      });
+
+      const dropdownLinks = document.querySelectorAll('#ikan .nav-link');
+      const dropdownMenu = document.getElementById('ikan');
+
+      dropdownLinks.forEach(link => {
+         if (link.getAttribute('href') === currentUrl) {
+            dropdownMenu.classList.add('block');
+            dropdownMenu.classList.remove('hidden');
          }
       });
    });
