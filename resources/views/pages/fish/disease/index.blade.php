@@ -282,15 +282,29 @@
                                 'Authorization': `Bearer ${localStorage.getItem('token')}`
                             },
                             success: function(fishResponse) {
+                                console.log('Full fishResponse:', fishResponse); // Log the entire response
+
                                 const editFishSelect = $('#edit-affected-fish');
                                 editFishSelect.empty(); 
                                 
-                                fishResponse.data.forEach(fish => {
-                                    const isSelected = response.data.affected_fish.some(selectedFish => selectedFish.id === fish.id);
-                                    const option = new Option(fish.name, fish.id, isSelected, isSelected);
-                                    editFishSelect.append(option);
-                                });
-                                editFishSelect.trigger('change'); 
+                                try {
+                                    fishResponse.forEach(fish => {
+                                        if (!fish || !fish.id || !fish.name) {
+                                            console.warn('Invalid fish object:', fish);
+                                            return;
+                                        }
+                                        
+                                        const option = new Option(fish.name, fish.id);
+                                        editFishSelect.append(option);
+                                    });
+                                    editFishSelect.trigger('change');
+                                } catch (error) {
+                                    console.error('Error processing fish response:', error);
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('AJAX Error:', status, error);
+                                console.log('Response Text:', xhr.responseText);
                             }
                         });
 

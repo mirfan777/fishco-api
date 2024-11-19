@@ -31,6 +31,8 @@ class FishResource extends JsonResource
             'food' => $this->food,
             'min_temperature' => $this->min_temperature,
             'max_temperature' => $this->max_temperature,
+            'min_salinity' => $this->min_salinity,
+            'max_salinity' => $this->max_salinity,
             'min_ph' => $this->min_ph,
             'max_ph' => $this->max_ph,
             'habitat' => $this->habitat,
