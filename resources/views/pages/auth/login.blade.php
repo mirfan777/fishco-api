@@ -39,7 +39,7 @@
 <script>
 $(document).ready(function() {
     if (localStorage.getItem('user') || localStorage.getItem('token')) {
-        window.location.href = '/fish';
+        window.location.href = '/users';
     }
 
     $('#loginForm').on('submit', function(e) {
@@ -78,7 +78,7 @@ $(document).ready(function() {
                         localStorage.setItem('user', JSON.stringify(response));
                         localStorage.setItem('token', token);
 
-                        window.location.href = '/fish';
+                        window.location.href = '/users';
                     },
                     error: function (xhr) {
                         localStorage.removeItem('user');

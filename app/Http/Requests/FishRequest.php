@@ -37,6 +37,8 @@ class FishRequest extends FormRequest
             'max_temperature' => 'required|numeric',
             'min_ph' => 'required|numeric',
             'max_ph' => 'required|numeric',
+            'min_salinity' => 'required|numeric',
+            'max_salinity' => 'required|numeric',
             'habitat' => 'required|string|max:255',
             'overview' => 'required|string',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',

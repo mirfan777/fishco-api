@@ -156,6 +156,18 @@
                                     <input type="number" step="0.1" id="create-max_ph" name="max_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max" required />
                                 </div>
 
+                                <!-- Min salinity -->
+                                <div class="">
+                                    <label for="create-min_salinity" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Min kegaraman air (pH)</label>
+                                    <input type="number" step="0.1" id="create-min_salinity" name="min_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH min kegaraman air" required />
+                                </div>
+
+                                <!-- Max salinity -->
+                                <div class="">
+                                    <label for="create-max_salinity" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Max kegaraman air (pH)</label>
+                                    <input type="number" step="0.1" id="create-max_salinity" name="max_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max kegaraman air" required />
+                                </div>
+
                                 <!-- Min size -->
                                 <div class="">
                                     <label for="create-average_size" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Rata - Rata ukuran (cm)</label>
@@ -219,6 +231,8 @@
             formData.append('max_temperature', $('#create-max_temperature').val());
             formData.append('min_ph', $('#create-min_ph').val());
             formData.append('max_ph', $('#create-max_ph').val());
+            formData.append('min_salinity', $('#create-min_salinity').val());
+            formData.append('max_salinity', $('#create-max_salinity').val());
             formData.append('average_size', $('#create-average_size').val());
             formData.append('habitat', $('input[name="habitat"]:checked').val());
             formData.append('overview', $('#create-overview').val());
@@ -249,7 +263,7 @@
                     }).then((result) => {
                         // Reset form and close modal
                         $('#create-fish form')[0].reset();
-                        $('#create-fish').hide();
+                        $('#create-fish').modal('hide');
                         $('.modal-backdrop').remove(); // Remove the modal backdrop
                     });
                     $('[data-modal-hide="create-fish"]').click();
@@ -259,7 +273,7 @@
                 },
                 error: function(xhr, status, error) {
                     // Close modal on error
-                    $('#create-fish').hide();
+                    $('#create-fish').modal('hide');
 
                     // Show error message
                     Swal.fire({
@@ -269,12 +283,13 @@
                         confirmButtonText: 'OK'
                     }).then((result) => {
                         // Ensure modal and backdrop are removed
-                        $('#create-fish').hide();
-                        $('#create-fish form')[0].reset();
                         $('[data-modal-hide="create-fish"]').click();
+                        $('#create-fish form')[0].reset(); // Reset form
+                        $('#create-fish').modal('hide'); // Hide modal
+                        $('.modal-backdrop').remove(); // Remove the modal backdrop
                     });
 
-                    console.error('Error:', error);
+                    console.log("Error response:", xhr.responseJSON);
                 },
                 complete: function() {
                     // Re-enable submit button and restore original text

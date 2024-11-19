@@ -89,6 +89,8 @@ class FishController extends Controller
                     'max_temperature' => $request->max_temperature,
                     'min_ph' => $request->min_ph,
                     'max_ph' => $request->max_ph,
+                    'min_salinity' => $request->min_salinity,
+                    'max_salinity' => $request->max_salinity,
                     'habitat' => $request->habitat,
                     'overview' => $request->overview,
                     'average_size' => $request->average_size,

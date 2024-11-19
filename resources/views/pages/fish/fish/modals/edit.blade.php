@@ -156,6 +156,18 @@
                                     <input type="number" step="0.1" id="edit-max_ph" name="max_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max" required />
                                 </div>
 
+                                <!-- Min salinity -->
+                                <div class="">
+                                    <label for="edit-min_salinity" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Min kegaraman air (pH)</label>
+                                    <input type="number" step="0.1" id="edit-min_salinity" name="min_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH min kegaraman air" required />
+                                </div>
+
+                                <!-- Max salinity -->
+                                <div class="">
+                                    <label for="edit-max_salinity" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Max kegaraman air (pH)</label>
+                                    <input type="number" step="0.1" id="edit-max_salinity" name="max_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max kegaraman air" required />
+                                </div>
+
                                 <!-- Min size -->
                                 <div class="">
                                     <label for="edit-average_size" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Rata - Rata ukuran (cm)</label>
@@ -245,6 +257,8 @@
             formData.append('max_temperature', $('#edit-max_temperature').val());
             formData.append('min_ph', $('#edit-min_ph').val());
             formData.append('max_ph', $('#edit-max_ph').val());
+            formData.append('min_salinity', $('#edit-min_salinity').val());
+            formData.append('max_salinity', $('#edit-max_salinity').val());
             formData.append('average_size', $('#edit-average_size').val());
             formData.append('overview', $('#edit-overview').val());
 

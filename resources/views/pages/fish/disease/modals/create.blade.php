@@ -187,7 +187,7 @@
                             title: 'Success!',
                             text: 'Disease data has been successfully added',
                             icon: 'success',
-                            confirmButtonText: 'OK'
+                            showConfirmButton: false
                         }).then(() => {
                             
                             $('#createDiseaseForm')[0].reset();
