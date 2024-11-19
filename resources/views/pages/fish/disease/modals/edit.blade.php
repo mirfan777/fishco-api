@@ -186,6 +186,8 @@ $(document).ready(function() {
             }).get(),
         }
 
+        console.log('Form Data:', formData); // Log form data to the console for inspection
+
         $.ajax({
             url: `/api/disease/update/${currentDiseaseId}`,
             type: 'POST',
@@ -218,7 +220,7 @@ $(document).ready(function() {
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
-                console.error('Error:', error);
+                console.error('Error:', xhr.responseText);
             }
         });
     });

@@ -263,8 +263,8 @@
                     }).then((result) => {
                         // Reset form and close modal
                         $('#create-fish form')[0].reset();
-                        $('#create-fish').modal('hide');
-                        $('.modal-backdrop').remove(); // Remove the modal backdrop
+                        $('#create-fish').hide();
+                        
                     });
                     $('[data-modal-hide="create-fish"]').click();
                     setTimeout(function () {
@@ -272,24 +272,15 @@
                     }, 500);
                 },
                 error: function(xhr, status, error) {
-                    // Close modal on error
-                    $('#create-fish').modal('hide');
-
                     // Show error message
                     Swal.fire({
                         title: 'Error!',
                         text: 'Gagal untuk menambahkan data Ikan, silahkan coba lagi.',
                         icon: 'error',
                         confirmButtonText: 'OK'
-                    }).then((result) => {
-                        // Ensure modal and backdrop are removed
-                        $('[data-modal-hide="create-fish"]').click();
-                        $('#create-fish form')[0].reset(); // Reset form
-                        $('#create-fish').modal('hide'); // Hide modal
-                        $('.modal-backdrop').remove(); // Remove the modal backdrop
                     });
-
-                    console.log("Error response:", xhr.responseJSON);
+                    
+                    console.error('Error:', error);
                 },
                 complete: function() {
                     // Re-enable submit button and restore original text
