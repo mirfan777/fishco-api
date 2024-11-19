@@ -39,7 +39,12 @@ class FishResource extends JsonResource
             'url_thumbnail' => asset('data/images/' . $this->thumbnail),
             'average_size' => $this->average_size,
             'created_at' => $this->created_at->format('d-m-Y'),
-            'images' => FishImageResource::collection($this->images)
         ];
+
+        if ($this->relationLoaded('images')) {
+            $data['images'] = FishImageResource::collection($this->images);
+        }
+
+        return data;
     }
 }
