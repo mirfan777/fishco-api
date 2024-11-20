@@ -59,7 +59,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/aquarium/update/{id}', [AquariumController::class, 'updateAquarium']);
     Route::delete('/aquarium/delete/{id}', [AquariumController::class, 'deleteAquarium']);
 
-
     //Article
     Route::get('/article', [ArticleController::class, 'getAllArticle']);
     Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
@@ -69,7 +68,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/articles', [ArticleController::class, 'getAllArticles']);
     Route::get('/articles/three', [ArticleController::class, 'getThreeArticle']);
 
-
     //Comment
     Route::get('/comment', [CommentController::class, 'getAllComment']);
     Route::get('/comment/{id}', [CommentController::class, 'getComment']);
@@ -77,14 +75,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/comment/update/{id}', [CommentController::class, 'updateComment']);
     Route::delete('/comment/delete/{id}', [CommentController::class, 'deleteComment']);
 
-
     //Reply
     Route::get('/reply', [ReplyController::class, 'getAllReplies']);
     Route::get('/reply/{id}', [ReplyController::class, 'getRepliesById']);
     Route::post('/reply/create', [ReplyController::class, 'createReplies']);
     Route::post('/reply/update/{id}', [ReplyController::class, 'updateReplies']);
     Route::delete('/reply/delete/{id}', [ReplyController::class, 'deleteReplies']);
-
 
     //Product
     Route::get('/product', [ProductController::class, 'getAllProduct']);
@@ -94,20 +90,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct']);
     Route::get('/products', [ProductController::class, 'getAllProducts']);
 
-
     //Fish Image
     Route::get('/fishimage',[FishImageController::class, 'getAllFishImage']);
     Route::get('/fishimage/{id}', [FishImageController::class, 'getFishImage']);
     Route::post('/fishimage/create', [FishImageController::class, 'createFishImage']);
     Route::post('/fishimage/update/{id}', [FishImageController::class, 'updateFishImage']);
     Route::delete('/fishimage/delete/{id}', [FishImageController::class, 'deleteFishImage']);
-
-    //Report
-    Route::get('/report', [ReportController::class, 'getAllReport']);
-    Route::get('/report/{id}', [ReportController::class, 'getReportById']);
-    Route::post('/report/create', [ReportController::class, 'createReport']);
-    Route::post('/report/update/{id}', [ReportController::class, 'updateReport']);
-    Route::delete('/report/delete/{id}', [ReportController::class, 'deleteReport']);
 
     //Product Recommendation
     Route::get('/product-recommendation/{diseaseId}', [ProductRecommendationController::class, 'getRecommendationTreatmentProduct']);
