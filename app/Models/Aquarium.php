@@ -14,6 +14,4 @@ class Aquarium extends Model
     {
         return $this->hasMany(AquariumFish::class);
     }
-
-    
 }
