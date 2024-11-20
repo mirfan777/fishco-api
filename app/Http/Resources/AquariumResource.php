@@ -32,8 +32,9 @@ class AquariumResource extends JsonResource
         "max_temperature" => $this->max_temperature,
         "min_ph" => $this->min_ph,
         "max_ph" => $this->max_ph,
+        "min_salinity" => $this->min_salinity,
+        "max_salinity" => $this->max_salinity,
         "turbidity" => $this->turbidity,
-        "salitity" => $this->salitity,
         "aquariumfishes" => $this->aquariumfishes->map(function ($aquarium) {
             return [
                 'id' => $aquarium->id,
