@@ -53,7 +53,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/diseases', [DiseaseController::class, 'getAllDiseases']);
 
     //Aquarium
-    Route::get('/aquarium', [AquariumController::class, 'getAllAquarium']);
+    Route::get('/aquariums', [AquariumController::class, 'getAllAquarium']);
     Route::get('/aquarium/{id}', [AquariumController::class, 'getAquarium']);
     Route::post('/aquarium/create', [AquariumController::class, 'createAquarium']);
     Route::post('/aquarium/update/{id}', [AquariumController::class, 'updateAquarium']);

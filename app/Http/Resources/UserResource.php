@@ -14,7 +14,7 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        $data =  [
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
@@ -22,7 +22,10 @@ class UserResource extends JsonResource
             'address' => $this->address,
             'phone_number' => $this->phone_number,
             'email_verified_at' => $this->email_verified_at,
-            'created_at' => $this->created_at->format('d-m-Y')
+            'created_at' => $this->created_at->format('d-m-Y'),
+            'aquariums' => AquariumResource::collection($this->aquariums)
         ];
+
+        return $data;
     }
 }
