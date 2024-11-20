@@ -108,7 +108,7 @@
 
                 const articleTableBody = $('#article-table tbody'); // Target the tbody directly
                 articleTableBody.empty();
- 
+
                 if (response && response.length > 0) {
                     response.forEach(article => {
                         articleTableBody.append(`
