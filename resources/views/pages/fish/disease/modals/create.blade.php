@@ -186,8 +186,8 @@
                             title: 'Success!',
                             text: 'Data penyakit berhasil ditambahkan.',
                             icon: 'success',
-                            timer: 2000,
-                            confirmButtonText: false
+                            timer: 1200,
+                            showConfirmButton: false
                         }).then(() => {
                             
                             $('#createDiseaseForm')[0].reset();

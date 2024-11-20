@@ -30,8 +30,11 @@ return new class extends Migration
             $table->float('max_ph');
             $table->float('min_salinity');
             $table->float('max_salinity');
+            $table->float('min_aquarium');
             $table->integer('venomous')->default(0);
             $table->integer('poisonous')->default(0);
+            $table->integer('aggressive')->default(0);
+            $table->integer('teritorial')->default(0);
             $table->string('habitat'); // 1.freshwater 2.saltwater 3.brackish
             $table->string('overview');
             $table->string('thumbnail');
