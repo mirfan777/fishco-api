@@ -87,7 +87,7 @@
                                         </div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="behaviour" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Behaviour</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">behaviour</label>
                                         </div>
                                     </div>
                                 </div>
@@ -145,22 +145,8 @@
 
 <script>
 $(document).ready(function() {
-    // Reset the form and modal state when the modal is hidden
-    $('#edit-disease').on('hidden.bs.modal', function () {
-        $('#editDiseaseForm')[0].reset();
-        $('#edit-disease').removeClass('show').css('display', 'none').attr('aria-hidden', 'true');
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
-    });
-
-    // Re-initialize the modal when it is shown
-    $('#edit-disease').on('shown.bs.modal', function () {
-        $('#edit-disease').addClass('show').css('display', 'block').attr('aria-hidden', 'false');
-        $('body').addClass('modal-open');
-        $('<div class="modal-backdrop fade show"></div>').appendTo(document.body);
-    });
-
-    $('#editDiseaseForm').on('submit', function(e) {
+    
+    $('#editDiseaseForm').on('submit', function(e) {  // Note: changed selector to match your HTML
         e.preventDefault();
         
         // Get the checked affected parts and join them with comma
@@ -171,22 +157,20 @@ $(document).ready(function() {
             .get()
             .join(',');
 
-        const formData = {
-            name: $('#edit-disease-name').val(),
-            symptoms: $('#edit-symptom').val(),
-            description: $('#edit-description').val(),
-            note: $('#edit-note').val(),
-            disease_type: $('#edit-disease-type').val(),
-            cause_agent: $('#edit-cause-agent').val(),
-            prevention: $('#edit-prevention').val(),
-            affected_fish: $('#edit-affected-fish').val(),
-            product_recommendations: $('#edit-products').val(),
-            affected_part: $('input[name="edit-affected_parts[]"]:checked').map(function() {
-                return $(this).val();
-            }).get(),
-        }
-
-        console.log('Form Data:', formData); // Log form data to the console for inspection
+            const formData = {
+                name: $('#edit-disease-name').val(),
+                symptoms: $('#edit-symptom').val(),
+                description: $('#edit-description').val(),
+                note: $('#edit-note').val(),
+                disease_type: $('#edit-disease-type').val(),
+                cause_agent: $('#edit-cause-agent').val(),
+                prevention: $('#edit-prevention').val(),
+                affected_fish: $('#edit-affected-fish').val(),
+                product_recommendations: $('#edit-products').val(),
+                affected_part: $('input[name="edit-affected_parts[]"]:checked').map(function() {
+                    return $(this).val();
+                }).get(),
+            }
 
         $.ajax({
             url: `/api/disease/update/${currentDiseaseId}`,
@@ -202,16 +186,17 @@ $(document).ready(function() {
                     title: 'Success!',
                     text: 'Disease data has been successfully updated.',
                     icon: 'success',
-                    showConfirmButton: false
+                    confirmButtonText: 'OK'
                 }).then((result) => {
+                    
                     if (result.isConfirmed) {
                         location.reload(); 
                     }
                 });
                 $('[data-modal-hide="edit-disease"]').click();
-                setTimeout(function () {
-                    location.reload();
-                }, 500);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
             },
             error: function(xhr, status, error) {
                 Swal.fire({
@@ -220,7 +205,7 @@ $(document).ready(function() {
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
-                console.error('Error:', xhr.responseText);
+                console.error('Error:', error);
             }
         });
     });

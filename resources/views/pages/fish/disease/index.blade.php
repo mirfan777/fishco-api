@@ -352,4 +352,3 @@
     // Fetch data and initialize table on page load
     fetchDiseaseData();
 </script>
-
