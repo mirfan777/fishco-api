@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('affected_disease_fish', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('disease_id')->constrained('diseases');
-            $table->foreignId('fish_id')->constrained('fishes');
+            $table->foreignId('disease_id')->references('id')->on('diseases')->onDelete('cascade');
+            $table->foreignId('fish_id')->references('id')->on('fishes')->onDelete('cascade');
             $table->timestamps();
         });
     }

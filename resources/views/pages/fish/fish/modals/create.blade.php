@@ -256,8 +256,8 @@
                         title: 'Success!',
                         text: 'Data Ikan Berhasil Ditambahkan!',
                         icon: 'success',
-                        timer: 2000,
-                        confirmButtonText: 'OK'
+                        timer: 1200,
+                        confirmButtonText: false
                     }).then((result) => {
                         // Reset form and close modal
                         $('#create-fish form')[0].reset();

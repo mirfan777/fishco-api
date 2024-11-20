@@ -82,12 +82,12 @@
     let dataTable;
 
     $('#edit-affected-fish, #create-affected-fish').select2({
-        placeholder: 'Select affected fish',
+        placeholder: 'Pilih ikan yang terjangkit',
         allowClear: true
     });
 
     $('#edit-products, #create-products').select2({
-        placeholder: 'Select products',
+        placeholder: 'Pilih produk',
         allowClear: true
     });
 
@@ -129,24 +129,25 @@
             }
         });
 
-    $.ajax({
-        url: '/api/fishes',
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        },
-        success: function(response) {
-            const fishSelect = $('#create-affected-fish');
-                    response.data.forEach(fish => {
-                        fishSelect.append(new Option(fish.name, fish.id));
-                    });
-        },
-        error: function(xhr, status, error) {
-            console.error("API Error:", error);
-        }
-    });
+        $.ajax({
+    url: '/api/fishes',
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+    },
+    success: function(response) {
+        const fishSelect = $('#create-affected-fish');
+        // Remove .data since response is directly an array
+        response.forEach(fish => {
+            fishSelect.append(new Option(fish.name, fish.id));
+        });
+    },
+    error: function(xhr, status, error) {
+        console.error("API Error:", error);
+    }
+});
 
     const fetchDiseaseData = () => {
         $.ajax({
@@ -282,7 +283,7 @@
                                 'Authorization': `Bearer ${localStorage.getItem('token')}`
                             },
                             success: function(fishResponse) {
-                                console.log('Full fishResponse:', fishResponse); // Log the entire response
+                                console.log('Full fishResponse:', fishResponse); 
 
                                 const editFishSelect = $('#edit-affected-fish');
                                 editFishSelect.empty(); 
@@ -351,4 +352,3 @@
     // Fetch data and initialize table on page load
     fetchDiseaseData();
 </script>
-

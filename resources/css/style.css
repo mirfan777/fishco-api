@@ -87,6 +87,10 @@
   color: #3b82f6; /* dark:text-blue-500 */
 }
 
+.wide-form {
+  width: 100%; /* Anda bisa mengubah nilai ini sesuai kebutuhan, misalnya 80%, 50%, dll. */
+}
+
 /* #modal-create-fish {
   z-index: 1050; 
 } */
