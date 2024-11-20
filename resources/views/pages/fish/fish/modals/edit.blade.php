@@ -74,12 +74,24 @@
                                 <label for="edit-colour" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Warna</label>
                                 <input type="text" id="edit-colour" name="colour" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan warna" required />
                             </div>
+                            
+                            <!-- Min salinity -->
+                            <div class="mb-3">
+                                <label for="edit-min_salinity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min kegaraman air (pH)</label>
+                                <input type="number" step="0.1" id="edit-min_salinity" name="min_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH min kegaraman air" required />
+                            </div>
+
+                            <!-- Max salinity -->
+                            <div class="mb-3">
+                                <label for="edit-max_salinity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max kegaraman air (pH)</label>
+                                <input type="number" step="0.1" id="edit-max_salinity" name="max_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max kegaraman air" required />
+                            </div>
                         </div>
                     
                         <div class="md:w-1/2">
                             {{-- venomous and poisonous --}}
                             <div class="">
-                               <label class="block  text-sm font-medium text-gray-900 dark:text-white">Berbahaya</label>
+                               <label class="block  text-sm font-medium text-gray-900 dark:text-white">Kriteria Ikan</label>
                                <div class="flex gap-2 py-3">
                                     <div class="flex items-center mb-4">
                                         <input id="edit-venomous" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -88,6 +100,14 @@
                                     <div class="flex items-center mb-4">
                                         <input id="edit-poisonous" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         <label for="edit-poisonous" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Berbisa</label>
+                                    </div>
+                                    <div class="flex items-center mb-4">
+                                        <input id="edit-aggressive" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="edit-aggressive" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Agresif</label>
+                                    </div>
+                                    <div class="flex items-center mb-4">
+                                        <input id="edit-teritorial" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="edit-teritorial" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Teritorial</label>
                                     </div>
                                </div>
                             </div>
@@ -156,40 +176,32 @@
                                     <input type="number" step="0.1" id="edit-max_ph" name="max_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max" required />
                                 </div>
 
-                                <!-- Min salinity -->
-                                <div class="">
-                                    <label for="edit-min_salinity" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Min kegaraman air (pH)</label>
-                                    <input type="number" step="0.1" id="edit-min_salinity" name="min_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH min kegaraman air" required />
-                                </div>
-
-                                <!-- Max salinity -->
-                                <div class="">
-                                    <label for="edit-max_salinity" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Max kegaraman air (pH)</label>
-                                    <input type="number" step="0.1" id="edit-max_salinity" name="max_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max kegaraman air" required />
-                                </div>
-
                                 <!-- Min size -->
                                 <div class="">
                                     <label for="edit-average_size" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Rata - Rata ukuran (cm)</label>
                                     <input type="number" step="0.1" id="edit-average_size" name="average_size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan rata - rata ukuran ikan" required />
                                 </div>
 
+                                <!-- Min size -->
+                                <div class="">
+                                    <label for="edit-min_aquarium" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Ukuran Min Aquarium (L)</label>
+                                    <input type="number" step="0.1" id="edit-min_aquarium" name="min_aquarium" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan ukuran min aquarium" required />
+                                </div>
+
+                                <!-- Thumbnail -->
+                                <div class="">
+                                    <label class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white" for="edit-thumbnail">Upload gambar ikan</label>
+                                    <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="edit-thumbnail" type="file">
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="">
-                        <label class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white" for="edit-thumbnail">Upload gambar ikan</label>
-                        <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="edit-thumbnail" type="file">
-                    </div>
-
-                    <!-- Fish Detail and Thumbnail -->
+                    <!-- Fish Detail -->
                     <div class="mt-5">
                         <label for="edit-overview" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detail Ikan</label>
                         <textarea id="edit-overview" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan detail ikan"></textarea>
                     </div>
-                    
-
                 
                     <!-- Submit Button -->
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5">Submit</button>
@@ -244,6 +256,8 @@
             formData.append('colour', $('#edit-colour').val());
             formData.append('venomous', $('#edit-venomous').is(':checked') ? 1 : 0);
             formData.append('poisonous', $('#edit-poisonous').is(':checked') ? 1 : 0);
+            formData.append('aggressive', $('#edit-aggressive').is(':checked') ? 1 : 0);
+            formData.append('teritorial', $('#edit-teritorial').is(':checked') ? 1 : 0);
             formData.append('food_type', $('input[name="food_type"]:checked').val());
             formData.append('food', $('#edit-food').val());
 
@@ -260,6 +274,7 @@
             formData.append('min_salinity', $('#edit-min_salinity').val());
             formData.append('max_salinity', $('#edit-max_salinity').val());
             formData.append('average_size', $('#edit-average_size').val());
+            formData.append('min_aquarium', $('#edit-min_aquarium').val());
             formData.append('overview', $('#edit-overview').val());
 
             const submitBtn = $(this).find('button[type="submit"]');
@@ -282,7 +297,7 @@
                         icon: 'success',
                         title: 'Success!',
                         text: 'Data berhasil diperbarui!',
-                        timer: 2000,
+                        timer: 1200,
                         showConfirmButton: false
                     });
                     $('[data-modal-hide="edit-fish"]').click();

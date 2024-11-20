@@ -82,12 +82,12 @@
     let dataTable;
 
     $('#edit-affected-fish, #create-affected-fish').select2({
-        placeholder: 'Pilih ikan yang terjangkit',
+        placeholder: 'Select affected fish',
         allowClear: true
     });
 
     $('#edit-products, #create-products').select2({
-        placeholder: 'Pilih produk',
+        placeholder: 'Select products',
         allowClear: true
     });
 

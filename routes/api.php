@@ -96,12 +96,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/fishimage/create', [FishImageController::class, 'createFishImage']);
     Route::post('/fishimage/update/{id}', [FishImageController::class, 'updateFishImage']);
     Route::delete('/fishimage/delete/{id}', [FishImageController::class, 'deleteFishImage']);
-
-    //Product Recommendation
-    Route::get('/product-recommendation/{diseaseId}', [ProductRecommendationController::class, 'getRecommendationTreatmentProduct']);
 });
-
-
 
 Route::post('/requestToken', [AuthenticatedSessionController::class, 'requestToken'])->name('requestToken');
 Route::post('/requestTokenAdmin', [AuthenticatedSessionController::class, 'requestTokenAdmin'])->name('requestTokenAdmin');

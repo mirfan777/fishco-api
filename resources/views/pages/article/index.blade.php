@@ -190,9 +190,5 @@
             }
         });
     }
-
-     fetchArticleData();
+     fetchArticleData();    
 </script>
-</body>
-
-</html>

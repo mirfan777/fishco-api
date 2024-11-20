@@ -74,12 +74,24 @@
                                 <label for="create-colour" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Warna</label>
                                 <input type="text" id="create-colour" name="colour" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan warna" required />
                             </div>
+
+                            <!-- Min salinity -->
+                            <div class="mb-3">
+                                <label for="create-min_salinity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Min kegaraman air (pH)</label>
+                                <input type="number" step="0.1" id="create-min_salinity" name="min_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH min kegaraman air" value="0" required />
+                            </div>
+
+                            <!-- Max salinity -->
+                            <div class="mb-3">
+                                <label for="create-max_salinity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Max kegaraman air (pH)</label>
+                                <input type="number" step="0.1" id="create-max_salinity" name="max_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max kegaraman air" value="0" required />
+                            </div>
                         </div>
                     
                         <div class="md:w-1/2">
                             {{-- venomous and poisonous --}}
                             <div class="">
-                            <label class="block  text-sm font-medium text-gray-900 dark:text-white">Berbahaya</label>
+                            <label class="block  text-sm font-medium text-gray-900 dark:text-white">Kriteria Ikan</label>
                             <div class="flex gap-2 py-3">
                                     <div class="flex items-center mb-4">
                                         <input id="venomous" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -88,6 +100,14 @@
                                     <div class="flex items-center mb-4">
                                         <input id="poisonous" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         <label for="poisonous" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Berbisa</label>
+                                    </div>
+                                    <div class="flex items-center mb-4">
+                                        <input id="aggressive" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="aggressive" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Agresif</label>
+                                    </div>
+                                    <div class="flex items-center mb-4">
+                                        <input id="teritorial" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="teritorial" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Teritorial</label>
                                     </div>
                             </div>
                             </div>
@@ -156,31 +176,25 @@
                                     <input type="number" step="0.1" id="create-max_ph" name="max_ph" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max" required />
                                 </div>
 
-                                <!-- Min salinity -->
-                                <div class="">
-                                    <label for="create-min_salinity" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Min kegaraman air (pH)</label>
-                                    <input type="number" step="0.1" id="create-min_salinity" name="min_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH min kegaraman air" value="0" required />
-                                </div>
-
-                                <!-- Max salinity -->
-                                <div class="">
-                                    <label for="create-max_salinity" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Max kegaraman air (pH)</label>
-                                    <input type="number" step="0.1" id="create-max_salinity" name="max_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max kegaraman air" value="0" required />
-                                </div>
-
-                                <!-- Min size -->
+                                <!-- Avg Size -->
                                 <div class="">
                                     <label for="create-average_size" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Rata - Rata ukuran (cm)</label>
                                     <input type="number" step="0.1" id="create-average_size" name="average_size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan rata - rata ukuran ikan" required />
                                 </div>
 
+                                <!-- Avg Size -->
+                                <div class="">
+                                    <label for="create-min_aquarium" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Ukuran Min Aquarium (L)</label>
+                                    <input type="number" step="0.1" id="create-min_aquarium" name="min_aquarium" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan ukuran min aquarium" required />
+                                </div>
+
+                                <!--thumbnail -->
+                                <div class="">
+                                    <label class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white" for="create-thumbnail">Upload gambar ikan</label>
+                                    <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-thumbnail" type="file" required>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="">
-                        <label class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white" for="create-thumbnail">Upload gambar ikan</label>
-                        <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-thumbnail" type="file" required>
                     </div>
 
                     <!-- Fish Detail and Thumbnail -->
@@ -232,6 +246,7 @@
             formData.append('min_salinity', $('#create-min_salinity').val());
             formData.append('max_salinity', $('#create-max_salinity').val());
             formData.append('average_size', $('#create-average_size').val());
+            formData.append('min_aquarium', $('#create-min_aquarium').val());
             formData.append('habitat', $('input[name="habitat"]:checked').val());
             formData.append('overview', $('#create-overview').val());
 
@@ -256,8 +271,8 @@
                         title: 'Success!',
                         text: 'Data Ikan Berhasil Ditambahkan!',
                         icon: 'success',
-                        timer: 1200,
-                        confirmButtonText: false
+                        timer: 2000,
+                        showConfirmButton: false
                     }).then((result) => {
                         // Reset form and close modal
                         $('#create-fish form')[0].reset();
