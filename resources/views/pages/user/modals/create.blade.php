@@ -117,7 +117,8 @@ $(document).ready(function() {
                     title: 'Success!',
                     text: 'User data has been successfully added',
                     icon: 'success',
-                    confirmButtonText: 'OK'
+                    timer: 1200,
+                    showConfirmButton: false
                 }).then((result) => {
                     // Reset form and close modal
                     $('#create-user form')[0].reset();

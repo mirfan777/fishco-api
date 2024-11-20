@@ -22,11 +22,11 @@
                     <div class="mb-3">
                         <div class="flex">
                             <div class="flex items-center me-4">
-                                <input id="upload-status-0" type="radio" value="0" name="status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <input id="upload-status-0" type="radio" value="0" name="status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" required>
                                 <label for="upload-status-0" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sehat</label>
                             </div>
                             <div class="flex items-center me-4">
-                                <input id="upload-status-1" type="radio" value="1" name="status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <input id="upload-status-1" type="radio" value="1" name="status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" required>
                                 <label for="upload-status-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sakit</label>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                     <!-- Jenis Penyakit -->
                     <div id="upload-disease-section" class="mb-3 hidden">
                         <label for="upload-disease-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Penyakit</label>
-                        <select id="upload-disease-id" name="disease_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select id="upload-disease-id" name="disease_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                             <option value="">Select Disease</option>
                         </select>
                     </div>
@@ -48,7 +48,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                                 </svg>
                                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">PNG or JPG</p>
                             </div>
                             <input id="dropzone-file" type="file" class="hidden" required />
                         </label>
@@ -142,9 +142,10 @@ $(document).ready(function () {
             success: function (response) {
                 Swal.fire({
                         title: 'Success!',
-                        text: 'Fish image successfully uploaded',
+                        text: 'Gambar ikan berhasil diupload',
                         icon: 'success',
-                        confirmButtonText: 'OK'
+                        timer: 1200, 
+                        showConfirmButton: false
                     }).then((result) => {
                         $('#upload-image-form form')[0].reset();
                         $('#upload-image-form').hide();
@@ -155,7 +156,7 @@ $(document).ready(function () {
                     }, 500);
             },
             error: function (xhr, status, error) {
-                alert('Failed to upload image');
+                alert('Gagal untuk mengupload gambar ikan, silahkan coaba lagi.');
                 console.error(error);
             },
         });

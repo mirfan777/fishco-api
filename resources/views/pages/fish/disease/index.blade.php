@@ -286,9 +286,6 @@
 
                                 const editFishSelect = $('#edit-affected-fish');
                                 editFishSelect.empty(); 
-
-                                const createFishSelect = $('#create-affected-fish');
-                                createFishSelect.empty(); 
                                 
                                 try {
                                     fishResponse.forEach(fish => {

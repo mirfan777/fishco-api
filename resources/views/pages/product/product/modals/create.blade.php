@@ -108,7 +108,8 @@ $(document).ready(function() {
                     title: 'Success!',
                     text: 'Product data has been successfully added',
                     icon: 'success',
-                    confirmButtonText: 'OK'
+                    timer: 1200,
+                        showConfirmButton: false
                 }).then((result) => {
                     // Reset form and close modal
                     $('#create-product form')[0].reset();

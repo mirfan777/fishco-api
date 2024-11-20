@@ -91,7 +91,8 @@
                     title: 'Success!',
                     text: 'Product data has been successfully updated.',
                     icon: 'success',
-                    confirmButtonText: 'OK'
+                    timer: 1200,
+                    showConfirmButton: false
                 })
                 $('[data-modal-hide="edit-product"]').click();
                     setTimeout(function () {

@@ -79,8 +79,8 @@
                         <div class="md:w-1/2">
                             {{-- venomous and poisonous --}}
                             <div class="">
-                               <label class="block  text-sm font-medium text-gray-900 dark:text-white">Berbahaya</label>
-                               <div class="flex gap-2 py-3">
+                            <label class="block  text-sm font-medium text-gray-900 dark:text-white">Berbahaya</label>
+                            <div class="flex gap-2 py-3">
                                     <div class="flex items-center mb-4">
                                         <input id="venomous" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         <label for="venomous" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Beracun</label>
@@ -89,7 +89,7 @@
                                         <input id="poisonous" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         <label for="poisonous" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Berbisa</label>
                                     </div>
-                               </div>
+                            </div>
                             </div>
 
                             {{-- food --}}
@@ -98,13 +98,13 @@
                                 <div class="">
                                     <label class="block mb-1  text-sm font-medium text-gray-900 dark:text-white">Food Type</label>
                                     <div class="flex items-center py-5">
-                                        <input type="radio" id="food-type-karnivora" name="food_type" value="carnivore" class="mr-2">
+                                        <input type="radio" id="food-type-karnivora" name="food_type" value="carnivore" class="mr-2" required>
                                         <label for="food-type-karnivora" class="mr-4 text-sm font-medium text-gray1-900 dark:text-white">Karnivora</label>
 
-                                        <input type="radio" id="food-type-herbivora" name="food_type" value="herbivore" class="mr-2">
+                                        <input type="radio" id="food-type-herbivora" name="food_type" value="herbivore" class="mr-2" required>
                                         <label for="food-type-herbivora" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Herbivora</label>
                                         
-                                        <input type="radio" id="food-type-omnivora" name="food_type" value="omnivore" class="mr-2">
+                                        <input type="radio" id="food-type-omnivora" name="food_type" value="omnivore" class="mr-2" required>
                                         <label for="food-type-omnivora" class="text-sm font-medium text-gray-900 dark:text-white">Omnivora</label>
                                     </div>
                                 </div>   
@@ -121,13 +121,13 @@
                                 <div class="">
                                     <label class="block my-2 text-sm font-medium text-gray-900 dark:text-white">Habitat</label>
                                     <div class="flex items-center py-3">
-                                        <input type="radio" id="habitat-air-tawar" name="habitat" value="freshwater" class="mr-2">
+                                        <input type="radio" id="habitat-air-tawar" name="habitat" value="freshwater" class="mr-2" required>
                                         <label for="habitat-air-tawar" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air Tawar</label>
                                         
-                                        <input type="radio" id="habitat-air-laut" name="habitat" value="saltwater" class="mr-2">
+                                        <input type="radio" id="habitat-air-laut" name="habitat" value="saltwater" class="mr-2" required>
                                         <label for="habitat-air-laut" class="mr-4 text-sm font-medium text-gray-900 dark:text-white">Air Laut</label>
                                         
-                                        <input type="radio" id="habitat-air-payau" name="habitat" value="brackishwater" class="mr-2">
+                                        <input type="radio" id="habitat-air-payau" name="habitat" value="brackishwater" class="mr-2" required>
                                         <label for="habitat-air-payau" class="text-sm font-medium text-gray-900 dark:text-white">Air Payau</label>
                                     </div>
                                 </div>
@@ -159,13 +159,13 @@
                                 <!-- Min salinity -->
                                 <div class="">
                                     <label for="create-min_salinity" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Min kegaraman air (pH)</label>
-                                    <input type="number" step="0.1" id="create-min_salinity" name="min_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH min kegaraman air" required />
+                                    <input type="number" step="0.1" id="create-min_salinity" name="min_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH min kegaraman air" value="0" required />
                                 </div>
 
                                 <!-- Max salinity -->
                                 <div class="">
                                     <label for="create-max_salinity" class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white">Max kegaraman air (pH)</label>
-                                    <input type="number" step="0.1" id="create-max_salinity" name="max_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max kegaraman air" required />
+                                    <input type="number" step="0.1" id="create-max_salinity" name="max_salinity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan pH max kegaraman air" value="0" required />
                                 </div>
 
                                 <!-- Min size -->
@@ -180,17 +180,15 @@
 
                     <div class="">
                         <label class="block py-2.5 text-sm font-medium text-gray-900 dark:text-white" for="create-thumbnail">Upload gambar ikan</label>
-                        <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-thumbnail" type="file">
+                        <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-thumbnail" type="file" required>
                     </div>
 
                     <!-- Fish Detail and Thumbnail -->
                     <div class="mt-5">
                         <label for="create-overview" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detail Ikan</label>
-                        <textarea id="create-overview" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan detail ikan"></textarea>
+                        <textarea id="create-overview" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan detail ikan" required></textarea>
                     </div>
-                    
-
-                
+                                
                     <!-- Submit Button -->
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5">Submit</button>
                 </form>

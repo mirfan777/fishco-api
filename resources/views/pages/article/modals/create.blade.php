@@ -23,7 +23,7 @@
                             <!-- Thumbnail Upload -->
                             <div class="mb-3">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="create-article-thumbnail">Upload Thumbnail Artikel</label>
-                                <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-article-thumbnail" type="file" accept=".jpeg,.png,.jpg,.gif,.svg">
+                                <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-article-thumbnail" type="file" accept=".jpeg,.png,.jpg,.gif," required>
                             </div>
                             <!-- Title -->
                             <div class="mb-3">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Submit Button with Spacing -->
+                    <!-- Submit Button -->
                     <button type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                 </form>
             </div>
@@ -116,7 +116,8 @@
                         title: 'Sukses!',
                         text: 'Data artikel berhasil ditambahkan',
                         icon: 'success',
-                        confirmButtonText: 'OK'
+                        timer: 1200,
+                        showConfirmButton: false
                     }).then((result) => {
                         $('#create-article form')[0].reset();
                         $('#create-article').hide();

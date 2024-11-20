@@ -166,7 +166,7 @@
                         icon: 'success',
                         title: 'Success!',
                         text: 'Data user berhasil di update!',
-                        timer: 2000,
+                        timer: 1200,
                         showConfirmButton: false
                     });
                     $('[data-modal-hide="edit-user"]').click();

@@ -121,8 +121,8 @@
 
     window.getImageId = function (imageId) {
         Swal.fire({
-            title: "Are you sure?",
-            text: `want to delete this image with ID: ${imageId}`,
+            title: "Perhatian!",
+            text: `Apakah kamu ingin menghapus gambar ini?`,
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -142,8 +142,9 @@
                     Swal.fire({
                         icon: 'success',
                         title: 'Success!',
-                        text: 'Data successfully deleted.',
-                        timer: 2000,
+                        text: 'Gambar berhapil dihapus.',
+                        timer: 1200, 
+                        showConfirmButton: false
                     });
                     setTimeout(function () {
                         location.reload();
@@ -153,7 +154,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Failed!',
-                        text: `Error: ${xhr.responseJSON.message || 'Data gagal diperbarui.'}`
+                        text: `Error: ${xhr.responseJSON.message || 'Gambar gagal dihapus, silahkan coba kembali.'}`,
                     });
                 }
             });
