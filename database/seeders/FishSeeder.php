@@ -88,7 +88,6 @@ class FishSeeder extends Seeder
                 'min_water_volume' => 40,
                 'min_salinity' => 0.0,
                 'max_salinity' => 0.0,
-                'min_aquarium' => 96,
                 'habitat' => 'freshwater', //freshwater
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
