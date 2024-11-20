@@ -15,13 +15,10 @@ class AquariumResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            "id" => $this->id,
             "user_id" => $this->user_id,
             "name" => $this->name,
             "volume" => $this->volume,
-            "length" => $this->length,
-            "width" => $this->width,
-            "height" => $this->height,
-            "material" => $this->material,
             "type" => $this->type,
             "filter_type" => $this->filter_type,
             "filter_capacity" => $this->filter_capacity,
@@ -32,11 +29,7 @@ class AquariumResource extends JsonResource
             "max_ph" => $this->max_ph,
             "turbidity" => $this->turbidity,
             "salitity" => $this->salitity,
-            "dissolved_oxygen" => $this->dissolved_oxygen,
-            "hardness" => $this->hardness,
-            "ammonia" => $this->ammonia,
-            "nitrite" => $this->nitrite,
-            "nitrate" => $this->nitrate
+            "aquarium_fishes" => AquariumFishResource::collection($this->aquariumFishes)
 
         ];
     }
