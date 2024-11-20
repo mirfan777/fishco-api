@@ -9,23 +9,26 @@ use Illuminate\Support\Facades\Log;
 
 class ArticleController extends Controller
 {
-    function getAllArticle(Request $request){
+    function getAllArticle(Request $request)
+    {
         $query = $request->query('search', '');
         $articles = Article::where('title', 'like', "%$query%")
-                      ->paginate(5);
-        
+            ->paginate(5);
+
         return ArticleResource::collection($articles);
     }
 
-    function getThreeArticle(Request $request){
+    function getThreeArticle(Request $request)
+    {
         $query = $request->query('search', '');
         $articles = Article::where('title', 'like', "%$query%")
-                      ->paginate(3);
-        
+            ->paginate(3);
+
         return ArticleResource::collection($articles);
     }
 
-    function getArticleById($id){
+    function getArticleById($id)
+    {
         $article = Article::find($id);
 
         if (!$article) {
@@ -33,7 +36,7 @@ class ArticleController extends Controller
                 'message' => 'Article not found'
             ], 404);
         }
-    
+
         return new ArticleResource($article);
     }
 
@@ -84,7 +87,8 @@ class ArticleController extends Controller
         }
     }
 
-    function updateArticle(Request $request, $id){
+    function updateArticle(Request $request, $id)
+    {
         $existingArticle = Article::find($id);
 
         if (!$existingArticle) {
@@ -99,11 +103,11 @@ class ArticleController extends Controller
         //     'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         // ]);
 
-        if($request->hasFile('thumbnail')){
+        if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('data/thumbnails'), $filename);
-        }else{
+        } else {
             $filename = $existingArticle->thumbnail;
         }
 
@@ -111,13 +115,14 @@ class ArticleController extends Controller
             'title' => $request->title ?? $existingArticle->title,
             'slug' => $request->slug ?? $existingArticle->slug,
             'body' => $request->body ?? $existingArticle->body,
-            'thumbnail' => $filename 
+            'thumbnail' => $filename
         ]);
 
         return $response;
     }
 
-    function deleteArticle($id){
+    function deleteArticle($id)
+    {
         $article = Article::find($id);
 
         if (!$article) {
@@ -133,9 +138,8 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function getAllArticles() {
-        return response()->json([
-            "data" => Article::all()
-        ]);
+    public function getAllArticles()
+    {
+        return response()->json(ArticleResource::collection(Article::all()));
     }
 }
