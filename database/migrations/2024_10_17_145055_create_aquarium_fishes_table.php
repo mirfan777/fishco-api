@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('fish_id');
             $table->foreign('fish_id')->references('id')->on('fishes')->onDelete('cascade');
+            $table->integer('quantity');
             $table->unsignedBigInteger('aquarium_id');
             $table->foreign('aquarium_id')->references('id')->on('aquariums')->onDelete('cascade');
             $table->timestamps();
