@@ -101,7 +101,7 @@
 
     const initializeDataTable = () => {
         if (dataTable) {
-            dataTable.destroy(); // Destroy previous instance if it exists
+            dataTable.destroy(); 
         }
 
         dataTable = new simpleDatatables.DataTable("#disease-table", {
@@ -130,24 +130,23 @@
         });
 
         $.ajax({
-    url: '/api/fishes',
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-    },
-    success: function(response) {
-        const fishSelect = $('#create-affected-fish');
-        // Remove .data since response is directly an array
-        response.forEach(fish => {
-            fishSelect.append(new Option(fish.name, fish.id));
+            url: '/api/fishes',
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function(response) {
+                const fishSelect = $('#create-affected-fish');
+                response.forEach(fish => {
+                    fishSelect.append(new Option(fish.name, fish.id));
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error("API Error:", error);
+            }
         });
-    },
-    error: function(xhr, status, error) {
-        console.error("API Error:", error);
-    }
-});
 
     const fetchDiseaseData = () => {
         $.ajax({

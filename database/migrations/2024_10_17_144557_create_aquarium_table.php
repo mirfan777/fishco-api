@@ -17,9 +17,6 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->float('volume_size');
-            $table->float('length');
-            $table->float('width');
-            $table->float('height');
             $table->string('material');
             $table->string('type');
             $table->string('filter_type');
