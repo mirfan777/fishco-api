@@ -12,7 +12,7 @@ class AquariumResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray(Request $request): array
+    public function toArray(Request $request , $warning): array
     {
         return [
             "id" => $this->id,
@@ -37,6 +37,7 @@ class AquariumResource extends JsonResource
                     'quantity' => $aquarium->quantity,
                 ];
             }),
+            "warning" => $warning,
         ];
     }
 }

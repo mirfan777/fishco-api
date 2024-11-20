@@ -108,9 +108,9 @@
 
                 const articleTableBody = $('#article-table tbody'); // Target the tbody directly
                 articleTableBody.empty();
-
-                if (response.data && response.data.length > 0) {
-                    response.data.forEach(article => {
+ 
+                if (response && response.length > 0) {
+                    response.forEach(article => {
                         articleTableBody.append(`
                             <tr class="border-b dark:border-gray-700">
                                 <td class="px-4 py-3">${article.title}</td>
