@@ -9,7 +9,7 @@ use App\Http\Resources\AquariumResource;
 class AquariumController extends Controller
 {
     function getAllAquarium(){
-        return AquariumResource::collection(Aquarium::all());
+        return AquariumResource::collection(Aquarium::with('aquariumfishes')->get());
     }
 
     function getAquarium($id){

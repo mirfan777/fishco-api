@@ -29,8 +29,14 @@ class AquariumResource extends JsonResource
             "max_ph" => $this->max_ph,
             "turbidity" => $this->turbidity,
             "salitity" => $this->salitity,
-            "aquarium_fishes" => AquariumFishResource::collection($this->aquariumFishes)
-
+            "aquariumfishes" => $this->aquariumfishes->map(function ($aquarium) {
+                return [
+                    'id' => $aquarium->id,
+                    'fish_id' => $aquarium->$fish_id,
+                    'fish_name' => $aquarium->fish->name,
+                    'quantity' => $aquarium->quantity,
+                ];
+            }),
         ];
     }
 }

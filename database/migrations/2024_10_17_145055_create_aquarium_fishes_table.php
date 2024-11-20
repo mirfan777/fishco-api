@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('aquarium_fishes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('aquarium_id');
+            $table->foreign('aquarium_id')->references('id')->on('aquariums')->onDelete('cascade');
             $table->unsignedBigInteger('fish_id');
             $table->foreign('fish_id')->references('id')->on('fishes')->onDelete('cascade');
             $table->integer('quantity');
-            $table->unsignedBigInteger('aquarium_id');
-            $table->foreign('aquarium_id')->references('id')->on('aquariums')->onDelete('cascade');
             $table->timestamps();
         });
     }
