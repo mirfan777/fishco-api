@@ -251,11 +251,13 @@
                                 src="{{'images/landing/Screenshot-5.jpg'}}" alt="Screenshot 5">
                             <img class="w-full h-full object-cover rounded-2xl"
                                 src="{{'images/landing/Screenshot-6.jpg'}}" alt="Screenshot 6">
+                                <img class="w-full h-full object-cover rounded-2xl"
+                                src="{{'images/landing/Screenshot-7.jpg'}}" alt="Screenshot 7">
                         </div>
                     </div>
 
                     <!-- Custom Dots Navigation -->
-                    <div id="customDots"
+                    <!-- <div id="customDots"
                         class="absolute top-1/2 right-[-40px] transform -translate-y-1/2 flex flex-col space-y-3 z-30">
                         <span
                             class="dot w-4 h-4 bg-gradient-to-r from-[#38ABF8] to-[#0278C7] rounded-full cursor-pointer"
@@ -275,7 +277,7 @@
                         <span
                             class="dot w-4 h-4 bg-gradient-to-r from-[#38ABF8] to-[#0278C7] rounded-full cursor-pointer"
                             data-slide="5"></span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
