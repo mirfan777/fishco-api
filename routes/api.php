@@ -17,6 +17,7 @@ use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\FishImageController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProductRecommendationController;
+use App\Http\Controllers\DiagnosisController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -96,6 +97,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/fishimage/create', [FishImageController::class, 'createFishImage']);
     Route::post('/fishimage/update/{id}', [FishImageController::class, 'updateFishImage']);
     Route::delete('/fishimage/delete/{id}', [FishImageController::class, 'deleteFishImage']);
+
+    Route::post('/diagnosis', [DiagnosisController::class, 'diagnosis']);
 });
 
 Route::post('/requestToken', [AuthenticatedSessionController::class, 'requestToken'])->name('requestToken');

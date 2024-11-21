@@ -25,8 +25,9 @@ return new class extends Migration
             $table->float('max_temperature')->nullable();
             $table->float('min_ph')->nullable();
             $table->float('max_ph')->nullable();
+            $table->float('min_salinity')->nullable();
+            $table->float('max_salinity')->nullable();
             $table->float('turbidity')->nullable();
-            $table->float('salinity')->nullable();
             $table->float('disolved_oxygen')->nullable();
             $table->float('hardness')->nullable();
             $table->float('amonia')->nullable();
