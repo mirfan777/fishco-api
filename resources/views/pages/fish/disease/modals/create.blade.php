@@ -144,66 +144,74 @@
 </div>
 
 <script>
+    $(document).ready(function() {
+        $('#createDiseaseForm').on('submit', function(e) {
+            e.preventDefault();
 
-        $(document).ready(function() {
-        
-            $('#createDiseaseForm').on('submit', function(e) {
-                e.preventDefault();
-        
-                const submitBtn = $(this).find('button[type="submit"]');
-                submitBtn.prop('disabled', true);
-        
-                const formData = {
-                    name: $('#create-disease-name').val(),
-                    symptoms: $('#create-symptom').val(),
-                    description: $('#create-description').val(),
-                    note: $('#create-note').val(),
-                    disease_type: $('#create-disease-type').val(),
-                    cause_agent: $('#create-cause-agent').val(),
-                    prevention: $('#create-prevention').val(),
-                    affected_fish: $('#create-affected-fish').val(),
-                    product_recommendations: $('#create-products').val(),
-                    affected_part: $('input[name="affected_parts[]"]:checked').map(function() {
-                        return $(this).val();
-                    }).get(),
+            const submitBtn = $(this).find('button[type="submit"]');
+            submitBtn.prop('disabled', true);
+
+            const formData = {
+                name: $('#create-disease-name').val(),
+                symptoms: $('#create-symptom').val(),
+                description: $('#create-description').val(),
+                note: $('#create-note').val(),
+                disease_type: $('#create-disease-type').val(),
+                cause_agent: $('#create-cause-agent').val(),
+                prevention: $('#create-prevention').val(),
+                affected_fish: $('#create-affected-fish').val(),
+                product_recommendations: $('#create-products').val(),
+                affected_part: $('input[name="affected_parts[]"]:checked').map(function() {
+                    return $(this).val();
+                }).get(),
+            };
+
+            console.log('Form Data:', formData);
+
+            $.ajax({
+                url: '/api/disease/create',
+                type: 'POST',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
+                success: function(response) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Data penyakit berhasil ditambahkan.',
+                        icon: 'success',
+                        timer: 1200,
+                        showConfirmButton: false
+                    }).then(() => {
+                        $('#createDiseaseForm')[0].reset();
+                        $('#create-affected-fish').val(null).trigger('change');
+                        $('#create-products').val(null).trigger('change');
+                        $('#create-disease').modal('hide');
+                    });
+                    $('[data-modal-hide="create-disease"]').click();
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Failed to add disease data. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                    console.error('Error:', xhr.responseText);
+                    submitBtn.prop('disabled', false);
                 }
-
-                console.log('Form Data:', formData);
-                
-        
-                $.ajax({
-                    url: '/api/disease/create',
-                    type: 'POST',
-                    data: formData,
-                    content: 'application/json',
-                    headers: { 
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        'Accept': 'application/json',
-                    },
-                    success: function(response) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Data penyakit berhasil ditambahkan.',
-                            icon: 'success',
-                            timer: 1200,
-                            showConfirmButton: false
-                        }).then(() => {
-                            
-                            $('#createDiseaseForm')[0].reset();
-                            $('#create-affected-fish').val(null).trigger('change');
-                            $('#create-products').val(null).trigger('change');
-                            $('#create-disease').modal('hide');
-                        });
-                        $('[data-modal-hide="create-disease"]').click();
-                        setTimeout(function () {
-                            location.reload();
-                        }, 500);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                    }
-                });
             });
         });
-    </script>
+
+        // Hide modal on button click
+        $('[data-modal-hide="create-disease"]').on('click', function() {
+            $('#create-disease').addClass('hidden');
+        });
+    });
+</script>
