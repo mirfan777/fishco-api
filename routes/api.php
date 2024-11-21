@@ -25,7 +25,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/profile', function (Request $request) {return $request->user();});
+    Route::get('/profile', function (Request $request) {
+        return $request->user(); });
     Route::delete('/logout', [AuthenticatedSessionController::class, 'revokeToken']);
 
     // User
@@ -36,7 +37,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/user/update/{id}', [UserController::class, 'updateUser']);
 
     //Fish
-    Route::get('/fish', [FishController::class, 'getAllFish']);
+    Route::get('/fish', [FishController::class, 'getFish']);
     Route::get('/fish/{id}', [FishController::class, 'getFishById']);
     Route::post('/fish/create', [FishController::class, 'createFish']);
     Route::post('/fish/update/{id}', [FishController::class, 'updateFish']);
@@ -92,7 +93,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/products', [ProductController::class, 'getAllProducts']);
 
     //Fish Image
-    Route::get('/fishimage',[FishImageController::class, 'getAllFishImage']);
+    Route::get('/fishimage', [FishImageController::class, 'getAllFishImage']);
     Route::get('/fishimage/{id}', [FishImageController::class, 'getFishImage']);
     Route::post('/fishimage/create', [FishImageController::class, 'createFishImage']);
     Route::post('/fishimage/update/{id}', [FishImageController::class, 'updateFishImage']);
@@ -132,5 +133,5 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout');
 
-    
-    Route::get('/fishes', [FishController::class, 'getAllFishes']);
+
+Route::get('/fishes', [FishController::class, 'getAllFishes']);

@@ -13,7 +13,7 @@ class DiagnosisController extends Controller
     public function diagnosis(Request $request)
     {
         $apiKey = env('GEMINI_API_KEY');
-        $prompt = $request->input('prompt');
+        $prompt = $request->prompt;
 
         try {
             // Ambil semua data penyakit
@@ -31,29 +31,29 @@ class DiagnosisController extends Controller
             $response = Http::withOptions([
                 'verify' => true,
                 'curl' => [
-                    CURLOPT_CAINFO => 'C:\laragon\www\fishco\app\Http\Controllers\cacert.pem',
+                    CURLOPT_CAINFO => 'C:\Users\Zolla\Documents\Project Fishco\fishco-api\app\Http\Controllers\cacert.pem',
                     CURLOPT_SSL_VERIFYPEER => true,
                     CURLOPT_SSL_VERIFYHOST => 2
                 ]
             ])->withHeaders([
-                'Content-Type' => 'application/json'
-            ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={$apiKey}", [
-                'contents' => [
-                    [
-                        'role' => 'user',
-                        'parts' => [
-                            ['text' => $fullPrompt]
+                        'Content-Type' => 'application/json'
+                    ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={$apiKey}", [
+                        'contents' => [
+                            [
+                                'role' => 'user',
+                                'parts' => [
+                                    ['text' => $fullPrompt]
+                                ]
+                            ]
+                        ],
+                        'generationConfig' => [
+                            'temperature' => 0.7,
+                            'topK' => 40,
+                            'topP' => 0.95,
+                            'maxOutputTokens' => 256,
+                            'responseMimeType' => 'text/plain'
                         ]
-                    ]
-                ],
-                'generationConfig' => [
-                    'temperature' => 0.7,
-                    'topK' => 40,
-                    'topP' => 0.95,
-                    'maxOutputTokens' => 256,
-                    'responseMimeType' => 'text/plain'
-                ]
-            ]);
+                    ]);
 
             // Periksa response
             if ($response->successful()) {
