@@ -8,7 +8,8 @@
     @vite(['resources/css/style.css', 'resources/js/app.js'])
     <!-- owl carousel -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <!-- CDN ICON -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Animate -->
@@ -20,7 +21,7 @@
 </head>
 
 <body class="bg-white relative">
-        <!-- Preloader
+    <!-- Preloader
         <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 9999; display: flex; align-items: center; justify-content: center;">
         <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
         <dotlottie-player
@@ -264,7 +265,7 @@
                                 src="{{'images/landing/Screenshot-5.jpg'}}" alt="Screenshot 5">
                             <img class="w-full h-full object-cover rounded-2xl"
                                 src="{{'images/landing/Screenshot-6.jpg'}}" alt="Screenshot 6">
-                                <img class="w-full h-full object-cover rounded-2xl"
+                            <img class="w-full h-full object-cover rounded-2xl"
                                 src="{{'images/landing/Screenshot-7.jpg'}}" alt="Screenshot 7">
                         </div>
                     </div>
@@ -549,7 +550,7 @@
                     didiskusikan. Kami akan dengan senang hati merespon setiap pertanyaan dan saran dari pengguna.
                 </p>
 
-                <form>
+                <form id="kontak-form">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <!-- Name Input -->
                         <div class="relative">
@@ -564,10 +565,10 @@
                         </div>
 
                         <!-- Subject Input -->
-                        <div class="col-span-2">
+                        <!-- <div class="col-span-2">
                             <input type="text" id="subject" placeholder="Subject"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-                        </div>
+                        </div> -->
 
                         <!-- Message Textarea -->
                         <div class="col-span-2">
@@ -577,7 +578,7 @@
 
                         <!-- Submit Button -->
                         <div class="col-span-2 text-center">
-                            <button type="submit"
+                            <button id="submit" type="submit"
                                 class="bg-gradient-to-r from-[#38ABF8] to-[#0278C7] text-white py-3 px-6 rounded-full hover:from-[#075385] hover:to-[#0278C7] transition duration-300">
                                 Kirim Pesan
                             </button>
@@ -704,8 +705,14 @@
         </div>
     </div>
 
-    <!-- scrtipt owl carousel -->
-    
+    <!-- Library AOS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Library EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
     <script>
         //Animate
         document.addEventListener('DOMContentLoaded', function () {
@@ -870,59 +877,115 @@
 
         // skrinsut
         $("#screenshot-carousel").owlCarousel({
-                items: 1, // Tampilkan 1 gambar per slide
-                loop: true, // Untuk membuat carousel berputar terus-menerus
-                margin: 10, // Spasi antar item (jika diperlukan)
-                nav: true, // Menampilkan tombol next/prev
-                dots: true, // Menampilkan dots navigasi
-                autoplay: true, // Mengaktifkan autoplay
-                autoplayTimeout: 3000, // Waktu antara slide otomatis (dalam ms)
-                autoplayHoverPause: true, // Pause autoplay ketika user hover
-                smartSpeed: 1000, // Kecepatan transisi (dalam ms) saat klik
-                autoplaySpeed: 1000, // Kecepatan transisi saat autoplay (dalam ms)
-                dotsContainer: '#customDots', // Custom dot navigation (di luar carousel)
-                responsive: {
-                    0: {
-                        items: 1 // Tampilkan 1 item di layar kecil
-                    },
-                    600: {
-                        items: 1 // Tampilkan 1 item di layar sedang
-                    },
-                    1000: {
-                        items: 1 // Tampilkan 1 item di layar besar
-                    }
+            items: 1, // Tampilkan 1 gambar per slide
+            loop: true, // Untuk membuat carousel berputar terus-menerus
+            margin: 10, // Spasi antar item (jika diperlukan)
+            nav: true, // Menampilkan tombol next/prev
+            dots: true, // Menampilkan dots navigasi
+            autoplay: true, // Mengaktifkan autoplay
+            autoplayTimeout: 3000, // Waktu antara slide otomatis (dalam ms)
+            autoplayHoverPause: true, // Pause autoplay ketika user hover
+            smartSpeed: 1000, // Kecepatan transisi (dalam ms) saat klik
+            autoplaySpeed: 1000, // Kecepatan transisi saat autoplay (dalam ms)
+            dotsContainer: '#customDots', // Custom dot navigation (di luar carousel)
+            responsive: {
+                0: {
+                    items: 1 // Tampilkan 1 item di layar kecil
+                },
+                600: {
+                    items: 1 // Tampilkan 1 item di layar sedang
+                },
+                1000: {
+                    items: 1 // Tampilkan 1 item di layar besar
                 }
-            });
+            }
+        });
 
-            // Klik dot untuk berpindah slide
-            $('.dot').on('click', function () {
-                var slideIndex = $(this).data('slide');
-                $('#screenshot-carousel').trigger('to.owl.carousel', [slideIndex, 300]);
-            });
+        // Klik dot untuk berpindah slide
+        $('.dot').on('click', function () {
+            var slideIndex = $(this).data('slide');
+            $('#screenshot-carousel').trigger('to.owl.carousel', [slideIndex, 300]);
+        });
 
-            $(".testimonial-carousel").owlCarousel({
-                autoplay: true,
-                smartSpeed: 1000,
-                loop: true,
-                center: true,
-                dots: false,
-                nav: true, // Aktifkan navigasi panah
-                navText: [
-                    '<span class="text-center flex items-center justify-center"><i class="fas fa-chevron-left"></i></span>',
-                    '<span class="text-center flex items-center justify-center"><i class="fas fa-chevron-right"></i></span>'
-                ],
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    768: {
-                        items: 2
-                    },
-                    992: {
-                        items: 3
-                    }
+        $(".testimonial-carousel").owlCarousel({
+            autoplay: true,
+            smartSpeed: 1000,
+            loop: true,
+            center: true,
+            dots: false,
+            nav: true, // Aktifkan navigasi panah
+            navText: [
+                '<span class="text-center flex items-center justify-center"><i class="fas fa-chevron-left"></i></span>',
+                '<span class="text-center flex items-center justify-center"><i class="fas fa-chevron-right"></i></span>'
+            ],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                992: {
+                    items: 3
                 }
+            }
+        });
+
+        //email js
+        document.addEventListener("DOMContentLoaded", function () {
+    emailjs.init("xT3lyPLkdG0pUCM5A"); // Inisialisasi EmailJS
+});
+
+document.getElementById("kontak-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Ambil data dari form
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    // Debugging
+    console.log({ name, email, message });
+
+    // Kirim email menggunakan EmailJS
+    emailjs
+    .send("service_qtpjhbb", "template_qni09ip", {
+        from_name: name,
+        email: email,
+        message: message,
+        to_name: email, // Tambahkan ini
+    })
+    .then(function (response) {
+        console.log("SUCCESS!", response.status, response.text);
+        if (response.status === 200) {
+            Swal.fire({
+                icon: "success",
+                title: "Berhasil!",
+                text: "Pesan berhasil dikirim!",
+                showConfirmButton: false,
+                timer: 1500,
             });
+            document.getElementById("kontak-form").reset();
+        } else {
+            console.log("EmailJS response not valid:", response);
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Pesan gagal dikirim, coba lagi.",
+                showConfirmButton: true,
+            });
+        }
+    })
+    .catch(function (error) {
+        console.log("FAILED...", error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Pesan gagal dikirim. Silakan coba lagi.",
+            showConfirmButton: true,
+        });
+    });
+    });
     </script>
 
     <!-- <script>
