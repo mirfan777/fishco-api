@@ -173,11 +173,11 @@ $(document).ready(function() {
             }
 
         $.ajax({
-            url: `/api/disease/update/${currentDiseaseId}`,
+            url: /api/disease/update/${currentDiseaseId},
             type: 'POST',
             data: formData,
             headers: { 
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Authorization': Bearer ${localStorage.getItem('token')},
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                 'Accept': 'application/json',
             },
@@ -185,7 +185,6 @@ $(document).ready(function() {
                 Swal.fire({
                     title: 'Success!',
                     text: 'Disease data has been successfully updated.',
-                    icon: 'success',
                     timer: 1200,
                     showConfirmButton: false,
                 }).then((result) => {
