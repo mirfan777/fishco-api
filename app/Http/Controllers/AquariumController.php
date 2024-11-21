@@ -51,13 +51,17 @@ class AquariumController extends Controller
         return new AquariumResource(Aquarium::find($id) , $warning);
     }
 
+
+
+
+
     public function createAquarium(Request $request)
     {
         $volume = $request->volume_size; 
-        $fishIds = $request->fishes; // Ubah dari 'fish' menjadi 'fishes'
+        $fishIds = $request->fishes;
         $warning = [];
 
-        // Pastikan $fishIds tidak null
+        // Validasi daftar ikan
         if (is_null($fishIds)) {
             throw new \Exception("Daftar ikan tidak boleh kosong");
         }
@@ -229,6 +233,11 @@ class AquariumController extends Controller
     
         return $warnings;
     }
+
+
+
+
+
     function updateAquarium(Request $request, $id){
         $aquarium = Aquarium::find($id);
 
