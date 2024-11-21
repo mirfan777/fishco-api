@@ -20,6 +20,19 @@
 </head>
 
 <body class="bg-white relative">
+        <!-- Preloader
+        <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 9999; display: flex; align-items: center; justify-content: center;">
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+        <dotlottie-player
+            src="https://lottie.host/fa244c55-e0a6-4bb0-a90e-d5ae051474c9/QJ1xgeYXjF.lottie"
+            background="transparent"
+            speed="1"
+            style="width: 300px; height: 300px"
+            loop
+            autoplay>
+        </dotlottie-player>
+    </div> -->
+
     <!-- Navbar -->
     <div id="navbar-wrapper" class="sticky top-0 z-50 w-full bg-[#FAFAFA] transition-all duration-300 ease-in-out">
         <div id="navbar"
@@ -251,11 +264,13 @@
                                 src="{{'images/landing/Screenshot-5.jpg'}}" alt="Screenshot 5">
                             <img class="w-full h-full object-cover rounded-2xl"
                                 src="{{'images/landing/Screenshot-6.jpg'}}" alt="Screenshot 6">
+                                <img class="w-full h-full object-cover rounded-2xl"
+                                src="{{'images/landing/Screenshot-7.jpg'}}" alt="Screenshot 7">
                         </div>
                     </div>
 
                     <!-- Custom Dots Navigation -->
-                    <div id="customDots"
+                    <!-- <div id="customDots"
                         class="absolute top-1/2 right-[-40px] transform -translate-y-1/2 flex flex-col space-y-3 z-30">
                         <span
                             class="dot w-4 h-4 bg-gradient-to-r from-[#38ABF8] to-[#0278C7] rounded-full cursor-pointer"
@@ -275,7 +290,7 @@
                         <span
                             class="dot w-4 h-4 bg-gradient-to-r from-[#38ABF8] to-[#0278C7] rounded-full cursor-pointer"
                             data-slide="5"></span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -909,6 +924,32 @@
                 }
             });
     </script>
+
+    <!-- <script>
+    window.addEventListener('load', function () {
+    const preloader = document.getElementById('preloader');
+    const mainContent = document.getElementById('main-content');
+
+    // Timer untuk memastikan konten muncul meski load lama
+    const maxWait = setTimeout(() => {
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+        mainContent.style.opacity = '1';
+        mainContent.style.visibility = 'visible';
+        AOS.refresh(); // Memastikan AOS tetap berjalan
+    }, 5000); // Maksimal tunggu 5 detik
+
+    if (document.readyState === 'complete') {
+        clearTimeout(maxWait); // Jika load selesai sebelum timer
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+        mainContent.style.opacity = '1';
+        mainContent.style.visibility = 'visible';
+        AOS.refresh();
+    }
+});
+</script> -->
+
 
 </body>
 
