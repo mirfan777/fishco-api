@@ -185,6 +185,7 @@ $(document).ready(function() {
                 Swal.fire({
                     title: 'Success!',
                     text: 'Disease data has been successfully updated.',
+                    icon: 'success',
                     timer: 1200,
                     showConfirmButton: false,
                 }).then((result) => {

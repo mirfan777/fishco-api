@@ -20,7 +20,7 @@
 </head>
 
 <body class="bg-white relative">
-        <!-- Preloader
+        <!-- Preloader -->
         <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 9999; display: flex; align-items: center; justify-content: center;">
         <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
         <dotlottie-player
@@ -31,7 +31,7 @@
             loop
             autoplay>
         </dotlottie-player>
-    </div> -->
+    </div>
 
     <!-- Navbar -->
     <div id="navbar-wrapper" class="sticky top-0 z-50 w-full bg-[#FAFAFA] transition-all duration-300 ease-in-out">
@@ -925,7 +925,7 @@
             });
     </script>
 
-    <!-- <script>
+    <script>
     window.addEventListener('load', function () {
     const preloader = document.getElementById('preloader');
     const mainContent = document.getElementById('main-content');
@@ -948,7 +948,7 @@
         AOS.refresh();
     }
 });
-</script> -->
+</script>
 
 
 </body>

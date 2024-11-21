@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class);
     }
+
+    public function aquariums()
+    {
+        return $this->hasMany(Aquarium::class);
+    }
 }
