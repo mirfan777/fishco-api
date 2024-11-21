@@ -63,57 +63,56 @@
 
 
 <script>
-   $(document).ready(function() {
-    
-    $('#edit-product-form').on('submit', function(e) {
-        e.preventDefault();
-        const productId = currentProductId;
-        const formData = {
-            name: $('#edit-product-name').val(),
-            category: $('#edit-product-category').val(),
-            price: $('#edit-product-price').val(),
-            link: $('#edit-product-link').val(),
-            description: $('#edit-product-description').val()
-        };
+    $(document).ready(function() {
+        $('#edit-product-form').on('submit', function(e) {
+            e.preventDefault();
+            const productId = currentProductId;
+            const formData = {
+                name: $('#edit-product-name').val(),
+                category: $('#edit-product-category').val(),
+                price: $('#edit-product-price').val(),
+                link: $('#edit-product-link').val(),
+                description: $('#edit-product-description').val()
+            };
 
-        $.ajax({
-            url: `/api/product/update/${productId}`,
-            type: 'POST',
-            data: JSON.stringify(formData),
-            contentType: 'application/json',
-            headers: { 
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Accept': 'application/json',
-            },
-            success: function(response) {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Product data has been successfully updated.',
-                    icon: 'success',
-                    timer: 1200,
-                    showConfirmButton: false
-                })
-                $('[data-modal-hide="edit-product"]').click();
+            $.ajax({
+                url: `/api/product/update/${productId}`,
+                type: 'POST',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
+                success: function(response) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Product data has been successfully updated.',
+                        icon: 'success',
+                        timer: 1200,
+                        showConfirmButton: false
+                    });
+                    $('[data-modal-hide="edit-product"]').click();
                     setTimeout(function () {
                         location.reload();
                     }, 500);
-            },
-            error: function(xhr, status, error) {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Failed to update product data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-                console.error('Error:', error);
-            }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Failed to update product data. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                    console.error('Error:', error);
+                }
+            });
+        });
+
+        // Hide modal on button click
+        $('[data-modal-hide="edit-product"]').on('click', function() {
+            $('#edit-product').addClass('hidden');
         });
     });
-
-    // Hide modal on button click
-    $('[data-modal-hide="edit-product"]').on('click', function() {
-        $('#edit-product').addClass('hidden');
-    });
-});
 </script>
