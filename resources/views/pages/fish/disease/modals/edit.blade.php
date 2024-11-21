@@ -17,7 +17,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5 space-y-4">
-                <form class="w-full" id="editDiseaseForm">
+                <form class="w-full" id="editDiseaseForm" method="POST">
                     <div class="flex flex-col md:flex-row md:justify-between w-full gap-5">
                         <div class="md:w-1/2">
                             <!-- Name -->
@@ -145,11 +145,10 @@
 
 <script>
 $(document).ready(function() {
-    
-    $('#editDiseaseForm').on('submit', function(e) {  // Note: changed selector to match your HTML
+    $('#editDiseaseForm').on('submit', function(e) {
         e.preventDefault();
+        const diseaseId = currentDiseaseId;
         
-        // Get the checked affected parts and join them with comma
         const affectedParts = $('input[name="edit-affected_parts[]"]:checked')
             .map(function() {
                 return $(this).val();
@@ -157,27 +156,27 @@ $(document).ready(function() {
             .get()
             .join(',');
 
-            const formData = {
-                name: $('#edit-disease-name').val(),
-                symptoms: $('#edit-symptom').val(),
-                description: $('#edit-description').val(),
-                note: $('#edit-note').val(),
-                disease_type: $('#edit-disease-type').val(),
-                cause_agent: $('#edit-cause-agent').val(),
-                prevention: $('#edit-prevention').val(),
-                affected_fish: $('#edit-affected-fish').val(),
-                product_recommendations: $('#edit-products').val(),
-                affected_part: $('input[name="edit-affected_parts[]"]:checked').map(function() {
-                    return $(this).val();
-                }).get(),
-            }
+        const formData = {
+            name: $('#edit-disease-name').val(),
+            symptoms: $('#edit-symptom').val(),
+            description: $('#edit-description').val(),
+            note: $('#edit-note').val(),
+            disease_type: $('#edit-disease-type').val(),
+            cause_agent: $('#edit-cause-agent').val(),
+            prevention: $('#edit-prevention').val(),
+            affected_fish: $('#edit-affected-fish').val(),
+            product_recommendations: $('#edit-products').val(),
+            affected_part: $('input[name="edit-affected_parts[]"]:checked').map(function() {
+                return $(this).val();
+            }).get(),
+        };
 
         $.ajax({
-            url: /api/disease/update/${currentDiseaseId},
+            url: `/api/disease/update/${diseaseId}`,
             type: 'POST',
             data: formData,
             headers: { 
-                'Authorization': Bearer ${localStorage.getItem('token')},
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                 'Accept': 'application/json',
             },
@@ -188,15 +187,14 @@ $(document).ready(function() {
                     timer: 1200,
                     showConfirmButton: false,
                 }).then((result) => {
-                    
                     if (result.isConfirmed) {
                         location.reload(); 
                     }
                 });
                 $('[data-modal-hide="edit-disease"]').click();
-                    setTimeout(function () {
-                        location.reload();
-                    }, 500);
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
             },
             error: function(xhr, status, error) {
                 Swal.fire({
