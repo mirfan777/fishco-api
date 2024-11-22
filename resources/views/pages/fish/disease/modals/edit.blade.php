@@ -144,67 +144,69 @@
 </div>
 
 <script>
-$('#editDiseaseForm').on('submit', function(e) {
-    e.preventDefault();
-    const diseaseId = currentDiseaseId;
+$(document).ready(function() {
+    // Close modal when the close button is clicked
+    $(document).on('click', '[data-modal-hide]', function() {
+        const modalId = $(this).attr('data-modal-hide');
+        console.log('Closing modal:', modalId); // Debugging log
+        $(`#${modalId}`).addClass('hidden').removeClass('flex');
+    });
 
-    const affectedParts = $('input[name="edit-affected_parts[]"]:checked')
-        .map(function() {
-            return $(this).val();
-        })
-        .get()
-        .join(',');
+    $('#editDiseaseForm').on('submit', function(e) {
+        e.preventDefault();
+        const diseaseId = currentDiseaseId;
 
-    const formData = {
-        name: $('#edit-disease-name').val(),
-        symptoms: $('#edit-symptom').val(),
-        description: $('#edit-description').val(),
-        note: $('#edit-note').val(),
-        disease_type: $('#edit-disease-type').val(),
-        cause_agent: $('#edit-cause-agent').val(),
-        prevention: $('#edit-prevention').val(),
-        affected_fish: $('#edit-affected-fish').val(),
-        product_recommendations: $('#edit-products').val(),
-        affected_part: $('input[name="edit-affected_parts[]"]:checked').map(function() {
-            return $(this).val();
-        }).get(),
-    };
+        const formData = {
+            name: $('#edit-disease-name').val(),
+            symptoms: $('#edit-symptom').val(),
+            description: $('#edit-description').val(),
+            note: $('#edit-note').val(),
+            disease_type: $('#edit-disease-type').val(),
+            cause_agent: $('#edit-cause-agent').val(),
+            prevention: $('#edit-prevention').val(),
+            affected_fish: $('#edit-affected-fish').val(),
+            product_recommendations: $('#edit-products').val(),
+            affected_part: $('input[name="edit-affected_parts[]"]:checked').map(function() {
+                return $(this).val();
+            }).get(),
+        };
 
-    $.ajax({
-        url: `/api/disease/update/${diseaseId}`,
-        type: 'POST',
-        data: formData,
-        headers: { 
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            'Accept': 'application/json',
-        },
-        success: function(response) {
-            Swal.fire({
-                title: 'Success!',
-                text: 'Data penyakit berhasil diupdate.',
-                icon: 'success',
-                timer: 1200,
-                showConfirmButton: false,
-            });
-            
-            // Hide modal after success
-            $('#edit-disease').addClass('hidden').removeClass('flex');
+        $.ajax({
+            url: `/api/disease/update/${diseaseId}`,
+            type: 'POST',
+            data: formData,
+            headers: { 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Accept': 'application/json',
+            },
+            success: function(response) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Data penyakit berhasil di update.',
+                    icon: 'success',
+                    timer: 1200,
+                    showConfirmButton: false,
+                });
+                
+                // Hide modal after success
+                $('#edit-disease').addClass('hidden').removeClass('flex');
 
-            // Optionally reload data or page
-            setTimeout(function () {
-                location.reload();
-            }, 500);
-        },
-        error: function(xhr, status, error) {
-            Swal.fire({
-                title: 'Error!',
-                text: 'Gagal untuk mengupdate data penyakit, silahkan coba lagi.',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
-            console.error('Error:', error);
-        }
+                // Optionally reload data or page
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
+            },
+            error: function(xhr, status, error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Gagal untuk mengupdate data penyakit, silahkan coba lagi.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                console.error('Error:', error);
+            }
+        });
     });
 });
 </script>
