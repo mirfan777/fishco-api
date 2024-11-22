@@ -136,7 +136,7 @@
                     </div>
             
                     <!-- Submit Button -->
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Edit</button>
                 </form>
             </div>
         </div>
@@ -144,68 +144,67 @@
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#editDiseaseForm').on('submit', function(e) {
-        e.preventDefault();
-        const diseaseId = currentDiseaseId;
-        
-        const affectedParts = $('input[name="edit-affected_parts[]"]:checked')
-            .map(function() {
-                return $(this).val();
-            })
-            .get()
-            .join(',');
+$('#editDiseaseForm').on('submit', function(e) {
+    e.preventDefault();
+    const diseaseId = currentDiseaseId;
 
-        const formData = {
-            name: $('#edit-disease-name').val(),
-            symptoms: $('#edit-symptom').val(),
-            description: $('#edit-description').val(),
-            note: $('#edit-note').val(),
-            disease_type: $('#edit-disease-type').val(),
-            cause_agent: $('#edit-cause-agent').val(),
-            prevention: $('#edit-prevention').val(),
-            affected_fish: $('#edit-affected-fish').val(),
-            product_recommendations: $('#edit-products').val(),
-            affected_part: $('input[name="edit-affected_parts[]"]:checked').map(function() {
-                return $(this).val();
-            }).get(),
-        };
+    const affectedParts = $('input[name="edit-affected_parts[]"]:checked')
+        .map(function() {
+            return $(this).val();
+        })
+        .get()
+        .join(',');
 
-        $.ajax({
-            url: `/api/disease/update/${diseaseId}`,
-            type: 'POST',
-            data: formData,
-            headers: { 
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Accept': 'application/json',
-            },
-            success: function(response) {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Disease data has been successfully updated.',
-                    timer: 1200,
-                    showConfirmButton: false,
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        location.reload(); 
-                    }
-                });
-                $('[data-modal-hide="edit-disease"]').click();
-                setTimeout(function () {
-                    location.reload();
-                }, 500);
-            },
-            error: function(xhr, status, error) {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Failed to update disease data. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-                console.error('Error:', error);
-            }
-        });
+    const formData = {
+        name: $('#edit-disease-name').val(),
+        symptoms: $('#edit-symptom').val(),
+        description: $('#edit-description').val(),
+        note: $('#edit-note').val(),
+        disease_type: $('#edit-disease-type').val(),
+        cause_agent: $('#edit-cause-agent').val(),
+        prevention: $('#edit-prevention').val(),
+        affected_fish: $('#edit-affected-fish').val(),
+        product_recommendations: $('#edit-products').val(),
+        affected_part: $('input[name="edit-affected_parts[]"]:checked').map(function() {
+            return $(this).val();
+        }).get(),
+    };
+
+    $.ajax({
+        url: `/api/disease/update/${diseaseId}`,
+        type: 'POST',
+        data: formData,
+        headers: { 
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Accept': 'application/json',
+        },
+        success: function(response) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Data penyakit berhasil diupdate.',
+                icon: 'success',
+                timer: 1200,
+                showConfirmButton: false,
+            });
+            
+            // Hide modal after success
+            $('#edit-disease').addClass('hidden').removeClass('flex');
+
+            // Optionally reload data or page
+            setTimeout(function () {
+                location.reload();
+            }, 500);
+        },
+        error: function(xhr, status, error) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Gagal untuk mengupdate data penyakit, silahkan coba lagi.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            console.error('Error:', error);
+        }
     });
 });
 </script>

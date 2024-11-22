@@ -78,7 +78,9 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
-    // Initialize Select2 outside DOMContentLoaded
+    let currentDiseaseId = null;
+    let dataTable;
+
     $('#edit-affected-fish, #create-affected-fish').select2({
         placeholder: 'Select affected fish',
         allowClear: true
@@ -89,165 +91,159 @@
         allowClear: true
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const editDiseaseModal = new Modal(document.getElementById('edit-disease'));
+    const initializeDataTable = () => {
+        if (dataTable) {
+            dataTable.destroy(); 
+        }
 
-        let currentDiseaseId = null;
-        let dataTable;
+        dataTable = new simpleDatatables.DataTable("#disease-table", {
+            searchable: true,
+            paging: true,
+            perPage: 5,
+            perPageSelect: [5, 10, 15, 20, 25],
+            sortable: true
+        });
+    };
 
-        const fetchDiseaseData = () => {
-            $.ajax({
-                url: `/api/diseases`,
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response) {
-                    console.log("API Response:", response);
+    $.ajax({
+            url: '/api/products',
+            type: 'GET',
+            headers: { 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Accept': 'application/json',
+            },
+            success: function(response) {
+                const productSelect = $('#create-products');
+                response.data.forEach(product => {
+                    productSelect.append(new Option(product.name, product.id));
+                });
+            }
+        });
 
-                    const diseaseTableBody = $('#disease-table tbody'); // Target the tbody directly
-                    diseaseTableBody.empty();
+        $.ajax({
+            url: '/api/fishes',
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function(response) {
+                const fishSelect = $('#create-affected-fish');
+                response.forEach(fish => {
+                    fishSelect.append(new Option(fish.name, fish.id));
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error("API Error:", error);
+            }
+        });
 
-                    if (response.data && response.data.length > 0) {
-                        response.data.forEach(disease => {
-                            const fishNames = disease.affected_fish.map(fish => fish.name).join(' , ');
+    const fetchDiseaseData = () => {
+        $.ajax({
+            url: `/api/diseases`,
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                console.log("API Response:", response);
 
-                            diseaseTableBody.append(`
-                                <tr class="border-b dark:border-gray-700">
-                                    <td class="px-4 py-3">${disease.name}</td>
-                                    <td class="px-4 py-3">${disease.disease_type}</td>
-                                    <td class="px-4 py-3">${disease.cause_agent}</td>
-                                    <td class="px-4 py-3">${disease.affected_part}</td>
-                                    <td class="px-4 py-3">${fishNames}</td>
-                                    <td class="px-4 py-3">
-                                        <button data-modal-target="edit-disease" data-modal-toggle="edit-disease" onclick="fetchDiseaseDataById(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
-                                        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${disease.id})">Hapus</button>
-                                    </td>
-                                </tr>
-                            `);
-                        });
-                    } else {
+                const diseaseTableBody = $('#disease-table tbody'); // Target the tbody directly
+                diseaseTableBody.empty();
+
+                if (response.data && response.data.length > 0) {
+                    response.data.forEach(disease => {
+                        const fishNames = disease.affected_fish.map(fish => fish.name).join(' , ');
+
                         diseaseTableBody.append(`
-                            <tr>
-                                <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
+                            <tr class="border-b dark:border-gray-700">
+                                <td class="px-4 py-3">${disease.name}</td>
+                                <td class="px-4 py-3">${disease.disease_type}</td>
+                                <td class="px-4 py-3">${disease.cause_agent}</td>
+                                <td class="px-4 py-3">${disease.affected_part}</td>
+                                <td class="px-4 py-3">${fishNames}</td>
+                                <td class="px-4 py-3">
+                                    <button data-modal-target="edit-disease" data-modal-toggle="edit-disease" onclick="fetchDiseaseDataById(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
+                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${disease.id})">Hapus</button>
+                                </td>
                             </tr>
                         `);
-                    }
-
-                    // Reinitialize DataTable after updating the content
-                    initializeDataTable();
-                },
-                error: function(xhr, status, error) {
-                    console.error("API Error:", error);
-                    $('#disease-table tbody').html(`
+                    });
+                } else {
+                    diseaseTableBody.append(`
                         <tr>
                             <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
                         </tr>
                     `);
                 }
-            });
-        };
 
-        const initializeDataTable = () => {
-            if (dataTable) {
-                dataTable.destroy(); 
+                // Reinitialize DataTable after updating the content
+                initializeDataTable();
+            },
+            error: function(xhr, status, error) {
+                console.error("API Error:", error);
+                $('#disease-table tbody').html(`
+                    <tr>
+                        <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
+                    </tr>
+                `);
             }
+        });
+    };
 
-            dataTable = new simpleDatatables.DataTable("#disease-table", {
-                searchable: true,
-                paging: true,
-                perPage: 5,
-                perPageSelect: [5, 10, 15, 20, 25],
-                sortable: true
-            });
-        };
-
-        $.ajax({
-                url: '/api/products',
-                type: 'GET',
-                headers: { 
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    'Accept': 'application/json',
-                },
-                success: function(response) {
-                    const productSelect = $('#create-products');
-                    response.data.forEach(product => {
-                        productSelect.append(new Option(product.name, product.id));
+    function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah kamu yakin untuk menghapus?',
+                text: "Data yang dihapus tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0e91e9',
+                cancelButtonColor: '#f56565',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: `/api/disease/delete/${id}`,
+                        type: 'DELETE',
+                        processData: false,
+                        contentType: false,
+                        headers: { 
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            'Accept': 'application/json',
+                        },
+                        success: function(result) {
+                            Swal.fire({
+                                title: 'Terhapus!',
+                                text: 'Penyakit ikan berhasil dihapus.',
+                                icon: 'success',
+                                timer: 1200, 
+                                showConfirmButton: false
+                            }).then(() => {
+                                location.reload(); 
+                            });
+                        },
+                        error: function(err) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Gagal untuk menghapus penyakit ikan, silahkan coba lagi',
+                                icon: 'error',
+                                timer: 1200, 
+                                showConfirmButton: false
+                            });
+                        }
                     });
                 }
             });
+        }
 
-            $.ajax({
-                url: '/api/fishes',
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
-                },
-                success: function(response) {
-                    const fishSelect = $('#create-affected-fish');
-                    response.forEach(fish => {
-                        fishSelect.append(new Option(fish.name, fish.id));
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error("API Error:", error);
-                }
-            });
-
-        window.confirmDelete = function(id) {
-                Swal.fire({
-                    title: 'Apakah kamu yakin untuk menghapus?',
-                    text: "Data yang dihapus tidak bisa dikembalikan!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#0e91e9',
-                    cancelButtonColor: '#f56565',
-                    confirmButtonText: 'Ya, hapus!',
-                    cancelButtonText: 'Batal'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: `/api/disease/delete/${id}`,
-                            type: 'DELETE',
-                            processData: false,
-                            contentType: false,
-                            headers: { 
-                                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                                'Accept': 'application/json',
-                            },
-                            success: function(result) {
-                                Swal.fire({
-                                    title: 'Terhapus!',
-                                    text: 'Penyakit ikan berhasil dihapus.',
-                                    icon: 'success',
-                                    timer: 1200, 
-                                    showConfirmButton: false
-                                }).then(() => {
-                                    location.reload(); 
-                                });
-                            },
-                            error: function(err) {
-                                Swal.fire({
-                                    title: 'Error!',
-                                    text: 'Gagal untuk menghapus penyakit ikan, silahkan coba lagi',
-                                    icon: 'error',
-                                    timer: 1200, 
-                                    showConfirmButton: false
-                                });
-                            }
-                        });
-                    }
-                });
-            }
-
-        window.fetchDiseaseDataById = (id) => {
+        const fetchDiseaseDataById = (id) => {
             $.ajax({
                 url: `/api/disease/${id}`,
                 method: 'GET',
@@ -255,11 +251,12 @@
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + localStorage.getItem('token'),
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                 },
                 success: function(response) {
                     currentDiseaseId = response.data.id;
-                    
+
+                    // Populate the form fields with the response data
                     $('#edit-disease-name').val(response.data.name);
                     $('#edit-disease-type').val(response.data.disease_type);
                     $('#edit-cause-agent').val(response.data.cause_agent);
@@ -268,79 +265,74 @@
                     $('#edit-prevention').val(response.data.prevention);
                     $('#edit-note').val(response.data.note);
 
+                    // Fetch and populate affected fish options
                     $.ajax({
                         url: '/api/fishes',
                         method: 'GET',
                         headers: {
                             'Accept': 'application/json',
-                            'Authorization': `Bearer ${localStorage.getItem('token')}`
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`,
                         },
                         success: function(fishResponse) {
-                            console.log('Full fishResponse:', fishResponse); 
-
                             const editFishSelect = $('#edit-affected-fish');
-                            editFishSelect.empty(); 
-                            
-                            try {
-                                fishResponse.forEach(fish => {
-                                    if (!fish || !fish.id || !fish.name) {
-                                        console.warn('Invalid fish object:', fish);
-                                        return;
-                                    }
-                                    
-                                    const option = new Option(fish.name, fish.id);
-                                    editFishSelect.append(option);
-                                });
-                                editFishSelect.trigger('change');
-                            } catch (error) {
-                                console.error('Error processing fish response:', error);
-                            }
+                            editFishSelect.empty(); // Clear current options
+                            fishResponse.forEach(fish => {
+                                const isSelected = response.data.affected_fish.some(selectedFish => selectedFish.id === fish.id);
+                                const option = new Option(fish.name, fish.id, isSelected, isSelected);
+                                editFishSelect.append(option);
+                            });
                         },
                         error: function(xhr, status, error) {
-                            console.error('AJAX Error:', status, error);
-                            console.log('Response Text:', xhr.responseText);
-                        }
+                            console.error('Error fetching fishes:', error);
+                        },
                     });
 
+                    // Fetch and populate product recommendations
                     $.ajax({
                         url: '/api/products',
                         method: 'GET',
                         headers: {
                             'Accept': 'application/json',
-                            'Authorization': `Bearer ${localStorage.getItem('token')}`
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`,
                         },
                         success: function(productResponse) {
                             const editProductSelect = $('#edit-products');
                             editProductSelect.empty(); // Clear current options
-                            
-                            // Append all product options
                             productResponse.data.forEach(product => {
-                                const isSelected = response.data.products_recommendation.some(selectedProduct => selectedProduct.id === product.id);
+                                const isSelected = response.data.products_recommendation.some(
+                                    selectedProduct => selectedProduct.id === product.id
+                                );
                                 const option = new Option(product.name, product.id, isSelected, isSelected);
                                 editProductSelect.append(option);
                             });
-                            editProductSelect.trigger('change'); 
-                        }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching products:', error);
+                        },
                     });
 
-                    $('input[name="edit-affected_parts[]"]').prop('checked', false);
+                    // Update affected parts checkboxes
+                    $('input[name="edit-affected_parts[]"]').prop('checked', false); // Uncheck all
                     if (response.data.affected_part) {
-                        const affectedParts = response.data.affected_part.toLowerCase().split(',');
-                        affectedParts.forEach(part => {
+                        response.data.affected_part.split(',').forEach(part => {
                             $(`input[name="edit-affected_parts[]"][value="${part.trim()}"]`).prop('checked', true);
                         });
                     }
 
-                    // Show modal
-                    editDiseaseModal.show();
+                    // Show modal (adjust based on your library or framework)
+                    const modalElement = document.getElementById('edit-disease');
+                    if (modalElement) {
+                        modalElement.classList.remove('hidden'); // Show modal
+                        modalElement.classList.add('flex');     // Ensure proper alignment
+                    }
                 },
                 error: function(xhr, status, error) {
-                    console.error("API Error:", error);
-                }
+                    console.error('Error fetching disease data:', error);
+                },
             });
         };
 
-        // Fetch data and initialize table on page load
-        fetchDiseaseData();
-    });
+
+    // Fetch data and initialize table on page load
+    fetchDiseaseData();
 </script>
