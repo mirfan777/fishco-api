@@ -201,7 +201,7 @@
                     $('[data-modal-hide="create-disease"]').click();
                     Swal.fire({
                         title: 'Error!',
-                        text: 'Failed to add disease data. Please try again.',
+                        text: 'Gagal untuk menambahkan data penyakit, silahkan coba lagi.',
                         icon: 'error',
                         confirmButtonText: 'OK'
                     });
