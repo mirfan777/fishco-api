@@ -41,6 +41,7 @@
                             <!-- affected_parts -->
                             <div class="mb-3">
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bagian yang terpengaruh</label>
+                                <p class="text-xs mb-2 text-red-500">*Pilih bagian minimal 1</p>
                                 <div class="flex gap-5">
                                     <div>
                                         <div class="flex items-center mb-4">
@@ -197,6 +198,7 @@
                     }, 500);
                 },
                 error: function(xhr, status, error) {
+                    $('[data-modal-hide="create-disease"]').click();
                     Swal.fire({
                         title: 'Error!',
                         text: 'Failed to add disease data. Please try again.',

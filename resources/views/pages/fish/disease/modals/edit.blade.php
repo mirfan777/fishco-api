@@ -22,72 +22,73 @@
                         <div class="md:w-1/2">
                             <!-- Name -->
                             <div class="mb-3">
-                                <label for="edit-disease-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                <input type="text" id="edit-disease-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                                <label for="edit-disease-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                                <input type="text" id="edit-disease-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan nama penyakit" required />
                             </div>
             
                             <!-- disease_type -->
                             <div class="mb-3">
-                                <label for="edit-disease-type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Disease Type</label>
-                                <input type="text" id="edit-disease-type" name="disease_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                                <label for="edit-disease-type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe Penyakit</label>
+                                <input type="text" id="edit-disease-type" name="disease_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan tipe penyakit" required />
                             </div>
             
                             <!-- cause_agent -->
                             <div class="mb-3">
-                                <label for="edit-cause-agent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cause Agent</label>
-                                <input type="text" id="edit-cause-agent" name="cause_agent" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                                <label for="edit-cause-agent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Penyebab</label>
+                                <input type="text" id="edit-cause-agent" name="cause_agent" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan penyebab" required />
                             </div>
             
                             <!-- affected_parts -->
                             <div class="mb-3">
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Affected Parts</label>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bagian yang terpengaruh</label>
+                                <p class="text-xs mb-2 text-red-500">*Pilih bagian minimal 1</p>
                                 <div class="flex gap-5">
                                     <div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="fins" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Fins</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Sirip</label>
                                         </div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="gills" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Gills</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Insang</label>
                                         </div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="scales" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Scales</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Sisik</label>
                                         </div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="head" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Head</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Kepala</label>
                                         </div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="swimming" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Swimming</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Cara Berenang</label>
                                         </div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="weight" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Weight</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Berat</label>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="body" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Body</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Tubuh</label>
                                         </div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="tail" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Tail</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Ekor</label>
                                         </div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="eyes" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Eyes</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Mata</label>
                                         </div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="mouth" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">Mouth</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Mulut</label>
                                         </div>
                                         <div class="flex items-center mb-4">
                                             <input type="checkbox" name="edit-affected_parts[]" value="behaviour" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                                            <label class="ms-2 text-sm font-medium text-gray-900">behaviour</label>
+                                            <label class="ms-2 text-sm font-medium text-gray-900">Perilaku</label>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +96,7 @@
             
                             <!-- Affected Fish -->
                             <div class="mb-3">
-                                <label for="edit-affected-fish" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Affected Fish</label>
+                                <label for="edit-affected-fish" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ikan yang terjangkit</label>
                                 <select id="edit-affected-fish" name="affected_fish[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full" multiple>
                                 </select>
                             </div>
@@ -104,31 +105,31 @@
                         <div class="md:w-1/2">
                             <!-- description -->
                             <div class="mb-3">
-                                <label for="edit-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                                <textarea id="edit-description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" required></textarea>
+                                <label for="edit-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
+                                <textarea id="edit-description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Masukan deskripsi" required></textarea>
                             </div>
             
                             <!-- symptoms -->
                             <div class="mb-3">
-                                <label for="edit-symptom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Symptoms</label>
-                                <textarea id="edit-symptom" name="symptom" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" required></textarea>
+                                <label for="edit-symptom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gejala</label>
+                                <textarea id="edit-symptom" name="symptom" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Masukan gejala" required></textarea>
                             </div>
 
                             <!-- prevention -->
                             <div class="mb-3">
-                                <label for="edit-prevention" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prevention</label>
-                                <textarea id="edit-prevention" name="prevention" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" required></textarea>
+                                <label for="edit-prevention" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pencegahan</label>
+                                <textarea id="edit-prevention" name="prevention" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Masukan cara pencegahan" required></textarea>
                             </div>
             
                             <!-- note -->
                             <div class="mb-3">
                                 <label for="edit-note" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Note</label>
-                                <textarea id="edit-note" name="note" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" required></textarea>
+                                <textarea id="edit-note" name="note" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Masukan note untuk penyakit" required></textarea>
                             </div>
             
                             <!-- Product Recommendations -->
                             <div class="mb-3">
-                                <label for="edit-products" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Recommendations</label>
+                                <label for="edit-products" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rekomendasi Produk</label>
                                 <select id="edit-products" name="product_recommendations[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full" multiple>
                                 </select>
                             </div>
@@ -198,6 +199,8 @@ $(document).ready(function() {
                 }, 500);
             },
             error: function(xhr, status, error) {
+                // Tutup modal terlebih dahulu
+                $('#edit-disease').addClass('hidden').removeClass('flex');
                 Swal.fire({
                     title: 'Error!',
                     text: 'Gagal untuk mengupdate data penyakit, silahkan coba lagi.',

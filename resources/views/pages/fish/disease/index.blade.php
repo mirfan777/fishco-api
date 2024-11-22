@@ -81,13 +81,27 @@
     let currentDiseaseId = null;
     let dataTable;
 
+    const affectedPartsMap = {
+        fins: 'Sirip',
+        gills: 'Insang',
+        scales: 'Sisik',
+        head: 'Kepala',
+        swimming: 'Cara Berenang',
+        weight: 'Berat',
+        body: 'Tubuh',
+        tail: 'Ekor',
+        eyes: 'Mata',
+        mouth: 'Mulut',
+        behaviour: 'Perilaku'
+    };
+
     $('#edit-affected-fish, #create-affected-fish').select2({
-        placeholder: 'Select affected fish',
+        placeholder: 'Masukan Ikan',
         allowClear: true
     });
 
     $('#edit-products, #create-products').select2({
-        placeholder: 'Select products',
+        placeholder: 'Masukan Produk',
         allowClear: true
     });
 
@@ -159,13 +173,14 @@
                 if (response.data && response.data.length > 0) {
                     response.data.forEach(disease => {
                         const fishNames = disease.affected_fish.map(fish => fish.name).join(' , ');
+                        const affectedParts = disease.affected_part.split(',').map(part => affectedPartsMap[part.trim()] || part.trim()).join(', ');
 
                         diseaseTableBody.append(`
                             <tr class="border-b dark:border-gray-700">
                                 <td class="px-4 py-3">${disease.name}</td>
                                 <td class="px-4 py-3">${disease.disease_type}</td>
                                 <td class="px-4 py-3">${disease.cause_agent}</td>
-                                <td class="px-4 py-3">${disease.affected_part}</td>
+                                <td class="px-4 py-3">${affectedParts}</td>
                                 <td class="px-4 py-3">${fishNames}</td>
                                 <td class="px-4 py-3">
                                     <button data-modal-target="edit-disease" data-modal-toggle="edit-disease" onclick="fetchDiseaseDataById(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
@@ -177,7 +192,7 @@
                 } else {
                     diseaseTableBody.append(`
                         <tr>
-                            <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
+                            <td colspan="6" class="px-4 py-3 text-center">Data tidak ditemukan</td>
                         </tr>
                     `);
                 }
@@ -189,7 +204,7 @@
                 console.error("API Error:", error);
                 $('#disease-table tbody').html(`
                     <tr>
-                        <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
+                        <td colspan="6" class="px-4 py-3 text-center">Data tidak ditemukan</td>
                     </tr>
                 `);
             }
@@ -331,7 +346,6 @@
                 },
             });
         };
-
 
     // Fetch data and initialize table on page load
     fetchDiseaseData();
