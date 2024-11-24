@@ -3,13 +3,13 @@
         <div class="container mx-auto p-6">
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
                 <div class="flex flex-col lg:flex-row gap-8 lg:p-12">
+                    <!-- Thumbnail Image Section -->
+                    <div class="w-full lg:w-1/3 flex justify-center">
+                        <img id="detail-thumbnail" class="rounded-lg w-80 h-80 lg:w-60 lg:h-60 object-cover" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="Product Thumbnail">
+                    </div>
                     <!-- Product Details Section -->
-                    <div class="w-full">
+                    <div class="w-full lg:w-2/3">
                         <h1 id="detail-product-name" class="text-4xl font-bold text-gray-900 dark:text-white mb-6">Product Name</h1>
-                        <!-- Thumbnail Image -->
-                        <div class="w-full flex justify-center">
-                            <img id="detail-thumbnail" class="rounded-lg w-full" src="" alt="Product Thumbnail">
-                        </div>
                         
                         <form id="editProductForm" class="w-full" enctype="multipart/form-data">
                             <div class="flex flex-col w-full gap-5">
@@ -59,122 +59,122 @@
 
 <script>
     $(document).ready(function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
 
-    function loadProductData(productId) {
-        $.ajax({
-            url: `/api/product/${productId}`,
-            method: 'GET',
-            headers: { 
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Accept': 'application/json',
-            },
-            success: function (response) {
-                if (response && response.data) {
-                    const product = response.data;
+        function loadProductData(productId) {
+            $.ajax({
+                url: `/api/product/${productId}`,
+                method: 'GET',
+                headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
+                success: function (response) {
+                    if (response && response.data) {
+                        const product = response.data;
 
-                    console.log("Fetched product data:", product); // Debugging line
-                    const thumbnailUrl = product.thumbnail.startsWith('http') ? product.thumbnail : '/' + product.thumbnail;
-                    console.log("Thumbnail URL:", thumbnailUrl);
+                        console.log("Fetched product data:", product); // Debugging line
+                        const thumbnailUrl = product.thumbnail.startsWith('http') ? product.thumbnail : '/' + product.thumbnail;
+                        console.log("Thumbnail URL:", thumbnailUrl);
 
-                    // Additional debugging
-                    const img = new Image();
-                    img.onload = function() {
-                        console.log("Image loaded successfully:", thumbnailUrl);
-                    };
-                    img.onerror = function() {
-                        console.error("Failed to load image:", thumbnailUrl);
-                    };
-                    img.src = thumbnailUrl;
+                        // Additional debugging
+                        const img = new Image();
+                        img.onload = function() {
+                            console.log("Image loaded successfully:", thumbnailUrl);
+                        };
+                        img.onerror = function() {
+                            console.error("Failed to load image:", thumbnailUrl);
+                        };
+                        img.src = thumbnailUrl;
 
-                    $('#detail-product-name').text(product.name ? product.name : "Not available");
-                    $('#detail-thumbnail').attr("src", thumbnailUrl + '?' + new Date().getTime()).attr("alt", product.name);
+                        $('#detail-product-name').text(product.name ? product.name : "Not available");
+                        $('#detail-thumbnail').attr("src", thumbnailUrl + '?' + new Date().getTime()).attr("alt", product.name);
 
-                    // edit product modal   
-                    $('#edit-product-name').val(product.name ? product.name : "Not available");
-                    $('#edit-product-category').val(product.category ? product.category : "Not available");
-                    $('#edit-product-price').val(product.price ? product.price : "Not available");
-                    $('#edit-product-link').val(product.link ? product.link : "Not available");
-                    $('#edit-product-description').val(product.description ? product.description : "Not available");
-                } else {
-                    console.error('Invalid response format:', response);
+                        // edit product modal   
+                        $('#edit-product-name').val(product.name ? product.name : "Not available");
+                        $('#edit-product-category').val(product.category ? product.category : "Not available");
+                        $('#edit-product-price').val(product.price ? product.price : "Not available");
+                        $('#edit-product-link').val(product.link ? product.link : "Not available");
+                        $('#edit-product-description').val(product.description ? product.description : "Not available");
+                    } else {
+                        console.error('Invalid response format:', response);
+                    }
+                },
+                error: function (xhr) {
+                    console.error('Error fetching product data:', xhr);
                 }
-            },
-            error: function (xhr) {
-                console.error('Error fetching product data:', xhr);
-            }
-        });
-    }
-
-    if (productId) {
-        loadProductData(productId);
-    } else {
-        console.error('Product ID not found in URL');
-    }
-
-    $('form').on('submit', function (e) {
-        e.preventDefault();
-
-        const formData = new FormData();
-
-        formData.append('name', $('#edit-product-name').val());
-        formData.append('category', $('#edit-product-category').val());
-        formData.append('price', $('#edit-product-price').val());
-        formData.append('link', $('#edit-product-link').val());
-        formData.append('description', $('#edit-product-description').val());
-        const fileInput = document.getElementById('edit-product-thumbnail');
-        
-        if (fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'];
-            
-            if (validTypes.includes(file.type)) {
-                formData.append('thumbnail', file);
-            } else {
-                alert('Invalid file type. Please upload an image file (jpeg, png, jpg, gif, svg).');
-                return;
-            }
+            });
         }
 
-        const submitBtn = $(this).find('button[type="submit"]');
-       
-        $.ajax({
-            url: `/api/product/update/${productId}`,
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            headers: { 
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Accept': 'application/json',
-            },
-            success: function (response) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Product updated successfully!',
-                    timer: 1200,
-                    showConfirmButton: false
-                });
-                setTimeout(function () {
-                    location.reload();
-                }, 1000);
-            },
-            error: function (xhr, status, error) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Failed!',
-                    text: `Error: ${xhr.responseJSON.message || 'Failed to update product.'}`
-                });
-                console.log("Error response:", xhr.responseJSON);
-            },
-            complete: function() {
-                submitBtn.prop('disabled', false);
+        if (productId) {
+            loadProductData(productId);
+        } else {
+            console.error('Product ID not found in URL');
+        }
+
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData();
+
+            formData.append('name', $('#edit-product-name').val());
+            formData.append('category', $('#edit-product-category').val());
+            formData.append('price', $('#edit-product-price').val());
+            formData.append('link', $('#edit-product-link').val());
+            formData.append('description', $('#edit-product-description').val());
+            const fileInput = document.getElementById('edit-product-thumbnail');
+            
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'];
+                
+                if (validTypes.includes(file.type)) {
+                    formData.append('thumbnail', file);
+                } else {
+                    alert('Invalid file type. Please upload an image file (jpeg, png, jpg, gif, svg).');
+                    return;
+                }
             }
+
+            const submitBtn = $(this).find('button[type="submit"]');
+           
+            $.ajax({
+                url: `/api/product/update/${productId}`,
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
+                success: function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Product updated successfully!',
+                        timer: 1200,
+                        showConfirmButton: false
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                },
+                error: function (xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Failed!',
+                        text: `Error: ${xhr.responseJSON.message || 'Failed to update product.'}`
+                    });
+                    console.log("Error response:", xhr.responseJSON);
+                },
+                complete: function() {
+                    submitBtn.prop('disabled', false);
+                }
+            });
         });
     });
-});
 </script>
