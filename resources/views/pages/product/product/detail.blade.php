@@ -155,7 +155,7 @@
                     Swal.fire({
                         icon: 'success',
                         title: 'Success!',
-                        text: 'Product updated successfully!',
+                        text: 'Data produk berhasil diupdate!',
                         timer: 1200,
                         showConfirmButton: false
                     });
