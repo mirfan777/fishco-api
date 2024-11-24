@@ -1,6 +1,5 @@
 <x-layout.main>
     @include('pages.product.product.modals.create')
-    @include('pages.product.product.modals.edit') 
     
     <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
         <section class="dark:bg-gray-900 p-3 sm:p-5">
