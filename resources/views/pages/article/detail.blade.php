@@ -21,18 +21,18 @@
                                     </div>
                                     <!-- Title -->
                                     <div class="mb-3">
-                                        <label for="edit-article-title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-                                        <input type="text" id="edit-article-title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article title" required />
+                                        <label for="edit-article-title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul</label>
+                                        <input type="text" id="edit-article-title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan judul artikel" required />
                                     </div>
                                     <!-- Slug -->
                                     <div class="mb-3">
                                         <label for="edit-article-slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug</label>
-                                        <input type="text" id="edit-article-slug" name="slug" class="bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article slug" readonly />
+                                        <input type="text" id="edit-article-slug" name="slug" class="bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan slug" readonly />
                                     </div>
                                     <!-- Description/Body -->
                                     <div class="mb-3">
-                                        <label for="edit-article-body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
-                                        <textarea id="edit-article-body" name="body" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter article body" required></textarea>
+                                        <label for="edit-article-body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Badan Artikel</label>
+                                        <textarea id="edit-article-body" name="body" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan badan artikel" required></textarea>
                                     </div>
                                 </div>
                             </div>

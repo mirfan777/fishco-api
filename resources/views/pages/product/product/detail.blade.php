@@ -9,40 +9,40 @@
                     </div>
                     <!-- Product Details Section -->
                     <div class="w-full lg:w-2/3">
-                        <h1 id="detail-product-name" class="text-4xl font-bold text-gray-900 dark:text-white mb-6">Product Name</h1>
+                        <h1 id="detail-product-name" class="text-4xl font-bold text-gray-900 dark:text-white mb-6">Nama Product</h1>
                         
                         <form id="editProductForm" class="w-full" enctype="multipart/form-data">
                             <div class="flex flex-col w-full gap-5">
                                 <div class="w-full">
                                     <!-- Thumbnail Upload -->
                                     <div class="mb-3">
-                                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="edit-product-thumbnail">Change Thumbnail</label>
+                                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="edit-product-thumbnail">Ubah Thumnail</label>
                                         <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="edit-product-thumbnail" type="file" accept=".jpeg,.png,.jpg,.gif,.svg">
                                     </div>
                                     <!-- Name -->
                                     <div class="mb-3">
-                                        <label for="edit-product-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                        <input type="text" id="edit-product-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter product name" required />
+                                        <label for="edit-product-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                                        <input type="text" id="edit-product-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan nama produk" required />
                                     </div>
                                     <!-- Category -->
                                     <div class="mb-3">
-                                        <label for="edit-product-category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                        <input type="text" id="edit-product-category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter product category" required />
+                                        <label for="edit-product-category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
+                                        <input type="text" id="edit-product-category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan kategori produk" required />
                                     </div>
                                     <!-- Price -->
                                     <div class="mb-3">
-                                        <label for="edit-product-price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                                        <input type="number" id="edit-product-price" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter product price" required />
+                                        <label for="edit-product-price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga</label>
+                                        <input type="number" id="edit-product-price" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan harga (dalam rupiah)" required />
                                     </div>
                                     <!-- Link -->
                                     <div class="mb-3">
-                                        <label for="edit-product-link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Link</label>
-                                        <input type="url" id="edit-product-link" name="link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter product link" required />
+                                        <label for="edit-product-link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Produk</label>
+                                        <input type="url" id="edit-product-link" name="link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan link produk" required />
                                     </div>
                                     <!-- Description -->
                                     <div class="mb-3">
-                                        <label for="edit-product-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                                        <textarea id="edit-product-description" name="description" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter product description" required></textarea>
+                                        <label for="edit-product-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi Produk</label>
+                                        <textarea id="edit-product-description" name="description" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan deskripsi produk" required></textarea>
                                     </div>
                                 </div>
                             </div>
