@@ -51,6 +51,12 @@
                                 <label for="create-product-description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi Produk</label>
                                 <textarea id="create-product-description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan deskripsi produk" required></textarea>
                             </div>
+
+                            <!-- Thumbnail Upload -->
+                            <div class="mb-3">
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="create-product-thumbnail">Upload Thumbnail</label>
+                                <input name="thumbnail" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="create-product-thumbnail" type="file" accept=".jpeg,.png,.jpg,.gif," required>
+                            </div>
                         </div>
                     </div>
 
@@ -77,14 +83,27 @@ $(document).ready(function() {
             return;
         }
 
-        // Prepare form data without picture
-        const formData = {
-            name: $('#create-product-name').val(),
-            category: $('#create-category').val(),
-            price: $('#create-price').val(),
-            link: $('#create-link').val(),
-            description: $('#create-product-description').val()
-        };
+        // Prepare form data using FormData object
+        const formData = new FormData();
+        formData.append('name', $('#create-product-name').val());
+        formData.append('category', $('#create-category').val());
+        formData.append('price', $('#create-price').val());
+        formData.append('link', $('#create-link').val());
+        formData.append('description', $('#create-product-description').val());
+
+        // Get the file input
+        const fileInput = document.getElementById('create-product-thumbnail');
+        if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'];
+            
+            if (validTypes.includes(file.type)) {
+                formData.append('thumbnail', file);
+            } else {
+                alert('Invalid file type. Please upload an image file (jpeg, png, jpg, gif, svg).');
+                return;
+            }
+        }
 
         // Log form data for debugging
         console.log('Form Data:', formData);
@@ -95,8 +114,9 @@ $(document).ready(function() {
         $.ajax({
             url: '/api/product/create', // Replace with your actual endpoint URL
             type: 'POST',
-            data: JSON.stringify(formData),
-            contentType: 'application/json',
+            data: formData,
+            processData: false,
+            contentType: false,
             headers: { 
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -109,7 +129,7 @@ $(document).ready(function() {
                     text: 'Product data has been successfully added',
                     icon: 'success',
                     timer: 1200,
-                        showConfirmButton: false
+                    showConfirmButton: false
                 }).then((result) => {
                     // Reset form and close modal
                     $('#create-product form')[0].reset();
@@ -137,8 +157,6 @@ $(document).ready(function() {
             }
         });
     });
-
-    console.log(formData);
 
     // Form validation
     function validateForm() {

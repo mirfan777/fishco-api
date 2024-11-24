@@ -21,6 +21,8 @@ class ProductResource extends JsonResource
             'description' => $this->description,
             'price' => $this->price,
             'link' => $this->link,
+            'thumbnail' => $this->thumbnail,
+            'url_thumbnail' => asset('data/thumbnails/' . $this->thumbnail),
             'created_at' => $this->created_at->format('d-m-Y')
         ];
     }
