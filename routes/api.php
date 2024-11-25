@@ -25,8 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/profile', function (Request $request) {
-        return $request->user(); });
+    Route::get('/profile', function (Request $request) {return $request->user(); });
     Route::delete('/logout', [AuthenticatedSessionController::class, 'revokeToken']);
 
     // User
@@ -36,6 +35,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/user/create', [UserController::class, 'createUser']);
     Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
     Route::post('/user/update/{id}', [UserController::class, 'updateUser']);
+    Route::post('/user/create', [RegisteredUserController::class, 'authStored']);
 
     //Fish
     Route::get('/fish', [FishController::class, 'getFish']);

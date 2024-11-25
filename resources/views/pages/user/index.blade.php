@@ -1,6 +1,5 @@
 <x-layout.main>
     @include('pages.user.modals.create')
-    @include('pages.user.modals.edit') 
     <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
         <section class="dark:bg-gray-900 p-3 sm:p-5">
             <div class="mx-auto w-full h-full px-4 lg:px-12">
@@ -166,7 +165,6 @@
                                 <td class="px-4 py-3">${user.address}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex space-x-1">
-                                        <button data-modal-target="edit-user" data-modal-toggle="edit-user" onclick="fetchUserDataById(${user.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
                                         <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${user.id})">Hapus</button>
                                     </div>
                                 </td>
