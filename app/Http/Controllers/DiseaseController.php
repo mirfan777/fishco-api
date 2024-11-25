@@ -59,14 +59,18 @@ class DiseaseController extends Controller
             'affected_part' => implode(',', $validated['affected_part'])
         ]);
 
+        // Update affected fish relationships, reset to empty if missing
         if ($request->has('affected_fish')) {
-            $affectedFish = $validated['affected_fish'];
-            $disease->affected_fish()->attach($affectedFish);
+            $disease->affected_fish()->sync($validated['affected_fish']);
+        } else {
+            $disease->affected_fish()->sync([]);
         }
 
+        // Update product recommendations relationships, reset to empty if missing
         if ($request->has('product_recommendations')) {
-            $productRecommendations = $validated['product_recommendations'];
-            $disease->product_recommendation()->attach($productRecommendations);
+            $disease->product_recommendation()->sync($validated['product_recommendations']);
+        } else {
+            $disease->product_recommendation()->sync([]);
         }
 
        
@@ -97,8 +101,8 @@ class DiseaseController extends Controller
             'prevention' => 'required|string',
             'affected_part' => 'required|array',
             'affected_part.*' => 'string',
-            'affected_fish' => 'array',
-            'product_recommendations' => 'array'
+            'affected_fish' => 'nullable|array',
+            'product_recommendations' => 'nullable|array',
         ]);
 
         // Update disease basic information

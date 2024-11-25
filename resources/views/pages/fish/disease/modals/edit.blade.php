@@ -165,8 +165,12 @@ $(document).ready(function() {
             disease_type: $('#edit-disease-type').val(),
             cause_agent: $('#edit-cause-agent').val(),
             prevention: $('#edit-prevention').val(),
-            affected_fish: $('#edit-affected-fish').val(),
-            product_recommendations: $('#edit-products').val(),
+            affected_fish: ($('#edit-affected-fish').val() && $('#edit-affected-fish').val().length > 0) 
+                ? $('#edit-affected-fish').val() 
+                : null, // Send null if no value
+            product_recommendations: ($('#edit-products').val() && $('#edit-products').val().length > 0) 
+                ? $('#edit-products').val() 
+                : null, // Send null if no value
             affected_part: $('input[name="edit-affected_parts[]"]:checked').map(function() {
                 return $(this).val();
             }).get(),

@@ -1,6 +1,5 @@
 <x-layout.main>
     @include('pages.product.product.modals.create')
-    @include('pages.product.product.modals.edit') 
     
     <main class="sm:ml-64 min-h-screen bg-gray-50 pt-10 mt-5">
         <section class="dark:bg-gray-900 p-3 sm:p-5">
@@ -143,7 +142,7 @@ const fetchProductData = () => {
                                 <td class="px-4 py-3">${product.price}</td>
                                 <td class="px-4 py-3">${product.link}</td>
                                 <td class="px-4 py-3">
-                                    <button data-modal-target="edit-product" data-modal-toggle="edit-product" onclick="fetchProductDataById(${product.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
+                                    <a href="/product/detail/?id=${product.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
                                     <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${product.id})">Hapus</button>
                                 </td>
                             </tr>

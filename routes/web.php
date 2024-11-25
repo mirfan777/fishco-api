@@ -17,6 +17,7 @@ Route::middleware(['web'])->group(function () {
     // Product routes
     Route::get('/product/affiliate', function () { return view('pages.product.affiliate.index'); });
     Route::get('/product', function () { return view('pages.product.product.index'); });
+    Route::get('/product/detail', function () { return view('pages.product.product.detail'); });
 
     // Report routes
     Route::get('/report', function () { return view('pages.report.index'); });

@@ -23,6 +23,7 @@ class ProductSeeder extends Seeder
                 'category' => 'Category ' . rand(1, 5),
                 'description' => 'Description for product ' . $i,
                 'price' => rand(100, 1000),
+                'thumbnail' => 'thumbnail1.jpg', // Ensure thumbnail is included
                 'link' => 'https://product' . $i . '.com',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -30,17 +31,17 @@ class ProductSeeder extends Seeder
         }
         DB::table('products')->insert($products);
 
-         // product treatments recommendation table
-         $productTreatments = [];
-         for ($i = 1; $i <= $recordCount; $i++) {
-             $productTreatments[] = [
-                 'product_id' => rand(1, $recordCount),
-                 'disease_id' => rand(1, $recordCount),
-                 'created_at' => Carbon::now(),
-                 'updated_at' => Carbon::now(),
-             ];
-         }
- 
-         DB::table('product_treatment_recommendations')->insert($productTreatments);
+        // Product treatments recommendation table
+        $productTreatments = [];
+        for ($i = 1; $i <= $recordCount; $i++) {
+            $productTreatments[] = [
+                'product_id' => rand(1, $recordCount),
+                'disease_id' => rand(1, $recordCount),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        }
+
+        DB::table('product_treatment_recommendations')->insert($productTreatments);
     }
 }
