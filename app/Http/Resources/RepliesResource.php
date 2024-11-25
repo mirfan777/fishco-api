@@ -18,8 +18,9 @@ class RepliesResource extends JsonResource
             'id' => $this->id,
             'comment_id' => $this->comment_id,
             'user_id' => $this->user_id,
+            'user_name' => $this->user->name,
             'body' => $this->body,
             'created_at' => $this->created_at->format('d-m-Y')
         ];
     }
-}
+}   

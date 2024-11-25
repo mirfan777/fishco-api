@@ -20,6 +20,7 @@ class ArticleResource extends JsonResource
             'slug' => $this->slug,
             'body' => $this->body,
             'user_id' => $this->user_id,
+            'user_name' => $this->user->name,
             'comment_id' => $this->comment_id,
             'thumbnail' => $this->thumbnail,
             'url_thumbnail' => asset('data/thumbnails/' . $this->thumbnail),
