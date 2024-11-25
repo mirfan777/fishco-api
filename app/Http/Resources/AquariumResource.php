@@ -21,12 +21,6 @@ class AquariumResource extends JsonResource
     public function toArray($request): array
     {
 
-    Log::info('Processing resource:', [
-        'aquarium_id' => $this->id,
-        'has_fishes' => $this->aquariumfishes->count(),
-        'raw_fishes' => $this->aquariumfishes->toArray()
-    ]);     
-
     return [
         "id" => $this->id,
         "user_id" => $this->user_id,
@@ -43,21 +37,7 @@ class AquariumResource extends JsonResource
         "min_salinity" => $this->min_salinity,
         "max_salinity" => $this->max_salinity,
         "turbidity" => $this->turbidity,
-        "aquariumfishes" => $this->aquariumfishes->map(function ($aquarium) {
-            return [
-                'id' => $aquarium->id,
-                'fish_id' => $aquarium->fish_id,
-                'fish_name' => $aquarium->fish->name,
-                'quantity' => $aquarium->quantity,
-            ];
-        }),
-        "warning" => $this->warning ?? []
+        "aquariumfishes" => FishResource::collection($this->aquariumfishes)
     ];
-    }
-
-    public function __construct($resource, $warning = [])
-    {
-            parent::__construct($resource);
-            $this->warning = $warning;
     }
 }
