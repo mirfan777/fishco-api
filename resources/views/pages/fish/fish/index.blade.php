@@ -69,18 +69,6 @@
     let currentFishId = null;
     let dataTable;
 
-    const habitatMap = {
-        freshwater: 'Air Tawar',
-        saltwater: 'Air Laut',
-        brackishwater: 'Air Payau'
-    };
-
-    const foodTypeMap = {
-        carnivore: 'Karnivora',
-        herbivore: 'Herbivora',
-        omnivore: 'Omnivora'
-    };
-
     const initializeModalPosition = () => {
         $('#edit-fish').removeClass('hidden').addClass('flex').css({
             'justify-content': 'center',
@@ -88,6 +76,7 @@
         });
     };
 
+        
     const initializeDataTable = () => {
         if (dataTable) {
             dataTable.destroy();
@@ -113,39 +102,37 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(response) {
-                console.log("API Response:", response);
+            console.log("API Response:", response);
 
-                const fishTableBody = $('#fish-table tbody'); // Target the tbody directly
-                fishTableBody.empty();
+            const fishTableBody = $('#fish-table tbody'); // Target the tbody directly
+            fishTableBody.empty();
 
-                if (response && response.length > 0) {
-                    response.forEach(fish => {
-                        // Translate habitat and food_type values
-                        const habitat = habitatMap[fish.habitat] || fish.habitat;
-                        const foodType = foodTypeMap[fish.food_type] || fish.food_type;
+            if (response && response.length > 0) {
+                response.forEach(fish => {
+                    // Check if habitat and food_type are defined
+                    const habitat = fish.habitat !== undefined ? fish.habitat : 'N/A';
+                    const foodType = fish.food_type !== undefined ? fish.food_type : 'N/A';
 
-                        fishTableBody.append(`
-                            <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">${fish.name}</td>
-                                <td class="px-4 py-3">${fish.species}</td>
-                                <td class="px-4 py-3">${habitat}</td>
-                                <td class="px-4 py-3">${foodType}</td>
-                                <td class="px-4 py-3">
-                                    <div class="flex space-x-1">
-                                        <a href="/fish/detail/?id=${fish.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
-                                        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${fish.id})">Hapus</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        `);
-                    });
-                } else {
                     fishTableBody.append(`
-                        <tr>
-                            <td colspan="5" class="px-4 py-3 text-center">No data available</td>
+                        <tr class="border-b dark:border-gray-700">
+                            <td class="px-4 py-3">${fish.name}</td>
+                            <td class="px-4 py-3">${fish.species}</td>
+                            <td class="px-4 py-3">${habitat}</td>
+                            <td class="px-4 py-3">${foodType}</td>
+                            <td class="px-4 py-3">
+                                <a href="/fish/detail/?id=${fish.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
+                                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${fish.id})">Hapus</button>
+                            </td>
                         </tr>
                     `);
-                }
+                });
+            } else {
+                fishTableBody.append(`
+                    <tr>
+                        <td colspan="5" class="px-4 py-3 text-center">No data available</td>
+                    </tr>
+                `);
+            }
 
                 // Reinitialize DataTable after updating the content
                 initializeDataTable();
@@ -154,60 +141,59 @@
                 console.error("API Error:", error);
                 $('#fish-table tbody').html(`
                     <tr>
-                        <td colspan="5" class="px-4 py-3 text-center">Data tidak ditemukan</td>
+                        <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
                     </tr>
                 `);
             }
         });
     };
 
-    function confirmDelete(id) {
-        Swal.fire({
-            title: 'Apakah kamu yakin untuk menghapus?',
-            text: "Data yang dihapus tidak bisa dikembalikan!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#0e91e9',
-            cancelButtonColor: '#f56565',
-            confirmButtonText: 'Ya, hapus!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: `/api/fish/delete/${id}`,
-                    type: 'DELETE',
-                    processData: false,
-                    contentType: false,
-                    headers: { 
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        'Accept': 'application/json',
-                    },
-                    success: function(result) {
-                        Swal.fire({
-                            title: 'Terhapus!',
-                            text: 'Ikan berhasil dihapus.',
-                            icon: 'success',
-                            timer: 1200, 
-                            showConfirmButton: false
-                        }).then(() => {
-                            location.reload(); // Reload the page to reflect changes
-                        });
-                    },
-                    error: function(err) {
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'Gagal untuk menghapus ikan, silahkan coba lagi',
-                            icon: 'error',
-                            timer: 1200, 
-                            showConfirmButton: false
-                        });
-                    }
-                });
-            }
-        });
-    }
-
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah kamu yakin untuk menghapus?',
+                text: "Data yang dihapus tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0e91e9',
+                cancelButtonColor: '#f56565',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: `/api/fish/delete/${id}`,
+                        type: 'DELETE',
+                        processData: false,
+                        contentType: false,
+                        headers: { 
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                            'Accept': 'application/json',
+                        },
+                        success: function(result) {
+                            Swal.fire({
+                                title: 'Terhapus!',
+                                text: 'Ikan berhasil dihapus.',
+                                icon: 'success',
+                                timer: 1200, 
+                                showConfirmButton: false
+                            }).then(() => {
+                                location.reload(); // Reload the page to reflect changes
+                            });
+                        },
+                        error: function(err) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Gagal untuk menghapus ikan, silahkan coba lagi',
+                                icon: 'error',
+                                timer: 1200, 
+                                showConfirmButton: false
+                            });
+                        }
+                    });
+                }
+            });
+        }
     // Initial fetch
     fetchFishData();
 </script>

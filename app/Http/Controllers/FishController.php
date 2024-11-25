@@ -14,18 +14,16 @@ use Illuminate\Support\Facades\Validator;
 
 class FishController extends Controller
 {
-    function getAllFish(Request $request)
-    {
-        $query = $request->query('search', '');
+    function getAllFish (Request $request) {
+        $query = $request->query('search', ''); 
         $fishes = Fish::where('name', 'like', "%$query%")
-            ->orWhere('species', 'like', "%$query%")
-            ->paginate(5);
+                      ->orWhere('species', 'like', "%$query%")
+                      ->paginate(5);
 
         return FishResource::collection($fishes);
     }
 
-    public function getAllFishes(Request $request)
-    {
+    public function getAllFishes(Request $request) {
         $query = Fish::query();
 
         if ($request->query('habitat')) {
@@ -43,42 +41,24 @@ class FishController extends Controller
         return response()->json(FishResource::collection($query->get()));
 
     }
-
-    function getFish(Request $request)
-    {
-        $query = Fish::query();
-
-        if ($request->query('genus')) {
-            $query->where('genus', $request->query('genus'));
-        }
-
-        if ($request->query('withImages') === 'true') {
-            $query->with('images');
-        }
-
-        return response()->json(FishResource::collection($query->get()));
-    }
-
-    function getFishById($id, Request $request)
-    {
+    
+    function getFishById($id, Request $request) {
         $status = $request->query('status');
-        $fish = Fish::with([
-            'images' => function ($query) use ($status) {
-                if ($status !== null) {
-                    $query->where('status', $status);
-                }
+        $fish = Fish::with(['images' => function($query) use ($status) {
+            if ($status !== null) {
+                $query->where('status', $status);
             }
-        ])->find($id);
+        }])->find($id);
 
         $data = new FishResource($fish);
-
+    
         return response()->json([
             "status" => 200,
             "message" => "Success",
             "data" => $data
         ]);
     }
-
+    
     function createFish(Request $request)
     {
         try {
@@ -89,10 +69,10 @@ class FishController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $filename = $timestamp . '.' . $extension;
 
-
+                
                 $file->move(public_path('data/images'), $filename);
 
-
+               
                 $fish = Fish::create([
                     'name' => $request->name,
                     'kingdom' => $request->kingdom,
@@ -111,15 +91,11 @@ class FishController extends Controller
                     'max_ph' => $request->max_ph,
                     'min_salinity' => $request->min_salinity,
                     'max_salinity' => $request->max_salinity,
-                    'min_water_volume' => $request->min_water_volume,
+                    'min_aquarium' => $request->min_aquarium,
                     'habitat' => $request->habitat,
                     'overview' => $request->overview,
                     'average_size' => $request->average_size,
-                    'venomous' => $request->venomous ?? 0,
-                    'poisonous' => $request->poisonous ?? 0,
-                    'aggressive' => $request->aggressive ?? 0,
-                    'teritorial' => $request->teritorial ?? 0,
-                    'thumbnail' => $filename
+                    'thumbnail' => $filename 
                 ]);
 
                 return response()->json([
@@ -145,30 +121,29 @@ class FishController extends Controller
             ], 500);
         }
     }
-
-    function updateFish(Request $request, $id)
-    {
+    
+    function updateFish(Request $request, $id) {
         $existingFish = Fish::where('id', $id)->first();
 
         // Langkah 1: Cek apakah file baru diunggah
         if ($request->hasFile('thumbnail')) {
             // a. Ambil file dari request
             $file = $request->file('thumbnail');
-
+            
             // b. Buat nama file baru dengan timestamp unix
             $timestamp = time();
             $extension = $file->getClientOriginalExtension();
             $filename = $timestamp . '.' . $extension;
-
+            
             // c. Pindahkan file ke direktori public/data/images
             $file->move(public_path('data/images'), $filename);
-
+            
             // d. Gunakan nama file baru sebagai nilai `thumbnail`
         } else {
             // Jika tidak ada file baru, tetap gunakan nama file lama
             $filename = $existingFish->thumbnail;
         }
-
+    
         // Langkah 2: Perbarui data di tabel `fish`
         $response = $existingFish->update([
             'name' => $request->name ?? $existingFish->name,
@@ -187,24 +162,20 @@ class FishController extends Controller
             'aggressive' => $request->aggressive ?? $existingFish->aggressive,
             'teritorial' => $request->teritorial ?? $existingFish->teritorial,
             'min_temperature' => $request->min_temperature ?? $existingFish->min_temperature,
-            'max_temperature' => $request->max_temperature ?? $existingFish->max_temperature,
+            'max_temperature' => $request->max_temperature  ?? $existingFish->max_temperature,
             'min_ph' => $request->min_ph ?? $existingFish->min_ph,
-            'max_ph' => $request->max_ph ?? $existingFish->max_ph,
-            'min_salinity' => $request->min_salinity ?? $existingFish->min_salinity,
-            'max_salinity' => $request->max_salinity ?? $existingFish->max_salinity,
-            'min_water_volume' => $request->min_water_volume ?? $existingFish->min_water_volume,
+            'max_ph' => $request->max_ph    ?? $existingFish->max_ph,
             'habitat' => $request->habitat ?? $existingFish->habitat,
             'overview' => $request->overview ?? $existingFish->overview,
             'average_size' => $request->average_size ?? $existingFish->average_size,
-            'thumbnail' => $filename
+            'thumbnail' => $filename  
         ]);
-
+    
         // Langkah 3: Kembalikan respons update
         return $response;
-    }
-
-    function uploadFishImage(Request $request, $id)
-    {
+    }    
+    
+    function uploadFishImage(Request $request, $id) {
         $existingFish = Fish::find($id);
 
         if (!$existingFish) {
@@ -216,7 +187,7 @@ class FishController extends Controller
 
 
         if ($request->hasFile('image')) {
-
+            
 
             $file = $request->file('image');
             $timestamp = time();
@@ -248,8 +219,7 @@ class FishController extends Controller
         ], 422);
     }
 
-    function deleteFishImage($id, $imgId)
-    {
+    function deleteFishImage($id , $imgId) {
         $fishImage = FishImage::where('id', $imgId)->where('fish_id', $id)->first();
 
         if (!$fishImage) {
@@ -292,6 +262,6 @@ class FishController extends Controller
             return response()->json(['error' => 'Failed to delete fish, please try again'], 500);
         }
     }
-
-
+    
+    
 }
