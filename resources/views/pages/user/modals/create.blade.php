@@ -163,16 +163,16 @@ $(document).ready(function() {
         });
 
         // Check if passwords match
-        const password = $('#create-user-password').val();
-        const confirmPassword = $('#create-user-confirm-password').val();
-        if (password !== confirmPassword) {
-            $('#create-user-confirm-password').addClass('border-red-500');
-            $('#password-error').removeClass('hidden');
-            isValid = false;
-        } else {
-            $('#create-user-confirm-password').removeClass('border-red-500');
-            $('#password-error').addClass('hidden');
-        }
+        // const password = $('#create-user-password').val();
+        // const confirmPassword = $('#create-user-confirm-password').val();
+        // if (password !== confirmPassword) {
+        //     $('#create-user-confirm-password').addClass('border-red-500');
+        //     $('#password-error').removeClass('hidden');
+        //     isValid = false;
+        // } else {
+        //     $('#create-user-confirm-password').removeClass('border-red-500');
+        //     $('#password-error').addClass('hidden');
+        // }
 
         return isValid;
     }

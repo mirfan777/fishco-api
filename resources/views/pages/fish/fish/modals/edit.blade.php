@@ -204,13 +204,12 @@
                     </div>
                 
                     <!-- Submit Button -->
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5">Edit</button>
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 
 <script>
     $(document).ready(function () {
@@ -274,7 +273,7 @@
             formData.append('min_salinity', $('#edit-min_salinity').val());
             formData.append('max_salinity', $('#edit-max_salinity').val());
             formData.append('average_size', $('#edit-average_size').val());
-            formData.append('min_water_volume', $('#edit-min_aquarium').val());
+            formData.append('min_aquarium', $('#edit-min_aquarium').val());
             formData.append('overview', $('#edit-overview').val());
 
             const submitBtn = $(this).find('button[type="submit"]');

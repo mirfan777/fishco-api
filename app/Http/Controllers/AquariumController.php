@@ -132,7 +132,7 @@ class AquariumController extends Controller
         $selectedFishes = Fish::whereIn('id', $fishIds)->get();
     
         // 1. Set Volume Akuarium
-        $totalMinimumVolume = $selectedFishes->sum('min_water_volume');
+        $totalMinimumVolume = $selectedFishes->sum('min_aquarium');
         $volumeWarning = $this->validateAndSetVolume($volume, $totalMinimumVolume);
         if ($volumeWarning) {
             $warning[] = $volumeWarning;
