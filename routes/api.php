@@ -57,6 +57,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     //Aquarium
     Route::get('/aquariums', [AquariumController::class, 'getAllAquarium']);
     Route::get('/aquarium/{id}', [AquariumController::class, 'getAquarium']);
+    Route::get('/aquarium/user/{id}', [AquariumController::class, 'getAquariumByUser']);
     Route::post('/aquarium/create', [AquariumController::class, 'createAquarium']);
     Route::post('/aquarium/update/{id}', [AquariumController::class, 'updateAquarium']);
     Route::delete('/aquarium/delete/{id}', [AquariumController::class, 'deleteAquarium']);

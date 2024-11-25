@@ -10,10 +10,129 @@ use App\Http\Resources\AquariumResource;
 
 class AquariumController extends Controller
 {
+
+    // Set dan Validasi Volume
+    private function validateAndSetVolume($volume, $totalMinimumVolume){
+        if ($totalMinimumVolume > $volume) {
+            return [
+                "status" => "danger",
+                "name" => "Volume Air Tidak Mencukupi",
+                "description" => "Volume akuarium kurang dari kebutuhan ikan",
+                "solution" => "Tambahkan volume air sebesar " . 
+                              number_format(($totalMinimumVolume - $volume) * 1.1, 2) . 
+                              " liter (ditambah 10% cadangan)"
+            ];
+        }
+        return null;
+    }
+    
+    // Set dan Validasi Salinitas
+    private function validateAndSetSalinity($fishes, $minSalinity, $maxSalinity){
+        $warnings = [];
+        $habitats = $fishes->pluck('habitat')->unique();
+    
+        // Cek habitat berbeda
+        if ($habitats->count() > 1) {
+            $warnings[] = [
+                "status" => "danger",
+                "name" => "Habitat Ikan Berbeda",
+                "description" => "Terdapat ikan dengan habitat yang tidak sama",
+                "solution" => "Pilih ikan dengan habitat yang sama"
+            ];
+        }
+    
+        // Cek kompatibilitas salinitas
+        if ($minSalinity > $maxSalinity) {
+            $warnings[] = [
+                "status" => "danger",
+                "name" => "Salinitas Tidak Kompatibel",
+                "description" => "Rentang salinitas ikan tidak sesuai",
+                "solution" => "Pilih ikan dengan rentang salinitas yang kompatibel"
+            ];
+        }
+    
+        return $warnings;
+    }
+    
+    // Set dan Validasi Ukuran dan Makanan
+    private function validateAndSetSizeAndFood($fishes){
+        $warnings = [];
+        $sizes = $fishes->pluck('average_size');
+        $foodTypes = $fishes->pluck('food_type')->unique();
+    
+        // Cek ukuran ikan
+        if ($sizes->max() - $sizes->min() > 5) {
+            $warnings[] = [
+                "status" => "danger", 
+                "name" => "Ukuran Ikan Tidak Sesuai",
+                "description" => "Terdapat perbedaan ukuran ikan yang signifikan",
+                "solution" => "Pilih ikan dengan ukuran serupa"
+            ];
+        }
+    
+        // Cek tipe makanan
+        if ($foodTypes->count() > 1) {
+            $warnings[] = [
+                "status" => "warning",
+                "name" => "Tipe Makanan Berbeda",
+                "description" => "Ikan memiliki tipe makanan yang berbeda",
+                "solution" => "Pertimbangkan kebutuhan makanan setiap ikan"
+            ];
+        }
+    
+        return $warnings;
+    }
+    
+    // Set dan Validasi Suhu
+    private function validateAndSetTemperature($fishes, $minTemperature, $maxTemperature){
+        $warnings = [];
+    
+        // Cek kompatibilitas suhu
+        if ($minTemperature > $maxTemperature) {
+            $warnings[] = [
+                "status" => "danger",
+                "name" => "Suhu Air Tidak Kompatibel",
+                "description" => "Rentang suhu ikan tidak sesuai",
+                "solution" => "Pilih ikan dengan rentang suhu yang kompatibel"
+            ];
+        }
+    
+        return $warnings;
+    }
+    
+    // Set dan Validasi pH
+    private function validateAndSetPH($fishes, $minPH, $maxPH){
+        $warnings = [];
+    
+        // Cek kompatibilitas pH
+        if ($minPH > $maxPH) {
+            $warnings[] = [
+                "status" => "danger",
+                "name" => "pH Air Tidak Kompatibel",
+                "description" => "Rentang pH ikan tidak sesuai",
+                "solution" => "Pilih ikan dengan rentang pH yang kompatibel"
+            ];
+        }
+    
+        return $warnings;
+    }
+
     function getAllAquarium(){
         
 
         return AquariumResource::collection(Aquarium::with('aquariumfishes')->get());
+
+    }
+
+    function getAquariumByUser($id){
+        $aquarium = Aquarium::with('aquariumfishes')->where('user_id', $id)->get();
+        if (!$aquarium) {
+            return response()->json([
+                'message' => 'Aquarium not found'
+            ], 404);
+        }else {
+            return AquariumResource::collection($aquarium); 
+        }
 
     }
 
@@ -122,119 +241,6 @@ class AquariumController extends Controller
     
         return new AquariumResource($aquarium, $warning);
     }
-    
-    // Set dan Validasi Volume
-    private function validateAndSetVolume($volume, $totalMinimumVolume)
-    {
-        if ($totalMinimumVolume > $volume) {
-            return [
-                "status" => "danger",
-                "name" => "Volume Air Tidak Mencukupi",
-                "description" => "Volume akuarium kurang dari kebutuhan ikan",
-                "solution" => "Tambahkan volume air sebesar " . 
-                              number_format(($totalMinimumVolume - $volume) * 1.1, 2) . 
-                              " liter (ditambah 10% cadangan)"
-            ];
-        }
-        return null;
-    }
-    
-    // Set dan Validasi Salinitas
-    private function validateAndSetSalinity($fishes, $minSalinity, $maxSalinity)
-    {
-        $warnings = [];
-        $habitats = $fishes->pluck('habitat')->unique();
-    
-        // Cek habitat berbeda
-        if ($habitats->count() > 1) {
-            $warnings[] = [
-                "status" => "danger",
-                "name" => "Habitat Ikan Berbeda",
-                "description" => "Terdapat ikan dengan habitat yang tidak sama",
-                "solution" => "Pilih ikan dengan habitat yang sama"
-            ];
-        }
-    
-        // Cek kompatibilitas salinitas
-        if ($minSalinity > $maxSalinity) {
-            $warnings[] = [
-                "status" => "danger",
-                "name" => "Salinitas Tidak Kompatibel",
-                "description" => "Rentang salinitas ikan tidak sesuai",
-                "solution" => "Pilih ikan dengan rentang salinitas yang kompatibel"
-            ];
-        }
-    
-        return $warnings;
-    }
-    
-    // Set dan Validasi Ukuran dan Makanan
-    private function validateAndSetSizeAndFood($fishes)
-    {
-        $warnings = [];
-        $sizes = $fishes->pluck('average_size');
-        $foodTypes = $fishes->pluck('food_type')->unique();
-    
-        // Cek ukuran ikan
-        if ($sizes->max() - $sizes->min() > 5) {
-            $warnings[] = [
-                "status" => "danger", 
-                "name" => "Ukuran Ikan Tidak Sesuai",
-                "description" => "Terdapat perbedaan ukuran ikan yang signifikan",
-                "solution" => "Pilih ikan dengan ukuran serupa"
-            ];
-        }
-    
-        // Cek tipe makanan
-        if ($foodTypes->count() > 1) {
-            $warnings[] = [
-                "status" => "warning",
-                "name" => "Tipe Makanan Berbeda",
-                "description" => "Ikan memiliki tipe makanan yang berbeda",
-                "solution" => "Pertimbangkan kebutuhan makanan setiap ikan"
-            ];
-        }
-    
-        return $warnings;
-    }
-    
-    // Set dan Validasi Suhu
-    private function validateAndSetTemperature($fishes, $minTemperature, $maxTemperature)
-    {
-        $warnings = [];
-    
-        // Cek kompatibilitas suhu
-        if ($minTemperature > $maxTemperature) {
-            $warnings[] = [
-                "status" => "danger",
-                "name" => "Suhu Air Tidak Kompatibel",
-                "description" => "Rentang suhu ikan tidak sesuai",
-                "solution" => "Pilih ikan dengan rentang suhu yang kompatibel"
-            ];
-        }
-    
-        return $warnings;
-    }
-    
-    // Set dan Validasi pH
-    private function validateAndSetPH($fishes, $minPH, $maxPH)
-    {
-        $warnings = [];
-    
-        // Cek kompatibilitas pH
-        if ($minPH > $maxPH) {
-            $warnings[] = [
-                "status" => "danger",
-                "name" => "pH Air Tidak Kompatibel",
-                "description" => "Rentang pH ikan tidak sesuai",
-                "solution" => "Pilih ikan dengan rentang pH yang kompatibel"
-            ];
-        }
-    
-        return $warnings;
-    }
-
-
 
 
 

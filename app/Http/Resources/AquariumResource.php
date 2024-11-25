@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Log;
 
 class AquariumResource extends JsonResource
 {
@@ -19,6 +20,13 @@ class AquariumResource extends JsonResource
      */
     public function toArray($request): array
     {
+
+    Log::info('Processing resource:', [
+        'aquarium_id' => $this->id,
+        'has_fishes' => $this->aquariumfishes->count(),
+        'raw_fishes' => $this->aquariumfishes->toArray()
+    ]);     
+
     return [
         "id" => $this->id,
         "user_id" => $this->user_id,
