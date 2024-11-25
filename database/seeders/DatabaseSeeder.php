@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             // ReportSeeder::class,
             AquariumSeeder::class,
+            AquariumFishesSeeder::class,
         ]);
     }
 }
