@@ -211,7 +211,6 @@
     </div>
 </div>
 
-
 <script>
     $(document).ready(function () {
         $('#edit-fish form').on('submit', function (e) {
