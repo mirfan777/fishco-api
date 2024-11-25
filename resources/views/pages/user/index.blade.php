@@ -165,8 +165,10 @@
                                 <td class="px-4 py-3">${user.phone_number}</td>
                                 <td class="px-4 py-3">${user.address}</td>
                                 <td class="px-4 py-3">
-                                    <button data-modal-target="edit-user" data-modal-toggle="edit-user" onclick="fetchUserDataById(${user.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
-                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${user.id})">Hapus</button>
+                                    <div class="flex space-x-1">
+                                        <button data-modal-target="edit-user" data-modal-toggle="edit-user" onclick="fetchUserDataById(${user.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
+                                        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${user.id})">Hapus</button>
+                                    </div>
                                 </td>
                             </tr>
                         `);

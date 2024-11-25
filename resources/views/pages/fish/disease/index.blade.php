@@ -172,8 +172,16 @@
 
                 if (response.data && response.data.length > 0) {
                     response.data.forEach(disease => {
-                        const fishNames = disease.affected_fish.map(fish => fish.name).join(' , ');
-                        const affectedParts = disease.affected_part.split(',').map(part => affectedPartsMap[part.trim()] || part.trim()).join(', ');
+                        let fishNames = disease.affected_fish.map(fish => fish.name).join(' , ');
+                        let affectedParts = disease.affected_part.split(',').map(part => affectedPartsMap[part.trim()] || part.trim()).join(', ');
+
+                        if (!fishNames) {
+                            fishNames = '<i>NULL</i>';
+                        }
+
+                        if (!affectedParts) {
+                            affectedParts = '<i>NULL</i>';
+                        }
 
                         diseaseTableBody.append(`
                             <tr class="border-b dark:border-gray-700">
@@ -183,8 +191,10 @@
                                 <td class="px-4 py-3">${affectedParts}</td>
                                 <td class="px-4 py-3">${fishNames}</td>
                                 <td class="px-4 py-3">
-                                    <button data-modal-target="edit-disease" data-modal-toggle="edit-disease" onclick="fetchDiseaseDataById(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
-                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${disease.id})">Hapus</button>
+                                    <div class="flex space-x-1">
+                                        <button data-modal-target="edit-disease" data-modal-toggle="edit-disease" onclick="fetchDiseaseDataById(${disease.id})" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">Edit</button>
+                                        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${disease.id})">Hapus</button>
+                                    </div>
                                 </td>
                             </tr>
                         `);

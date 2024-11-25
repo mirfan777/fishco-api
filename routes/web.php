@@ -6,7 +6,7 @@ Route::get('/auth/login', function () { return view('pages.auth.login'); });
 
 
 Route::middleware(['web'])->group(function () {
-    Route::get('/dashboard', function () { return view('pages.dashboard.index'); });
+    // Route::get('/dashboard', function () { return view('pages.dashboard.index'); });
 
     // Fish routes
     Route::get('/fish/disease', function () { return view('pages.fish.disease.index'); });

@@ -44,9 +44,9 @@ class FishSeeder extends Seeder
                 'family' => 'Osphronemidae',
                 'genus' => 'Betta',
                 'species' => 'Betta sp',
-                'colour' => 'Various (Blue, Red, Green, Multi-colored)',
+                'colour' => 'Beragam (Biru, Merah, Hijau, Berwana-warni)',
                 'food_type' => 'carnivore',
-                'food' => 'Bloodworms, Brine Shrimp, Daphnia, Fish Pellets',
+                'food' => 'Cacing darah, udang air asin, Daphnia, pelet ikan',
                 'venomous' => 0 ,
                 'poisonous' => 0 ,
                 'aggressive' => 1 ,
@@ -62,7 +62,7 @@ class FishSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'thumbnail' => $bettaImage[0],
-                'overview' => 'Betta fish, also known as "Siamese fighting fish," are popular aquarium fish known for their vibrant colors and flowing fins. Males are territorial and should be kept separately.',
+                'overview' => 'Ikan cupang, yang juga dikenal sebagai "ikan aduan siam," adalah ikan akuarium populer yang dikenal karena warnanya yang cerah dan siripnya yang berkibar. Ikan jantan bersifat teritorial dan harus dipelihara secara terpisah.',
                 'average_size' => 7 // cm
             ],
             [
@@ -74,9 +74,9 @@ class FishSeeder extends Seeder
                 'family' => 'Cyprinidae',
                 'genus' => 'Carassius',
                 'species' => 'Carassius auratus',
-                'colour' => 'Gold, Orange, Red, White, Black, Mixed',
+                'colour' => 'Beragam (Emas, Jingga, Merah, Putih, Hitam, Campuran)',
                 'food_type' => 'omnivore', //omnivore
-                'food' => 'Fish flakes, pellets, plants, small crustaceans, insects',
+                'food' => 'Serpihan ikan, pelet, tanaman, krustasea kecil, serangga',
                 'venomous' => 0 ,
                 'poisonous' => 0 ,
                 'aggressive' => 0 ,
@@ -92,7 +92,7 @@ class FishSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'thumbnail' => $carissusImage[0],
-                'overview' => 'Goldfish are one of the most popular ornamental fish species worldwide. They were first domesticated in China over a thousand years ago and are known for their hardy nature and various fancy varieties.',
+                'overview' => 'Ikan mas merupakan salah satu spesies ikan hias paling populer di seluruh dunia. Ikan ini pertama kali dijinakkan di Cina lebih dari seribu tahun yang lalu dan dikenal karena sifatnya yang kuat dan beragam varietasnya yang unik.',
                 'average_size' => 20 // cm
             ]
         ];

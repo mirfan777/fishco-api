@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             DiseaseSeeder::class,
             ProductSeeder::class,
             ArticleSeeder::class,
-            ReportSeeder::class,
+            // ReportSeeder::class,
             AquariumSeeder::class,
         ]);
     }

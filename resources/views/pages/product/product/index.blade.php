@@ -119,56 +119,58 @@ const fetchProductDataById = (id) => {
 };
 
 const fetchProductData = () => {
-        $.ajax({
-            url: `/api/products`,
-            method: 'GET',
-            headers: { 
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Accept': 'application/json',
-            },
-            success: function(response) {
-                console.log("API Response:", response);
+    $.ajax({
+        url: `/api/products`,
+        method: 'GET',
+        headers: { 
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Accept': 'application/json',
+        },
+        success: function(response) {
+            console.log("API Response:", response);
 
-                const productTableBody = $('#product-table tbody'); // Target the tbody directly
-                productTableBody.empty();
+            const productTableBody = $('#product-table tbody'); // Target the tbody directly
+            productTableBody.empty();
 
-                if (response.data && response.data.length > 0) {
-                    response.data.forEach(product => {
-                        productTableBody.append(`
-                            <tr class="border-b dark:border-gray-700">
-                                <td class="px-4 py-3">${product.name}</td>
-                                <td class="px-4 py-3">${product.category}</td>
-                                <td class="px-4 py-3">${product.price}</td>
-                                <td class="px-4 py-3">${product.link}</td>
-                                <td class="px-4 py-3">
-                                    <a href="/product/detail/?id=${product.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
-                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${product.id})">Hapus</button>
-                                </td>
-                            </tr>
-                        `);
-                    });
-                } else {
+            if (response.data && response.data.length > 0) {
+                response.data.forEach(product => {
                     productTableBody.append(`
-                        <tr>
-                            <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
+                        <tr class="border-b dark:border-gray-700">
+                            <td class="px-4 py-3">${product.name}</td>
+                            <td class="px-4 py-3">${product.category}</td>
+                            <td class="px-4 py-3">${product.price}</td>
+                            <td class="px-4 py-3">${product.link}</td>
+                            <td class="px-4 py-3">
+                                <div class="flex space-x-1">
+                                    <a href="/product/detail/?id=${product.id}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded">Detail</a>
+                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${product.id})">Hapus</button>
+                                </div>
+                            </td>
                         </tr>
                     `);
-                }
-
-                // Reinitialize DataTable after updating the content
-                initializeDataTable();
-            },
-            error: function(xhr, status, error) {
-                console.error("API Error:", error);
-                $('#product-table tbody').html(`
+                });
+            } else {
+                productTableBody.append(`
                     <tr>
-                        <td colspan="3" class="px-4 py-3 text-center">Data tidak ditemukan</td>
+                        <td colspan="5" class="px-4 py-3 text-center">Data tidak ditemukan</td>
                     </tr>
                 `);
             }
-        });
-    };
+
+            // Reinitialize DataTable after updating the content
+            initializeDataTable();
+        },
+        error: function(xhr, status, error) {
+            console.error("API Error:", error);
+            $('#product-table tbody').html(`
+                <tr>
+                    <td colspan="5" class="px-4 py-3 text-center">Data tidak ditemukan</td>
+                </tr>
+            `);
+        }
+    });
+};
 
 function confirmDelete(id) {
     Swal.fire({

@@ -116,8 +116,10 @@
                                 <td class="px-4 py-3">${article.title}</td>
                                 <td class="px-4 py-3">${article.slug}</td>
                                 <td class="px-4 py-3">
-                                    <a href="/article/detail/?id=${article.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
-                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${article.id})">Hapus</button>
+                                    <div class="flex space-x-1">
+                                        <a href="/article/detail/?id=${article.id}" class="bg-blue-500 text-white font-bold py-1 px-2 rounded">Detail</a>
+                                        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded" onclick="confirmDelete(${article.id})">Hapus</button>
+                                    </div>
                                 </td>
                             </tr>
                         `);
