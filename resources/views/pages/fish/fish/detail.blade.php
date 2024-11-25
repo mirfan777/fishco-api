@@ -187,84 +187,84 @@
                 'Accept': 'application/json',
             },
             success: function (response) {
-            const fish = response.data;
+                const fish = response.data;
 
-            $('#detail-fish-thumbnail').attr("src", '/data/images/' + fish.thumbnail).attr("alt", fish.name);
-            $('#detail-fish-name').text(fish.name || "Not available");
-            $('#detail-kingdom').text(fish.kingdom || "Not available");
-            $('#detail-phylum').text(fish.phylum || "Not available");
-            $('#detail-class').text(fish.class || "Not available");
-            $('#detail-order').text(fish.order || "Not available");
-            $('#detail-family').text(fish.family || "Not available");
-            $('#detail-genus').text(fish.genus || "Not available");
-            $('#detail-species').text(fish.species || "Not available");
-            $('#detail-colour').text(fish.colour || "Not available");
-            $('#detail-venomous').text(fish.venomous ? "Ya" : "Tidak");
-            $('#detail-poisonous').text(fish.poisonous ? "Ya" : "Tidak");
-            $('#detail-aggressive').text(fish.aggressive ? "Ya" : "Tidak");
-            $('#detail-teritorial').text(fish.teritorial ? "Ya" : "Tidak");
+                $('#detail-fish-thumbnail').attr("src", '/data/images/' + fish.thumbnail).attr("alt", fish.name);
+                $('#detail-fish-name').text(fish.name || "Not available");
+                $('#detail-kingdom').text(fish.kingdom || "Not available");
+                $('#detail-phylum').text(fish.phylum || "Not available");
+                $('#detail-class').text(fish.class || "Not available");
+                $('#detail-order').text(fish.order || "Not available");
+                $('#detail-family').text(fish.family || "Not available");
+                $('#detail-genus').text(fish.genus || "Not available");
+                $('#detail-species').text(fish.species || "Not available");
+                $('#detail-colour').text(fish.colour || "Not available");
+                $('#detail-venomous').text(fish.venomous ? "Ya" : "Tidak");
+                $('#detail-poisonous').text(fish.poisonous ? "Ya" : "Tidak");
+                $('#detail-aggressive').text(fish.aggressive ? "Ya" : "Tidak");
+                $('#detail-teritorial').text(fish.teritorial ? "Ya" : "Tidak");
 
-            const foodTypeMap = {
-                carnivore: "Karnivora",
-                herbivore: "Herbivora",
-                omnivore: "Omnivora"
-            };
-            $('#detail-food-type').text(foodTypeMap[fish.food_type] || "Not available");
+                const foodTypeMap = {
+                    carnivore: "Karnivora",
+                    herbivore: "Herbivora",
+                    omnivore: "Omnivora"
+                };
+                $('#detail-food-type').text(foodTypeMap[fish.food_type] || "Not available");
 
-            $('#detail-food').text(fish.food || "Not available");
+                $('#detail-food').text(fish.food || "Not available");
 
-            const habitatMap = {
-                freshwater: "Air Tawar",
-                saltwater: "Air Laut",
-                brackishwater: "Air Payau"
-            };
-            $('#detail-habitat').text(habitatMap[fish.habitat] || "Not available");
+                const habitatMap = {
+                    freshwater: "Air Tawar",
+                    saltwater: "Air Laut",
+                    brackishwater: "Air Payau"
+                };
+                $('#detail-habitat').text(habitatMap[fish.habitat] || "Not available");
 
-            $('#detail-temperature').text((fish.min_temperature != null && fish.max_temperature != null) ? `${fish.min_temperature}°C - ${fish.max_temperature}°C` : "Not available");
-            $('#detail-ph').text((fish.min_ph != null && fish.max_ph != null) ? `${fish.min_ph}pH - ${fish.max_ph}pH` : "Not available");
-            $('#detail-salinity').text((fish.min_salinity != null && fish.max_salinity != null) ? `${fish.min_salinity}ppt - ${fish.max_salinity}ppt` : "Not available");
-            $('#detail-average_size').text(fish.average_size != null ? `${fish.average_size} cm` : "Not available");
-            $('#detail-min_aquarium').text(fish.min_aquarium != null ? `${fish.min_aquarium} L` : "Not available");
-            $('#detail-overview').text(fish.overview || "No overview available");
+                $('#detail-temperature').text((fish.min_temperature != null && fish.max_temperature != null) ? `${fish.min_temperature}°C - ${fish.max_temperature}°C` : "Not available");
+                $('#detail-ph').text((fish.min_ph != null && fish.max_ph != null) ? `${fish.min_ph}pH - ${fish.max_ph}pH` : "Not available");
+                $('#detail-salinity').text((fish.min_salinity != null && fish.max_salinity != null) ? `${fish.min_salinity}ppt - ${fish.max_salinity}ppt` : "Not available");
+                $('#detail-average_size').text(fish.average_size != null ? `${fish.average_size} cm` : "Not available");
+                $('#detail-min_aquarium').text(fish.min_water_volume != null ? `${fish.min_water_volume} L` : "Not available");
+                $('#detail-overview').text(fish.overview || "No overview available");
 
-            const foodTypeValue = fish.food_type?.toString();
-            if (foodTypeValue) {
-                $(`input[name="food_type"][value="${foodTypeValue}"]`).prop('checked', true);
-            }
+                const foodTypeValue = fish.food_type?.toString();
+                if (foodTypeValue) {
+                    $(`input[name="food_type"][value="${foodTypeValue}"]`).prop('checked', true);
+                }
 
-            const habitatValue = fish.habitat?.toString();
-            if (habitatValue) {
-                $(`input[name="habitat"][value="${habitatValue}"]`).prop('checked', true);
-            }
+                const habitatValue = fish.habitat?.toString();
+                if (habitatValue) {
+                    $(`input[name="habitat"][value="${habitatValue}"]`).prop('checked', true);
+                }
 
-            $('#edit-name').val(fish.name || "Not available");
-            $('#edit-kingdom').val(fish.kingdom || "Not available");
-            $('#edit-phylum').val(fish.phylum || "Not available");
-            $('#edit-class').val(fish.class || "Not available");
-            $('#edit-order').val(fish.order || "Not available");
-            $('#edit-family').val(fish.family || "Not available");
-            $('#edit-genus').val(fish.genus || "Not available");
-            $('#edit-species').val(fish.species || "Not available");
-            $('#edit-colour').val(fish.colour || "Not available");
-            $('#edit-venomous').prop('checked', fish.venomous == 1);
-            $('#edit-poisonous').prop('checked', fish.poisonous == 1);
-            $('#edit-aggressive').prop('checked', fish.aggressive == 1);
-            $('#edit-teritorial').prop('checked', fish.teritorial == 1);
-            $('#edit-food-type').val(fish.food_type || "Not available");
-            $('#edit-food').val(fish.food || "Not available");
-            $('#edit-min_temperature').val(fish.min_temperature != null ? fish.min_temperature : "Not available");
-            $('#edit-max_temperature').val(fish.max_temperature != null ? fish.max_temperature : "Not available");
-            $('#edit-min_ph').val(fish.min_ph != null ? fish.min_ph : "Not available");
-            $('#edit-max_ph').val(fish.max_ph != null ? fish.max_ph : "Not available");
-            $('#edit-min_salinity').val(fish.min_salinity != null ? fish.min_salinity : "Not available");
-            $('#edit-max_salinity').val(fish.max_salinity != null ? fish.max_salinity : "Not available");
-            $('#edit-average_size').val(fish.average_size != null ? fish.average_size : "Not available");
-            $('#edit-min_aquarium').val(fish.average_size != null ? fish.average_size : "Not available");
-            $('#edit-overview').val(fish.overview || "No overview available");
-            $('#edit-thumbnail').val(''); // Set to empty string
+                $('#edit-name').val(fish.name || "Not available");
+                $('#edit-kingdom').val(fish.kingdom || "Not available");
+                $('#edit-phylum').val(fish.phylum || "Not available");
+                $('#edit-class').val(fish.class || "Not available");
+                $('#edit-order').val(fish.order || "Not available");
+                $('#edit-family').val(fish.family || "Not available");
+                $('#edit-genus').val(fish.genus || "Not available");
+                $('#edit-species').val(fish.species || "Not available");
+                $('#edit-colour').val(fish.colour || "Not available");
+                $('#edit-venomous').prop('checked', fish.venomous == 1);
+                $('#edit-poisonous').prop('checked', fish.poisonous == 1);
+                $('#edit-aggressive').prop('checked', fish.aggressive == 1);
+                $('#edit-teritorial').prop('checked', fish.teritorial == 1);
+                $('#edit-food-type').val(fish.food_type || "Not available");
+                $('#edit-food').val(fish.food || "Not available");
+                $('#edit-min_temperature').val(fish.min_temperature != null ? fish.min_temperature : "Not available");
+                $('#edit-max_temperature').val(fish.max_temperature != null ? fish.max_temperature : "Not available");
+                $('#edit-min_ph').val(fish.min_ph != null ? fish.min_ph : "Not available");
+                $('#edit-max_ph').val(fish.max_ph != null ? fish.max_ph : "Not available");
+                $('#edit-min_salinity').val(fish.min_salinity != null ? fish.min_salinity : "Not available");
+                $('#edit-max_salinity').val(fish.max_salinity != null ? fish.max_salinity : "Not available");
+                $('#edit-average_size').val(fish.average_size != null ? fish.average_size : "Not available");
+                $('#edit-min_aquarium').val(fish.min_water_volume != null ? fish.min_water_volume : "Not available");
+                $('#edit-overview').val(fish.overview || "No overview available");
+                $('#edit-thumbnail').val(''); // Set to empty string
 
-            setRadioButtonData(fish);
-        },
+                setRadioButtonData(fish);
+            },
             error: function (xhr) {
                 console.error('Error fetching fish data:', xhr);
             }
