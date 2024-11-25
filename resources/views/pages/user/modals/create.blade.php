@@ -41,7 +41,7 @@
                             <!-- Confirm Password -->
                             <div class="mb-3">
                                 <label for="create-user-confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Konfirmasi Password</label>
-                                <input type="password" id="create-user-confirm-password" name="confirm_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Konfirmasi Password" required />
+                                <input type="password" id="create-user-confirm-password" name="password_confirmation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Konfirmasi Password" required />
                                 <p id="password-error" class="text-red-500 text-sm mt-1 hidden">Password dan Konfirmasi Password tidak sesuai.</p>
                             </div>
 
@@ -77,9 +77,10 @@ $(document).ready(function() {
 
         // Validate form before submission
         if (!validateForm()) {
+            $('[data-modal-hide="create-user"]').click()
             Swal.fire({
                 title: 'Error!',
-                text: 'Please fill out all required fields correctly.',
+                text: 'Password dan konfirmasi password tidak cocok.',
                 icon: 'error',
                 confirmButtonText: 'OK'
             });
@@ -91,7 +92,7 @@ $(document).ready(function() {
             name: $('#create-user-name').val(),
             email: $('#create-user-email').val(),
             password: $('#create-user-password').val(),
-            confirm_password: $('#create-user-confirm-password').val(),
+            password_confirmation: $('#create-user-confirm-password').val(),
             phone_number: $('#create-user-phone').val(),
             address: $('#create-user-address').val(),
             role: 1
@@ -115,7 +116,7 @@ $(document).ready(function() {
                 // Show success message
                 Swal.fire({
                     title: 'Success!',
-                    text: 'User data has been successfully added',
+                    text: 'Data user berhasil ditambahkan.',
                     icon: 'success',
                     timer: 1200,
                     showConfirmButton: false
@@ -130,10 +131,20 @@ $(document).ready(function() {
                 }, 500);
             },
             error: function(xhr, status, error) {
+                $('[data-modal-hide="create-user"]').click()
+                let errorMessage = 'Gagal untuk menambahkan data user, silahkan coba ulang.';
+                if (xhr.status === 422) {
+                    const errors = xhr.responseJSON.errors;
+                    if (errors.email) {
+                        errorMessage = 'Email sudah digunakan.';
+                    } else if (errors.password) {
+                        errorMessage = 'Password harus sekurang-kurangnya 8 karakter.';
+                    }
+                }
                 // Show error message
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Failed to add user data. Please try again.',
+                    text: errorMessage,
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
@@ -165,8 +176,6 @@ $(document).ready(function() {
         // Check if passwords match
         const password = $('#create-user-password').val();
         const confirmPassword = $('#create-user-confirm-password').val();
-        console.log('Password:', password);
-        console.log('Confirm Password:', confirmPassword);
         if (password !== confirmPassword) {
             $('#create-user-confirm-password').addClass('border-red-500');
             $('#password-error').removeClass('hidden');

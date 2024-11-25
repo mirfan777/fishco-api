@@ -76,7 +76,7 @@
                         const product = response.data;
 
                         console.log("Fetched product data:", product); // Debugging line
-                        const thumbnailUrl = product.thumbnail.startsWith('http') ? product.thumbnail : '/' + product.thumbnail;
+                        const thumbnailUrl = `http://127.0.0.1:8000/data/thumbnails/${product.thumbnail}`;
                         console.log("Thumbnail URL:", thumbnailUrl);
 
                         // Additional debugging

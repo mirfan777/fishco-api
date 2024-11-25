@@ -67,119 +67,120 @@
         </div>
     </div>
 </div>
+
 <script>
-$(document).ready(function() {
-    $('#create-product form').on('submit', function(e) {
-        e.preventDefault();
+    $(document).ready(function() {
+        $('#create-product form').on('submit', function(e) {
+            e.preventDefault();
 
-        // Validate form before submission
-        if (!validateForm()) {
-            Swal.fire({
-                title: 'Error!',
-                text: 'Please fill out all required fields correctly.',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
-            return;
-        }
-
-        // Prepare form data using FormData object
-        const formData = new FormData();
-        formData.append('name', $('#create-product-name').val());
-        formData.append('category', $('#create-category').val());
-        formData.append('price', $('#create-price').val());
-        formData.append('link', $('#create-link').val());
-        formData.append('description', $('#create-product-description').val());
-
-        // Get the file input
-        const fileInput = document.getElementById('create-product-thumbnail');
-        if (fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'];
-            
-            if (validTypes.includes(file.type)) {
-                formData.append('thumbnail', file);
-            } else {
-                alert('Invalid file type. Please upload an image file (jpeg, png, jpg, gif, svg).');
-                return;
-            }
-        }
-
-        // Log form data for debugging
-        console.log('Form Data:', formData);
-
-        // Disable submit button while processing
-        $('button[type="submit"]').prop('disabled', true);
-
-        $.ajax({
-            url: '/api/product/create', // Replace with your actual endpoint URL
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            headers: { 
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Accept': 'application/json',
-            },
-            success: function(response) {
-                // Show success message
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Product data has been successfully added',
-                    icon: 'success',
-                    timer: 1200,
-                    showConfirmButton: false
-                }).then((result) => {
-                    // Reset form and close modal
-                    $('#create-product form')[0].reset();
-                    $('#create-product').hide();
-                });
-                $('[data-modal-hide="create-product"]').click();
-                setTimeout(function () {
-                    location.reload();
-                }, 500);
-            },
-            error: function(xhr, status, error) {
-                // Log error details for debugging
-                console.error('Error details:', xhr.responseText);
-
-                // Show error message
+            // Validate form before submission
+            if (!validateForm()) {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Failed to add product data. Please try again.',
+                    text: 'Please fill out all required fields correctly.',
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
-
-                // Re-enable submit button
-                $('button[type="submit"]').prop('disabled', false);
+                return;
             }
+
+            // Prepare form data using FormData object
+            const formData = new FormData();
+            formData.append('name', $('#create-product-name').val());
+            formData.append('category', $('#create-category').val());
+            formData.append('price', $('#create-price').val());
+            formData.append('link', $('#create-link').val());
+            formData.append('description', $('#create-product-description').val());
+
+            // Get the file input
+            const fileInput = document.getElementById('create-product-thumbnail');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/svg+xml'];
+                
+                if (validTypes.includes(file.type)) {
+                    formData.append('thumbnail', file);
+                } else {
+                    alert('Invalid file type. Please upload an image file (jpeg, png, jpg, gif, svg).');
+                    return;
+                }
+            }
+
+            // Log form data for debugging
+            console.log('Form Data:', formData);
+
+            // Disable submit button while processing
+            $('button[type="submit"]').prop('disabled', true);
+
+            $.ajax({
+                url: '/api/product/create', // Replace with your actual endpoint URL
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: { 
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json',
+                },
+                success: function(response) {
+                    // Show success message
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Product data has been successfully added',
+                        icon: 'success',
+                        timer: 1200,
+                        showConfirmButton: false
+                    }).then((result) => {
+                        // Reset form and close modal
+                        $('#create-product form')[0].reset();
+                        $('#create-product').hide();
+                    });
+                    $('[data-modal-hide="create-product"]').click();
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
+                },
+                error: function(xhr, status, error) {
+                    // Log error details for debugging
+                    console.error('Error details:', xhr.responseText);
+
+                    // Show error message
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Failed to add product data. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+
+                    // Re-enable submit button
+                    $('button[type="submit"]').prop('disabled', false);
+                }
+            });
         });
-    });
 
-    // Form validation
-    function validateForm() {
-        let isValid = true;
+        // Form validation
+        function validateForm() {
+            let isValid = true;
 
-        // Check required fields
-        $('#create-product form input[required], #create-product form textarea[required]').each(function() {
-            if (!$(this).val()) {
-                $(this).addClass('border-red-500');
-                isValid = false;
-            } else {
+            // Check required fields
+            $('#create-product form input[required], #create-product form textarea[required]').each(function() {
+                if (!$(this).val()) {
+                    $(this).addClass('border-red-500');
+                    isValid = false;
+                } else {
+                    $(this).removeClass('border-red-500');
+                }
+            });
+
+            return isValid;
+        }
+
+        // Real-time validation on input change
+        $('#create-product form input, #create-product form textarea').on('input', function() {
+            if ($(this).val()) {
                 $(this).removeClass('border-red-500');
             }
         });
-
-        return isValid;
-    }
-
-    // Real-time validation on input change
-    $('#create-product form input, #create-product form textarea').on('input', function() {
-        if ($(this).val()) {
-            $(this).removeClass('border-red-500');
-        }
     });
-});
 </script>
