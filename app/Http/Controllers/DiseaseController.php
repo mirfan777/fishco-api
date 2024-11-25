@@ -27,8 +27,8 @@ class DiseaseController extends Controller
                 'message' => 'Disease not found'
             ], 404);
         }
-        
-        return response(new DiseaseResource($disease)); ;
+
+        return new DiseaseResource($disease);
     }
 
     public function createDisease(Request $request)
