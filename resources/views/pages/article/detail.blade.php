@@ -7,8 +7,8 @@
                     <div class="w-full">
                         <h1 id="detail-article-title" class="text-4xl font-bold text-gray-900 dark:text-white mb-6">Judul Artikel</h1>
                         <!-- Thumbnail Image -->
-                        <div class="w-full flex justify-center">
-                            <img id="detail-thumbnail" class="rounded-lg w-full" src="" alt="Article Thumbnail">
+                        <div class="w-full flex justify-center mb-6">
+                            <img id="detail-thumbnail" class="rounded-lg" src="" alt="Article Thumbnail" style="width: 1100px; height: 400px; object-fit: cover; margin-bottom: 20px;">
                         </div>
                         
                         <form id="editArticleForm" class="w-full" enctype="multipart/form-data">
