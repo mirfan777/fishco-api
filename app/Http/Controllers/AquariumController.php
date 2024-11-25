@@ -117,64 +117,7 @@ class AquariumController extends Controller
         return $warnings;
     }
 
-    function getAllAquarium(){
-        
-
-        return AquariumResource::collection(Aquarium::with('aquariumfishes')->get());
-
-    }
-
-    function getAquariumByUser($id){
-        $aquarium = Aquarium::with('aquariumfishes')->where('user_id', $id)->get();
-        if (!$aquarium) {
-            return response()->json([
-                'message' => 'Aquarium not found'
-            ], 404);
-        }else {
-            return AquariumResource::collection($aquarium); 
-        }
-
-    }
-
-    function getAquariumById($id){
-        $aquarium = Aquarium::with('aquariumfishes')->where('id', $id)->first();
-        $volume = $aquarium->volume; 
-        $fish = $aquarium->aquariumfishes; 
-        
-
-        $warning = [
-            [
-                "name"=> "Warning 1",
-                "description"=> "Warning 1 description"
-            ],
-            [
-                "name"=> "Warning 2",
-                "description"=> "Warning 2 description"
-            ]
-        ];
-
-        // tentukan rekomendasi volume aquarium berdasarkan jumlah ikan dan atribut minimum volume air pada ikan
-            // jika volume aquarium kurang dari akumulasi minimum volume air ikan maka berikan warning (tidak cocok karena volume air kurang dan berikan rekomendasi solusi menambahkan ruang atau volume ait 5-10% dari volume sebelumnya)
-
-        // tentukan rekomendasi kompatimilitas dari habitat list ikan yang dipilih
-            // jika terdapat ikan yang habitatnya marine dan juga ikan freshwater maka berikan warning (tidak cocok karena habitat berbeda dan berikan warning danger)
-            // jika terdapat ikan yang yang memiliki salinitas air yang maksimal nya di bawah minimal ikan ikan lain maka kasih warning (tidak cocok karena salinitas air berbeda berikan danger dan berikan warning danger)
-           
-        // tentukan rekomendasi kompatibilitas dari tipe ukuran dan makanan ikan yang dipilih 
-            
-
-        // tentukan rekomendasi kompatibilitas dari suhu air ikan yang dipilih
-            // jika terdapat ikan yang yang memiliki suhu air yang maksimal nya di bawah minimal ikan ikan lain maka kasih warning (ikan a tidak cocok dengan ikan b karena suhu air tidak sesuai dan berikan warning danger)
-            // jika terdapat ikan yang yang memiliki suhu air yang minimal nya di atas maksimal ikan ikan lain maka kasih warning (ikan a tidak cocok dengan ikan b karena suhu air tidak sesuai dan berikan warning danger)
-        
-        return new AquariumResource(Aquarium::find($id) , $warning);
-    }
-
-
-
-
-
-    public function createAquarium(Request $request)
+     /*public function createAquarium(Request $request)
     {
         $volume = $request->volume_size; 
         $fishIds = $request->fishes;
@@ -240,8 +183,61 @@ class AquariumController extends Controller
         }
     
         return new AquariumResource($aquarium, $warning);
+    }*/
+
+
+    function getAllAquarium(){
+        return AquariumResource::collection(Aquarium::with('aquariumfishes')->get());
     }
 
+    function getAquariumByUser($id){
+        $aquarium = Aquarium::with('aquariumfishes')->where('user_id', $id)->get();
+        if (!$aquarium) {
+            return response()->json([
+                'message' => 'Aquarium not found'
+            ], 404);
+        }else {
+            return AquariumResource::collection($aquarium); 
+        }
+
+    }
+
+    function getAquariumById($id){
+        return new AquariumResource(Aquarium::find($id));
+    }
+
+
+    public function createAquarium(Request $request){
+        $aquarium = Aquarium::create(
+            [
+                'user_id' => $request->user_id,
+                'name' => $request->name ?? 'Akuarium Baru',
+                'volume_size' => $request->volume_size,
+                'type' => $request->type,
+                'filter_type' => $request->filter_type,
+                'filter_capacity' => $request->filter_capacity,
+                'filter_media' => $request->filter_media,
+                'min_temperature' => $request->min_temperature,
+                'max_temperature' => $request->max_temperature,
+                'min_ph' => $request->min_ph,
+                'max_ph' => $request->max_ph,
+                'min_salinity' => $request->min_salinity,
+                'max_salinity' => $request->max_salinity,
+                'turbidity' => $request->turbidity,
+                'disolved_oxygen' => $request->disolved_oxygen,
+                'hardness' => $request->hardness,
+                'amonia' => $request->amonia,
+                'nitrite' => $request->nitrite,
+                'nitrate' => $request->nitrate
+
+            ]
+        );
+
+        return response()->json([
+            'message' => 'Aquarium created successfully',
+            'data' => new AquariumResource($aquarium)
+        ]);
+    }
 
 
     function updateAquarium(Request $request, $id){

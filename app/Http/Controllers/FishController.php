@@ -111,10 +111,14 @@ class FishController extends Controller
                     'max_ph' => $request->max_ph,
                     'min_salinity' => $request->min_salinity,
                     'max_salinity' => $request->max_salinity,
-                    'min_aquarium' => $request->min_aquarium,
+                    'min_water_volume' => $request->min_water_volume,
                     'habitat' => $request->habitat,
                     'overview' => $request->overview,
                     'average_size' => $request->average_size,
+                    'venomous' => $request->venomous ?? 0,
+                    'poisonous' => $request->poisonous ?? 0,
+                    'aggressive' => $request->aggressive ?? 0,
+                    'teritorial' => $request->teritorial ?? 0,
                     'thumbnail' => $filename
                 ]);
 
@@ -186,6 +190,9 @@ class FishController extends Controller
             'max_temperature' => $request->max_temperature ?? $existingFish->max_temperature,
             'min_ph' => $request->min_ph ?? $existingFish->min_ph,
             'max_ph' => $request->max_ph ?? $existingFish->max_ph,
+            'min_salinity' => $request->min_salinity ?? $existingFish->min_salinity,
+            'max_salinity' => $request->max_salinity ?? $existingFish->max_salinity,
+            'min_water_volume' => $request->min_water_volume ?? $existingFish->min_water_volume,
             'habitat' => $request->habitat ?? $existingFish->habitat,
             'overview' => $request->overview ?? $existingFish->overview,
             'average_size' => $request->average_size ?? $existingFish->average_size,
