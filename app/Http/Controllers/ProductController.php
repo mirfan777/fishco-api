@@ -42,7 +42,7 @@ class ProductController extends Controller
                     'category' => $request->category,
                     'description' => $request->description,
                     'price' => $request->price,
-                    'thumbnail' => 'data/thumbnails/' . $filename, // Store relative path
+                    'thumbnail' => $filename, // Store relative path
                     'link' => $request->link,
                 ]);
 
@@ -79,7 +79,7 @@ class ProductController extends Controller
             $thumbnail = $request->file('thumbnail');
             $filename = time() . '_' . $thumbnail->getClientOriginalName();
             $thumbnail->move(public_path('data/thumbnails'), $filename);
-            $product->thumbnail = 'data/thumbnails/' . $filename; // Update relative path
+            $product->thumbnail = $filename; // Update relative path
         }
 
         $product->update($request->except('thumbnail'));
