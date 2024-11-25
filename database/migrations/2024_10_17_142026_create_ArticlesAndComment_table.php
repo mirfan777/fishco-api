@@ -26,7 +26,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->text('body');
-            $table->unsignedBigInteger('article_id')->nullable(); // Nullable initially
+            $table->unsignedBigInteger('article_id');
             $table->timestamps();
         });
     }

@@ -65,6 +65,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     //Article
     Route::get('/article', [ArticleController::class, 'getAllArticle']);
     Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
+    Route::get('/article/{id}/comments', [ArticleController::class, 'getArticleComments']);
     Route::post('/article/create', [ArticleController::class, 'createArticle']);
     Route::post('/article/update/{id}', [ArticleController::class, 'updateArticle']);
     Route::delete('/article/delete/{id}', [ArticleController::class, 'deleteArticle']);
