@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Http\Resources\ArticleResource;
+use App\Http\Resources\CommentResource;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Log;
 
 class ArticleController extends Controller
@@ -141,5 +143,16 @@ class ArticleController extends Controller
     public function getAllArticles()
     {
         return response()->json(ArticleResource::collection(Article::all()));
+    }
+
+    function getArticleComments($id)
+    {
+        return response()->json(CommentResource::collection(Comment::with('replies')->where("article_id" , $id)->get()));
+        if (!$article) {
+            return response()->json([
+                'message' => 'Article not found'
+            ], 404);
+        }
+        return new ArticleResource($article);
     }
 }

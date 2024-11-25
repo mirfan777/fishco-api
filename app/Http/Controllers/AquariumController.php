@@ -117,7 +117,7 @@ class AquariumController extends Controller
         return $warnings;
     }
 
-     /*public function createAquarium(Request $request)
+     public function createAquarium(Request $request)
     {
         $volume = $request->volume_size; 
         $fishIds = $request->fishes;
@@ -183,7 +183,7 @@ class AquariumController extends Controller
         }
     
         return new AquariumResource($aquarium, $warning);
-    }*/
+    }
 
 
     function getAllAquarium(){
@@ -197,47 +197,46 @@ class AquariumController extends Controller
                 'message' => 'Aquarium not found'
             ], 404);
         }else {
-            return AquariumResource::collection($aquarium); 
+            return response()->json (AquariumResource::collection($aquarium)); 
         }
-
     }
 
     function getAquariumById($id){
-        return new AquariumResource(Aquarium::find($id));
+        return AquariumResource::collection(Aquarium::with('aquariumfishes')->where('user_id',$id)->get());
     }
 
 
-    public function createAquarium(Request $request){
-        $aquarium = Aquarium::create(
-            [
-                'user_id' => $request->user_id,
-                'name' => $request->name ?? 'Akuarium Baru',
-                'volume_size' => $request->volume_size,
-                'type' => $request->type,
-                'filter_type' => $request->filter_type,
-                'filter_capacity' => $request->filter_capacity,
-                'filter_media' => $request->filter_media,
-                'min_temperature' => $request->min_temperature,
-                'max_temperature' => $request->max_temperature,
-                'min_ph' => $request->min_ph,
-                'max_ph' => $request->max_ph,
-                'min_salinity' => $request->min_salinity,
-                'max_salinity' => $request->max_salinity,
-                'turbidity' => $request->turbidity,
-                'disolved_oxygen' => $request->disolved_oxygen,
-                'hardness' => $request->hardness,
-                'amonia' => $request->amonia,
-                'nitrite' => $request->nitrite,
-                'nitrate' => $request->nitrate
+    // public function createAquarium(Request $request){
+    //     $aquarium = Aquarium::create(
+    //         [
+    //             'user_id' => $request->user_id,
+    //             'name' => $request->name ?? 'Akuarium Baru',
+    //             'volume_size' => $request->volume_size,
+    //             'type' => $request->type,
+    //             'filter_type' => $request->filter_type,
+    //             'filter_capacity' => $request->filter_capacity,
+    //             'filter_media' => $request->filter_media,
+    //             'min_temperature' => $request->min_temperature,
+    //             'max_temperature' => $request->max_temperature,
+    //             'min_ph' => $request->min_ph,
+    //             'max_ph' => $request->max_ph,
+    //             'min_salinity' => $request->min_salinity,
+    //             'max_salinity' => $request->max_salinity,
+    //             'turbidity' => $request->turbidity,
+    //             'disolved_oxygen' => $request->disolved_oxygen,
+    //             'hardness' => $request->hardness,
+    //             'amonia' => $request->amonia,
+    //             'nitrite' => $request->nitrite,
+    //             'nitrate' => $request->nitrate
 
-            ]
-        );
+    //         ]
+    //     );
 
-        return response()->json([
-            'message' => 'Aquarium created successfully',
-            'data' => new AquariumResource($aquarium)
-        ]);
-    }
+    //     return response()->json([
+    //         'message' => 'Aquarium created successfully',
+    //         'data' => new AquariumResource($aquarium)
+    //     ]);
+    // }
 
 
     function updateAquarium(Request $request, $id){

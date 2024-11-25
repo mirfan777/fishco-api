@@ -12,7 +12,7 @@ class Aquarium extends Model
 
     public function aquariumfishes()
     {
-        return $this->hasMany(AquariumFish::class);
+        return $this->belongstoMany(Fish::class, 'aquarium_fishes', 'aquarium_id', 'fish_id');
     }
 
     public function user()

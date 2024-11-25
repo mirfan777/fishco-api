@@ -28,7 +28,38 @@ class AquariumFishesSeeder extends Seeder
                 'aquarium_id' => rand(1,2),
                 'fish_id' => rand(1,7),
                 'quantity' => rand(1, 10)
+            ],
+            [
+                'aquarium_id' => rand(1,2),
+                'fish_id' => rand(1,7),
+                'quantity' => rand(1, 10)
+            ],
+            [
+                'aquarium_id' => rand(1,2),
+                'fish_id' => rand(1,7),
+                'quantity' => rand(1, 10)
+            ],
+            [
+                'aquarium_id' => rand(1,2),
+                'fish_id' => rand(1,7),
+                'quantity' => rand(1, 10)
+            ],
+            [
+                'aquarium_id' => rand(1,2),
+                'fish_id' => rand(1,7),
+                'quantity' => rand(1, 10)
+            ],
+            [
+                'aquarium_id' => rand(1,2),
+                'fish_id' => rand(1,7),
+                'quantity' => rand(1, 10)
+            ],
+            [
+                'aquarium_id' => rand(1,2),
+                'fish_id' => rand(1,7),
+                'quantity' => rand(1, 10)
             ]
+            
         ];
 
         DB::table('aquarium_fishes')->insert($data);
