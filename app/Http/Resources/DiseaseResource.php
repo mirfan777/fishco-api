@@ -34,15 +34,7 @@ class DiseaseResource extends JsonResource
                     'name' => $fish->name,
                 ];
             }),
-            'products_recommendation' => $this->product_recommendation->map(function ($product) {
-                return [
-                    'id' => $product->id,
-                    'name' => $product->name,
-                    'price' => $product->price,
-                    'description' => $product->description,
-                    'link' => $product->link,   
-                ];
-            }),
+            'products_recommendation' => ProductResource::collection($this->product_recommendation),
             'created_at' => $this->created_at
         ];
     }
