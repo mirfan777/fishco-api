@@ -21,10 +21,9 @@ class AquariumSeeder extends Seeder
 
         $data = [
             [
-                'user_id' => 1, // Replace 1 with the actual user ID
+                'user_id' => rand(1,3),
                 'name' => $faker->name,
                 'volume_size' => $faker->randomFloat(2, 10, 100),
-                'material' => $faker->randomElement(['Plastic', 'Ceramic', 'Metal']),
                 'type' => $faker->randomElement(['Canister', 'Under-sink', 'Reverse Osmosis']),
                 'filter_type' => $faker->randomElement(['Carbon', 'Sediment', 'Activated Carbon']),
                 'filter_capacity' => $faker->randomDigit(),
@@ -33,19 +32,19 @@ class AquariumSeeder extends Seeder
                 'max_temperature' => $faker->randomFloat(2, 30, 50),
                 'min_ph' => $faker->randomFloat(2, 6, 7),
                 'max_ph' => $faker->randomFloat(2, 7, 8),
+                'min_salinity' => $faker->randomFloat(2, 0, 10),
+                'max_salinity' => $faker->randomFloat(2, 10, 20),
                 'turbidity' => $faker->randomFloat(2, 0, 1),
-                'salinity' => $faker->randomFloat(2, 0, 10),
                 'disolved_oxygen' => $faker->randomFloat(2, 0, 10),
                 'hardness' => $faker->randomFloat(2, 0, 10),
                 'amonia' => $faker->randomFloat(2, 0, 1),
                 'nitrite' => $faker->randomFloat(2, 0, 1),
-                'nitrate' => $faker->randomFloat(2, 0, 10),
+                'nitrate' => $faker->randomFloat(2, 0, 10)
             ],
             [
-                'user_id' => 1, // Replace 1 with the actual user ID
+                'user_id' => rand(1, 3),
                 'name' => $faker->name,
                 'volume_size' => $faker->randomFloat(2, 10, 100),
-                'material' => $faker->randomElement(['Plastic', 'Ceramic', 'Metal']),
                 'type' => $faker->randomElement(['Canister', 'Under-sink', 'Reverse Osmosis']),
                 'filter_type' => $faker->randomElement(['Carbon', 'Sediment', 'Activated Carbon']),
                 'filter_capacity' => $faker->randomDigit(),
@@ -54,35 +53,17 @@ class AquariumSeeder extends Seeder
                 'max_temperature' => $faker->randomFloat(2, 30, 50),
                 'min_ph' => $faker->randomFloat(2, 6, 7),
                 'max_ph' => $faker->randomFloat(2, 7, 8),
+                'min_salinity' => $faker->randomFloat(2, 0, 10),
+                'max_salinity' => $faker->randomFloat(2, 10, 20),
                 'turbidity' => $faker->randomFloat(2, 0, 1),
-                'salinity' => $faker->randomFloat(2, 0, 10),
                 'disolved_oxygen' => $faker->randomFloat(2, 0, 10),
                 'hardness' => $faker->randomFloat(2, 0, 10),
                 'amonia' => $faker->randomFloat(2, 0, 1),
                 'nitrite' => $faker->randomFloat(2, 0, 1),
-                'nitrate' => $faker->randomFloat(2, 0, 10),
-            ],
-            [
-                'user_id' => 1, // Replace 1 with the actual user ID
-                'name' => $faker->name,
-                'volume_size' => $faker->randomFloat(2, 10, 100),
-                'material' => $faker->randomElement(['Plastic', 'Ceramic', 'Metal']),
-                'type' => $faker->randomElement(['Canister', 'Under-sink', 'Reverse Osmosis']),
-                'filter_type' => $faker->randomElement(['Carbon', 'Sediment', 'Activated Carbon']),
-                'filter_capacity' => $faker->randomDigit(),
-                'filter_media' => $faker->randomElement(['Granular Activated Carbon', 'Carbon Block', 'Sediment Filter']),
-                'min_temperature' => $faker->randomFloat(2, 0, 30),
-                'max_temperature' => $faker->randomFloat(2, 30, 50),
-                'min_ph' => $faker->randomFloat(2, 6, 7),
-                'max_ph' => $faker->randomFloat(2, 7, 8),
-                'turbidity' => $faker->randomFloat(2, 0, 1),
-                'salinity' => $faker->randomFloat(2, 0, 10),
-                'disolved_oxygen' => $faker->randomFloat(2, 0, 10),
-                'hardness' => $faker->randomFloat(2, 0, 10),
-                'amonia' => $faker->randomFloat(2, 0, 1),
-                'nitrite' => $faker->randomFloat(2, 0, 1),
-                'nitrate' => $faker->randomFloat(2, 0, 10),
+                'nitrate' => $faker->randomFloat(2, 0, 10)
             ]
         ];
+
+        DB::table('aquariums')->insert($data);
     }
 }
