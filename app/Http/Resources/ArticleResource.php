@@ -23,7 +23,8 @@ class ArticleResource extends JsonResource
             'comment_id' => $this->comment_id,
             'thumbnail' => $this->thumbnail,
             'url_thumbnail' => asset('data/thumbnails/' . $this->thumbnail),
-            'created_at' => $this->created_at->format('d-m-Y')
+            'created_at' => $this->created_at->format('d-m-Y'),
+            'comments' => CommentResource::collection($this->comments)
         ];
     }
 }

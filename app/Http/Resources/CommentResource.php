@@ -19,7 +19,8 @@ class CommentResource extends JsonResource
             'user_id' => $this->user_id,
             'article_id' => $this->article_id,
             'body' => $this->body,
-            'created_at' => $this->created_at->format('d-m-Y')
+            'created_at' => $this->created_at->format('d-m-Y'),
+            'replies' => RepliesResource::collection($this->replies)
         ];
     }
 }

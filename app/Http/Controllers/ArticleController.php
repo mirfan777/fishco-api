@@ -27,6 +27,11 @@ class ArticleController extends Controller
         return ArticleResource::collection($articles);
     }
 
+    public function getAllArticles()
+    {
+        return response()->json(ArticleResource::collection(Article::with('comments.replies')->get()));
+    }
+
     function getArticleById($id)
     {
         $article = Article::find($id);
@@ -138,8 +143,4 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function getAllArticles()
-    {
-        return response()->json(ArticleResource::collection(Article::all()));
-    }
 }
