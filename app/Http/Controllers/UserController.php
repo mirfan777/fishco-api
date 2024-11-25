@@ -37,19 +37,27 @@ class UserController extends Controller
     }
 
     function createUser(Request $request) {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => hash('sha256', $request->password),
-            'phone_number' => $request->phone_number,
-            'role' =>$request->role,
-            'address' => $request->address,
-        ]);
 
-        return response()->json([
-            'message' => 'User created successfully',
-            'data' => new UserResource($user)
-        ]);
+        if ($request->password === $request->confirm_password){
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => hash('sha256', $request->password),
+                'phone_number' => $request->phone_number,
+                'role' =>$request->role,
+                'address' => $request->address,
+            ]);
+    
+            return response()->json([
+                'message' => 'User created successfully',
+                'data' => new UserResource($user)
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'Password and Confirm Password must be the same'
+            ]);
+        }
+
     }
 
     function deleteUser($id) {
