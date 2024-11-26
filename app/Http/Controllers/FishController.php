@@ -41,6 +41,17 @@ class FishController extends Controller
         return response()->json(FishResource::collection($query->get()));
 
     }
+
+    public function getFish(Request $request) {
+        $query = Fish::query();
+
+        if ($request->query('genus')) {
+            $query->where('genus', $request->query('genus'));
+        }
+
+        return response()->json(FishResource::collection($query->get()));
+
+    }
     
     function getFishById($id, Request $request) {
         $status = $request->query('status');
